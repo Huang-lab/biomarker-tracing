@@ -1,3 +1,20 @@
+"""
+ElasticNet association between cell-type specificity and protein disease statistics.
+
+For one disease, jointly regresses the protein disease-association statistic
+(HR/OR/z-score) onto the specificity of all cell types using ElasticNet. It grid-
+searches alpha (regularization strength) x l1_ratio with k-fold cross-validation,
+selects the best models by mean k-fold R^2, Pearson r, and MSE, refits each on the
+full data, and reports the cell-type coefficients (large positive = cell type whose
+specificity most predicts disease effect).
+
+Convergence is monitored; once a param set fails to converge the search stops
+descending to weaker regularization (smaller alpha / l1_ratio) for that branch.
+
+Inputs : a genes x cell-tissues specificity matrix and one disease's summary statistics.
+Outputs: perf_df.tsv, coef_df.tsv, best_model*.tsv, coef_best_model_full_data.tsv,
+         coefficient plots, and cmd_args.json in --save_path.
+"""
 import pandas as pd
 import numpy as np
 import os, argparse, pickle

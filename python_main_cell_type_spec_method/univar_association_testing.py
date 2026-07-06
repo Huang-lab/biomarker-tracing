@@ -1,3 +1,22 @@
+"""
+Univariate association between cell-type specificity and protein disease statistics.
+
+For one disease, fits one OLS per cell type:
+
+    disease_effect ~ specificity_of_that_cell_type ( + optional covariates )
+
+and reports, per cell type, the specificity coefficient (beta), its t-value,
+two-sided and one-sided p-values, BH-FDR-adjusted p-values, model R^2, and a
+Shapiro residual-normality p-value. Optional covariates include a Gini
+specificity score (--covar_gini) and any columns in an external --covar_df.
+
+This is the direct analogue of seismicGWAS's per-cell-type test; the tutorial
+parameters are chosen so the ranking matches the seismicGWAS output.
+
+Inputs : a genes x cell-tissues specificity matrix and one disease's summary statistics.
+Outputs: univar_regression_results.tsv (ranked by fdr_one_side_predictor),
+         model_summary.txt, prot_spec_final*.tsv, and cmd_args.json in --save_path.
+"""
 import argparse, logging
 import os, json
 import numpy as np
@@ -77,7 +96,7 @@ def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
     if covar_df is not None:
         result_df = result_df.merge(covar_df, right_index=True, left_index=True)
         covar_cols = covar_df.columns.tolist()
-    prot_df_sub = prot_spec_final[[args.output_label]]
+    prot_df_sub = prot_spec_final[[args.output_label]].copy()  # .copy() avoids SettingWithCopyWarning
     if args.abs_hr == 1:
         prot_df_sub[args.output_label] = np.abs(prot_df_sub[args.output_label])
     result_df = result_df.merge(prot_df_sub, right_index=True, left_index=True)
