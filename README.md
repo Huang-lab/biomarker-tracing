@@ -214,6 +214,56 @@ Results are written under `<save_path>[_<suffix>]/<disease_folder_name>/<method>
 
 ---
 
+## Interpreting the results
+
+All methods answer the same question — *which cell types' specificity best predicts protein disease-association?* — but report it differently. The recurring idea: a **positive** signal for a cell type means proteins specific to that cell type tend to be more disease-associated, implicating it in the disease.
+
+### Univariate (`univar_regression_results.tsv`) — the headline table
+
+One row per cell type, sorted by `fdr_one_side_predictor`. Key columns:
+
+| Column | Meaning |
+|--------|---------|
+| `cell_tissue` | The cell type / tissue tested. |
+| `beta_predictor` | OLS slope: change in protein disease-effect per unit of specificity. **Positive ⇒ implicated** cell type. |
+| `pval_predictor` / `tval_predictor` | Two-sided p-value and t-statistic for the slope. |
+| `pval_predictor_one_side` | One-sided p-value (tests slope > 0); this is the seismicGWAS-matched test. |
+| `fdr_predictor` / `fdr_one_side_predictor` | Benjamini–Hochberg FDR across all cell types. **Rank by `fdr_one_side_predictor`.** |
+| `r2_score` | Variance in disease-effect explained by this one cell type. |
+| `intercept`, `pval_intercept`, `tval_intercept` | Intercept term and its statistics. |
+| `residual_pval` | Shapiro–Wilk normality p of the residuals; a diagnostic — very small values flag that the OLS normality assumption is shaky for that fit. |
+
+**Read it as:** the top hits are the cell types with the smallest `fdr_one_side_predictor` **and** a positive `beta_predictor`.
+
+### ElasticNet
+- `coef_best_model_full_data.tsv` — one coefficient per cell type for the best cross-validated model, refit on all data. Larger positive = more predictive of disease-effect (the multivariate analogue of `beta_predictor`, but with correlated cell types competing).
+- `best_model.txt` / `perf_df.tsv` — the chosen `alpha`/`l1_ratio` and per-fold + mean R²/Pearson/MSE.
+- `coef_df.tsv` — per-fold coefficients (inspect for stability across folds).
+
+### LASSO stability selection
+- `feature_scores.tsv` — each cell type's selection frequency (0–1) at every regularization strength (λ). Robust cell types stay selected across many λ.
+- `selected_features_thres_<thres>.tsv` — cell types whose stability exceeds the threshold; these are the robust hits.
+- `regularization_path.pdf` — visual of the paths.
+
+### Random forest
+- `permute_importance_scores.tsv` / `.png` — **preferred.** Held-out permutation importance: how much test-set accuracy drops when a cell type's values are shuffled. Positive = informative; centered near zero = uninformative.
+- `coef_random_forest.tsv` — impurity-based importance. Convenient but biased toward high-variance features, so prefer permutation importance for conclusions.
+
+**Cross-method reading:** a cell type that is top-ranked univariately, retains a positive ElasticNet coefficient, is stably selected by LASSO, and has positive permutation importance is a strongly supported disease-relevant cell type.
+
+---
+
+## Key modeling choices
+
+A few options recur across all methods and change what question you are asking:
+
+- **`--output_label`** — the protein-level outcome regressed onto specificity. `z_score` (a signed, p-value-derived effect size; used in the tutorial and seismic-matched setup), or `HR`/`OR`/`logHR`/`logOR`.
+- **`--ztransform_type`** — how the specificity matrix is standardized: `1` = z-score each **cell type** (compare genes within a cell type), `2` = z-score each **gene** (compare cell types within a gene), `-1` = none. The tutorial uses `-1` to match seismicGWAS.
+- **`--abs_hr`** — if `1`, use the absolute value of the outcome, i.e. test association with effect *magnitude* regardless of protective/risk direction.
+- **`univar_to_multivar.thres` / `column_to_choose`** — the gate between stages: which univariate column and cutoff decide the cell types carried into the multivariate models (default: `fdr_one_side_predictor <= 0.05`). Loosen `thres` to feed more cell types to the multivariate step.
+
+---
+
 ## Running without LSF
 
 To run Part 2 off-cluster, bypass the `bsub` launcher layer and call the **base** scripts directly (as in [Running a single method standalone](#running-a-single-method-standalone)) — they are plain scikit-learn/statsmodels and have no cluster dependency. The `*_auto-script.py` files and `bash_scripts/*.sh` are only the LSF submission wrappers; a Slurm or local port would replace those two layers while leaving the base scripts unchanged.
