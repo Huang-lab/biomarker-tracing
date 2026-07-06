@@ -1,3 +1,20 @@
+"""
+Shared data-loading and preparation helpers for the four association methods.
+
+* load_prot_data:              parse UK Biobank Proteome-Phenome sumstats, map protein
+                               names to Ensembl IDs, and keep genes present in the atlas.
+                               (Format-specific; relies on lab-specific ID lookup tables.
+                               For pre-mapped custom sumstats, callers fall back to a plain
+                               pd.read_csv instead.)
+* remove_na_from_training_data: drop genes whose specificity vector contains NaNs,
+                               warning if any of them are strongly disease-associated.
+* prep_data:                   add derived columns used across methods: -log10(pval),
+                               a signed z_score, a min-max scaled -log10(pval), and pick
+                               the outcome (y) and the gene-weight column.
+
+GENE_ID_SYMBOLS / GENE_ID_HGNC point to Mount Sinai HPC lookup tables used only by
+load_prot_data for the UK Biobank format; they are not needed for pre-mapped inputs.
+"""
 import numpy as np
 import pandas as pd
 import os, logging

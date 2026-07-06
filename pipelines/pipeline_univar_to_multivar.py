@@ -1,6 +1,25 @@
+"""
+Univariate -> multivariate association pipeline (LSF).
+
+For each disease listed in the YAML config this script:
+  1. runs univariate regression (blocking, one bsub job) and waits for it,
+  2. selects the cell types passing a threshold on a chosen column
+     (default: fdr_one_side_predictor <= 0.05) and subsets the specificity matrix,
+  3. launches the enabled multivariate methods (ElasticNet, LASSO stability
+     selection, random forest) on that reduced set of cell types.
+
+Usage (from a lightweight interactive/head job on the cluster):
+    python pipelines/pipeline_univar_to_multivar.py --yml_file pipeline_yml/univar_multivar_sample.yml
+"""
 import argparse, yaml, os, subprocess, logging
 import pandas as pd
 from utils import submit_job_and_wait
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 # Run this script in a lightweight job
 def univar_top_features(config, base_save_path: str, dis_name: str):
@@ -23,7 +42,7 @@ def univar_top_features(config, base_save_path: str, dis_name: str):
 
     # Create a new atlas_smal based on the selected features
     atlas_smal_path = pd.read_csv(config["inputs"]["atlas_smal_path"], sep="\t")
-    logging.error(atlas_smal_path.shape)
+    logger.debug(f"Loaded atlas matrix with shape {atlas_smal_path.shape}")
     atlas_df_sub = atlas_smal_path[selected + ["gene"]]
     atlas_df_sub.to_csv(
         f"{univar_path}/atlas_smal_path_sig_cel_tis_filtered.tsv", 
@@ -37,12 +56,12 @@ def main(args):
     The pipeline from univariate regression to multivariate regression
     """
     # Load the YAML file
-    logging.error(f"Loading yml file...")
+    logger.info(f"Loading yml file...")
     with open(args.yml_file, "r") as f:
         config = yaml.safe_load(f)
 
     # Some preprocessing and parsing
-    logging.error(f"Preprocessing and parsing paths...")
+    logger.info(f"Preprocessing and parsing paths...")
     base_path = f"{config['inputs']['disease_prot_dir']}/{config['inputs']['disease_folder_name']}"
     diseases = os.listdir(base_path)
     if config['inputs']["save_path_suffix"] != "": save_path_suffix = f"_{config['inputs']['save_path_suffix']}"
@@ -64,12 +83,12 @@ def main(args):
         elif dis_name not in config['inputs']["disease_name"] : continue
         else: pass
             
-        logging.error(f"Start running on {dis_name}...")
+        logger.info(f"Start running on {dis_name}...")
 
         # Run univariate regression (if run is not set, then by default it is run)
         if (config["univariate"].get("run", 1) == 1):
-            logging.error(">>> Start running univariate regression")
-            logging.error(f">>> Univariate params: {config['univariate']}")
+            logger.info(">>> Start running univariate regression")
+            logger.info(f">>> Univariate params: {config['univariate']}")
             sub_args = [
                 "--atlas_smal_path", config['inputs']['atlas_smal_path'],
                 "--disease_prot_dir", config['inputs']['disease_prot_dir'],
@@ -88,24 +107,24 @@ def main(args):
                 submit_job_and_wait(command, wait_time=10)
             except Exception as e:
                 # Something wrong with the run, then continue
-                logging.error(f">>> Something went wrong for univariate regression! Error log: {e}")
+                logger.error(f">>> Something went wrong for univariate regression! Error log: {e}")
 
             # Extract the atlas_smal from the significant features found by univariate
-            logging.error(">>> Extract significant features from univariate regression...")
+            logger.info(">>> Extract significant features from univariate regression...")
             new_atlas_smal = univar_top_features(config, base_save_path, dis_name)
         else:
-            logging.error(">>> Univariate regression skipped, using the full dataset")
+            logger.info(">>> Univariate regression skipped, using the full dataset")
             new_atlas_smal = config['inputs']['atlas_smal_path']
             
         # If new_atlas_smal is None, then there is no significant feature
         if new_atlas_smal is None:
-            logging.error(f">>> No significant features given the current univariate threshold, or univariate did not run successfully!")
+            logger.warning(f">>> No significant features given the current univariate threshold, or univariate did not run successfully!")
             continue
 
         # Run elasticnet
         if (config["elasticnet_kfold"]["run"] == 1):
-            logging.error(">>> Start running elasticnet...")
-            logging.error(f">>> Elasticnet params: {config['elasticnet_kfold']}")
+            logger.info(">>> Start running elasticnet...")
+            logger.info(f">>> Elasticnet params: {config['elasticnet_kfold']}")
             sub_args = [
                 "--atlas_smal_path", new_atlas_smal,
                 "--disease_prot_dir", config['inputs']['disease_prot_dir'],
@@ -126,8 +145,8 @@ def main(args):
 
         # Run Lasso stability selection
         if (config["stability_selection"]["run"] == 1):
-            logging.error(">>> Start running stability selection...")
-            logging.error(f">>> Stability selection params: {config['stability_selection']}")
+            logger.info(">>> Start running stability selection...")
+            logger.info(f">>> Stability selection params: {config['stability_selection']}")
             sub_args = [
                 "--atlas_smal_path", new_atlas_smal,
                 "--disease_prot_dir", config['inputs']['disease_prot_dir'],
@@ -145,8 +164,8 @@ def main(args):
 
         # Run random forests
         if (config["random_forest"]["run"] == 1):
-            logging.error(">>> Start running random_forest...")
-            logging.error(f">>> Random_forest params: {config['random_forest']}")
+            logger.info(">>> Start running random_forest...")
+            logger.info(f">>> Random_forest params: {config['random_forest']}")
             sub_args = [
                 "--atlas_smal_path", new_atlas_smal,
                 "--disease_prot_dir", config['inputs']['disease_prot_dir'],

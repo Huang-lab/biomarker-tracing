@@ -1,3 +1,16 @@
+"""
+LASSO stability selection between cell-type specificity and protein disease statistics.
+
+For one disease, repeatedly refits a LASSO of the protein disease-association
+statistic on all cell-type specificity scores across many subsamples and over a
+grid of regularization strengths (lambda). Each cell type gets a stability score =
+the fraction of subsamples in which it is selected. Cell types whose stability
+exceeds --thres are reported as robustly disease-associated.
+
+Inputs : a genes x cell-tissues specificity matrix and one disease's summary statistics.
+Outputs: feature_scores.tsv (per-lambda stability scores), regularization_path.pdf,
+         selected_features_thres_<thres>.tsv, and cmd_args.json in --save_path.
+"""
 import pandas as pd
 import numpy as np
 import os, argparse, kneed, pickle, logging

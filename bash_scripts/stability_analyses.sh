@@ -14,9 +14,12 @@ disease=$5
 output_label=$6
 thres=$7
 abs_hr=$8
+ztransform_type=$9
 
 
 # Version of the code when splitting the data by cell-tissue pair
+# NOTE: --ztransform_type ($9) was previously not forwarded, so stability selection
+# silently ignored the configured value and always used the script default (1).
 python $script_dir \
 --atlas_smal_path $atlas_smal_path \
 --prot_data_path $prot_data_path \
@@ -24,4 +27,5 @@ python $script_dir \
 --disease $disease \
 --output_label $output_label \
 --thres $thres \
---abs_hr $abs_hr
+--abs_hr $abs_hr \
+--ztransform_type $ztransform_type

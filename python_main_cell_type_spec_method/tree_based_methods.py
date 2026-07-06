@@ -1,3 +1,18 @@
+"""
+Random-forest association between cell-type specificity and protein disease statistics.
+
+For one disease, regress the protein disease-association statistic (HR/OR/z-score) onto
+the cell-type specificity of each protein's gene using a random-forest regressor, then
+rank cell types by two importance measures:
+
+  * impurity-based feature importance  -> coef_random_forest.tsv
+  * held-out permutation importance    -> permute_importance_scores.tsv/.png (more reliable)
+
+Optionally performs an out-of-bag hyperparameter search first (--param_search 1).
+
+Inputs : a genes x cell-tissues specificity matrix and one disease's summary statistics.
+Outputs: written to --save_path (see above), plus cmd_args.json and prot_spec_final.tsv.
+"""
 import pandas as pd
 import numpy as np
 import os, argparse, kneed, pickle, logging
@@ -6,6 +21,9 @@ import warnings, json, logging
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats as stats
+
+# Seed shared across all estimators/CV splits in this module for reproducibility.
+RANDOM_STATE = 42
 
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.metrics import r2_score
@@ -39,7 +57,7 @@ def permute_importance(args, prot_spec_final: pd.DataFrame, atlas_smal: pd.DataF
     feature_names = sub_atl.columns.tolist()
 
     # Split the data k-fold
-    kf = KFold(n_splits=args.kfold_n, shuffle=True, random_state=42)
+    kf = KFold(n_splits=args.kfold_n, shuffle=True, random_state=RANDOM_STATE)
     df_l = []
     for i, (train_index, test_index) in enumerate(kf.split(sub_atl)):
 
@@ -57,13 +75,16 @@ def permute_importance(args, prot_spec_final: pd.DataFrame, atlas_smal: pd.DataF
             X_train = X_train.to_numpy()
             X_test = X_test.to_numpy()
 
-        # Train the model on the train folds
+        # Train the model on the train folds only.
+        # NOTE: previously this fit on the full data (sub_atl, hr), which leaked the
+        # test fold into training and inflated the "held-out" permutation importances
+        # computed below. It now fits on the training fold as the k-fold design intends.
         model = RandomForestRegressor(
             n_estimators=args.num_trees, min_samples_split=args.min_samples_split, min_samples_leaf=args.min_samples_leaf,
-            max_samples=args.max_samples, n_jobs=-1
+            max_samples=args.max_samples, n_jobs=-1, random_state=RANDOM_STATE
         )
-        model.fit(sub_atl, hr)
-            
+        model.fit(X_train, y_train)
+
         train_score = model.score(X_train, y_train)
         test_score = model.score(X_test, y_test)
         logging.error(f"Train score without sample weights: {train_score:.3f}, test score without sample weights: {test_score:.3f}")
@@ -186,7 +207,8 @@ def random_forests(args, prot_spec_final: pd.DataFrame, atlas_smal_merged: pd.Da
     # Random forest
     model = RandomForestRegressor(
         n_estimators=args.num_trees, min_samples_split=args.min_samples_split, min_samples_leaf=args.min_samples_leaf,
-        max_samples=args.max_samples, max_features=args.max_features, max_depth=args.max_depth, n_jobs=-1
+        max_samples=args.max_samples, max_features=args.max_features, max_depth=args.max_depth,
+        n_jobs=-1, random_state=RANDOM_STATE
     )
     model.fit(sub_atl, hr)
 
@@ -223,6 +245,15 @@ def main(args):
     args.abs_hr = args.abs_hr == 1
     args.gene_weight_minmax = False
 
+    # Normalize max_features so random_forests() works even when --param_search is 0
+    # (when param search runs, hyperparam_search() overwrites this with a concrete value).
+    if args.max_features in (None, "None", "none", ""):
+        args.max_features = None
+    elif args.max_features in ("sqrt", "log2"):
+        pass
+    else:
+        args.max_features = float(args.max_features)
+
     # If param search
     if (args.param_search == 1):
         logging.error("Running hyperparam search...")
@@ -258,6 +289,8 @@ if __name__ == "__main__":
     parser.add_argument("--min_samples_leaf", type=int, default=2, help="Minimum size of a leaf")
     parser.add_argument("--max_samples", type=float, default=1.0, help="Fraction of dataset for bootstrapping")
     parser.add_argument("--max_depth", type=int, default=None, help="Maximum depth of trees")
+    parser.add_argument("--max_features", type=str, default=None,
+                        help="max_features for RF: 'sqrt', 'log2', 'None', or a float (overwritten if --param_search 1)")
 
     parser.add_argument("--kfold_n", type=int, default=5, help="Number of k for kfolds")
     parser.add_argument("--n_permute_repeat", type=int, default=30, help="Number of n permutations")
