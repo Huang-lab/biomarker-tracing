@@ -35,6 +35,8 @@ from sklearn.model_selection import KFold
 from sklearn.inspection import permutation_importance
 from utils import *
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+
 warnings.simplefilter("ignore", RuntimeWarning)
 
 
@@ -87,7 +89,7 @@ def permute_importance(args, prot_spec_final: pd.DataFrame, atlas_smal: pd.DataF
 
         train_score = model.score(X_train, y_train)
         test_score = model.score(X_test, y_test)
-        logging.error(f"Train score without sample weights: {train_score:.3f}, test score without sample weights: {test_score:.3f}")
+        logging.info(f"Train score without sample weights: {train_score:.3f}, test score without sample weights: {test_score:.3f}")
 
         # Validate the model
         r = permutation_importance(model, X_test, y_test, n_repeats=args.n_permute_repeat, random_state=0)
@@ -229,7 +231,7 @@ def main(args):
     atlas_smal = pd.read_csv(args.atlas_smal_path, sep="\t").set_index("gene")
 
     # Load in prot data
-    logging.error("Loading prot data...")
+    logging.info("Loading prot data...")
     # Load in prot data
     try:
         # This function is only used for UK Biobank Phenome-Proteome data type
@@ -256,7 +258,7 @@ def main(args):
 
     # If param search
     if (args.param_search == 1):
-        logging.error("Running hyperparam search...")
+        logging.info("Running hyperparam search...")
         args = hyperparam_search(args, prot_spec_final, atlas_smal)
     
     # Save params
@@ -265,11 +267,11 @@ def main(args):
         json.dump(args_dict, json_file, indent=4)
 
     # Train
-    logging.error("Training the model...")
+    logging.info("Training the model...")
     random_forests(args, prot_spec_final, atlas_smal)
 
     # Run permutation importance for random forests (more reliable than impurity-based feature importances)
-    logging.error("Permutation importance...")
+    logging.info("Permutation importance...")
     permute_importance(args, prot_spec_final, atlas_smal)
 
 

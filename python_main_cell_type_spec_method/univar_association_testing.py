@@ -28,6 +28,8 @@ from statsmodels.stats.multitest import multipletests
 from sklearn.preprocessing import StandardScaler
 from utils import *
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+
 def _gini_coeff(df, g):
     arr = df.loc[g, :].to_numpy()
     if np.all(arr == 0):
@@ -52,7 +54,7 @@ def compute_covariates(args, atlas_smal):
 
     # Calculate Gini coefficient
     if args.covar_gini == 1:
-        logging.error("Calculating Gini scores:...")
+        logging.info("Calculating Gini scores:...")
         gene_l = atlas_smal.index.tolist()
         gini_l = [_gini_coeff(atlas_smal, g) for g in gene_l]
     
@@ -101,8 +103,8 @@ def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
         prot_df_sub[args.output_label] = np.abs(prot_df_sub[args.output_label])
     result_df = result_df.merge(prot_df_sub, right_index=True, left_index=True)
 
-    logging.error(covar_cols)
-    logging.error(covar_df)
+    logging.info(covar_cols)
+    logging.info(covar_df)
 
     # Loop over each cell-tissue in the dataset
     final_df = []
@@ -110,7 +112,7 @@ def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
 
         indep_var = ct
         all_cols = covar_cols + [indep_var, args.output_label]
-        logging.error(f"Processing {ct}")
+        logging.info(f"Processing {ct}")
         result_df_ct = result_df[all_cols].dropna()
 
         covariates = covar_cols

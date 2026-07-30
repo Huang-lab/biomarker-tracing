@@ -30,6 +30,8 @@ from sklearn.utils import check_random_state
 from stability_selection import StabilitySelection, plot_stability_path
 from utils import *
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+
 
 warnings.simplefilter("ignore", RuntimeWarning)
 
@@ -57,8 +59,8 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     if args.abs_hr == 1: y = y.abs()
 
     # Train the thing
-    logging.error(X)
-    logging.error(y)
+    logging.info(X)
+    logging.info(y)
     base_estimator = Pipeline([
         ('model', Lasso(max_iter=5000))
     ])
@@ -70,7 +72,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     # Retrieve all stability scores
     scores = selector.stability_scores_ # shape = [n_features, n_alphas]
     lambdas = [f"{i:.4f}" for i in lambda_array]
-    logging.error(scores)
+    logging.info(scores)
     score_df = pd.DataFrame(scores, columns=lambdas)
     score_df["feature_label"] = X.columns.tolist()
     score_df.to_csv(f"{args.save_path}/feature_scores.tsv", sep="\t", index=False)
@@ -100,7 +102,7 @@ def main(args):
     atlas_smal = pd.read_csv(args.atlas_smal_path, sep="\t").set_index("gene")
 
     # Load in prot data
-    logging.error("Loading prot data...")
+    logging.info("Loading prot data...")
     try:
         # This function is only used for UK Biobank Phenome-Proteome data type
         prot_spec_final = load_prot_data(args.prot_data_path, args.disease, atlas_smal)

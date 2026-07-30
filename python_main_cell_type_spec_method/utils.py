@@ -12,16 +12,17 @@ Shared data-loading and preparation helpers for the four association methods.
                                a signed z_score, a min-max scaled -log10(pval), and pick
                                the outcome (y) and the gene-weight column.
 
-GENE_ID_SYMBOLS / GENE_ID_HGNC point to Mount Sinai HPC lookup tables used only by
-load_prot_data for the UK Biobank format; they are not needed for pre-mapped inputs.
+GENE_ID_SYMBOLS / GENE_ID_HGNC point to gene-ID lookup tables (under gene_id_lookup/ in the repo root)
+used only by load_prot_data for the UK Biobank format; they are not needed for pre-mapped inputs.
 """
 import numpy as np
 import pandas as pd
 import os, logging
 import scipy.stats as stats
 
-GENE_ID_SYMBOLS = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_df.tsv"
-GENE_ID_HGNC = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_hgnc.tsv"
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GENE_ID_SYMBOLS = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_df.tsv")
+GENE_ID_HGNC = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_hgnc.tsv")
 
 
 # A function to load the proteomics data
@@ -109,8 +110,8 @@ def remove_na_from_training_data(X_df: pd.DataFrame, prot_spec_final: pd.DataFra
     """
     na_genes = X_df[X_df.isna().any(axis=1)].index.tolist()
     if len(na_genes) > 0:
-        logging.error(f"[WARNING] These genes have NAs in gene expression data!! {na_genes}")
-        logging.error(f"[WARNING] These genes will be removed in downstream analyses. "
+        logging.warning(f"These genes have NAs in gene expression data!! {na_genes}")
+        logging.warning(f"These genes will be removed in downstream analyses. "
                     "To fix this, please adjust the gene expression data")
 
         # Report significant proteomic genes among NA genes
@@ -118,7 +119,7 @@ def remove_na_from_training_data(X_df: pd.DataFrame, prot_spec_final: pd.DataFra
             (prot_spec_final["P_value"] < 5e-7) &
             (prot_spec_final["gene"].isin(na_genes))
         ]["gene"].tolist()
-        logging.error(f"[WARNING] Among NA genes, these are those with proteomic pval < 5e-7: {na_sig_genes}")
+        logging.warning(f"Among NA genes, these are those with proteomic pval < 5e-7: {na_sig_genes}")
         X_df = X_df[~X_df.index.isin(na_genes)].copy()
         prot_spec_final = prot_spec_final[~prot_spec_final["gene"].isin(na_genes)].copy()
     
