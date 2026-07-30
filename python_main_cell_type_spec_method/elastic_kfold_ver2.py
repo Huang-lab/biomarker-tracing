@@ -160,7 +160,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
                     X_test = X_test.to_numpy()
         
                 # Adjust the alphas carefully, because with full cell-tissue dataset, some alphas do not reach convergence
-                model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.pos_coef, fit_intercept=args.intercept, max_iter=5000)
+                model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.positive, fit_intercept=args.intercept, max_iter=5000)
     
                 # Catch whether model converges
                 with warnings.catch_warnings(record=True) as w:
@@ -248,7 +248,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     full_model_df, coeffs_full = [], []
     for model_config in [top_r2_model, top_pearson_model, top_mse_model]:
         alpha, l1_ratio = float(model_config.split("-")[0]), float(model_config.split("-")[1])
-        model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.pos_coef, fit_intercept=args.intercept, max_iter=5000)
+        model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.positive, fit_intercept=args.intercept, max_iter=5000)
 
         # Fit the model
         if args.gene_weight: model.fit(X_full_trans, hr, sample_weight=tmp[weight_col].tolist())
