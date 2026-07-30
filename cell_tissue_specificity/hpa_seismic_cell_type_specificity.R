@@ -2,8 +2,6 @@
 library("seismicGWAS")
 library("plyr")
 library("Seurat")
-library("qs")
-library("scRNAseq")
 library("dplyr")
 library("data.table")
 options(future.globals.maxSize = 10000 * 1024^2)
@@ -18,7 +16,7 @@ DefaultAssay(obj_smal) = "RNA"
 obj_diet = DietSeurat(obj_smal, assays = "RNA", layers = "data")
 obj_sce = as.SingleCellExperiment(obj_diet)
 obj_sscore <- calc_specificity(
-    obj_sce, ct_label_col=ident,
+    obj_sce, ct_label_col="cell_tissue",
     min_uniq_ct = 0, min_ct_size = 0, min_cells_gene_exp = 0, min_avg_exp_ct = 0.0
 )
 
