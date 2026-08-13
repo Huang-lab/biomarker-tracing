@@ -279,12 +279,12 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     with open(f"{args.save_path}/train_indices.pkl", "wb") as f:
         pickle.dump(train_inds, f)
     with open(f"{args.save_path}/best_model.txt", "w") as f:
-        f.write(f"Best model by r2 has alpha={perf_df.loc[top_r2_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_r2_ind, 'l1_ratio']:.3f} \
-                with mean kfold r2={perf_df.loc[top_r2_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_r2_ind, 'pearson_r_mean']:.3f}, mse={perf_df.loc[top_r2_ind, 'mse_mean']:.3f} \n")
-        f.write(f"Best model by pearson's R has alpha={perf_df.loc[top_pearson_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_pearson_ind, 'l1_ratio']:.3f}, \
-                with mean kfold r2={perf_df.loc[top_pearson_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_pearson_ind, 'pearson_r_mean']:.3f}, , mse={perf_df.loc[top_pearson_ind, 'mse_mean']:.3f} \n")
-        f.write(f"Best model by MSE has alpha={perf_df.loc[top_mse_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_mse_ind, 'l1_ratio']:.3f}, \
-                with mean kfold r2={perf_df.loc[top_mse_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_mse_ind, 'pearson_r_mean']:.3f}, , mse={perf_df.loc[top_mse_ind, 'mse_mean']:.3f} \n")
+        f.write(f"Best model by r2 has alpha={perf_df.loc[top_r2_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_r2_ind, 'l1_ratio']:.5f} \
+                with mean kfold r2={perf_df.loc[top_r2_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_r2_ind, 'pearson_r_mean']:.5f}, mse={perf_df.loc[top_r2_ind, 'mse_mean']:.5f} \n")
+        f.write(f"Best model by pearson's R has alpha={perf_df.loc[top_pearson_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_pearson_ind, 'l1_ratio']:.5f}, \
+                with mean kfold r2={perf_df.loc[top_pearson_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_pearson_ind, 'pearson_r_mean']:.5f}, , mse={perf_df.loc[top_pearson_ind, 'mse_mean']:.5f} \n")
+        f.write(f"Best model by MSE has alpha={perf_df.loc[top_mse_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_mse_ind, 'l1_ratio']:.5f}, \
+                with mean kfold r2={perf_df.loc[top_mse_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_mse_ind, 'pearson_r_mean']:.5f}, , mse={perf_df.loc[top_mse_ind, 'mse_mean']:.5f} \n")
     
     return perf_df, coef_df, full_model_df, coef_df_full, num_ens
 
