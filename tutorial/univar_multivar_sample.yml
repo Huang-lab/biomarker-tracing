@@ -1,4 +1,13 @@
-# Constants
+# How to run each method's script.
+#   mode: "local" runs each base method script directly as a local subprocess
+#         (no cluster needed).
+#   mode: "lsf" (original behavior) routes through the *_auto-script.py launchers
+#         below, which submit bsub jobs via bash_scripts/<method>.sh. Requires
+#         bsub/bjobs on PATH (an LSF cluster).
+execution:
+  mode: "local"
+
+# Constants (only used when execution.mode is "lsf")
 constants:
   univar_script_path: "python_main_cell_type_spec_method/univar_association_testing_auto-script.py"
   enet_script_path: "python_main_cell_type_spec_method/elastic_kfold_ver2_auto-script.py"

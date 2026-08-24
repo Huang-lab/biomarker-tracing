@@ -34,6 +34,8 @@ from utils import *
 
 warnings.simplefilter("ignore", RuntimeWarning)
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+
 GENE_ID_SYMBOLS = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_df.tsv"
 GENE_ID_HGNC = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_hgnc.tsv"
 
@@ -51,7 +53,7 @@ def _plot(inds, coef_df: pd.DataFrame, disease: str, save_path: str, save_name: 
     
     dis_coef = coef_df[coef_df["disease"] == disease].drop(columns=["disease"]).copy().iloc[inds, :].copy()
     melt_raw = pd.melt(dis_coef).rename(columns={"variable": "cell_tissue", "value": "coefficient"})
-    logging.error(melt_raw.shape)
+    logging.info(melt_raw.shape)
     melt_sort_df = (
         melt_raw
         .groupby("cell_tissue")
@@ -110,8 +112,8 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     alphas_l = np.logspace(-3, 1, args.num_alphas)
     l1_ratios_l = [(10e-5), 0.001, 0.005, 0.01, 0.05, 0.1, .2, .5, .7, .9, .95, .99]
     num_ens = len(l1_ratios_l) * len(alphas_l)
-    logging.error(f"alpha_l = {alphas_l}")
-    logging.error(f"l1_ratios_l = {l1_ratios_l}")
+    logging.info(f"alpha_l = {alphas_l}")
+    logging.info(f"l1_ratios_l = {l1_ratios_l}")
     stop_search_l1_ratio, l1r_ind = False, -1
 
     # Prepare the training data
@@ -133,7 +135,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
         for l1_ratio in sorted(l1_ratios_l, reverse=True):
 
             l1r_ind += 1
-            logging.error(f"Working on alpha={alpha:.2f} l1_ratio={l1_ratio}")
+            logging.info(f"Working on alpha={alpha:.2f} l1_ratio={l1_ratio}")
             # For each set of params, run kfolds, then decide whether to keep this set of params
             alphas_sub, l1_ratios_sub, scores_sub, coeffs_sub, models_sub, conds_sub, pearson_rs_sub, mses_sub = [], [], [], [], [], [], [], []
             for i, (train_index, test_index) in enumerate(data_splits):
@@ -158,7 +160,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
                     X_test = X_test.to_numpy()
         
                 # Adjust the alphas carefully, because with full cell-tissue dataset, some alphas do not reach convergence
-                model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.pos_coef, fit_intercept=args.intercept, max_iter=5000)
+                model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.positive, fit_intercept=args.intercept, max_iter=5000)
     
                 # Catch whether model converges
                 with warnings.catch_warnings(record=True) as w:
@@ -166,7 +168,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
                     if args.gene_weight: model.fit(X_train, hr_train, sample_weight=tmp_train[weight_col].tolist())
                     else: model.fit(X_train, hr_train)
                     if any(issubclass(warning.category, ConvergenceWarning) for warning in w):
-                        logging.error(f">>> {args.disease} with alpha={alpha:.3f} and l1_ratio={l1_ratio:.3f} did not converge")
+                        logging.info(f">>> {args.disease} with alpha={alpha:.3f} and l1_ratio={l1_ratio:.3f} did not converge")
                         stop_search_l1_ratio = True
                         break
 
@@ -202,21 +204,21 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
 
             # Check if stop_search_l1_ratio is True, that means the model fails to converge from the previous l1_ratio level
             if stop_search_l1_ratio:
-                logging.error("l1_ratio from this run has failed to converge. No need to search for smaller l1_ratio")
+                logging.info("l1_ratio from this run has failed to converge. No need to search for smaller l1_ratio")
                 break
 
         # If stop_search_l1_ratio = True and l1r_ind = 0, then stop the search altogether
         if stop_search_l1_ratio and l1r_ind == 0:
-            logging.error("alpha from this run has failed to converge for the largest l1_ratio. No need to search for smaller alpha")
+            logging.info("alpha from this run has failed to converge for the largest l1_ratio. No need to search for smaller alpha")
             break
         stop_search_l1_ratio, l1r_ind = False, -1
                 
     perf_df = pd.DataFrame({"disease": conds, "alpha": alphas, "l1_ratio": l1_ratios, "pearson_r": pearson_rs, "mse": mses, "r2": scores})
     coef_np = np.array(coeffs)
-    logging.error(f"perf_df.shape: {perf_df.shape}")
-    logging.error(f"coef_np.shape: {coef_np.shape}")
-    logging.error(f"sub_atl.shape: {sub_atl.shape}")
-    logging.error(f"tmp.shape: {tmp.shape}")
+    logging.info(f"perf_df.shape: {perf_df.shape}")
+    logging.info(f"coef_np.shape: {coef_np.shape}")
+    logging.info(f"sub_atl.shape: {sub_atl.shape}")
+    logging.info(f"tmp.shape: {tmp.shape}")
     coef_df = pd.DataFrame(coef_np, columns=sub_atl.columns)
     coef_df["disease"] = conds
 
@@ -246,7 +248,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     full_model_df, coeffs_full = [], []
     for model_config in [top_r2_model, top_pearson_model, top_mse_model]:
         alpha, l1_ratio = float(model_config.split("-")[0]), float(model_config.split("-")[1])
-        model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.pos_coef, fit_intercept=args.intercept, max_iter=5000)
+        model = ElasticNet(l1_ratio=l1_ratio, alpha=alpha, positive=args.positive, fit_intercept=args.intercept, max_iter=5000)
 
         # Fit the model
         if args.gene_weight: model.fit(X_full_trans, hr, sample_weight=tmp[weight_col].tolist())
@@ -277,12 +279,12 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     with open(f"{args.save_path}/train_indices.pkl", "wb") as f:
         pickle.dump(train_inds, f)
     with open(f"{args.save_path}/best_model.txt", "w") as f:
-        f.write(f"Best model by r2 has alpha={perf_df.loc[top_r2_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_r2_ind, 'l1_ratio']:.3f} \
-                with mean kfold r2={perf_df.loc[top_r2_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_r2_ind, 'pearson_r_mean']:.3f}, mse={perf_df.loc[top_r2_ind, 'mse_mean']:.3f} \n")
-        f.write(f"Best model by pearson's R has alpha={perf_df.loc[top_pearson_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_pearson_ind, 'l1_ratio']:.3f}, \
-                with mean kfold r2={perf_df.loc[top_pearson_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_pearson_ind, 'pearson_r_mean']:.3f}, , mse={perf_df.loc[top_pearson_ind, 'mse_mean']:.3f} \n")
-        f.write(f"Best model by MSE has alpha={perf_df.loc[top_mse_ind, 'alpha']:.3f}, l1_ratio={perf_df.loc[top_mse_ind, 'l1_ratio']:.3f}, \
-                with mean kfold r2={perf_df.loc[top_mse_ind, 'r2_mean']:.3f}, pearson_r={perf_df.loc[top_mse_ind, 'pearson_r_mean']:.3f}, , mse={perf_df.loc[top_mse_ind, 'mse_mean']:.3f} \n")
+        f.write(f"Best model by r2 has alpha={perf_df.loc[top_r2_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_r2_ind, 'l1_ratio']:.5f} \
+                with mean kfold r2={perf_df.loc[top_r2_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_r2_ind, 'pearson_r_mean']:.5f}, mse={perf_df.loc[top_r2_ind, 'mse_mean']:.5f} \n")
+        f.write(f"Best model by pearson's R has alpha={perf_df.loc[top_pearson_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_pearson_ind, 'l1_ratio']:.5f}, \
+                with mean kfold r2={perf_df.loc[top_pearson_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_pearson_ind, 'pearson_r_mean']:.5f}, , mse={perf_df.loc[top_pearson_ind, 'mse_mean']:.5f} \n")
+        f.write(f"Best model by MSE has alpha={perf_df.loc[top_mse_ind, 'alpha']:.5f}, l1_ratio={perf_df.loc[top_mse_ind, 'l1_ratio']:.5f}, \
+                with mean kfold r2={perf_df.loc[top_mse_ind, 'r2_mean']:.5f}, pearson_r={perf_df.loc[top_mse_ind, 'pearson_r_mean']:.5f}, , mse={perf_df.loc[top_mse_ind, 'mse_mean']:.5f} \n")
     
     return perf_df, coef_df, full_model_df, coef_df_full, num_ens
 
@@ -317,7 +319,7 @@ def main(args):
     args.intercept = args.intercept == 1
 
     # Train
-    logging.error("Starting training...")
+    logging.info("Starting training...")
     perf_df, coef_df, full_model_df, coef_df_full, num_ens = train(args, atlas_smal, prot_spec_final)
 
     # Make some plots

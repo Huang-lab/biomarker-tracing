@@ -2,9 +2,8 @@
 Helpers for the univariate->multivariate pipeline.
 
 * submit_job_and_wait: submit an LSF (bsub) job and block until it finishes.
-* create_yml_files:     expand one base config into a per-disease config file each.
-
-These helpers are LSF-specific (they shell out to `bsub`/`bjobs`).
+                       Only used when the pipeline is run with execution.mode: "lsf".
+* create_yml_files:    expand one base config into a per-disease config file each.
 """
 import subprocess, time, re, os, logging
 import yaml, copy, argparse

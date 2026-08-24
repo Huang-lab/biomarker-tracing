@@ -1,14 +1,24 @@
 """
-Univariate -> multivariate association pipeline (LSF).
+Univariate -> multivariate association pipeline (local or LSF).
 
 For each disease listed in the YAML config this script:
-  1. runs univariate regression (blocking, one bsub job) and waits for it,
+  1. runs univariate regression (blocking) and waits for it,
   2. selects the cell types passing a threshold on a chosen column
      (default: fdr_one_side_predictor <= 0.05) and subsets the specificity matrix,
   3. launches the enabled multivariate methods (ElasticNet, LASSO stability
      selection, random forest) on that reduced set of cell types.
 
-Usage (from a lightweight interactive/head job on the cluster):
+Execution mode is picked via the YAML config's `execution.mode`:
+  * "local": calls each base method script
+    (python_main_cell_type_spec_method/<method>.py) directly as a local
+    subprocess -- no job scheduler involved.
+  * "lsf" (original behavior): calls each method's `*_auto-script.py`
+    launcher (config['constants']), which itself submits a `bsub` job via
+    bash_scripts/<method>.sh. The univariate step blocks on its job via
+    submit_job_and_wait; the multivariate steps are fire-and-forget,
+    matching the original design.
+
+Usage:
     python pipelines/pipeline_univar_to_multivar.py --yml_file pipeline_yml/univar_multivar_sample.yml
 """
 import argparse, yaml, os, subprocess, logging
@@ -21,7 +31,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Run this script in a lightweight job
+# Method save-path subfolder names, matching what each *_auto-script.py constructs.
+METHOD_SUBDIR = {
+    "univariate": "univar_association_testing",
+    "elasticnet_kfold": "elastic_kfold_ver2",
+    "stability_selection": "stability_analyses",
+    "random_forest": "tree_based_methods_random_forest",
+}
+
+
+def method_save_path(base_save_path: str, disease_folder_name: str, method: str, dis_name: str) -> str:
+    return f"{base_save_path}/{disease_folder_name}/{METHOD_SUBDIR[method]}/{dis_name}"
+
+
 def univar_top_features(config, base_save_path: str, dis_name: str):
     """
     Select top univariate features
@@ -30,7 +52,7 @@ def univar_top_features(config, base_save_path: str, dis_name: str):
     univar_path = f"{base_save_path}/{config['inputs']['disease_folder_name']}/univar_association_testing/{dis_name}"
     if not os.path.exists(f"{univar_path}/univar_regression_results.tsv"):
         return None
-    
+
     res_df = pd.read_csv(f"{univar_path}/univar_regression_results.tsv", sep="\t")
     col = config["univar_to_multivar"]["column_to_choose"]
     thres = config["univar_to_multivar"]["thres"]
@@ -45,7 +67,7 @@ def univar_top_features(config, base_save_path: str, dis_name: str):
     logger.debug(f"Loaded atlas matrix with shape {atlas_smal_path.shape}")
     atlas_df_sub = atlas_smal_path[selected + ["gene"]]
     atlas_df_sub.to_csv(
-        f"{univar_path}/atlas_smal_path_sig_cel_tis_filtered.tsv", 
+        f"{univar_path}/atlas_smal_path_sig_cel_tis_filtered.tsv",
         sep="\t", index=False
     )
     return f"{univar_path}/atlas_smal_path_sig_cel_tis_filtered.tsv"
@@ -59,6 +81,9 @@ def main(args):
     logger.info(f"Loading yml file...")
     with open(args.yml_file, "r") as f:
         config = yaml.safe_load(f)
+
+    exec_mode = config.get("execution", {}).get("mode", "local")
+    logger.info(f"Execution mode: {exec_mode}")
 
     # Some preprocessing and parsing
     logger.info(f"Preprocessing and parsing paths...")
@@ -82,32 +107,52 @@ def main(args):
         if config['inputs']["disease_name"][0] == "all": pass
         elif dis_name not in config['inputs']["disease_name"] : continue
         else: pass
-            
+
         logger.info(f"Start running on {dis_name}...")
 
         # Run univariate regression (if run is not set, then by default it is run)
         if (config["univariate"].get("run", 1) == 1):
             logger.info(">>> Start running univariate regression")
             logger.info(f">>> Univariate params: {config['univariate']}")
-            sub_args = [
-                "--atlas_smal_path", config['inputs']['atlas_smal_path'],
-                "--disease_prot_dir", config['inputs']['disease_prot_dir'],
-                "--disease_folder_name", config['inputs']['disease_folder_name'],
-                "--save_path", base_save_path,
-                "--save_path_suffix", "",
-                "--disease_name", dis_name,
-                "--output_label", config['univariate']['output_label'],
-                "--abs_hr", str(config['univariate']['abs_hr']),
-                "--covar_df", config['univariate']['covar_df'],
-                "--covar_gini", str(config['univariate']['covar_gini']),
-                "--ztransform_type", str(config['univariate']['ztransform_type'])
-            ]
-            command = ["python", config['constants']["univar_script_path"]] + sub_args
-            try:
-                submit_job_and_wait(command, wait_time=10)
-            except Exception as e:
-                # Something wrong with the run, then continue
-                logger.error(f">>> Something went wrong for univariate regression! Error log: {e}")
+
+            if exec_mode == "local":
+                save_path = method_save_path(base_save_path, config['inputs']['disease_folder_name'], "univariate", dis_name)
+                os.makedirs(save_path, exist_ok=True)
+                sub_args = [
+                    "--atlas_smal_path", config['inputs']['atlas_smal_path'],
+                    "--prot_data_path", base_path,
+                    "--save_path", save_path,
+                    "--disease", dis_name,
+                    "--output_label", config['univariate']['output_label'],
+                    "--abs_hr", str(config['univariate']['abs_hr']),
+                    "--covar_df", config['univariate']['covar_df'],
+                    "--covar_gini", str(config['univariate']['covar_gini']),
+                    "--ztransform_type", str(config['univariate']['ztransform_type'])
+                ]
+                command = ["python", "python_main_cell_type_spec_method/univar_association_testing.py"] + sub_args
+                result = subprocess.run(command)
+                if result.returncode != 0:
+                    logger.error(f">>> Something went wrong for univariate regression! (exit code {result.returncode})")
+            else:
+                sub_args = [
+                    "--atlas_smal_path", config['inputs']['atlas_smal_path'],
+                    "--disease_prot_dir", config['inputs']['disease_prot_dir'],
+                    "--disease_folder_name", config['inputs']['disease_folder_name'],
+                    "--save_path", base_save_path,
+                    "--save_path_suffix", "",
+                    "--disease_name", dis_name,
+                    "--output_label", config['univariate']['output_label'],
+                    "--abs_hr", str(config['univariate']['abs_hr']),
+                    "--covar_df", config['univariate']['covar_df'],
+                    "--covar_gini", str(config['univariate']['covar_gini']),
+                    "--ztransform_type", str(config['univariate']['ztransform_type'])
+                ]
+                command = ["python", config['constants']["univar_script_path"]] + sub_args
+                try:
+                    submit_job_and_wait(command, wait_time=10)
+                except Exception as e:
+                    # Something wrong with the run, then continue
+                    logger.error(f">>> Something went wrong for univariate regression! Error log: {e}")
 
             # Extract the atlas_smal from the significant features found by univariate
             logger.info(">>> Extract significant features from univariate regression...")
@@ -115,7 +160,7 @@ def main(args):
         else:
             logger.info(">>> Univariate regression skipped, using the full dataset")
             new_atlas_smal = config['inputs']['atlas_smal_path']
-            
+
         # If new_atlas_smal is None, then there is no significant feature
         if new_atlas_smal is None:
             logger.warning(f">>> No significant features given the current univariate threshold, or univariate did not run successfully!")
@@ -125,67 +170,127 @@ def main(args):
         if (config["elasticnet_kfold"]["run"] == 1):
             logger.info(">>> Start running elasticnet...")
             logger.info(f">>> Elasticnet params: {config['elasticnet_kfold']}")
-            sub_args = [
-                "--atlas_smal_path", new_atlas_smal,
-                "--disease_prot_dir", config['inputs']['disease_prot_dir'],
-                "--disease_folder_name", config['inputs']['disease_folder_name'], 
-                "--save_path", base_save_path,
-                "--save_path_suffix", "",
-                "--disease_name", dis_name,
-                "--output_label", config['elasticnet_kfold']['output_label'],
-                "--abs_hr", str(config['elasticnet_kfold']['abs_hr']),
-                "--num_alpha", str(config['elasticnet_kfold']['num_alpha']),
-                "--num_folds", str(config['elasticnet_kfold']['num_folds']),
-                "--gene_weight", str(config['elasticnet_kfold']['gene_weight']),
-                "--ztransform_type", str(config['elasticnet_kfold']['ztransform_type']),
-                "--pos_coef", str(config['elasticnet_kfold']['pos_coef'])
-            ]
-            command = ["python", config['constants']["enet_script_path"]] + sub_args
-            subprocess.run(command)
+
+            if exec_mode == "local":
+                save_path = method_save_path(base_save_path, config['inputs']['disease_folder_name'], "elasticnet_kfold", dis_name)
+                os.makedirs(save_path, exist_ok=True)
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--prot_data_path", base_path,
+                    "--save_path", save_path,
+                    "--disease", dis_name,
+                    "--output_label", config['elasticnet_kfold']['output_label'],
+                    "--abs_hr", str(config['elasticnet_kfold']['abs_hr']),
+                    "--num_alphas", str(config['elasticnet_kfold']['num_alpha']),
+                    "--num_folds", str(config['elasticnet_kfold']['num_folds']),
+                    "--gene_weight", str(config['elasticnet_kfold']['gene_weight']),
+                    "--ztransform_type", str(config['elasticnet_kfold']['ztransform_type']),
+                    "--pos_coef", str(config['elasticnet_kfold']['pos_coef'])
+                ]
+                command = ["python", "python_main_cell_type_spec_method/elastic_kfold_ver2.py"] + sub_args
+                subprocess.run(command)
+            else:
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--disease_prot_dir", config['inputs']['disease_prot_dir'],
+                    "--disease_folder_name", config['inputs']['disease_folder_name'],
+                    "--save_path", base_save_path,
+                    "--save_path_suffix", "",
+                    "--disease_name", dis_name,
+                    "--output_label", config['elasticnet_kfold']['output_label'],
+                    "--abs_hr", str(config['elasticnet_kfold']['abs_hr']),
+                    "--num_alpha", str(config['elasticnet_kfold']['num_alpha']),
+                    "--num_folds", str(config['elasticnet_kfold']['num_folds']),
+                    "--gene_weight", str(config['elasticnet_kfold']['gene_weight']),
+                    "--ztransform_type", str(config['elasticnet_kfold']['ztransform_type']),
+                    "--pos_coef", str(config['elasticnet_kfold']['pos_coef'])
+                ]
+                command = ["python", config['constants']["enet_script_path"]] + sub_args
+                subprocess.run(command)
 
         # Run Lasso stability selection
         if (config["stability_selection"]["run"] == 1):
             logger.info(">>> Start running stability selection...")
             logger.info(f">>> Stability selection params: {config['stability_selection']}")
-            sub_args = [
-                "--atlas_smal_path", new_atlas_smal,
-                "--disease_prot_dir", config['inputs']['disease_prot_dir'],
-                "--disease_folder_name", config['inputs']['disease_folder_name'], 
-                "--save_path", base_save_path,
-                "--save_path_suffix", "",
-                "--disease_name", dis_name,
-                "--output_label", config['stability_selection']['output_label'],
-                "--abs_hr", str(config['stability_selection']['abs_hr']),
-                "--thres", str(config['stability_selection']['thres']),
-                "--ztransform_type", str(config['stability_selection']['ztransform_type'])
-            ]
-            command = ["python", config['constants']["stab_sele_script_path"]] + sub_args
-            subprocess.run(command)
+
+            if exec_mode == "local":
+                save_path = method_save_path(base_save_path, config['inputs']['disease_folder_name'], "stability_selection", dis_name)
+                os.makedirs(save_path, exist_ok=True)
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--prot_data_path", base_path,
+                    "--save_path", save_path,
+                    "--disease", dis_name,
+                    "--output_label", config['stability_selection']['output_label'],
+                    "--abs_hr", str(config['stability_selection']['abs_hr']),
+                    "--thres", str(config['stability_selection']['thres']),
+                    "--ztransform_type", str(config['stability_selection']['ztransform_type'])
+                ]
+                command = ["python", "python_main_cell_type_spec_method/stability_analyses.py"] + sub_args
+                subprocess.run(command)
+            else:
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--disease_prot_dir", config['inputs']['disease_prot_dir'],
+                    "--disease_folder_name", config['inputs']['disease_folder_name'],
+                    "--save_path", base_save_path,
+                    "--save_path_suffix", "",
+                    "--disease_name", dis_name,
+                    "--output_label", config['stability_selection']['output_label'],
+                    "--abs_hr", str(config['stability_selection']['abs_hr']),
+                    "--thres", str(config['stability_selection']['thres']),
+                    "--ztransform_type", str(config['stability_selection']['ztransform_type'])
+                ]
+                command = ["python", config['constants']["stab_sele_script_path"]] + sub_args
+                subprocess.run(command)
 
         # Run random forests
         if (config["random_forest"]["run"] == 1):
             logger.info(">>> Start running random_forest...")
             logger.info(f">>> Random_forest params: {config['random_forest']}")
-            sub_args = [
-                "--atlas_smal_path", new_atlas_smal,
-                "--disease_prot_dir", config['inputs']['disease_prot_dir'],
-                "--disease_folder_name", config['inputs']['disease_folder_name'], 
-                "--save_path", base_save_path,
-                "--save_path_suffix", "",
-                "--disease_name", dis_name,
-                "--output_label", config['random_forest']['output_label'],
-                "--abs_hr", str(config['random_forest']['abs_hr']),
-                "--param_search", str(config['random_forest']['param_search']),
-                "--num_trees", str(config['random_forest']['num_trees']),
-                "--min_samples_split", str(config['random_forest']['min_samples_split']),
-                "--min_samples_leaf", str(config['random_forest']['min_samples_leaf']),
-                "--max_samples", str(config['random_forest']['max_samples']),
-                "--kfold_n", str(config['random_forest']['kfold_n']),
-                "--n_permute_repeat", str(config['random_forest']['n_permute_repeat']),
-                "--ztransform_type", str(config['random_forest']['ztransform_type'])
-            ]
-            command = ["python", config['constants']["rf_script_path"]] + sub_args
-            subprocess.run(command)
+
+            if exec_mode == "local":
+                save_path = method_save_path(base_save_path, config['inputs']['disease_folder_name'], "random_forest", dis_name)
+                os.makedirs(save_path, exist_ok=True)
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--prot_data_path", base_path,
+                    "--save_path", save_path,
+                    "--disease", dis_name,
+                    "--output_label", config['random_forest']['output_label'],
+                    "--abs_hr", str(config['random_forest']['abs_hr']),
+                    "--param_search", str(config['random_forest']['param_search']),
+                    "--num_trees", str(config['random_forest']['num_trees']),
+                    "--min_samples_split", str(config['random_forest']['min_samples_split']),
+                    "--min_samples_leaf", str(config['random_forest']['min_samples_leaf']),
+                    "--max_samples", str(config['random_forest']['max_samples']),
+                    "--kfold_n", str(config['random_forest']['kfold_n']),
+                    "--n_permute_repeat", str(config['random_forest']['n_permute_repeat']),
+                    "--ztransform_type", str(config['random_forest']['ztransform_type'])
+                ]
+                command = ["python", "python_main_cell_type_spec_method/tree_based_methods.py"] + sub_args
+                subprocess.run(command)
+            else:
+                sub_args = [
+                    "--atlas_smal_path", new_atlas_smal,
+                    "--disease_prot_dir", config['inputs']['disease_prot_dir'],
+                    "--disease_folder_name", config['inputs']['disease_folder_name'],
+                    "--save_path", base_save_path,
+                    "--save_path_suffix", "",
+                    "--disease_name", dis_name,
+                    "--output_label", config['random_forest']['output_label'],
+                    "--abs_hr", str(config['random_forest']['abs_hr']),
+                    "--param_search", str(config['random_forest']['param_search']),
+                    "--num_trees", str(config['random_forest']['num_trees']),
+                    "--min_samples_split", str(config['random_forest']['min_samples_split']),
+                    "--min_samples_leaf", str(config['random_forest']['min_samples_leaf']),
+                    "--max_samples", str(config['random_forest']['max_samples']),
+                    "--kfold_n", str(config['random_forest']['kfold_n']),
+                    "--n_permute_repeat", str(config['random_forest']['n_permute_repeat']),
+                    "--ztransform_type", str(config['random_forest']['ztransform_type'])
+                ]
+                command = ["python", config['constants']["rf_script_path"]] + sub_args
+                subprocess.run(command)
 
 
 if __name__ == "__main__":
