@@ -192,14 +192,10 @@ def main(args):
     atlas_smal = pd.read_csv(args.atlas_smal_path, sep="\t").set_index("gene")
 
     # Load in prot data
-    try:
-        # This function is only used for UK Biobank Phenome-Proteome data type
-        prot_spec_final = load_prot_data(args.prot_data_path, args.disease, atlas_smal)
-    except:
-        # If using other data sets, then the dataframe needs to have at most 4 columns: "gene", "P_value", either "HR" or "OR", and its "logHR" and "logOR"
-        # The gene column has Gene Entrez ID instead of gene symbols
-        # And the file has to be csv
-        prot_spec_final = pd.read_csv(f"{os.path.join(args.prot_data_path, args.disease)}.csv")
+    # Dispatches on the file's own columns: a `gene` column means pre-mapped
+    # Ensembl IDs and is read directly; otherwise it is UK Biobank Phenome-Proteome
+    # and goes through load_prot_data. A failure in either is raised, not swallowed.
+    prot_spec_final = load_sumstats(args.prot_data_path, args.disease, atlas_smal)
 
     if "gene" in prot_spec_final.columns: prot_spec_final = prot_spec_final.set_index("gene")
     prot_spec_final.to_csv(f"{args.save_path}/prot_spec_final.tsv", sep="\t", index=False)
