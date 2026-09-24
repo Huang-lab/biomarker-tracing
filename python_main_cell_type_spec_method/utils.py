@@ -1,11 +1,11 @@
 """
 Shared data-loading and preparation helpers for the four association methods.
 
+* load_sumstats:               pick the right reader for a sumstats file and use it. See
+                               "Choosing the reader" below.
 * load_prot_data:              parse UK Biobank Proteome-Phenome sumstats, map protein
                                names to Ensembl IDs, and keep genes present in the atlas.
-                               (Format-specific; relies on lab-specific ID lookup tables.
-                               For pre-mapped custom sumstats, callers fall back to a plain
-                               pd.read_csv instead.)
+                               (Format-specific; relies on lab-specific ID lookup tables.)
 * remove_na_from_training_data: drop genes whose specificity vector contains NaNs,
                                warning if any of them are strongly disease-associated.
 * prep_data:                   add derived columns used across methods: -log10(pval),
@@ -14,6 +14,25 @@ Shared data-loading and preparation helpers for the four association methods.
 
 GENE_ID_SYMBOLS / GENE_ID_HGNC point to gene-ID lookup tables (under gene_id_lookup/ in the repo root)
 used only by load_prot_data for the UK Biobank format; they are not needed for pre-mapped inputs.
+
+Choosing the reader
+-------------------
+Two sumstats formats are supported, and they are told apart by the columns the file
+actually has, not by whether a reader threw:
+
+* pre-mapped  -- already carries a `gene` column of Ensembl IDs (plus `P_value` and
+                 one of `HR`/`OR` with its log). Read with a plain `pd.read_csv`; the
+                 gene-ID lookup tables are not consulted.
+* UK Biobank  -- carries `Protein` and `HR[95%CI]`/`OR[95%CI]` and no `gene` column.
+                 Needs `load_prot_data`, and therefore needs the lookup tables.
+
+This used to be a `try: load_prot_data(...) except: pd.read_csv(...)` with a bare
+`except`, which made any failure inside the UK Biobank reader -- a missing lookup
+table, a renamed column, an unmapped protein -- indistinguishable from "this file is
+in the other format". The fallback then returned a frame with no `gene` index and no
+`logHR`/`logOR`, and the run died several hundred lines later on a `KeyError` naming
+columns that were never the problem. Dispatching on the format up front means a
+broken UK Biobank read is reported as a broken UK Biobank read.
 """
 import numpy as np
 import pandas as pd
@@ -23,6 +42,56 @@ import scipy.stats as stats
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GENE_ID_SYMBOLS = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_df.tsv")
 GENE_ID_HGNC = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_hgnc.tsv")
+
+
+class MissingGeneIdLookup(FileNotFoundError):
+    """The gene-ID lookup tables the UK Biobank reader needs are not on disk.
+
+    A configuration problem, not a statement about the sumstats file, so callers
+    let it propagate rather than treating it as "try the other format".
+    """
+
+
+def _require_gene_id_lookup():
+    missing = [p for p in (GENE_ID_SYMBOLS, GENE_ID_HGNC) if not os.path.exists(p)]
+    if missing:
+        raise MissingGeneIdLookup(
+            "UK Biobank sumstats need the gene-ID lookup tables, and these are missing:\n  "
+            + "\n  ".join(missing)
+            + "\n\nThese map protein names to Ensembl gene IDs. They are not in the repo; "
+            "obtain them from the lab (they were previously read from "
+            "/sc/arion/projects/DiseaseGeneCell/.../CSF_proteomics_AD_onset/) and place them "
+            "at the paths above.\n"
+            "Sumstats that already carry a `gene` column of Ensembl IDs do not need them."
+        )
+
+
+def is_pre_mapped_sumstats(df: pd.DataFrame) -> bool:
+    """True when a sumstats frame already carries Ensembl gene IDs.
+
+    The two supported formats are distinguished by this and nothing else: a
+    pre-mapped file has `gene`, a UK Biobank file has `Protein` and needs mapping.
+    """
+    return "gene" in df.columns
+
+
+def load_sumstats(base_path: str, disease: str, atlas: pd.DataFrame) -> pd.DataFrame:
+    """Read one disease's sumstats with whichever reader its format calls for.
+
+    Raises rather than falling back: a UK Biobank file that fails to parse is a
+    bug or a missing lookup table, and continuing with a frame that is missing
+    `gene`/`logHR` only moves the failure somewhere less informative.
+    """
+    path = f"{os.path.join(base_path, disease)}.csv"
+    head = pd.read_csv(path, nrows=0)
+
+    if is_pre_mapped_sumstats(head):
+        logging.info(f"{path}: pre-mapped sumstats (has a `gene` column); reading directly")
+        return pd.read_csv(path)
+
+    logging.info(f"{path}: UK Biobank sumstats (no `gene` column); mapping protein names to Ensembl IDs")
+    _require_gene_id_lookup()
+    return load_prot_data(base_path, disease, atlas)
 
 
 # A function to load the proteomics data
