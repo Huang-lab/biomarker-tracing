@@ -25,6 +25,30 @@ GENE_ID_SYMBOLS = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_df.
 GENE_ID_HGNC = os.path.join(_REPO_ROOT, "gene_id_lookup", "gene_id_symbol_hgnc.tsv")
 
 
+def load_prot_data_for_disease(base_path: str, disease: str, atlas: pd.DataFrame):
+    """Load either pre-mapped or UK Biobank-formatted summary statistics."""
+    data_path = os.path.join(base_path, f"{disease}.csv")
+    columns = pd.read_csv(data_path, nrows=0).columns
+
+    if "gene" in columns:
+        return pd.read_csv(data_path)
+
+    missing_lookup = [path for path in (GENE_ID_SYMBOLS, GENE_ID_HGNC) if not os.path.isfile(path)]
+    if missing_lookup:
+        raise FileNotFoundError(
+            "UK Biobank-formatted summary statistics require these lookup files: "
+            + ", ".join(missing_lookup)
+        )
+
+    if "Protein" not in columns or not {"HR[95%CI]", "OR[95%CI]"}.intersection(columns):
+        raise ValueError(
+            f"Unsupported summary-statistics format in {data_path}; expected a 'gene' column "
+            "or UK Biobank 'Protein' and HR[95%CI]/OR[95%CI] columns."
+        )
+
+    return load_prot_data(base_path, disease, atlas)
+
+
 # A function to load the proteomics data
 def load_prot_data(base_path: str, disease: str, atlas: pd.DataFrame):
 
