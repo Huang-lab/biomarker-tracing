@@ -18,6 +18,8 @@ import os, argparse, kneed, pickle, logging
 import joblib
 import sys
 sys.modules['sklearn.externals.joblib'] = joblib
+import sklearn.linear_model._base as linear_model_base
+sys.modules['sklearn.linear_model.base'] = linear_model_base
 
 import warnings, json, logging
 import matplotlib.pyplot as plt

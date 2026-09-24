@@ -245,3 +245,4 @@ dependencies:
       - widgetsnbextension==4.0.10
       - wrapt==1.16.0
       - zipp==3.17.0
+      - git+https://github.com/scikit-learn-contrib/stability-selection.git
