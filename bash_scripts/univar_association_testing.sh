@@ -16,6 +16,10 @@ output_label=$7
 covar_df=$8
 covar_gini=$9
 ztransform_type=${10}
+n_perm=${11:-0}
+perm_strata_col=${12:-None}
+perm_n_strata=${13:-1}
+perm_seed=${14:-0}
 
 # Version of the code when splitting the data by cell-tissue pair
 python $script_dir \
@@ -27,4 +31,8 @@ python $script_dir \
 --output_label $output_label \
 --covar_df $covar_df \
 --covar_gini $covar_gini \
---ztransform_type $ztransform_type
+--ztransform_type $ztransform_type \
+--n_perm $n_perm \
+--perm_strata_col $perm_strata_col \
+--perm_n_strata $perm_n_strata \
+--perm_seed $perm_seed
