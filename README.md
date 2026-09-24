@@ -58,9 +58,9 @@ The univariate model does this one cell type at a time (like `seismicGWAS`); the
 | Path | Purpose |
 |------|---------|
 | `cell_tissue_specificity/` | **Part 1 (R).** Preprocess a single-cell atlas and compute the `seismic` specificity matrix. |
-| `python_main_cell_type_spec_method/` | **Part 2 (Python).** The four association methods, each in a base script (the statistics) + an `*_auto-script.py` (LSF job launcher). Shared helpers in `utils.py`. |
+| `python_main_cell_type_spec_method/` | **Part 2 (Python).** The four association methods, each in a base script (the statistics) + an `*_auto-script.py` (LSF job launcher). Shared helpers in `utils.py`. `pleiotropy_score.py` computes per-protein pleiotropy scores across diseases (see [Permutation testing](#permutation-testing-pleiotropy-and-disease-specific-hits)). |
 | `bash_scripts/` | LSF worker scripts that activate the conda env and invoke each base method script. |
-| `pipelines/` | The end-to-end pipeline (`pipeline_univar_to_multivar.py`) and its helpers. |
+| `pipelines/` | The end-to-end pipeline (`pipeline_univar_to_multivar.py`), the cross-disease summary (`cross_disease_summary.py`) and helpers. |
 | `pipeline_yml/` | Example pipeline configuration (`univar_multivar_sample.yml`). |
 | `tutorial/` | A runnable, self-contained example with a tiny atlas, one disease, and reference outputs. **Start here.** |
 | `sample_data/` | Example atlas and summary-statistics files illustrating the required input formats. |
@@ -156,7 +156,7 @@ All four live in `python_main_cell_type_spec_method/` and share the same inputs 
 
 | Method | Script | What it does | Key outputs |
 |--------|--------|--------------|-------------|
-| **Univariate regression** | `univar_association_testing.py` | One OLS per cell type: `disease_effect ~ specificity (+ covariates)`. Reports beta, t, p, FDR, one-sided p, residual-normality test. Optional covariates: mean expression, Gini specificity, PCs. Tuned to reproduce `seismicGWAS`. | `univar_regression_results.tsv` |
+| **Univariate regression** | `univar_association_testing.py` | One OLS per cell type: `disease_effect ~ specificity (+ covariates)`. Reports beta, t, p, FDR, one-sided p, residual-normality test. Optional covariates: mean expression, Gini specificity, PCs, per-protein pleiotropy. Optional Freedman–Lane permutation test (`--n_perm`) with family-wise max-T p-values. Tuned to reproduce `seismicGWAS`. | `univar_regression_results.tsv` |
 | **ElasticNet (k-fold CV)** | `elastic_kfold_ver2.py` | Grid search over `alpha` × `l1_ratio` with k-fold CV; picks best models by R², Pearson r, and MSE; refits on full data and reports coefficients. | `perf_df.tsv`, `coef_df.tsv`, `best_model*.tsv`, coefficient plots |
 | **LASSO stability selection** | `stability_analyses.py` | Repeated subsampled LASSO fits over a λ grid; retains cell types selected above a stability threshold. | `feature_scores.tsv`, `selected_features_thres_*.tsv`, `regularization_path.pdf` |
 | **Random forest** | `tree_based_methods.py` | Random-forest regression with optional OOB hyperparameter search; reports impurity importances and (more reliable) held-out permutation importances. | `coef_random_forest.tsv`, `permute_importance_scores.tsv/.png` |
@@ -184,9 +184,11 @@ Full argument lists are in each script's `argparse` block and in the matching `b
 
 `pipelines/pipeline_univar_to_multivar.py` chains the methods into one workflow driven by a single YAML file:
 
-1. For each disease, run **univariate** regression.
+0. *(optional, `univariate.pleiotropy.run: 1`)* Compute per-protein **pleiotropy scores** once from all diseases in the sumstats folder.
+1. For each disease, run **univariate** regression, optionally with a **permutation test** (`univariate.n_perm > 0`) and the pleiotropy score as covariate / permutation strata.
 2. **Select** cell types passing a threshold on a chosen column (default: `fdr_one_side_predictor <= 0.05`) and subset the specificity matrix to those cell types.
 3. Run any enabled **multivariate** methods (ElasticNet / stability selection / random forest) on that reduced set.
+4. *(optional, `cross_disease.run: 1`)* After all diseases: a **cross-disease summary** that separates disease-specific cell-type hits from cell types that are significant for most diseases.
 
 Run it with:
 
@@ -200,9 +202,10 @@ The YAML has these sections:
 
 - `constants` — paths to the four `*_auto-script.py` launchers.
 - `inputs` — specificity-matrix path, sumstats directory (`disease_prot_dir/disease_folder_name`), output path, and `disease_name` (a list of diseases, or `["all"]`).
-- `univariate` — univariate parameters (covariates, output label, standardization).
+- `univariate` — univariate parameters (covariates, output label, standardization), the permutation test (`n_perm`, `perm_seed`, `perm_n_strata`, `perm_strata_col`) and the `pleiotropy` sub-section (`run`, `save_dir`, `score`, `exclude_same_category`).
 - `univar_to_multivar` — `column_to_choose` and `thres` used for feature selection between the univariate and multivariate stages.
 - `elasticnet_kfold`, `stability_selection`, `random_forest` — each with a `run: 0/1` toggle and method-specific hyperparameters.
+- `cross_disease` — `run: 0/1` plus `sig_col`, `thres`, `generic_frac`, `min_diseases` for the cross-disease summary.
 
 To fan a configuration out into one YAML per disease, use `pipelines/utils.py` (`create_yml_files`).
 
@@ -231,9 +234,11 @@ One row per cell type, sorted by `fdr_one_side_predictor`. Key columns:
 | `fdr_predictor` / `fdr_one_side_predictor` | Benjamini–Hochberg FDR across all cell types. **Rank by `fdr_one_side_predictor`.** |
 | `r2_score` | Variance in disease-effect explained by this one cell type. |
 | `intercept`, `pval_intercept`, `tval_intercept` | Intercept term and its statistics. |
-| `residual_pval` | Shapiro–Wilk normality p of the residuals; a diagnostic — very small values flag that the OLS normality assumption is shaky for that fit. |
+| `residual_pval` | Shapiro–Wilk normality p of the residuals; a diagnostic. With ~2,000 proteins the slope test is robust to non-normal residuals (the permutation p-values below agree with the parametric ones), so a tiny value is not by itself a problem. |
+| `pval_perm_one_side`, `pval_perm_two_side`, `fdr_perm_one_side` | *(only with `n_perm > 0`)* Freedman–Lane permutation p-values for the slope and their BH-FDR across cell types. Resolution is `1/(n_perm+1)`. |
+| `pval_maxT_one_side` | *(only with `n_perm > 0`)* Westfall–Young max-T p-value: the probability that **any** cell type reaches this t under the null. Controls the family-wise error rate across all (correlated) cell types; the strictest column. |
 
-**Read it as:** the top hits are the cell types with the smallest `fdr_one_side_predictor` **and** a positive `beta_predictor`.
+**Read it as:** the top hits are the cell types with the smallest `fdr_one_side_predictor` **and** a positive `beta_predictor`. For a conservative, family-wise-controlled list use `pval_maxT_one_side <= 0.05`.
 
 ### ElasticNet
 - `coef_best_model_full_data.tsv` — one coefficient per cell type for the best cross-validated model, refit on all data. Larger positive = more predictive of disease-effect (the multivariate analogue of `beta_predictor`, but with correlated cell types competing).
@@ -253,6 +258,64 @@ One row per cell type, sorted by `fdr_one_side_predictor`. Key columns:
 
 ---
 
+## Permutation testing, pleiotropy and disease-specific hits
+
+Running the univariate test over a large panel of diseases (e.g. the ~700 UK Biobank Proteome-Phenome Atlas outcomes) exposes a recurring pattern: **the same few cell types are significant for almost every disease**. The reason is protein pleiotropy — a handful of plasma proteins (GDF15, NEFL, WFDC2, PLAUR, EDA2R, …) are associated with hundreds of outcomes, so any cell type that expresses them looks disease-relevant everywhere. In the tutorial, alcoholic liver disease is dominated by macrophage/monocyte populations while `liver_hepatocytes` ranks 134th of 229. Three optional layers address this; all are configured in the pipeline YAML and add ~1 s per 1,000 permutations per disease.
+
+### 1. Permutation test (`univariate.n_perm`)
+
+For each disease, `univar_association_testing.py --n_perm B` runs a **Freedman–Lane permutation**: the outcome residuals (after the intercept and any covariates) are shuffled across proteins, refit against every cell type at once, and the observed t-statistics are compared with the B permuted ones. It is fully vectorised (one matrix product per batch of permutations), so B = 10,000 takes seconds. Two extra p-value columns matter:
+
+- `pval_perm_one_side` / `fdr_perm_one_side` — the per-cell-type permutation p and its BH-FDR. In practice these agree closely with the parametric `pval_predictor_one_side` (with ~2,000 proteins OLS is well calibrated even though the residuals are heavy-tailed).
+- `pval_maxT_one_side` — **Westfall–Young max-T**, the probability that the *best* of all cell types reaches the observed t under the null. It controls the family-wise error rate while accounting for the strong correlation among cell types (macrophages from 20 tissues are not 20 independent tests). It is the recommended column for a conservative hit list: in the tutorial 46 cell types pass `fdr_one_side_predictor <= 0.05` but 9 pass `pval_maxT_one_side <= 0.05`. Set `univar_to_multivar.column_to_choose: "pval_maxT_one_side"` to use it as the gate to the multivariate stage.
+
+### 2. Pleiotropy score as covariate and permutation strata (`univariate.pleiotropy`)
+
+`pleiotropy_score.py` reads **all** `<disease>.csv` files in the sumstats folder, builds a proteins × diseases z-score matrix and writes, for each disease *d*, a covariate file with each protein's mean z-score over the *other* diseases. By default every disease in the same `Disease_category` (ICD chapter) as *d* is excluded too, so related diseases (e.g. all liver diseases) do not leak *d*'s own signal into its covariate. It also writes `hub_proteins.tsv` (how many diseases each protein is associated with) and `z_matrix.tsv`.
+
+With `pleiotropy.run: 1` the pipeline passes this file as `--covar_df`, so the univariate model becomes `z_d ~ specificity_c + pleiotropy` and asks whether a cell type is enriched **beyond what generic disease-association of its proteins predicts**. With `perm_n_strata: 10` and `perm_strata_col: "pleiotropy"` the permutation null is additionally **stratified**: proteins are only shuffled within pleiotropy deciles, so hub proteins swap with other hubs and the null preserves the hub structure of the data (a degree-preserving null).
+
+> Needs many diseases. With a handful of diseases the score is dominated by noise and by shared biology between related diseases; the script warns below 20. On the 3 bundled sample diseases conditioning does **not** move hepatocytes up for alcoholic liver disease — the inflammatory (macrophage) signal is genuinely shared across the liver diseases and the AD panel is too different to act as a baseline.
+
+### 3. Cross-disease summary (`cross_disease.run`)
+
+`pipelines/cross_disease_summary.py` runs once after all diseases and uses **each cell type's own distribution of t-statistics across diseases as its empirical baseline**:
+
+```
+specificity_z(d, c) = ( t(d, c) − median_d' t(d', c) ) / ( 1.4826 · MAD_d' t(d', c) )
+```
+
+A large `specificity_z` means cell type *c* is far more associated with disease *d* than with a typical disease — the hub-protein baseline is removed at the summary level, at no extra cost. Outputs in `<save_path>/<disease_folder_name>/cross_disease_summary/`:
+
+| File | Content |
+|------|---------|
+| `cell_type_recurrence.tsv` | Per cell type: fraction of diseases where it is significant (`frac_sig`), median/MAD of t, and a `generic` flag (`frac_sig > generic_frac`). This is the list of "always significant" cell types. |
+| `disease_specific_hits.tsv` | Every (disease, cell type) pair with `t`, the within-disease significance column, `specificity_z`, `specificity_fdr` (BH over all pairs) and `hit_class`: **`disease_specific`** (significant within the disease *and* `specificity_fdr <= thres`), **`generic`** (significant but a generic cell type), `significant` (significant, neither of the above), or `none`. |
+| `univar_tstat_matrix.tsv`, `univar_sig_matrix.tsv` | The diseases × cell types matrices the above are computed from. |
+
+**Recommended reading of a large run:** a cell type–disease pair is a true, disease-specific hit when it passes `pval_maxT_one_side <= 0.05` within the disease **and** has `hit_class == disease_specific` across diseases. Cell types flagged `generic` are real associations but reflect shared pathophysiology (inflammation, tissue damage) or protein pleiotropy rather than a disease-specific cell type of action. Note that this baseline is conservative for cell types that truly participate in many diseases (macrophages in inflammatory conditions), and it needs a broad disease panel (`min_diseases`, default 20) to be meaningful.
+
+### Running the pieces standalone
+
+```bash
+# pleiotropy scores for every disease in a folder
+python python_main_cell_type_spec_method/pleiotropy_score.py \
+    --prot_data_path <sumstats folder> --atlas_smal_path <specificity matrix> --save_path <out>/pleiotropy_scores
+
+# univariate test with covariate + stratified permutation null
+python python_main_cell_type_spec_method/univar_association_testing.py \
+    ... --covar_df <out>/pleiotropy_scores/<disease>.tsv \
+    --n_perm 10000 --perm_strata_col pleiotropy --perm_n_strata 10
+
+# cross-disease summary over all univariate result folders
+python pipelines/cross_disease_summary.py \
+    --results_dir <save_path>/<disease_folder_name>/univar_association_testing \
+    --save_path   <save_path>/<disease_folder_name>/cross_disease_summary \
+    --sig_col pval_maxT_one_side --thres 0.05
+```
+
+---
+
 ## Key modeling choices
 
 A few options recur across all methods and change what question you are asking:
@@ -260,7 +323,8 @@ A few options recur across all methods and change what question you are asking:
 - **`--output_label`** — the protein-level outcome regressed onto specificity. `z_score` (a signed, p-value-derived effect size; used in the tutorial and seismic-matched setup), or `HR`/`OR`/`logHR`/`logOR`.
 - **`--ztransform_type`** — how the specificity matrix is standardized: `1` = z-score each **cell type** (compare genes within a cell type), `2` = z-score each **gene** (compare cell types within a gene), `-1` = none. The tutorial uses `-1` to match seismicGWAS.
 - **`--abs_hr`** — if `1`, use the absolute value of the outcome, i.e. test association with effect *magnitude* regardless of protective/risk direction.
-- **`univar_to_multivar.thres` / `column_to_choose`** — the gate between stages: which univariate column and cutoff decide the cell types carried into the multivariate models (default: `fdr_one_side_predictor <= 0.05`). Loosen `thres` to feed more cell types to the multivariate step.
+- **`univar_to_multivar.thres` / `column_to_choose`** — the gate between stages: which univariate column and cutoff decide the cell types carried into the multivariate models (default: `fdr_one_side_predictor <= 0.05`). Loosen `thres` to feed more cell types to the multivariate step, or use `pval_maxT_one_side` for a family-wise-controlled gate.
+- **`univariate.n_perm` / `pleiotropy` / `cross_disease`** — the permutation and pleiotropy layers described in [Permutation testing, pleiotropy and disease-specific hits](#permutation-testing-pleiotropy-and-disease-specific-hits). Permutation p-values are cheap and always safe to add; the pleiotropy covariate and the cross-disease summary only make sense when many diseases are analysed together.
 
 ---
 

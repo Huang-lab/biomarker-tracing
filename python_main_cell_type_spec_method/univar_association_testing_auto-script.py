@@ -29,8 +29,9 @@ def main(in_args):
 
         args = [
             "placeholder", in_args.atlas_smal_path, base_path,
-            save_full_path, dis_name, str(in_args.abs_hr), in_args.output_label, 
-            in_args.covar_df, str(in_args.covar_gini), str(in_args.ztransform_type)
+            save_full_path, dis_name, str(in_args.abs_hr), in_args.output_label,
+            in_args.covar_df, str(in_args.covar_gini), str(in_args.ztransform_type),
+            str(in_args.n_perm), in_args.perm_strata_col, str(in_args.perm_n_strata), str(in_args.perm_seed)
         ]
         command = ["bsub"] + lsf_params + ["-oo", f"{log_path}/{disease}.stdout", "-eo", f"{log_path}/{disease}.stderr"] + ["bash", BASH_SCRIPT_DIR] + args
         
@@ -58,6 +59,10 @@ if __name__ == "__main__":
     parser.add_argument("--covar_gini", type=int, default=0, help="Add Gini coefficient as covariate")
     parser.add_argument("--abs_hr", type=int, default=0, help="Whether to set HR to abs value")
     parser.add_argument("--ztransform_type", type=int, default=1, help="Whether to z transform on each cell type (1) or each gene (2)")
-    
+    parser.add_argument("--n_perm", type=int, default=0, help="Number of Freedman-Lane permutations (0 = skip)")
+    parser.add_argument("--perm_strata_col", type=str, default="None", help="Covariate column to stratify permutations by")
+    parser.add_argument("--perm_n_strata", type=int, default=1)
+    parser.add_argument("--perm_seed", type=int, default=0)
+
     args = parser.parse_args()
     main(args)

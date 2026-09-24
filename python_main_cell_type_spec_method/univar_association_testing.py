@@ -13,6 +13,18 @@ specificity score (--covar_gini) and any columns in an external --covar_df.
 This is the direct analogue of seismicGWAS's per-cell-type test; the tutorial
 parameters are chosen so the ranking matches the seismicGWAS output.
 
+Optionally (--n_perm > 0) a Freedman-Lane permutation test is run on top of the
+OLS fits. The outcome residuals (after regressing out the intercept and any
+covariates) are permuted across proteins, refit against every cell type at once,
+and the observed t-statistics are compared with the permuted ones. This yields
+  * pval_perm_one_side  -- per-cell-type permutation p (slope > 0),
+  * pval_maxT_one_side  -- Westfall-Young max-T p, i.e. family-wise error control
+                           across all cell types that accounts for their correlation.
+With --perm_strata_col / --perm_n_strata the permutation is stratified: proteins are
+only shuffled within quantile bins of a covariate (e.g. a pleiotropy score from
+pleiotropy_score.py), so highly pleiotropic "hub" proteins only swap with other hubs
+and the null preserves the pleiotropy structure of the data.
+
 Inputs : a genes x cell-tissues specificity matrix and one disease's summary statistics.
 Outputs: univar_regression_results.tsv (ranked by fdr_one_side_predictor),
          model_summary.txt, prot_spec_final*.tsv, and cmd_args.json in --save_path.
@@ -66,6 +78,73 @@ def compute_covariates(args, atlas_smal):
         return covar_df
     else:
         return None
+
+
+def _residualize(M, C):
+    """Residuals of every column of M after OLS on the covariate matrix C."""
+    return M - C @ np.linalg.lstsq(C, M, rcond=None)[0]
+
+
+def permutation_testing(X, y, C, strata=None, n_perm=1000, seed=0, chunk=500):
+    """
+    Freedman-Lane permutation test of y ~ x_k + C for every column k of X at once.
+
+    X      : (n genes, K cell types) specificity matrix (complete cases only)
+    y      : (n,) outcome
+    C      : (n, p) covariate matrix including the intercept column
+    strata : optional (n,) integer labels; permutations happen within each label
+
+    Uses the Frisch-Waugh-Lovell decomposition: after residualising X and y on C,
+    the slope t-statistic for cell type k is c_k / sqrt((|y~|^2 - c_k^2) / df) where
+    c_k = x~_k' y~ with unit-norm x~_k. Each permutation is then one matrix product,
+    so all K cell types x `chunk` permutations are evaluated together.
+
+    Returns t_obs (K,), one-sided p-values (slope > 0), two-sided p-values and
+    Westfall-Young max-T one-sided p-values (family-wise across cell types).
+    """
+    rng = np.random.default_rng(seed)
+    n, K = X.shape
+    df = n - C.shape[1] - 1
+
+    Xr = _residualize(X, C)
+    Xr = Xr / np.linalg.norm(Xr, axis=0, keepdims=True)
+    yr = _residualize(y[:, None], C)[:, 0]
+
+    def tstats(E):
+        # E: (n, B) matrix of (re-residualised) permuted outcomes -> (K, B) t-statistics
+        c = Xr.T @ E
+        rss = np.sum(E**2, axis=0, keepdims=True) - c**2
+        return c / np.sqrt(np.clip(rss, 1e-300, None) / df)
+
+    t_obs = tstats(yr[:, None])[:, 0]
+
+    if strata is None:
+        strata = np.zeros(n, dtype=int)
+    groups = [np.where(strata == s)[0] for s in np.unique(strata)]
+
+    ge_one = np.zeros(K)          # #perms with t_null >= t_obs
+    ge_two = np.zeros(K)          # #perms with |t_null| >= |t_obs|
+    ge_max = np.zeros(K)          # #perms with max_k t_null >= t_obs  (max-T)
+    done = 0
+    while done < n_perm:
+        B = min(chunk, n_perm - done)
+        E = np.empty((n, B))
+        for idx in groups:
+            # independent within-stratum shuffles for each of the B permutations
+            keys = rng.random((len(idx), B))
+            order = np.argsort(keys, axis=0)
+            E[idx, :] = yr[idx][order]
+        E = _residualize(E, C)        # Freedman-Lane: permuted residuals must stay orthogonal to C
+        T = tstats(E)
+        ge_one += (T >= t_obs[:, None]).sum(axis=1)
+        ge_two += (np.abs(T) >= np.abs(t_obs)[:, None]).sum(axis=1)
+        ge_max += (T.max(axis=0)[None, :] >= t_obs[:, None]).sum(axis=1)
+        done += B
+
+    p_one = (1 + ge_one) / (n_perm + 1)
+    p_two = (1 + ge_two) / (n_perm + 1)
+    p_max = (1 + ge_max) / (n_perm + 1)
+    return t_obs, p_one, p_two, p_max
 
 
 def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
@@ -165,6 +244,46 @@ def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
 
     # FDR correction one-side
     final_df.loc[:, "fdr_one_side_predictor"] = multipletests(final_df["pval_predictor_one_side"], method="fdr_bh")[1]
+
+    ### Permutation test (optional)
+    if args.n_perm > 0:
+        logging.info(f"Running {args.n_perm} Freedman-Lane permutations "
+                     f"(strata: {args.perm_strata_col}, n_strata={args.perm_n_strata})...")
+        # Complete cases across all cell types so that one permutation serves every cell type.
+        # (With no NAs in the atlas this is exactly the gene set used by each OLS above.)
+        perm_df = result_df[cell_tis + covar_cols + [args.output_label]].dropna()
+        if len(perm_df) < len(result_df):
+            logging.warning(f"Permutation uses {len(perm_df)} complete-case genes vs "
+                            f"{len(result_df)} in the per-cell-type OLS fits")
+        X = perm_df[cell_tis].to_numpy(float)
+        y = perm_df[args.output_label].to_numpy(float)
+        C = np.column_stack([np.ones(len(perm_df))] + [perm_df[c].to_numpy(float) for c in covar_cols])
+
+        strata = None
+        if args.perm_strata_col not in (None, "None") and args.perm_n_strata > 1:
+            if args.perm_strata_col not in perm_df.columns:
+                raise ValueError(f"--perm_strata_col '{args.perm_strata_col}' is not a covariate column "
+                                 f"(available: {covar_cols})")
+            strata = pd.qcut(perm_df[args.perm_strata_col].rank(method="first"),
+                             args.perm_n_strata, labels=False).to_numpy()
+
+        t_obs, p_one, p_two, p_max = permutation_testing(
+            X, y, C, strata=strata, n_perm=args.n_perm, seed=args.perm_seed
+        )
+        # Sanity check: the vectorised t must reproduce the statsmodels t
+        t_ols = final_df.set_index("cell_tissue").loc[old_col_names, "tval_predictor"].to_numpy()
+        if not np.allclose(t_obs, t_ols, rtol=1e-6, atol=1e-6):
+            logging.warning("Vectorised permutation t-statistics differ from OLS t-statistics "
+                            f"(max abs diff {np.max(np.abs(t_obs - t_ols)):.3g}); check for NA genes")
+        perm_res = pd.DataFrame({
+            "cell_tissue": old_col_names,
+            "pval_perm_one_side": p_one,
+            "pval_perm_two_side": p_two,
+            "pval_maxT_one_side": p_max,
+        })
+        perm_res["fdr_perm_one_side"] = multipletests(perm_res["pval_perm_one_side"], method="fdr_bh")[1]
+        final_df = final_df.merge(perm_res, on="cell_tissue", how="left")
+
     final_df = final_df.sort_values("fdr_one_side_predictor")
 
     # Write output
@@ -235,6 +354,14 @@ if __name__ == "__main__":
     parser.add_argument("--covar_df", type=str, default=None)
     parser.add_argument("--covar_gini", type=int, default=0)
     parser.add_argument("--ztransform_type", type=int, default=1, help="Whether to z transform on each cell type (1) or each gene (2) or no zscore (-1)")
+
+    parser.add_argument("--n_perm", type=int, default=0,
+                        help="Number of Freedman-Lane permutations (0 = skip). Adds pval_perm_*, fdr_perm_one_side and pval_maxT_one_side columns")
+    parser.add_argument("--perm_strata_col", type=str, default="None",
+                        help="Covariate column to stratify permutations by (e.g. 'pleiotropy' from pleiotropy_score.py); 'None' = unstratified")
+    parser.add_argument("--perm_n_strata", type=int, default=1,
+                        help="Number of quantile bins of --perm_strata_col within which proteins are shuffled")
+    parser.add_argument("--perm_seed", type=int, default=0)
 
     args = parser.parse_args()
     main(args)
