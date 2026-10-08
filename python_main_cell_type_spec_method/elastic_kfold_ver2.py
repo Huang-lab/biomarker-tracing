@@ -36,8 +36,6 @@ warnings.simplefilter("ignore", RuntimeWarning)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
-GENE_ID_SYMBOLS = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_df.tsv"
-GENE_ID_HGNC = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc/datasets/Alzheimer/CSF_proteomics_AD_onset/gene_id_symbol_hgnc.tsv"
 
 
 # A function to clean some code
@@ -301,7 +299,10 @@ def main(args):
     atlas_smal = pd.read_csv(args.atlas_smal_path, sep="\t").set_index("gene")
 
     # Load in prot data
-    prot_spec_final = load_prot_data_for_disease(args.prot_data_path, args.disease, atlas_smal)
+    # Dispatches on the file's own columns: a `gene` column means pre-mapped
+    # Ensembl IDs and is read directly; otherwise it is UK Biobank Phenome-Proteome
+    # and goes through load_prot_data. A failure in either is raised, not swallowed.
+    prot_spec_final = load_sumstats(args.prot_data_path, args.disease, atlas_smal)
     prot_spec_final.to_csv(f"{args.save_path}/prot_spec_final.tsv", sep="\t", index=False)
 
     # Convert some argument values to bool

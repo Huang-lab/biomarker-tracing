@@ -192,7 +192,10 @@ def main(args):
     atlas_smal = pd.read_csv(args.atlas_smal_path, sep="\t").set_index("gene")
 
     # Load in prot data
-    prot_spec_final = load_prot_data_for_disease(args.prot_data_path, args.disease, atlas_smal)
+    # Dispatches on the file's own columns: a `gene` column means pre-mapped
+    # Ensembl IDs and is read directly; otherwise it is UK Biobank Phenome-Proteome
+    # and goes through load_prot_data. A failure in either is raised, not swallowed.
+    prot_spec_final = load_sumstats(args.prot_data_path, args.disease, atlas_smal)
 
     if "gene" in prot_spec_final.columns: prot_spec_final = prot_spec_final.set_index("gene")
     prot_spec_final.to_csv(f"{args.save_path}/prot_spec_final.tsv", sep="\t", index=False)

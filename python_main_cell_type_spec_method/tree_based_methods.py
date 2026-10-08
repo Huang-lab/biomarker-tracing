@@ -232,7 +232,10 @@ def main(args):
 
     # Load in prot data
     logging.info("Loading prot data...")
-    prot_spec_final = load_prot_data_for_disease(args.prot_data_path, args.disease, atlas_smal)
+    # Dispatches on the file's own columns: a `gene` column means pre-mapped
+    # Ensembl IDs and is read directly; otherwise it is UK Biobank Phenome-Proteome
+    # and goes through load_prot_data. A failure in either is raised, not swallowed.
+    prot_spec_final = load_sumstats(args.prot_data_path, args.disease, atlas_smal)
     prot_spec_final.to_csv(f"{args.save_path}/prot_spec_final.tsv", sep="\t", index=False)
 
     # Convert some argument values to bool
