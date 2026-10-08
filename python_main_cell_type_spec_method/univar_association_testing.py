@@ -78,7 +78,7 @@ def univariate_testing(args, atlas_smal, prot_spec_final, covar_df=None):
     # do some prep
     col = "HR"
     if col not in prot_spec_final.columns: col = "OR"
-    prot_spec_final, _, _ = prep_data(args, prot_spec_final[[col, f"log{col}", "P_value"]], col)
+    prot_spec_final, _, _ = prep_data(args, prot_spec_final[association_columns(prot_spec_final, col)], col)
 
     # atlas_smal has shape = (num genes, num cell types)
     obj = StandardScaler(with_std=False)
