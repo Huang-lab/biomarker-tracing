@@ -8,6 +8,8 @@ Shared data-loading and preparation helpers for the four association methods.
                                (Format-specific; relies on lab-specific ID lookup tables.)
 * remove_na_from_training_data: drop genes whose specificity vector contains NaNs,
                                warning if any of them are strongly disease-associated.
+* signed_z_score:              signed z per protein from P_value, falling back to the effect
+                               and its 95% CI when P_value has underflowed to 0.
 * prep_data:                   add derived columns used across methods: -log10(pval),
                                a signed z_score, a min-max scaled -log10(pval), and pick
                                the outcome (y) and the gene-weight column.
@@ -131,6 +133,11 @@ def load_prot_data(base_path: str, disease: str, atlas: pd.DataFrame):
     prot_df[risk_sm] = prot_df[risk].apply(lambda x: float(x.split(" ")[0]))
     prot_df[f"log{risk_sm}"] = np.log(prot_df[risk_sm])
 
+    # Standard error of the log effect, recovered from the 95% CI ("1.74 [1.70-1.79]").
+    # prep_data uses it to get a z-score when P_value has underflowed to 0.
+    ci = prot_df[risk].str.extract(r"\[\s*([0-9.eE+]+)\s*-\s*([0-9.eE+]+)\s*\]").astype(float)
+    prot_df[f"log{risk_sm}_se"] = (np.log(ci[1]) - np.log(ci[0])) / (2 * stats.norm.isf(0.025))
+
     # prot_spec_id contains some genes with duplicate gene ID
     prot_spec_id = pd.merge(left=prot_df, right=gene_names, on="gene_name", how="left")
     dup_genes = prot_spec_id[prot_spec_id.duplicated('gene_name', keep=False)]["gene"].unique().tolist()
@@ -195,15 +202,50 @@ def remove_na_from_training_data(X_df: pd.DataFrame, prot_spec_final: pd.DataFra
     return X_df, prot_spec_final
 
 
+def signed_z_score(df: pd.DataFrame, col: str) -> pd.Series:
+    """
+    Signed z-score of each protein's association: +|z| when HR/OR > 1, -|z| otherwise.
+
+    |z| comes from the two-sided P_value. Sumstats report P_value = 0 when it underflowed
+    (e.g. NTproBNP in heart failure), which would give |z| = inf. For those proteins |z| is
+    taken from the effect and its 95% CI instead (|log effect| / SE, needs `log{col}_se`
+    from load_prot_data), and is never below the z of the smallest positive double, since
+    P_value = 0 means the true p is smaller than that. Without a CI, that floor is used.
+    """
+    sign = 2 * (df[col] > 1) - 1
+    abs_z = df["P_value"].apply(lambda x: stats.norm.isf(x / 2))
+
+    underflow = ~np.isfinite(abs_z)
+    if underflow.any():
+        floor = stats.norm.isf(np.finfo(float).tiny / 2)
+        se_col = f"log{col}_se"
+        if se_col in df.columns:
+            ci_z = (df[f"log{col}"].abs() / df[se_col]).where(lambda z: np.isfinite(z), floor)
+        else:
+            ci_z = pd.Series(floor, index=df.index)
+        abs_z = abs_z.where(~underflow, np.maximum(ci_z, floor))
+
+    return sign * abs_z
+
+
+def association_columns(prot_df: pd.DataFrame, col: str, *extra: str) -> list:
+    """Columns of prot_df that prep_data needs: the effect, its log, `extra`, P_value,
+    and the effect's SE when the reader provided one (UK Biobank format only)."""
+    cols = [col, f"log{col}", *extra, "P_value"]
+    if f"log{col}_se" in prot_df.columns: cols.append(f"log{col}_se")
+    return cols
+
+
 # A function to prep the data for training
 def prep_data(args, df: pd.DataFrame, col: str):
     """
     Add some columns that help in training
     """
     df["-log10(pval)"] = -np.log10(df["P_value"])
-    df["z_score"] = (2*(df[col] > 1) - 1) * df["P_value"].apply(lambda x: stats.norm.isf(x / 2))
+    df["z_score"] = signed_z_score(df, col)
+    df = df.drop(columns=[f"log{col}_se"], errors="ignore")
     max_non_inf = df.loc[df["-log10(pval)"] != np.inf, "-log10(pval)"].max()
-    df = df.replace([np.inf, -np.inf], max_non_inf)
+    df["-log10(pval)"] = df["-log10(pval)"].replace(np.inf, max_non_inf)
     df["-log10(pval)_minmax"] = (df["-log10(pval)"] - df["-log10(pval)"].min()) / (df["-log10(pval)"].max() - df["-log10(pval)"].min())
     
     y = df[args.output_label]

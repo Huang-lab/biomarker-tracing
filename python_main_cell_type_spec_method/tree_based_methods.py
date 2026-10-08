@@ -52,7 +52,7 @@ def permute_importance(args, prot_spec_final: pd.DataFrame, atlas_smal: pd.DataF
     col = "HR"
     if col not in prot_spec_final.columns: col = "OR"
     sub_atl = X_df.loc[prot_spec_final["gene"].tolist(), :]
-    tmp = sub_atl.merge(prot_spec_final[[col, f"log{col}", "gene", "P_value"]].set_index("gene"), right_index=True, left_index=True)
+    tmp = sub_atl.merge(prot_spec_final[association_columns(prot_spec_final, col, "gene")].set_index("gene"), right_index=True, left_index=True)
     tmp, hr, weight_col = prep_data(args, tmp, col=col)
     if args.abs_hr: hr = np.abs(hr)
     sub_atl = sub_atl.loc[tmp.index, :]
@@ -135,7 +135,7 @@ def hyperparam_search(args, prot_spec_final: pd.DataFrame, atlas_smal_merged: pd
     sub_atl = pd.DataFrame(sub_atl, columns=atlas_smal_subset.columns, index=atlas_smal_subset.index)
 
     # Preprocess the data
-    tmp = sub_atl.merge(prot_spec_final[[col, f"log{col}", "gene", "P_value"]].set_index("gene"), right_index=True, left_index=True)
+    tmp = sub_atl.merge(prot_spec_final[association_columns(prot_spec_final, col, "gene")].set_index("gene"), right_index=True, left_index=True)
     tmp, hr, weight_col = prep_data(args, tmp, col=col)
     if args.abs_hr: hr = np.abs(hr)
     sub_atl = sub_atl.loc[tmp.index, :]
@@ -201,7 +201,7 @@ def random_forests(args, prot_spec_final: pd.DataFrame, atlas_smal_merged: pd.Da
     sub_atl = pd.DataFrame(sub_atl, columns=atlas_smal_subset.columns, index=atlas_smal_subset.index)
 
     # Preprocess the data
-    tmp = sub_atl.merge(prot_spec_final[[col, f"log{col}", "gene", "P_value"]].set_index("gene"), right_index=True, left_index=True)
+    tmp = sub_atl.merge(prot_spec_final[association_columns(prot_spec_final, col, "gene")].set_index("gene"), right_index=True, left_index=True)
     tmp, hr, weight_col = prep_data(args, tmp, col=col)
     if args.abs_hr: hr = np.abs(hr)
     sub_atl = sub_atl.loc[tmp.index, :]
