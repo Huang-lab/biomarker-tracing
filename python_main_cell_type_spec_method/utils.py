@@ -209,8 +209,9 @@ def signed_z_score(df: pd.DataFrame, col: str) -> pd.Series:
     |z| comes from the two-sided P_value. Sumstats report P_value = 0 when it underflowed
     (e.g. NTproBNP in heart failure), which would give |z| = inf. For those proteins |z| is
     taken from the effect and its 95% CI instead (|log effect| / SE, needs `log{col}_se`
-    from load_prot_data), and is never below the z of the smallest positive double, since
-    P_value = 0 means the true p is smaller than that. Without a CI, that floor is used.
+    from load_prot_data). P_value = 0 means the true p is smaller than every reported one,
+    so |z| is never below the largest finite |z| in `df` (or the z of the smallest normal
+    double, whichever is larger). Without a CI, that floor is used.
     """
     sign = 2 * (df[col] > 1) - 1
     abs_z = df["P_value"].apply(lambda x: stats.norm.isf(x / 2))
@@ -218,6 +219,7 @@ def signed_z_score(df: pd.DataFrame, col: str) -> pd.Series:
     underflow = ~np.isfinite(abs_z)
     if underflow.any():
         floor = stats.norm.isf(np.finfo(float).tiny / 2)
+        if (~underflow).any(): floor = max(floor, abs_z[~underflow].max())
         se_col = f"log{col}_se"
         if se_col in df.columns:
             ci_z = (df[f"log{col}"].abs() / df[se_col]).where(lambda z: np.isfinite(z), floor)

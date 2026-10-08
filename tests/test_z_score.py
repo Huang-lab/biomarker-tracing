@@ -65,6 +65,16 @@ def test_underflowed_p_is_never_weaker_than_the_float_floor():
     assert out["z_score"].iloc[0] == pytest.approx(FLOOR)
 
 
+def test_underflowed_p_ranks_above_every_reported_p():
+    # Chronic kidney disease reports P_value = 4.96e-311 (a subnormal, |z| = 37.7, above
+    # the normal-double floor) next to proteins with P_value = 0
+    reported = stats.norm.isf(4.96e-311 / 2)
+    df = _frame([1.2, 1.5], [0.0, 4.96e-311], se=[0.1, 0.01])
+    out, _, _ = utils.prep_data(ARGS, df, "HR")
+    assert reported > FLOOR
+    assert out["z_score"].iloc[0] == pytest.approx(reported)
+
+
 def test_underflowed_p_without_a_confidence_interval_uses_the_float_floor():
     df = _frame([1.3, 0.7], [0.0, 0.0])
     out, _, _ = utils.prep_data(ARGS, df, "HR")
