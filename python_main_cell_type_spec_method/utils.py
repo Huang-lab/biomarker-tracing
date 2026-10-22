@@ -130,7 +130,14 @@ def load_prot_data(base_path: str, disease: str, atlas: pd.DataFrame):
     risk = "HR[95%CI]"
     if risk not in prot_df.columns: risk = "OR[95%CI]"
     risk_sm = risk.split("[")[0]
-    prot_df[risk_sm] = prot_df[risk].apply(lambda x: float(x.split(" ")[0]))
+    # A protein's model can fail (mostly rare diseases): its effect is then blank, and its P_value is
+    # missing too. Such proteins carry no information, so drop them instead of failing the whole disease.
+    prot_df[risk_sm] = pd.to_numeric(prot_df[risk].astype(str).str.split(" ").str[0], errors="coerce")
+    no_estimate = ~np.isfinite(prot_df[risk_sm]) | (prot_df[risk_sm] <= 0) | prot_df["P_value"].isna()
+    if no_estimate.any():
+        logging.warning(f"{disease}: dropping {int(no_estimate.sum())} of {len(prot_df)} proteins "
+                        "with no usable effect estimate or P_value")
+        prot_df = prot_df[~no_estimate].copy()
     prot_df[f"log{risk_sm}"] = np.log(prot_df[risk_sm])
 
     # Standard error of the log effect, recovered from the 95% CI ("1.74 [1.70-1.79]").
@@ -164,9 +171,13 @@ def load_prot_data(base_path: str, disease: str, atlas: pd.DataFrame):
     prot_spec_id.drop(columns=['gene_small', "gene_name_single"], inplace=True)
 
     # After all the mappings, NPPB and NTproBNP has the same ENSG. Retain the one with the smaller pval
-    larger_pval = prot_spec_id[prot_spec_id["gene_name"].isin(["NPPB", "NTproBNP"])]["P_value"].max()
-    dropped_prot = prot_spec_id[(prot_spec_id["gene_name"].isin(["NPPB", "NTproBNP"])) & (prot_spec_id["P_value"] == larger_pval)]["gene_name"].item()
-    prot_spec_id = prot_spec_id[prot_spec_id["gene_name"] != dropped_prot].drop_duplicates(subset="gene")
+    # Only when both are present (a disease can lack either, e.g. after proteins without an estimate are dropped).
+    bnp = prot_spec_id[prot_spec_id["gene_name"].isin(["NPPB", "NTproBNP"])]
+    if bnp["gene_name"].nunique() == 2:
+        larger_pval = bnp["P_value"].max()
+        dropped_prot = bnp.loc[bnp["P_value"] == larger_pval, "gene_name"].iloc[0]
+        prot_spec_id = prot_spec_id[prot_spec_id["gene_name"] != dropped_prot]
+    prot_spec_id = prot_spec_id.drop_duplicates(subset="gene")
 
     #### Also take care of genes with duplicate gene IDs ####
     # Some genes with duplicate gene IDs, the rogue IDs will be omitted when merging with the atlas
