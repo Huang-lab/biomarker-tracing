@@ -121,7 +121,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
         set(prot_spec_final["gene"].tolist()).intersection(set(X_df.index.tolist()))
     )
     sub_atl = X_df.loc[common_genes, :]
-    tmp = sub_atl.merge(prot_spec_final[[col, f"log{col}", "gene", "P_value"]].set_index("gene"), right_index=True, left_index=True)
+    tmp = sub_atl.merge(prot_spec_final[association_columns(prot_spec_final, col, "gene")].set_index("gene"), right_index=True, left_index=True)
     tmp, _, weight_col = prep_data(args, tmp, col=col)
 
     # Create the kfolds

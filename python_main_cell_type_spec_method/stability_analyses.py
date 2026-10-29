@@ -52,7 +52,7 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     elif (args.ztransform_type == 2): sub_atl = obj.fit_transform(atlas_smal_merged.to_numpy().T).T
     else: sub_atl = atlas_smal_merged.to_numpy()
     sub_atl = pd.DataFrame(sub_atl, columns=atlas_smal_merged.columns, index=atlas_smal_merged.index)
-    tmp = sub_atl.merge(prot_spec_final[[col, f"log{col}", "gene", "P_value"]].set_index("gene"), right_index=True, left_index=True)
+    tmp = sub_atl.merge(prot_spec_final[association_columns(prot_spec_final, col, "gene")].set_index("gene"), right_index=True, left_index=True)
     tmp, y, weight_col = prep_data(args, tmp, col)
     X = sub_atl.loc[tmp.index, :]
 
