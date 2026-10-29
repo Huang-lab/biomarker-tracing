@@ -40,10 +40,36 @@ univariate:
   output_label: "z_score"
   ztransform_type: -1
 
+  # Permutation test (0 = off). Adds pval_perm_one_side / fdr_perm_one_side and the
+  # family-wise pval_maxT_one_side columns to univar_regression_results.tsv.
+  n_perm: 2000
+  perm_seed: 0
+  # Stratified null: shuffle proteins only within quantile bins of a covariate
+  # (e.g. perm_n_strata: 10, perm_strata_col: "pleiotropy" together with pleiotropy.run: 1)
+  perm_n_strata: 1
+  perm_strata_col: "None"
+
+  # Per-protein pleiotropy score from ALL diseases in the sumstats folder (leave-one-chapter-out).
+  # Recommended when running a large disease panel: it is passed as a per-disease covariate.
+  pleiotropy:
+    run: 0
+    save_dir: null            # default: <save_path>/<disease_folder_name>/pleiotropy_scores
+    score: "mean_z"           # or "mean_abs_z"
+    exclude_same_category: 1
+
 # Transition
 univar_to_multivar:
-  column_to_choose: "fdr_one_side_predictor"
+  column_to_choose: "fdr_one_side_predictor"   # or "pval_maxT_one_side" for a family-wise gate
   thres: 0.05
+
+# Cross-disease summary, run once after all diseases: flags cell types significant for most
+# diseases as "generic" and reports disease-specific hits (see README).
+cross_disease:
+  run: 1
+  sig_col: "fdr_one_side_predictor"
+  thres: 0.05
+  generic_frac: 0.5
+  min_diseases: 20
 
 
 # ElasticNet

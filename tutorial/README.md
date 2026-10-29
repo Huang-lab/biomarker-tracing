@@ -64,6 +64,8 @@ pipeline_univar_multivar_sample_run/sample_disease/
 
 The top-ranked cell types in `univar_regression_results.tsv` (lowest `fdr_one_side_predictor`) are the tutorial's headline result: the cell types whose specificity most strongly tracks alcoholic-liver-disease protein associations.
 
+The tutorial config also sets `univariate.n_perm: 2000`, so the reference `univar_regression_results.tsv` carries the permutation columns `pval_perm_one_side`, `pval_perm_two_side`, `fdr_perm_one_side` and the family-wise `pval_maxT_one_side` (see "Permutation testing, pleiotropy and disease-specific hits" in the [root README](../README.md)). With one disease the `pleiotropy` and `cross_disease` options are switched off — they need a large disease panel. Note that the top hits are macrophage/monocyte populations from many tissues rather than hepatocytes: 46 cell types pass `fdr_one_side_predictor <= 0.05` but only 9 pass `pval_maxT_one_side <= 0.05`, and the root README explains why a cross-disease analysis is needed to tell disease-specific hits from generic ones.
+
 > **Note on reference outputs.** The bundled `random_forest` and `stability_analyses` outputs were produced before two correctness fixes: the random-forest permutation-importance step now trains only on the training fold (previously it leaked the test fold), and stability selection now honors the configured `ztransform_type` (previously it was silently ignored). Re-running these two methods will therefore give slightly different numbers than the committed reference files. The univariate and ElasticNet reference outputs are unaffected.
 
 ## License

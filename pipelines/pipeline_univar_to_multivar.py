@@ -94,6 +94,33 @@ def main(args):
     base_save_path = f"{config['inputs']['save_path']}{save_path_suffix}"
     os.makedirs(base_save_path, exist_ok=True)
 
+    # Optional: per-protein pleiotropy scores computed once from ALL diseases in the sumstats
+    # folder (leave-one-chapter-out). They are then passed to the univariate step as a
+    # per-disease covariate and/or as the stratification variable of the permutation null.
+    univ_cfg = config["univariate"]
+    pleio_cfg = univ_cfg.get("pleiotropy", {}) or {}
+    pleio_dir = None
+    if pleio_cfg.get("run", 0) == 1:
+        pleio_dir = pleio_cfg.get("save_dir") or f"{base_save_path}/{config['inputs']['disease_folder_name']}/pleiotropy_scores"
+        logger.info(f">>> Computing pleiotropy scores into {pleio_dir}")
+        command = ["python", "python_main_cell_type_spec_method/pleiotropy_score.py",
+                   "--prot_data_path", base_path,
+                   "--atlas_smal_path", config['inputs']['atlas_smal_path'],
+                   "--save_path", pleio_dir,
+                   "--score", str(pleio_cfg.get("score", "mean_z")),
+                   "--exclude_same_category", str(pleio_cfg.get("exclude_same_category", 1))]
+        result = subprocess.run(command)
+        if result.returncode != 0:
+            logger.error(f">>> pleiotropy_score.py failed (exit code {result.returncode}); continuing without it")
+            pleio_dir = None
+    elif pleio_cfg.get("save_dir"):
+        pleio_dir = pleio_cfg["save_dir"]   # precomputed scores
+
+    n_perm = str(univ_cfg.get("n_perm", 0))
+    perm_n_strata = str(univ_cfg.get("perm_n_strata", 1))
+    perm_seed = str(univ_cfg.get("perm_seed", 0))
+    perm_strata_col = str(univ_cfg.get("perm_strata_col", "pleiotropy" if pleio_dir else "None"))
+
     # Loop through the diseases
     for disease in sorted(diseases):
 
@@ -115,6 +142,19 @@ def main(args):
             logger.info(">>> Start running univariate regression")
             logger.info(f">>> Univariate params: {config['univariate']}")
 
+            # Per-disease pleiotropy covariate takes precedence over a single shared covar_df
+            covar_df = config['univariate']['covar_df']
+            if pleio_dir is not None:
+                pleio_file = f"{pleio_dir}/{dis_name}.tsv"
+                if os.path.exists(pleio_file): covar_df = pleio_file
+                else: logger.warning(f">>> No pleiotropy score file for {dis_name}; falling back to covar_df={covar_df}")
+            perm_args = [
+                "--n_perm", n_perm,
+                "--perm_strata_col", perm_strata_col if covar_df != "None" else "None",
+                "--perm_n_strata", perm_n_strata,
+                "--perm_seed", perm_seed,
+            ]
+
             if exec_mode == "local":
                 save_path = method_save_path(base_save_path, config['inputs']['disease_folder_name'], "univariate", dis_name)
                 os.makedirs(save_path, exist_ok=True)
@@ -125,10 +165,10 @@ def main(args):
                     "--disease", dis_name,
                     "--output_label", config['univariate']['output_label'],
                     "--abs_hr", str(config['univariate']['abs_hr']),
-                    "--covar_df", config['univariate']['covar_df'],
+                    "--covar_df", covar_df,
                     "--covar_gini", str(config['univariate']['covar_gini']),
                     "--ztransform_type", str(config['univariate']['ztransform_type'])
-                ]
+                ] + perm_args
                 command = ["python", "python_main_cell_type_spec_method/univar_association_testing.py"] + sub_args
                 result = subprocess.run(command)
                 if result.returncode != 0:
@@ -143,10 +183,10 @@ def main(args):
                     "--disease_name", dis_name,
                     "--output_label", config['univariate']['output_label'],
                     "--abs_hr", str(config['univariate']['abs_hr']),
-                    "--covar_df", config['univariate']['covar_df'],
+                    "--covar_df", covar_df,
                     "--covar_gini", str(config['univariate']['covar_gini']),
                     "--ztransform_type", str(config['univariate']['ztransform_type'])
-                ]
+                ] + perm_args
                 command = ["python", config['constants']["univar_script_path"]] + sub_args
                 try:
                     submit_job_and_wait(command, wait_time=10)
@@ -291,6 +331,24 @@ def main(args):
                 ]
                 command = ["python", config['constants']["rf_script_path"]] + sub_args
                 subprocess.run(command)
+
+    # Cross-disease summary: separate disease-specific cell-type hits from cell types that are
+    # significant for most diseases. Only meaningful when many diseases were run.
+    cd_cfg = config.get("cross_disease", {}) or {}
+    if cd_cfg.get("run", 0) == 1:
+        results_dir = f"{base_save_path}/{config['inputs']['disease_folder_name']}/{METHOD_SUBDIR['univariate']}"
+        cd_save = f"{base_save_path}/{config['inputs']['disease_folder_name']}/cross_disease_summary"
+        logger.info(f">>> Running cross-disease summary into {cd_save}")
+        command = ["python", "pipelines/cross_disease_summary.py",
+                   "--results_dir", results_dir,
+                   "--save_path", cd_save,
+                   "--sig_col", str(cd_cfg.get("sig_col", config["univar_to_multivar"]["column_to_choose"])),
+                   "--thres", str(cd_cfg.get("thres", config["univar_to_multivar"]["thres"])),
+                   "--generic_frac", str(cd_cfg.get("generic_frac", 0.5)),
+                   "--min_diseases", str(cd_cfg.get("min_diseases", 20))]
+        result = subprocess.run(command)
+        if result.returncode != 0:
+            logger.error(f">>> cross_disease_summary.py failed (exit code {result.returncode})")
 
 
 if __name__ == "__main__":
