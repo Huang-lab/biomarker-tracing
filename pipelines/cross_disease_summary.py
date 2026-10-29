@@ -90,7 +90,7 @@ def main(args):
         return (df.rename_axis(index="disease", columns="cell_tissue")
                   .reset_index().melt(id_vars="disease", var_name="cell_tissue", value_name=name))
     long = melt(T, "t").merge(melt(S, args.sig_col), on=["disease", "cell_tissue"])
-    if M is not None:
+    if M is not None and args.sig_col != "pval_maxT_one_side":
         long = long.merge(melt(M.reindex(index=T.index, columns=T.columns), "pval_maxT_one_side"),
                           on=["disease", "cell_tissue"], how="left")
     long = long.dropna(subset=["t"])
