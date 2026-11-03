@@ -1,0 +1,467 @@
+Disease	Disease_code	Disease_category
+Bacterial, viral and other infectious agents	AB1_BACT_BIR_OTHER_INF_AGENTS	Chapter I Certain infectious and parasitic diseases
+Candidiasis	AB1_CANDIDIASIS	Chapter I Certain infectious and parasitic diseases
+Diarrhoea and gastroenteritis of presumed infectious origin	AB1_GASTROENTERITIS_NOS	Chapter I Certain infectious and parasitic diseases
+Enterocolitis due to Clostridium difficile	C_DIFFICILE_ENTEROCOLITIS	Chapter I Certain infectious and parasitic diseases
+Intestinal infectious diseases	AB1_INTESTINAL_INFECTIONS	Chapter I Certain infectious and parasitic diseases
+Mycoses	AB1_MYCOSES	Chapter I Certain infectious and parasitic diseases
+Other bacterial agents as the cause of diseases classified to other chapters	AB1_OTHER_BACT_INOTHER	Chapter I Certain infectious and parasitic diseases
+Other bacterial diseases	AB1_OTHER_BACTERIAL	Chapter I Certain infectious and parasitic diseases
+Other bacterial intestinal infections	AB1_BACT_INTEST_OTH	Chapter I Certain infectious and parasitic diseases
+Other infectious diseases	AB1_OTHER_INFECTIONS	Chapter I Certain infectious and parasitic diseases
+Other septicaemia	AB1_OTHER_SEPSIS	Chapter I Certain infectious and parasitic diseases
+Other specified/unspecified bacterial intestinal infections	BACT_INTEST_INFECTION_NOS	Chapter I Certain infectious and parasitic diseases
+Other viral diseases	AB1_OTHER_VIRAL	Chapter I Certain infectious and parasitic diseases
+Other viral diseases, not elsewhere classified	AB1_VIRAL_NOS	Chapter I Certain infectious and parasitic diseases
+Streptococcus and staphylococcus as the cause of diseases classified to other chapters	AB1_STREPTSTAPHYCOCC_INOTHER	Chapter I Certain infectious and parasitic diseases
+Viral agents as the cause of diseases classified to other chapters	AB1_VIRAL_INOTHER	Chapter I Certain infectious and parasitic diseases
+Viral and other specified intestinal infections	AB1_VIRAL_OTHER_INTEST_INFECTIONS	Chapter I Certain infectious and parasitic diseases
+Viral hepatitis	AB1_VIRAL_HEPATITIS	Chapter I Certain infectious and parasitic diseases
+Viral infections characterized by skin and mucous membrane lesions	AB1_VIRAL_SKIN_MUCOUS_MEMBRANE	Chapter I Certain infectious and parasitic diseases
+Viral warts	AB1_VIRAL_WARTS	Chapter I Certain infectious and parasitic diseases
+Zoster [herpes zoster]	AB1_ZOSTER	Chapter I Certain infectious and parasitic diseases
+Benign neoplasm of colon, rectum, anus and anal canal	CD2_BENIGN_COLORECANI	Chapter II Neoplasms
+Benign neoplasm of other and ill-defined parts of digestive system	CD2_BENIGN_OTHERDIGESTIVE	Chapter II Neoplasms
+Benign neoplasm of other and unspecified endocrine glands	CD2_BENIGN_ENDOCRINE_OTH	Chapter II Neoplasms
+Benign neoplasm: Ascending colon	CD2_BENIGN_ASCENDING_COLON	Chapter II Neoplasms
+Benign neoplasm: Stomach	CD2_BENIGN_STOMACH	Chapter II Neoplasms
+Benign neoplasm: Transverse colon	CD2_BENIGN_TRANSVERSE_COLON	Chapter II Neoplasms
+Chronic lymphocytic leukaemia and small lyphocytis leukaemia, excluding all cancers (controls excluding all cancers)	C3_CLL_EXALLC	Chapter II Neoplasms
+Diffuse large B-cell lymphoma, excluding all cancers (controls excluding all cancers)	C3_DLBCL_EXALLC	Chapter II Neoplasms
+Leiomyoma of uterus	CD2_BENIGN_LEIOMYOMA_UTERI	Chapter II Neoplasms
+Lymphoid leukaemia	CD2_LYMPHOID_LEUKAEMIA_EXALLC	Chapter II Neoplasms
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	C3_MELANOMA_SKIN_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	C3_BREAST_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of corpus uteri, excluding all cancers (controls excluding all cancers)	C3_CORPUS_UTERI_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of intrahepatic ducts, biliary tract and gallbladder, excluding all cancers (controls excluding all cancers)	C3_BILIARY_GALLBLADDER_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of kidney, except renal pelvis, excluding all cancers (controls excluding all cancers)	C3_KIDNEY_NOTRENALPELVIS_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of oesophagus, excluding all cancers (controls excluding all cancers)	C3_OESOPHAGUS_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	C3_PROSTATE_EXALLC	Chapter II Neoplasms
+Malignant neoplasm of stomach, excluding all cancers (controls excluding all cancers)	C3_STOMACH_EXALLC	Chapter II Neoplasms
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	C3_NONHODGKIN_EXALLC	Chapter II Neoplasms
+Non-follicular lymphoma, hilmo, excluding all cancers	CD2_NONFOLLICULAR_LYMPHOMA_EXALLC	Chapter II Neoplasms
+Non-small cell lung cancer, excluding all cancers (controls excluding all cancers)	C3_LUNG_NONSMALL_EXALLC	Chapter II Neoplasms
+Other and unspecified types of non-Hodgkin lymphoma, hilmo, excluding all cancers	CD2_NONHODGKIN_NAS_EXALLC	Chapter II Neoplasms
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	C3_OTHER_SKIN_EXALLC	Chapter II Neoplasms
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	C3_SQUOMOUS_CELL_CARCINOMA_SKIN_EXALLC	Chapter II Neoplasms
+Agranulocytosis	D3_AGRANULOCYTOSIS	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Anaemia in chronic diseases classified elsewhere	D3_ANAEMIAINCHRONICDISEASE	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Diseases of spleen	D3_SPLEENDISEASE	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Folate deficiency anaemia	D3_ANAEMIA_FOLATEDEF	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Idiopathic thrombocytopenic purpura	D3_ITP	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Other and unspecified anaemias	D3_ANAEMIANAS	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Other and unspecified aplastic anaemias	D3_OTHERAPLASTICANAEMIA	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Other and unspecified iron deficiency	D3_ANAEMIA_IRONDEF_NAS	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Other coagulation defects	D3_COAGOTHER	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Other diseases of blood and blood-forming organs	D3_OTHERBLOOD	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Purpura and other haemorrhagic conditions	D3_PURPURA_AND3_OTHER_HAEMORRHAGIC	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Sarcoidosis	D3_SARCOIDOSIS	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Thrombocytopenia, unspecified	D3_THROMBOCYTOPENIANAS	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Vitamin B12 deficiency anaemia	D3_ANAEMIA_B12_DEF	Chapter III Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Acidosis	E4_ACIDOSIS	Chapter IV Endocrine, nutritional and metabolic diseases
+Acute alcohol intoxication	F5_ALCOHOLAC	Chapter IV Endocrine, nutritional and metabolic diseases
+Alcohol dependence	F5_ALCOHOL_DEPENDENCE	Chapter IV Endocrine, nutritional and metabolic diseases
+Bipolar affective disorders	F5_BIPO	Chapter IV Endocrine, nutritional and metabolic diseases
+Deficiency of other B group vitamins	E4_VIT_B_DEF	Chapter IV Endocrine, nutritional and metabolic diseases
+Delirium, not induced by alcohol and other psychoactive substances	F5_DELIRIUM	Chapter IV Endocrine, nutritional and metabolic diseases
+Dementia in Alzheimer disease	F5_ALZHDEMENT	Chapter IV Endocrine, nutritional and metabolic diseases
+Dementia in other diseases classified elsewhere	F5_DEMINOTH	Chapter IV Endocrine, nutritional and metabolic diseases
+Depression	F5_DEPRESSIO	Chapter IV Endocrine, nutritional and metabolic diseases
+Depression or dysthymia	F5_DEPRESSION_DYSTHYMIA	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorder of lipoprotein metabolism, unspecified	E4_LIPOPROTNAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of iron metabolism	E4_IRON_MET	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of lipoprotein metabolism and other lipidaemias	E4_LIPOPROT	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of magnesium metabolism	E4_MG_MET	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of mineral metabolism	E4_MINERAL_MET	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of other endocrine glands	E4_ENDOGLAND	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of parathyroid gland	E4_PARATHYRO	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of phosphorus metabolism and phosphatases	E4_PHOS_MET	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of plasma-protein metabolism, not elsewhere classified	E4_PLASMAPROT	Chapter IV Endocrine, nutritional and metabolic diseases
+Disorders of the thyroid gland	E4_THYROID	Chapter IV Endocrine, nutritional and metabolic diseases
+Hyperkalaemia	E4_HYPERKALAEMIA	Chapter IV Endocrine, nutritional and metabolic diseases
+Hyperlipidaemia, other/unspecified	E4_HYPERLIPNAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Hyperosmolality and hypernatraemia	E4_HYPEROSMHNAT	Chapter IV Endocrine, nutritional and metabolic diseases
+Hyperparathyroidism	E4_HYPERPARA	Chapter IV Endocrine, nutritional and metabolic diseases
+Hypo-osmolality and hyponatraemia	E4_HYPOOSMNAT	Chapter IV Endocrine, nutritional and metabolic diseases
+Hypokalaemia	E4_HYPOKALAEMIA	Chapter IV Endocrine, nutritional and metabolic diseases
+Iron deficiency	E4_FE_DEF	Chapter IV Endocrine, nutritional and metabolic diseases
+Metabolic disorders	E4_METABOLIA	Chapter IV Endocrine, nutritional and metabolic diseases
+Nontoxic multinodular goitre	E4_GOITREMULTINOD	Chapter IV Endocrine, nutritional and metabolic diseases
+Obesity	E4_OBESITY	Chapter IV Endocrine, nutritional and metabolic diseases
+Obesity, other/unspecified	E4_OBESITYNAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Other and/or unspecified nontoxic goitre	E4_GOITRENAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Other anxiety disorders	F5_ANXIETY	Chapter IV Endocrine, nutritional and metabolic diseases
+Other disorders of fluid, electrolyte and acid-base balance	E4_FLUIDELECTRO	Chapter IV Endocrine, nutritional and metabolic diseases
+Other disorders of glucose regulation and pancreatic internal secretion	E4_GLUCOPANCREAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Other mental disorders due to brain damage and dysfunction and to physical disease	F5_MENTORG	Chapter IV Endocrine, nutritional and metabolic diseases
+Panic disorder	F5_PANIC	Chapter IV Endocrine, nutritional and metabolic diseases
+Postprocedural endocrine and metabolic disorders, not elsewhere classified	E4_ENDOMETPOSTOP	Chapter IV Endocrine, nutritional and metabolic diseases
+Pure hypercholesterolaemia	E4_HYPERCHOL	Chapter IV Endocrine, nutritional and metabolic diseases
+Type 2 diabetes with neurological complications	E4_DM2NEU	Chapter IV Endocrine, nutritional and metabolic diseases
+Type 2 diabetes with ophthalmic complications	E4_DM2OPTH	Chapter IV Endocrine, nutritional and metabolic diseases
+Type 2 diabetes with peripheral circulatory complications	E4_DM2PERIPH	Chapter IV Endocrine, nutritional and metabolic diseases
+Type 2 diabetes with renal complications	E4_DM2REN	Chapter IV Endocrine, nutritional and metabolic diseases
+Unspecified dementia	F5_DEMNAS	Chapter IV Endocrine, nutritional and metabolic diseases
+Vitamin D deficiency	E4_VIT_D_DEF	Chapter IV Endocrine, nutritional and metabolic diseases
+Volume depletion	E4_VOLUME	Chapter IV Endocrine, nutritional and metabolic diseases
+AV-block	I9_AVBLOCK	Chapter IX Diseases of the circulatory system
+Abdominal aortic aneurysm (AAA)	I9_ABAORTANEUR	Chapter IX Diseases of the circulatory system
+Angina pectoris	I9_ANGINA	Chapter IX Diseases of the circulatory system
+Aortic aneurysm	I9_AORTANEUR	Chapter IX Diseases of the circulatory system
+Arterial embolism and thrombosis of lower extremity artery	I9_ARTEMBTHRLOW	Chapter IX Diseases of the circulatory system
+Atherosclerosis, excluding cerebral and coronary sclerosis	I9_ATHSCLE	Chapter IX Diseases of the circulatory system
+Atrial fibrillation and flutter	I9_AF	Chapter IX Diseases of the circulatory system
+Cardiac arrest	I9_CARDARR	Chapter IX Diseases of the circulatory system
+Cardiomyopathy	I9_CARDMYO	Chapter IX Diseases of the circulatory system
+Cardiomyopathy, other and unspecified	I9_CARDMYOOTH	Chapter IX Diseases of the circulatory system
+Cerebral atherosclerosis	I9_CEREBATHER	Chapter IX Diseases of the circulatory system
+Conduction disorders	I9_CONDUCTIO	Chapter IX Diseases of the circulatory system
+Coronary atherosclerosis	I9_CORATHER	Chapter IX Diseases of the circulatory system
+DVT of lower extremities	I9_PHLETHROMBDVTLOW	Chapter IX Diseases of the circulatory system
+Death due to cardiac causes	I9_K_CARDIAC	Chapter IX Diseases of the circulatory system
+Endocarditis	I9_ENDOCARD	Chapter IX Diseases of the circulatory system
+Heart failure, strict	I9_HEARTFAIL	Chapter IX Diseases of the circulatory system
+Hypertension	I9_HYPTENS	Chapter IX Diseases of the circulatory system
+Hypertension, Pulmonary Arterial	I9_HYPTENSPUL	Chapter IX Diseases of the circulatory system
+Hypertension, essential	I9_HYPTENSESS	Chapter IX Diseases of the circulatory system
+Hypertensive Renal Disease	I9_HYPTENSRD	Chapter IX Diseases of the circulatory system
+Hypotension	I9_HYPOTE	Chapter IX Diseases of the circulatory system
+Ischaemic heart disease, wide definition	I9_IHD	Chapter IX Diseases of the circulatory system
+Left bundle-branch block	I9_LBBB	Chapter IX Diseases of the circulatory system
+Major coronary heart disease event	I9_CHD	Chapter IX Diseases of the circulatory system
+Myocardial infarction, strict	I9_MI_STRICT	Chapter IX Diseases of the circulatory system
+Oesophageal varices	I9_VARICVEOES	Chapter IX Diseases of the circulatory system
+Other aneurysm	I9_OTHANEUR	Chapter IX Diseases of the circulatory system
+Other arrhythmias	I9_OTHARR	Chapter IX Diseases of the circulatory system
+Other arterial embolism and thrombosis	I9_ARTEMBTHRNAS	Chapter IX Diseases of the circulatory system
+Other diseases of arteries and capillaries	I9_ARTOTH	Chapter IX Diseases of the circulatory system
+Other diseases of pericardium	I9_PERICAOTH	Chapter IX Diseases of the circulatory system
+Other disorders of veins	I9_VEINSOTH	Chapter IX Diseases of the circulatory system
+Other embolism and thrombosis	I9_THROMBOTH	Chapter IX Diseases of the circulatory system
+Other noninfective disorders of lymphatic vessels and lymph nodes	I9_LYMPHOTH	Chapter IX Diseases of the circulatory system
+Other or ill-defined heart diseases	I9_OTHILLHEART	Chapter IX Diseases of the circulatory system
+Other other unspecified disorders of the circulatory system	I9_OTHOTH	Chapter IX Diseases of the circulatory system
+Other peripheral vascular diseases	I9_OTHPER	Chapter IX Diseases of the circulatory system
+Other specified cerebrovascular diseases, other cerebrovascular disorders in diseases classified elsewhere	I9_CEREBDOTH	Chapter IX Diseases of the circulatory system
+Paroxysmal tachycardia	I9_PAROXTAC	Chapter IX Diseases of the circulatory system
+Phlebitis and thrombophlebitis (not including DVT)	I9_PHLETHROM	Chapter IX Diseases of the circulatory system
+Pulmonary embolism	I9_PULMEMB	Chapter IX Diseases of the circulatory system
+Rheumatic valve diseases	I9_RHEUVALV	Chapter IX Diseases of the circulatory system
+Right bundle-branch block	I9_RBBB	Chapter IX Diseases of the circulatory system
+Secondary right heart disease	I9_SECONDRIGHT	Chapter IX Diseases of the circulatory system
+Sequelae of cerebrovascular disease	I9_SEQULAE	Chapter IX Diseases of the circulatory system
+Stroke, excluding SAH	I9_STR	Chapter IX Diseases of the circulatory system
+Thoracic aortic aneurysm	I9_THAORTANEUR	Chapter IX Diseases of the circulatory system
+Transient ischemic attack	I9_TIA	Chapter IX Diseases of the circulatory system
+Unstable angina pectoris	I9_UAP	Chapter IX Diseases of the circulatory system
+Varicose veins	I9_VARICVE	Chapter IX Diseases of the circulatory system
+Vascular diseases of the intestine	I9_VASCINT	Chapter IX Diseases of the circulatory system
+Venous thromboembolism	I9_VTE	Chapter IX Diseases of the circulatory system
+Acute alcohol intoxication, ICD10	ALCOHOLACUTE10	Chapter V Mental and behavioural disorders
+Alcohol abuse, main dg, excluding more controls	KRA_PSY_ALCOH_EXMORE	Chapter V Mental and behavioural disorders
+Alcohol use disorder, ICD-based	AUD	Chapter V Mental and behavioural disorders
+Anxiety disorders, excluding more controls	KRA_PSY_ANXIETY_EXMORE	Chapter V Mental and behavioural disorders
+Any mental disorder	KRA_PSY_ANYMENTAL	Chapter V Mental and behavioural disorders
+Schizophrenia or delusion, excluding more controls	KRA_PSY_SCHIZODEL_EXMORE	Chapter V Mental and behavioural disorders
+Smoking dependency	SMOKING_DEPEND	Chapter V Mental and behavioural disorders
+Substance abuse, excluding more controls	KRA_PSY_SUBSTANCE_EXMORE	Chapter V Mental and behavioural disorders
+Vascular dementia	F5_VASCDEM	Chapter V Mental and behavioural disorders
+Alzheimer disease	G6_ALZHEIMER	Chapter VI Diseases of the nervous system
+AlzheimerÕs disease (Atypical or mixed), excluding more controls	AD_AM_EXMORE	Chapter VI Diseases of the nervous system
+Bell's palsy	G6_BELLPA	Chapter VI Diseases of the nervous system
+Carpal tunnel syndrome	G6_CARPTU	Chapter VI Diseases of the nervous system
+Cerebral cysts	G6_CERCYST	Chapter VI Diseases of the nervous system
+Cerebral palsy and other paralytic syndromes	G6_CPETAL	Chapter VI Diseases of the nervous system
+Circumscribed brain atrophy	G6_ATROPHCIRCUM	Chapter VI Diseases of the nervous system
+Diseases of the myoneural junction and muscle	G6_MYONEU	Chapter VI Diseases of the nervous system
+Disorders of brain, other and unspecified	G6_DISBROTHUNS	Chapter VI Diseases of the nervous system
+Epilepsy	G6_EPLEPSY	Chapter VI Diseases of the nervous system
+Episodal and paroxysmal disorders	G6_EPIPAROX	Chapter VI Diseases of the nervous system
+Extrapyramidal and movement disorders	G6_XTRAPYR	Chapter VI Diseases of the nervous system
+Falls/tendency to fall	FALLS	Chapter VI Diseases of the nervous system
+Generalized epilepsy	GE	Chapter VI Diseases of the nervous system
+Hemiplegia	G6_HEMIPLE	Chapter VI Diseases of the nervous system
+Hydrocephalus	G6_HYDROCEPH	Chapter VI Diseases of the nervous system
+Inflammatory diseases of the central nervous system	G6_NEUINFL	Chapter VI Diseases of the nervous system
+MS-disease / Multiple Sclerosis	G6_MS	Chapter VI Diseases of the nervous system
+Migraine	G6_MIGRAINE	Chapter VI Diseases of the nervous system
+Migraine, unspecified, drug-induced	MIGRAINE_UNSPE	Chapter VI Diseases of the nervous system
+Motor neuron disease	G6_ALS	Chapter VI Diseases of the nervous system
+Nerve, nerve root and plexus disorders	G6_NERPLEX	Chapter VI Diseases of the nervous system
+Other and unspecified degenerative diseases of nervous system	G6_DEGENOTH	Chapter VI Diseases of the nervous system
+Other and unspecified nerve root and plexus disorders, also in other diseases	G6_ROOTPLEXOTHUNS	Chapter VI Diseases of the nervous system
+Other and unspecified polyneuropathies, also in other diseases	G6_POLYOTHUNS	Chapter VI Diseases of the nervous system
+Other degenerative diseases of the nervous system	NEURODEGOTH	Chapter VI Diseases of the nervous system
+Other disorders of nervous system	G6_NEUROOTH	Chapter VI Diseases of the nervous system
+Other extrapyramidal and movement disorders in other diseases	G6_XTRAPYROTH	Chapter VI Diseases of the nervous system
+Other facial nerve disorders	G6_FACOTH	Chapter VI Diseases of the nervous system
+Other neurological diseases	G6_OTHNEU	Chapter VI Diseases of the nervous system
+Other sleep disorders	G6_SLEEPDISOTH	Chapter VI Diseases of the nervous system
+Parkinson's disease	G6_PARKINSON	Chapter VI Diseases of the nervous system
+Sleep apnoea	G6_SLEEPAPNO	Chapter VI Diseases of the nervous system
+Small fibre neuropathy	SFN	Chapter VI Diseases of the nervous system
+Systemic atrophies primarily affecting the central nervous system	G6_NEUATR	Chapter VI Diseases of the nervous system
+Vascular dementia (undefined)	VD_U	Chapter VI Diseases of the nervous system
+Conjunctivitis (acute, non atopic)	H7_CONJUNCTIVITISACUNONATOPIC	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Diabetic maculopathy, excluding more controls	DM_MACULOPATHY_EXMORE	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Diabetic nephropathy, excluding more controls	DM_NEPHROPATHY_EXMORE	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Diabetic neuropathy	DM_NEUROPATHY	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Disorders of choroid and retina	H7_CHOROIDRETINA	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Disorders of ocular muscles, binocular movement, accommodation and refraction	H7_OCUMUSCLE	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Glaucoma	H7_GLAUCOMA	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other and unspecified glaucoma	H7_GLAUCNAS	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other and unspecified visual disturbances	H7_VISDISTNAS	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other cataract	H7_CATARACTOTHER	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other disorders of eye and adnexa	H7_EYEOTH	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other specified and unspecified retinal disorders	H7_RETINANAS	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other, unspecified and serous retinal detachments	H7_RETINALDETACHOTH	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Senile cataract	H7_CATARACTSENILE	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Visual disturbances	H7_VISUDISTURB	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Visual impairment including blindness (binocular or monocular)	H7_BLINDANDVISIMPAIRMENT	Chapter VII Diseases of the eye, adnexa, ear and mastoid process
+Other disorders of ear	H8_OTHEREAR	Chapter VIII Diseases of the ear and mastoid process
+Other specified/unspecified hearing loss	H8_HL_NAS	Chapter VIII Diseases of the ear and mastoid process
+Acute pharyngitis	J10_PHARYNGITIS	Chapter X Diseases of the respiratory system
+Acute upper respiratory infections	J10_UPPERINFEC	Chapter X Diseases of the respiratory system
+Acute upper respiratory infections of multiple and unspecified sites	J10_ACUTEUPPERINFEC	Chapter X Diseases of the respiratory system
+All influenza	J10_INFLUENZA	Chapter X Diseases of the respiratory system
+All influenza (not pneumonia)	INFLUENZA	Chapter X Diseases of the respiratory system
+Allergic asthma (mode)	ALLERG_ASTHMA	Chapter X Diseases of the respiratory system
+Asthma, excluding more controls	J10_ASTHMA_EXMORE	Chapter X Diseases of the respiratory system
+Asthma, unspecified (mode)	ASTHMA_NAS	Chapter X Diseases of the respiratory system
+Bronchiectasis	J10_BRONCHIECTASIS	Chapter X Diseases of the respiratory system
+Bronchitis, not specified as acute or chronic	J10_BRONCH	Chapter X Diseases of the respiratory system
+Chronic lower respiratory diseases	J10_LOWCHRON	Chapter X Diseases of the respiratory system
+Chronic sinusitis	J10_CHRONSINUSITIS	Chapter X Diseases of the respiratory system
+Diseases of vocal cords and larynx+other diseases of upper respiratory tract, no elsewhere classified	J10_VOCALLARYNX	Chapter X Diseases of the respiratory system
+Early onset COPD	COPD_EARLY	Chapter X Diseases of the respiratory system
+Emphysema	J10_EMPHYSEMA	Chapter X Diseases of the respiratory system
+Idiopathic pulmonary fibrosis	IPF	Chapter X Diseases of the respiratory system
+Influenza and pneumonia	J10_INFLUPNEU	Chapter X Diseases of the respiratory system
+Interstitial lung disease	ILD	Chapter X Diseases of the respiratory system
+Later onset COPD	COPD_LATER	Chapter X Diseases of the respiratory system
+Lung diseases due to external agents	J10_EXTERLUNG	Chapter X Diseases of the respiratory system
+Nasal polyp	J10_NASALPOLYP	Chapter X Diseases of the respiratory system
+Other acute lower respiratory infections	J10_LOWERINF	Chapter X Diseases of the respiratory system
+Other diseases of pleura	J10_PLEURA	Chapter X Diseases of the respiratory system
+Other diseases of upper respiratory tract	J10_UPPERDIS	Chapter X Diseases of the respiratory system
+Other pleural conditions	J10_PLEUROTH	Chapter X Diseases of the respiratory system
+Pleural effusion	J10_PLEUREFFUSION	Chapter X Diseases of the respiratory system
+Pleural plaque	J10_PLEURPLAGUE	Chapter X Diseases of the respiratory system
+Pneumonitis due to solids and liquids	J10_PNEUMONISOLLIQ	Chapter X Diseases of the respiratory system
+Pneumothorax	J10_PNEUMOTHORAX	Chapter X Diseases of the respiratory system
+Pulmonary oedema	J10_PULMOEDEMA	Chapter X Diseases of the respiratory system
+Unspecified acute lower respiratory infection	J10_ACUTELOWERNAS	Chapter X Diseases of the respiratory system
+Viral pneumonia	J10_VIRALPNEUMO	Chapter X Diseases of the respiratory system
+Viral pneumonia (unknown virus, not influenza)	VIRALPNEUMONAS	Chapter X Diseases of the respiratory system
+Vocal cord dysfunction	VOCALCORDDYS	Chapter X Diseases of the respiratory system
+Abscess of anal and rectal regions	K11_ABSCANAL	Chapter XI Diseases of the digestive system
+Acute gastritis	K11_ACUTGASTR	Chapter XI Diseases of the digestive system
+Acute pancreatitis	K11_ACUTPANC	Chapter XI Diseases of the digestive system
+Acute peritonitis	K11_PERITONITIS	Chapter XI Diseases of the digestive system
+Alcoholic liver disease	K11_ALCOLIV	Chapter XI Diseases of the digestive system
+Barrett oesophagus	K11_BARRET	Chapter XI Diseases of the digestive system
+Cholangitis (primary sclerosing, PSC)	K11_CHOLANGI	Chapter XI Diseases of the digestive system
+Cholangitis (primary sclerosing, PSC), with reimbursement 202	K11_CHOLANGI_STRICT	Chapter XI Diseases of the digestive system
+Cholecystitis	K11_CHOLECYST	Chapter XI Diseases of the digestive system
+Cholelithiasis	K11_CHOLELITH	Chapter XI Diseases of the digestive system
+Chronic gastritis	K11_CHRONGASTR	Chapter XI Diseases of the digestive system
+Chronic pancreatitis	K11_CHRONPANC	Chapter XI Diseases of the digestive system
+Cirrhosis of liver, NAS	CHIRHEP_NAS	Chapter XI Diseases of the digestive system
+Coeliac disease	K11_COELIAC	Chapter XI Diseases of the digestive system
+Colonic or urogenital fistula	K11_FISTULA	Chapter XI Diseases of the digestive system
+Constipation	K11_CONSTIPATION	Chapter XI Diseases of the digestive system
+Crohn disease (strict definition, require KELA, min 2 HDR)	K11_CD_STRICT2	Chapter XI Diseases of the digestive system
+Crohn's disease NAS	CHRONNAS	Chapter XI Diseases of the digestive system
+Diaphragmatic hernia	K11_DIAHER	Chapter XI Diseases of the digestive system
+Diseases of liver	K11_LIVER	Chapter XI Diseases of the digestive system
+Diseases of oesophagus, stomach and duodenum	K11_OESSTODUO	Chapter XI Diseases of the digestive system
+Diseases of oral cavity, salivary glands and jaws	K11_ORAL	Chapter XI Diseases of the digestive system
+Diseases of peritoneum	K11_PERITON	Chapter XI Diseases of the digestive system
+Diseases of the digestive system	K11_OTHDIG	Chapter XI Diseases of the digestive system
+Diverticular disease of intestine	K11_DIVERTIC	Chapter XI Diseases of the digestive system
+Duodenal ulcer	K11_DULC	Chapter XI Diseases of the digestive system
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	DUODENAL_ULCER_UNSPE_ACUTE_CHRONIC_WO_HAEMORRHAGE_PERFORATION	Chapter XI Diseases of the digestive system
+Fibrosis and cirrhosis of liver	K11_FIBROCHIRLIV	Chapter XI Diseases of the digestive system
+Functional dyspepsia	K11_FUNCDYSP	Chapter XI Diseases of the digestive system
+Gastric ulcer	K11_GULC	Chapter XI Diseases of the digestive system
+Gastro-oesophageal reflux disease	K11_REFLUX	Chapter XI Diseases of the digestive system
+Gastroduodenal ulcer	K11_GASTRODUOULC	Chapter XI Diseases of the digestive system
+Haemorrhoids and perianal venous thrombosis	K11_HAEMORR	Chapter XI Diseases of the digestive system
+Hepatic failure, not elsewhere classified	K11_HEPFAIL	Chapter XI Diseases of the digestive system
+Hernia	K11_HERNIA	Chapter XI Diseases of the digestive system
+Impaction of intestines	K11_IMPACT	Chapter XI Diseases of the digestive system
+Inguinal hernia	K11_HERING	Chapter XI Diseases of the digestive system
+Intestinal adhesions without obstruction	K11_ADHE	Chapter XI Diseases of the digestive system
+Intestinal malabsorption	K11_MALABSORB	Chapter XI Diseases of the digestive system
+Irritable bowel syndrome	K11_IBS	Chapter XI Diseases of the digestive system
+Nonalcoholic fatty liver disease	NAFLD	Chapter XI Diseases of the digestive system
+Noninfective enteritis and colitis	K11_ENERCOLNONINF	Chapter XI Diseases of the digestive system
+Oesophageal obstruction	K11_OESOBST	Chapter XI Diseases of the digestive system
+Oesophagitis	K11_OESITIS	Chapter XI Diseases of the digestive system
+Other diseases of anus and rectum	K11_OTHANRECT	Chapter XI Diseases of the digestive system
+Other diseases of biliary tract	K11_BILIAOTH	Chapter XI Diseases of the digestive system
+Other diseases of intestine	K11_OTHINT	Chapter XI Diseases of the digestive system
+Other diseases of intestines	K11_INTESTOTH	Chapter XI Diseases of the digestive system
+Other diseases of liver	K11_DISLIVOTH	Chapter XI Diseases of the digestive system
+Other diseases of oesophagus	K11_OTHDISOES	Chapter XI Diseases of the digestive system
+Other diseases of pancreas	K11_PANCOTH	Chapter XI Diseases of the digestive system
+Other diseases of peritoneum	K11_OTHPERITON	Chapter XI Diseases of the digestive system
+Other diseases of stomach and duodenum	K11_OTHDISSTOMDUOD	Chapter XI Diseases of the digestive system
+Other diseases of the digestive system	K11_OTHDISDIG	Chapter XI Diseases of the digestive system
+Other functional intestinal disorders	K11_OTHFUNC	Chapter XI Diseases of the digestive system
+Other gastritis (incl. Duodenitis)	K11_OTHGASTR	Chapter XI Diseases of the digestive system
+Other inflammatory liver diseases	K11_OTHINFLIV	Chapter XI Diseases of the digestive system
+Other noninfective gastroenteritis and colitis	K11_OTHENTERCOL	Chapter XI Diseases of the digestive system
+Other or unspecified ileus, impaction or obstruction	K11_OTHILEUS	Chapter XI Diseases of the digestive system
+Paralytic ileus and intestinal obstruction	K11_ILEUS	Chapter XI Diseases of the digestive system
+Postprocedural disorders of digestive system, not elsewhere classified	K11_POSTOPDIS	Chapter XI Diseases of the digestive system
+Stomatitis and related lesions	K11_STOMATITIS	Chapter XI Diseases of the digestive system
+Ulcer of oesophagus	K11_OESULC	Chapter XI Diseases of the digestive system
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	K11_UC_STRICT2	Chapter XI Diseases of the digestive system
+Ulcerative colitis, NAS	ULCERNAS	Chapter XI Diseases of the digestive system
+Umbilical hernia	K11_UMBHER	Chapter XI Diseases of the digestive system
+Vascular disorders of the intestines	K11_VASCINT	Chapter XI Diseases of the digestive system
+Ventral hernia	K11_VENTHER	Chapter XI Diseases of the digestive system
+Volvulus	K11_VOLVU	Chapter XI Diseases of the digestive system
+Actinic keratosis	L12_ACTINKERA	Chapter XII Diseases of the skin and subcutaneous tissue
+Cellulitis	L12_CELLULITIS	Chapter XII Diseases of the skin and subcutaneous tissue
+Cutaneous abscess, furuncle and carbuncle	L12_ABSCESS_CUT	Chapter XII Diseases of the skin and subcutaneous tissue
+Decubitus ulcer and pressure area	L12_DECUBITANSULCERANDPRESSURE	Chapter XII Diseases of the skin and subcutaneous tissue
+Dermatitis	L12_DERMATITISNAS	Chapter XII Diseases of the skin and subcutaneous tissue
+Dermatitis and eczema	L12_DERMATITISECZEMA	Chapter XII Diseases of the skin and subcutaneous tissue
+Dermatitis due to substances taken internally	L12_INTERNALSUBSTANCEDERM	Chapter XII Diseases of the skin and subcutaneous tissue
+Infections of the skin and subcutaneous tissue	L12_INFECT_SKIN	Chapter XII Diseases of the skin and subcutaneous tissue
+Lupus erythematosus	L12_LUPUS	Chapter XII Diseases of the skin and subcutaneous tissue
+Nail disorders	L12_NAILDIS	Chapter XII Diseases of the skin and subcutaneous tissue
+Other and unspecified disorders of skin and subcutaneous tissue	L12_SKINSUBCUTISNAS	Chapter XII Diseases of the skin and subcutaneous tissue
+Other and unspecified psoriasis	L12_PSORI_NAS	Chapter XII Diseases of the skin and subcutaneous tissue
+Other contact dermatitis	L12_OTHERCONTACT	Chapter XII Diseases of the skin and subcutaneous tissue
+Other disorders of skin and subcutaneous tissue	L12_OTHERSKINSUBCUTIS	Chapter XII Diseases of the skin and subcutaneous tissue
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	L12_OTHERDISSKINANDSUBCUTIS	Chapter XII Diseases of the skin and subcutaneous tissue
+Papulosquamous disorders	L12_PAPULOSQUAMOUS	Chapter XII Diseases of the skin and subcutaneous tissue
+Pruritus	L12_PRURITUS	Chapter XII Diseases of the skin and subcutaneous tissue
+Psoriasis	L12_PSORIASIS	Chapter XII Diseases of the skin and subcutaneous tissue
+Ulcer of lower limb, not elsewhere classified	L12_ULCERLOWLIMB	Chapter XII Diseases of the skin and subcutaneous tissue
+Arthropathies	M13_ARTHROPATHIES	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Arthrosis	M13_ARTHROSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Artrosis, including avohilmo	M13_ARTHROSIS_INCLAVO	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Cervical disc disorders	M13_CERVICDISC	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Cervicalgia	M13_CERVICALGIA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Collapsed vertebra, not elsewhere classified	M13_VERTEBCOLLAPSE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Coxarthrosis	M13_ARTHTROSIS_COX	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Coxarthrosis, primary	M13_ARTHTROSIS_COX_PRIM_ICD10	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Deforming dorsopathies	M13_DEFORMDORSO	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Disorders of continuity of bone	M13_BONECONTINUITY	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Disorders of muscles	M13_MUSCLE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Disorders of synovium and tendon	M13_SYNOTEND	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Dorsopathies	M13_DORSOPATHY	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Fibroblastic disorders	M13_FIBROBLASTIC	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Fibromyalgia	M13_FIBROMYALGIA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Gonarthrosis	M13_ARTHROSIS_KNEE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Gout	M13_GOUT	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Gout, unspecified	GOUT_NOS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Hallux rigidus	M13_HALLUXRIGIDUS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Hallux valgus (acquired)	M13_HALLUXVALGUS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Internal derangement of knee	M13_KNEEDERANGEMENTS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Kyphosis	M13_KYPHOSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Low back pain	M13_LOWBACKPAIN	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Meniscus derangement	M13_MENISCUSDERANGEMENTS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Myalgia	M13_MYALGIA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Neuralgia and neuritis, unspecified	M13_NEURALGIA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Osteomyelitis	M13_OSTEOMYELITIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Osteopathies and chondropathies	M13_OSTEOCHONDRO	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Osteoporosis	M13_OSTEOPOROSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other (seronegative) rheumatoid arthritis, wide	RHEUMA_OTHER_WIDE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other arthrosis	M13_ARTHROSIS_OTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other bursopathies	M13_BURSOPATHY	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other crystal arthropathies	M13_CRYSTALARTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other deformities of toe(s)	M13_TOEDEFORMOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other disorders of bone density and structure	M13_BONEDENSOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other disorders of the musculoskeletal system and connective tissue	M13_MUSCULOSKELEOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other dorsopathies, not elsewhere classified	M13_DORSOPATHYOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other enthesopathies	M13_ENTESOPATHYOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other hammer toe(s) (acquired)	M13_HAMMERTOE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other intervertebral disc disorders	M13_INTERVERTEB	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other joint disorders	M13_OTHERJOINT	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other soft tissue disorders, not elsewhere classified	M13_SOFTTISSUEOTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other specified disorders of muscle	M13_MUSCLEDISNAS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other specified/unspecified soft tissue disorders	M13_SOFTTISSUENAS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other/unspecified dorsalgia	M13_DORSALGIANAS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other/unspecified rheumatoid arthritis	RHEUMA_NOS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other/unspecified seropositive rheumatoid arthritis	RHEUMA_SEROPOS_OTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Other/unspecified synovitis and tenosynovitis	M13_TENDOSYNOVITISNAS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Pain in joint	JOINTPAIN	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Pain in limb	M13_LIMBPAIN	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Palmar fascial fibromatosis [Dupuytren]	M13_DUPUTRYEN	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Polyarthropathies	M13_POLYARTHROPATHIES	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Polyarthrosis	M13_ARTHROSIS_POLY	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Polymyalgia rheumatica	M13_POLYMYALGIA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Postprocedural musculoskeletal disorders, not elsewhere classified	M13_POSTOPMUSCULOSKE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Primary gonarthrosis, bilateral	PRIM_KNEEARTHROSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Psoriatic arthropathies	M13_PSORIARTH	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Rheumatoid arthritis	M13_RHEUMA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Rotator cuff syndrome	M13_ROTATORCUFF	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Sciatica+with lumbago	M13_SCIATICA	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Scoliosis	M13_SCOLIOSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Seronegative rheumatoid arthritis	RHEUMA_SERONEG	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Seropositive rheumatoid arthritis, wide	RHEUMA_SEROPOS_WIDE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Shoulder lesions	M13_SHOULDER	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Sicca syndrome [Sjgren]	M13_SJOGREN	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Soft tissue disorders	M13_SOFTTISSUE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Soft tissue disorders related to use, overuse and pressure	M13_SOFTOVERUSE	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Spinal stenosis	M13_SPINSTENOSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Spondyloarthritis	SPONDYLOARTHRITIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Spondylolisthesis/Spondylolysis	M13_SPONDYLOLISTHESIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Spondylopathies	M13_SPONDYLOPATHY	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Spondylosis	M13_SPONDYLOSIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Trigger finger	M13_TRIGGERFINGER	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Trochanteric bursitis	M13_TROCHANTERICBURSITIS	Chapter XIII Diseases of the musculoskeletal system and connective tissue
+Acute renal failure	N14_ACUTERENFAIL	Chapter XIV Diseases of the genitourinary system
+Adenomyosis (Endometriosis of uterus)	N14_ENDOMETRIOSIS_UTERUS	Chapter XIV Diseases of the genitourinary system
+Calculus of kidney and ureter	N14_CALCUKIDUR	Chapter XIV Diseases of the genitourinary system
+Calculus of lower urinary tract	N14_CALCULOWER	Chapter XIV Diseases of the genitourinary system
+Chronic kidney disease	N14_CHRONKIDNEYDIS	Chapter XIV Diseases of the genitourinary system
+Chronic nephritic syndrome	N14_CHRONEPHROPATH	Chapter XIV Diseases of the genitourinary system
+Cyst of kidney	N14_CYSTKID	Chapter XIV Diseases of the genitourinary system
+Cystitis	N14_CYSTITIS	Chapter XIV Diseases of the genitourinary system
+Dialysis	N14_DIALYSIS	Chapter XIV Diseases of the genitourinary system
+Diseases of male genital organs	N14_MALEGEN	Chapter XIV Diseases of the genitourinary system
+Endometriosis	N14_ENDOMETRIOSIS	Chapter XIV Diseases of the genitourinary system
+Erosion and ectropion of cervix uteri	N14_EROSECTROPUT	Chapter XIV Diseases of the genitourinary system
+Excessive, frequent and irregular menstruation	N14_MESNRUIRREG	Chapter XIV Diseases of the genitourinary system
+Female genital prolapse	N14_FEMGENPROL	Chapter XIV Diseases of the genitourinary system
+Glomerular disorders in diseases classified elsewhere	N14_GLOMEINOTH	Chapter XIV Diseases of the genitourinary system
+Hydrocele	N14_HYDROCELE	Chapter XIV Diseases of the genitourinary system
+Hydronephrosis	N14_HYDRONEPHR	Chapter XIV Diseases of the genitourinary system
+Hyperplasia of prostate	N14_PROSTHYPERPLA	Chapter XIV Diseases of the genitourinary system
+Inflammatory diseases of prostate (prostatitis)	N14_PROSTATITIS	Chapter XIV Diseases of the genitourinary system
+Irregular menses	N14_MENSIRREG	Chapter XIV Diseases of the genitourinary system
+Menorrhagia	N14_MENORRHAGIA	Chapter XIV Diseases of the genitourinary system
+Neuromuscular dysfunction of bladder	N14_NEUROMUSCDYSBLADD	Chapter XIV Diseases of the genitourinary system
+Noninflammatory disorders of female genital tract	N14_FEMALEGENNONINF	Chapter XIV Diseases of the genitourinary system
+Other abnormal uterine and vaginal bleeding	N14_ABNORMALBLEED	Chapter XIV Diseases of the genitourinary system
+Other diseases of urinary system	N14_URINOTH	Chapter XIV Diseases of the genitourinary system
+Other disorders of  bladder	N14_OTHBLADD	Chapter XIV Diseases of the genitourinary system
+Other disorders of kidney and ureter	N14_KIDUROTH	Chapter XIV Diseases of the genitourinary system
+Other disorders of male genital organs	N14_OTHDISMALEGEN	Chapter XIV Diseases of the genitourinary system
+Other disorders of prostate	N14_PROSTAOTH	Chapter XIV Diseases of the genitourinary system
+Other disorders of the genitourinary system	N14_GENITOUROTH	Chapter XIV Diseases of the genitourinary system
+Other disorders of urethra and urinary system	N14_URETHRAOTH	Chapter XIV Diseases of the genitourinary system
+Other noninflammatory disorders of uterus, except cervix	N14_OTHNONINFUTER	Chapter XIV Diseases of the genitourinary system
+Other obstructive and reflux uropathy	N14_OBSTRUREFLUROPATH	Chapter XIV Diseases of the genitourinary system
+Other specified disorders of kidney and ureter	N14_OTHETNASKIDUR	Chapter XIV Diseases of the genitourinary system
+Ovarian cyst	N14_OVARYCYST	Chapter XIV Diseases of the genitourinary system
+Pain and other conditions associated with female genital organs and menstrual cycle	N14_FEMGENPAIN	Chapter XIV Diseases of the genitourinary system
+Polyp of the female genital tract	N14_POLYPFEMGEN	Chapter XIV Diseases of the genitourinary system
+Recurrent and persistent haematuria	N14_RECURANDPERHEAMATUR	Chapter XIV Diseases of the genitourinary system
+Renal tubulo-interstitial diseases	N14_RENALTUB	Chapter XIV Diseases of the genitourinary system
+Tubulo-interstitial nephritis, not specified as acute or chronic	N14_TUBULOINTNEPHRNAS	Chapter XIV Diseases of the genitourinary system
+Unspecified kidney failure	N14_RENFAILNAS	Chapter XIV Diseases of the genitourinary system
+Urethral stricture	N14_URETHRALSTRICT	Chapter XIV Diseases of the genitourinary system
+Complications of labour and delivery	O15_COMPLIC_LAB_DELIV	Chapter XV Pregnancy, childbirth and the puerperium
+Labour and delivery complicated by fetal stress [distress]	O15_LABOUR_FETAL_STRESS	Chapter XV Pregnancy, childbirth and the puerperium
+Long labour	O15_LABOUR_LONG	Chapter XV Pregnancy, childbirth and the puerperium
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	O15_MATERN_CARE	Chapter XV Pregnancy, childbirth and the puerperium
+Perineal laceration during delivery	O15_DELIV_PERIN_LACER	Chapter XV Pregnancy, childbirth and the puerperium
+Prolonged pregnancy	O15_PREG_PROLONGED	Chapter XV Pregnancy, childbirth and the puerperium
+Single spontaneous delivery	O15_DELIV_SPONT	Chapter XV Pregnancy, childbirth and the puerperium
