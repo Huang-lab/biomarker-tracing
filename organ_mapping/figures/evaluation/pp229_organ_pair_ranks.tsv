@@ -1,0 +1,348 @@
+disease	organ	role	n_cell_types	best_rank	chance_rank	beats_chance	confidence
+Disorders of lipoprotein metabolism and other lipidaemias	adipose.tissue	secondary	10	83	28.0	False	medium
+Hyperlipidaemia, other/unspecified	adipose.tissue	secondary	10	89	28.0	False	medium
+Obesity	adipose.tissue	primary	10	65	28.0	False	medium
+Obesity, other/unspecified	adipose.tissue	primary	10	69	28.0	False	medium
+Pure hypercholesterolaemia	adipose.tissue	secondary	10	78	28.0	False	medium
+Cellulitis	adipose.tissue	secondary	10	7	28.0	True	high
+Cutaneous abscess, furuncle and carbuncle	adipose.tissue	secondary	10	68	28.0	False	high
+Infections of the skin and subcutaneous tissue	adipose.tissue	secondary	10	26	28.0	True	high
+Other and unspecified disorders of skin and subcutaneous tissue	adipose.tissue	secondary	10	25	28.0	True	high
+Other disorders of skin and subcutaneous tissue	adipose.tissue	secondary	10	6	28.0	True	high
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	adipose.tissue	secondary	10	29	28.0	False	high
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	blood	primary	7	19	47.0	True	medium
+Agranulocytosis	blood	primary	7	154	47.0	False	high
+Other and unspecified anaemias	blood	primary	7	33	47.0	True	high
+Other and unspecified iron deficiency	blood	primary	7	20	47.0	True	high
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	bone.marrow	primary	5	17	57.0	True	medium
+Agranulocytosis	bone.marrow	primary	5	133	57.0	False	high
+Other and unspecified anaemias	bone.marrow	primary	5	81	57.0	False	high
+Other and unspecified iron deficiency	bone.marrow	primary	5	32	57.0	True	high
+Acute alcohol intoxication	brain	primary	6	132	43.0	False	medium
+Alcohol dependence	brain	primary	6	136	43.0	False	medium
+Depression	brain	primary	6	112	43.0	False	medium
+Depression or dysthymia	brain	primary	6	129	43.0	False	medium
+Other anxiety disorders	brain	primary	6	85	43.0	False	medium
+Hypertension	brain	primary	6	18	43.0	True	high
+Stroke, excluding SAH	brain	primary	6	83	43.0	False	high
+Transient ischemic attack	brain	primary	6	15	43.0	True	high
+Acute alcohol intoxication, ICD10	brain	primary	6	137	43.0	False	high
+Alcohol abuse, main dg, excluding more controls	brain	primary	6	127	43.0	False	high
+Alcohol use disorder, ICD-based	brain	primary	6	154	43.0	False	high
+Anxiety disorders, excluding more controls	brain	primary	6	43	43.0	False	high
+Any mental disorder	brain	primary	6	171	43.0	False	high
+Schizophrenia or delusion, excluding more controls	brain	primary	6	34	43.0	True	high
+Smoking dependency	brain	primary	6	133	43.0	False	high
+Substance abuse, excluding more controls	brain	primary	6	141	43.0	False	high
+Cerebral palsy and other paralytic syndromes	brain	primary	6	128	43.0	False	high
+Epilepsy	brain	primary	6	19	43.0	True	high
+Episodal and paroxysmal disorders	brain	primary	6	33	43.0	True	high
+Hemiplegia	brain	primary	6	195	43.0	False	high
+MS-disease / Multiple Sclerosis	brain	primary	6	6	43.0	True	high
+Migraine	brain	primary	6	3	43.0	True	high
+Migraine, unspecified, drug-induced	brain	primary	6	2	43.0	True	high
+Other degenerative diseases of the nervous system	brain	primary	6	9	43.0	True	high
+Other neurological diseases	brain	primary	6	64	43.0	False	high
+Other sleep disorders	brain	primary	6	164	43.0	False	high
+Sleep apnoea	brain	primary	6	86	43.0	False	high
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	breast	primary	8	26	26.0	False	medium
+Intestinal infectious diseases	colon	primary	6	123	25.0	False	medium
+Other bacterial intestinal infections	colon	primary	6	83	25.0	False	medium
+Other specified/unspecified bacterial intestinal infections	colon	primary	6	22	25.0	True	medium
+Benign neoplasm of colon, rectum, anus and anal canal	colon	primary	6	36	25.0	False	medium
+Abscess of anal and rectal regions	colon	primary	6	39	25.0	False	high
+Coeliac disease	colon	primary	6	2	25.0	True	high
+Constipation	colon	primary	6	92	25.0	False	high
+Crohn disease (strict definition, require KELA, min 2 HDR)	colon	primary	6	90	25.0	False	high
+Crohn's disease NAS	colon	primary	6	147	25.0	False	high
+Diseases of the digestive system	colon	primary	6	14	25.0	True	high
+Diverticular disease of intestine	colon	primary	6	88	25.0	False	high
+Intestinal malabsorption	colon	primary	6	2	25.0	True	high
+Irritable bowel syndrome	colon	primary	6	14	25.0	True	high
+Noninfective enteritis and colitis	colon	primary	6	81	25.0	False	high
+Other diseases of anus and rectum	colon	primary	6	24	25.0	True	high
+Other diseases of intestine	colon	primary	6	47	25.0	False	high
+Other diseases of intestines	colon	primary	6	96	25.0	False	high
+Other diseases of the digestive system	colon	primary	6	76	25.0	False	high
+Other functional intestinal disorders	colon	primary	6	91	25.0	False	high
+Other noninfective gastroenteritis and colitis	colon	primary	6	40	25.0	False	high
+Other or unspecified ileus, impaction or obstruction	colon	primary	6	125	25.0	False	high
+Paralytic ileus and intestinal obstruction	colon	primary	6	18	25.0	True	high
+Postprocedural disorders of digestive system, not elsewhere classified	colon	primary	6	99	25.0	False	high
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	colon	primary	6	183	25.0	False	high
+Ulcerative colitis, NAS	colon	primary	6	178	25.0	False	high
+Leiomyoma of uterus	endometrium	primary	7	75	25.5	False	medium
+Adenomyosis (Endometriosis of uterus)	endometrium	primary	7	91	25.5	False	high
+Endometriosis	endometrium	primary	7	65	25.5	False	high
+Erosion and ectropion of cervix uteri	endometrium	primary	7	2	25.5	True	high
+Excessive, frequent and irregular menstruation	endometrium	primary	7	43	25.5	False	high
+Female genital prolapse	endometrium	primary	7	24	25.5	True	high
+Irregular menses	endometrium	primary	7	48	25.5	False	high
+Menorrhagia	endometrium	primary	7	46	25.5	False	high
+Noninflammatory disorders of female genital tract	endometrium	primary	7	23	25.5	True	high
+Other abnormal uterine and vaginal bleeding	endometrium	primary	7	60	25.5	False	high
+Other noninflammatory disorders of uterus, except cervix	endometrium	primary	7	24	25.5	True	high
+Ovarian cyst	endometrium	primary	7	100	25.5	False	high
+Pain and other conditions associated with female genital organs and menstrual cycle	endometrium	primary	7	117	25.5	False	high
+Polyp of the female genital tract	endometrium	primary	7	2	25.5	True	high
+Complications of labour and delivery	endometrium	primary	7	14	25.5	True	high
+Labour and delivery complicated by fetal stress [distress]	endometrium	primary	7	15	25.5	True	high
+Long labour	endometrium	primary	7	12	25.5	True	high
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	endometrium	primary	7	11	25.5	True	high
+Prolonged pregnancy	endometrium	primary	7	3	25.5	True	high
+Single spontaneous delivery	endometrium	primary	7	13	25.5	True	high
+Diaphragmatic hernia	esophagus	primary	10	11	19.0	True	high
+Diseases of oesophagus, stomach and duodenum	esophagus	primary	10	10	19.0	True	high
+Gastro-oesophageal reflux disease	esophagus	primary	10	18	19.0	True	high
+Oesophageal obstruction	esophagus	primary	10	13	19.0	True	high
+Oesophagitis	esophagus	primary	10	29	19.0	False	high
+Other diseases of oesophagus	esophagus	primary	10	72	19.0	False	high
+Ulcer of oesophagus	esophagus	primary	10	17	19.0	True	high
+Diabetic maculopathy, excluding more controls	eye	primary	5	46	39.0	False	high
+Disorders of choroid and retina	eye	primary	5	109	39.0	False	high
+Disorders of ocular muscles, binocular movement, accommodation and refraction	eye	primary	5	116	39.0	False	high
+Glaucoma	eye	primary	5	30	39.0	True	high
+Other and unspecified glaucoma	eye	primary	5	25	39.0	True	high
+Other cataract	eye	primary	5	36	39.0	True	high
+Senile cataract	eye	primary	5	185	39.0	False	high
+Visual disturbances	eye	primary	5	123	39.0	False	high
+Leiomyoma of uterus	fallopian.tube	primary	11	79	20.0	False	medium
+Adenomyosis (Endometriosis of uterus)	fallopian.tube	secondary	11	2	20.0	True	high
+Endometriosis	fallopian.tube	secondary	11	13	20.0	True	high
+Erosion and ectropion of cervix uteri	fallopian.tube	secondary	11	31	20.0	False	high
+Excessive, frequent and irregular menstruation	fallopian.tube	secondary	11	55	20.0	False	high
+Female genital prolapse	fallopian.tube	secondary	11	3	20.0	True	high
+Irregular menses	fallopian.tube	secondary	11	14	20.0	True	high
+Menorrhagia	fallopian.tube	secondary	11	59	20.0	False	high
+Noninflammatory disorders of female genital tract	fallopian.tube	secondary	11	27	20.0	False	high
+Other abnormal uterine and vaginal bleeding	fallopian.tube	secondary	11	79	20.0	False	high
+Other noninflammatory disorders of uterus, except cervix	fallopian.tube	secondary	11	13	20.0	True	high
+Ovarian cyst	fallopian.tube	secondary	11	20	20.0	False	high
+Pain and other conditions associated with female genital organs and menstrual cycle	fallopian.tube	secondary	11	54	20.0	False	high
+Polyp of the female genital tract	fallopian.tube	secondary	11	40	20.0	False	high
+Angina pectoris	heart.muscle	primary	4	37	94.0	True	high
+Atrial fibrillation and flutter	heart.muscle	primary	4	16	94.0	True	high
+Cardiomyopathy	heart.muscle	primary	4	4	94.0	True	high
+Conduction disorders	heart.muscle	primary	4	4	94.0	True	high
+Coronary atherosclerosis	heart.muscle	primary	4	33	94.0	True	high
+Death due to cardiac causes	heart.muscle	primary	4	17	94.0	True	review
+Heart failure, strict	heart.muscle	primary	4	27	94.0	True	high
+Hypertension	heart.muscle	secondary	4	29	94.0	True	high
+Hypertension, Pulmonary Arterial	heart.muscle	primary	4	12	94.0	True	high
+Hypertension, essential	heart.muscle	secondary	4	26	94.0	True	high
+Hypertensive Renal Disease	heart.muscle	secondary	4	2	94.0	True	high
+Hypotension	heart.muscle	secondary	4	49	94.0	True	high
+Ischaemic heart disease, wide definition	heart.muscle	primary	4	37	94.0	True	high
+Major coronary heart disease event	heart.muscle	primary	4	27	94.0	True	high
+Myocardial infarction, strict	heart.muscle	primary	4	26	94.0	True	high
+Other arrhythmias	heart.muscle	primary	4	18	94.0	True	high
+Other or ill-defined heart diseases	heart.muscle	primary	4	6	94.0	True	high
+Paroxysmal tachycardia	heart.muscle	primary	4	19	94.0	True	high
+Pulmonary embolism	heart.muscle	primary	4	62	94.0	True	high
+Rheumatic valve diseases	heart.muscle	primary	4	24	94.0	True	high
+Secondary right heart disease	heart.muscle	primary	4	11	94.0	True	high
+Unstable angina pectoris	heart.muscle	primary	4	14	94.0	True	high
+Venous thromboembolism	heart.muscle	primary	4	50	94.0	True	high
+Metabolic disorders	kidney	secondary	6	17	23.0	True	medium
+Other disorders of fluid, electrolyte and acid-base balance	kidney	primary	6	36	23.0	False	medium
+Volume depletion	kidney	primary	6	162	23.0	False	medium
+Heart failure, strict	kidney	secondary	6	111	23.0	False	high
+Hypertension	kidney	secondary	6	61	23.0	False	high
+Hypertension, essential	kidney	secondary	6	48	23.0	False	high
+Hypertensive Renal Disease	kidney	secondary	6	53	23.0	False	high
+Gout, unspecified	kidney	primary	6	60	23.0	False	review
+Acute renal failure	kidney	primary	6	136	23.0	False	high
+Calculus of kidney and ureter	kidney	primary	6	70	23.0	False	high
+Chronic kidney disease	kidney	primary	6	70	23.0	False	high
+Other disorders of kidney and ureter	kidney	primary	6	65	23.0	False	high
+Other obstructive and reflux uropathy	kidney	primary	6	149	23.0	False	high
+Renal tubulo-interstitial diseases	kidney	primary	6	118	23.0	False	high
+Unspecified kidney failure	kidney	primary	6	89	23.0	False	high
+Benign neoplasm of other and ill-defined parts of digestive system	liver	primary	10	20	31.0	True	medium
+Benign neoplasm: Stomach	liver	primary	10	23	31.0	True	medium
+Acute alcohol intoxication	liver	secondary	10	14	31.0	True	medium
+Alcohol dependence	liver	secondary	10	7	31.0	True	medium
+Disorders of lipoprotein metabolism and other lipidaemias	liver	primary	10	25	31.0	True	medium
+Hyperlipidaemia, other/unspecified	liver	primary	10	82	31.0	False	medium
+Metabolic disorders	liver	primary	10	31	31.0	False	medium
+Pure hypercholesterolaemia	liver	primary	10	22	31.0	True	medium
+Acute alcohol intoxication, ICD10	liver	secondary	10	12	31.0	True	high
+Alcohol abuse, main dg, excluding more controls	liver	secondary	10	13	31.0	True	high
+Alcohol use disorder, ICD-based	liver	secondary	10	43	31.0	False	high
+Substance abuse, excluding more controls	liver	secondary	10	9	31.0	True	high
+Diseases of liver	liver	primary	10	67	31.0	False	high
+Other diseases of biliary tract	liver	primary	10	67	31.0	False	high
+Other diseases of liver	liver	primary	10	112	31.0	False	high
+Hypertension, Pulmonary Arterial	lung	primary	16	5	13.0	True	high
+Pulmonary embolism	lung	primary	16	9	13.0	True	high
+Secondary right heart disease	lung	primary	16	5	13.0	True	high
+Venous thromboembolism	lung	primary	16	23	13.0	False	high
+Asthma, excluding more controls	lung	primary	16	2	13.0	True	high
+Asthma, unspecified (mode)	lung	primary	16	2	13.0	True	high
+Chronic lower respiratory diseases	lung	primary	16	2	13.0	True	high
+Early onset COPD	lung	primary	16	1	13.0	True	high
+Idiopathic pulmonary fibrosis	lung	primary	16	1	13.0	True	high
+Influenza and pneumonia	lung	primary	16	4	13.0	True	high
+Interstitial lung disease	lung	primary	16	1	13.0	True	high
+Other acute lower respiratory infections	lung	primary	16	1	13.0	True	high
+Other diseases of pleura	lung	primary	16	4	13.0	True	high
+Pleural effusion	lung	primary	16	15	13.0	False	high
+Unspecified acute lower respiratory infection	lung	primary	16	1	13.0	True	high
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	lymph.node	primary	3	27	67.5	True	medium
+Agranulocytosis	lymph.node	secondary	3	64	67.5	True	high
+DVT of lower extremities	lymph.node	secondary	3	6	67.5	True	high
+Phlebitis and thrombophlebitis (not including DVT)	lymph.node	secondary	3	7	67.5	True	high
+Varicose veins	lymph.node	secondary	3	3	67.5	True	high
+Venous thromboembolism	lymph.node	secondary	3	15	67.5	True	high
+Leiomyoma of uterus	ovary	primary	7	77	21.0	False	medium
+Adenomyosis (Endometriosis of uterus)	ovary	primary	7	94	21.0	False	high
+Endometriosis	ovary	primary	7	68	21.0	False	high
+Erosion and ectropion of cervix uteri	ovary	primary	7	35	21.0	False	high
+Excessive, frequent and irregular menstruation	ovary	primary	7	41	21.0	False	high
+Female genital prolapse	ovary	primary	7	40	21.0	False	high
+Irregular menses	ovary	primary	7	109	21.0	False	high
+Menorrhagia	ovary	primary	7	40	21.0	False	high
+Noninflammatory disorders of female genital tract	ovary	primary	7	74	21.0	False	high
+Other abnormal uterine and vaginal bleeding	ovary	primary	7	11	21.0	True	high
+Other noninflammatory disorders of uterus, except cervix	ovary	primary	7	49	21.0	False	high
+Ovarian cyst	ovary	primary	7	62	21.0	False	high
+Pain and other conditions associated with female genital organs and menstrual cycle	ovary	primary	7	46	21.0	False	high
+Polyp of the female genital tract	ovary	primary	7	3	21.0	True	high
+Metabolic disorders	pancreas	secondary	8	7	23.0	True	medium
+Acute pancreatitis	pancreas	primary	8	53	23.0	False	high
+Complications of labour and delivery	placenta	primary	9	2	23.0	True	high
+Labour and delivery complicated by fetal stress [distress]	placenta	primary	9	6	23.0	True	high
+Long labour	placenta	primary	9	2	23.0	True	high
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	placenta	primary	9	2	23.0	True	high
+Prolonged pregnancy	placenta	primary	9	2	23.0	True	high
+Single spontaneous delivery	placenta	primary	9	12	23.0	True	high
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	prostate	primary	9	120	21.5	False	medium
+Diseases of male genital organs	prostate	primary	9	1	21.5	True	high
+Hydrocele	prostate	primary	9	16	21.5	True	high
+Hyperplasia of prostate	prostate	primary	9	1	21.5	True	high
+Inflammatory diseases of prostate (prostatitis)	prostate	primary	9	1	21.5	True	high
+Other disorders of male genital organs	prostate	primary	9	18	21.5	True	high
+Intestinal infectious diseases	rectum	secondary	6	30	22.0	False	medium
+Other bacterial intestinal infections	rectum	secondary	6	21	22.0	True	medium
+Other specified/unspecified bacterial intestinal infections	rectum	secondary	6	26	22.0	False	medium
+Benign neoplasm of colon, rectum, anus and anal canal	rectum	primary	6	15	22.0	True	medium
+Abscess of anal and rectal regions	rectum	primary	6	126	22.0	False	high
+Constipation	rectum	primary	6	101	22.0	False	high
+Crohn disease (strict definition, require KELA, min 2 HDR)	rectum	secondary	6	13	22.0	True	high
+Crohn's disease NAS	rectum	secondary	6	21	22.0	True	high
+Diverticular disease of intestine	rectum	primary	6	2	22.0	True	high
+Irritable bowel syndrome	rectum	primary	6	2	22.0	True	high
+Noninfective enteritis and colitis	rectum	primary	6	47	22.0	False	high
+Other diseases of anus and rectum	rectum	primary	6	19	22.0	True	high
+Other diseases of intestine	rectum	primary	6	15	22.0	True	high
+Other diseases of intestines	rectum	primary	6	3	22.0	True	high
+Other functional intestinal disorders	rectum	primary	6	71	22.0	False	high
+Other or unspecified ileus, impaction or obstruction	rectum	primary	6	34	22.0	False	high
+Paralytic ileus and intestinal obstruction	rectum	primary	6	8	22.0	True	high
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	rectum	primary	6	173	22.0	False	high
+Ulcerative colitis, NAS	rectum	primary	6	164	22.0	False	high
+Diseases of oral cavity, salivary glands and jaws	salivary.gland	primary	11	29	17.0	False	high
+Soft tissue disorders	skeletal.muscle	primary	7	81	34.0	False	high
+Mycoses	skin	primary	11	21	17.0	False	medium
+Viral infections characterized by skin and mucous membrane lesions	skin	primary	11	64	17.0	False	medium
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	skin	primary	11	9	17.0	True	medium
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	skin	primary	11	45	17.0	False	medium
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	skin	primary	11	43	17.0	False	review
+Cellulitis	skin	primary	11	14	17.0	True	high
+Cutaneous abscess, furuncle and carbuncle	skin	primary	11	7	17.0	True	high
+Dermatitis and eczema	skin	primary	11	25	17.0	False	high
+Infections of the skin and subcutaneous tissue	skin	primary	11	17	17.0	False	high
+Nail disorders	skin	primary	11	39	17.0	False	high
+Other and unspecified disorders of skin and subcutaneous tissue	skin	primary	11	14	17.0	True	high
+Other and unspecified psoriasis	skin	primary	11	9	17.0	True	high
+Other disorders of skin and subcutaneous tissue	skin	primary	11	15	17.0	True	high
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	skin	primary	11	30	17.0	False	high
+Papulosquamous disorders	skin	primary	11	9	17.0	True	high
+Psoriasis	skin	primary	11	9	17.0	True	high
+Intestinal infectious diseases	small.intestine	primary	6	79	34.0	False	medium
+Other bacterial intestinal infections	small.intestine	primary	6	41	34.0	False	medium
+Other specified/unspecified bacterial intestinal infections	small.intestine	primary	6	20	34.0	True	medium
+Benign neoplasm of other and ill-defined parts of digestive system	small.intestine	primary	6	17	34.0	True	medium
+Benign neoplasm: Stomach	small.intestine	primary	6	26	34.0	True	medium
+Abscess of anal and rectal regions	small.intestine	secondary	6	116	34.0	False	high
+Chronic gastritis	small.intestine	secondary	6	5	34.0	True	high
+Coeliac disease	small.intestine	primary	6	1	34.0	True	high
+Constipation	small.intestine	secondary	6	190	34.0	False	high
+Crohn disease (strict definition, require KELA, min 2 HDR)	small.intestine	primary	6	66	34.0	False	high
+Crohn's disease NAS	small.intestine	primary	6	79	34.0	False	high
+Diseases of oesophagus, stomach and duodenum	small.intestine	primary	6	58	34.0	False	high
+Diseases of the digestive system	small.intestine	primary	6	4	34.0	True	high
+Diverticular disease of intestine	small.intestine	secondary	6	27	34.0	True	high
+Duodenal ulcer	small.intestine	primary	6	37	34.0	False	high
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	small.intestine	primary	6	86	34.0	False	high
+Functional dyspepsia	small.intestine	secondary	6	94	34.0	False	high
+Gastric ulcer	small.intestine	primary	6	5	34.0	True	high
+Gastroduodenal ulcer	small.intestine	primary	6	3	34.0	True	high
+Intestinal malabsorption	small.intestine	primary	6	1	34.0	True	high
+Irritable bowel syndrome	small.intestine	secondary	6	8	34.0	True	high
+Noninfective enteritis and colitis	small.intestine	primary	6	139	34.0	False	high
+Other diseases of anus and rectum	small.intestine	secondary	6	14	34.0	True	high
+Other diseases of intestine	small.intestine	secondary	6	17	34.0	True	high
+Other diseases of intestines	small.intestine	secondary	6	56	34.0	False	high
+Other diseases of stomach and duodenum	small.intestine	secondary	6	59	34.0	False	high
+Other diseases of the digestive system	small.intestine	primary	6	113	34.0	False	high
+Other functional intestinal disorders	small.intestine	secondary	6	196	34.0	False	high
+Other gastritis (incl. Duodenitis)	small.intestine	secondary	6	6	34.0	True	high
+Other noninfective gastroenteritis and colitis	small.intestine	primary	6	119	34.0	False	high
+Other or unspecified ileus, impaction or obstruction	small.intestine	secondary	6	121	34.0	False	high
+Paralytic ileus and intestinal obstruction	small.intestine	secondary	6	73	34.0	False	high
+Postprocedural disorders of digestive system, not elsewhere classified	small.intestine	primary	6	155	34.0	False	high
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	spleen	primary	4	14	53.0	True	medium
+Agranulocytosis	spleen	primary	4	153	53.0	False	high
+Intestinal infectious diseases	stomach	secondary	6	14	28.0	True	medium
+Other bacterial intestinal infections	stomach	secondary	6	2	28.0	True	medium
+Other specified/unspecified bacterial intestinal infections	stomach	secondary	6	1	28.0	True	medium
+Benign neoplasm of other and ill-defined parts of digestive system	stomach	primary	6	2	28.0	True	medium
+Benign neoplasm: Stomach	stomach	primary	6	5	28.0	True	medium
+Chronic gastritis	stomach	primary	6	1	28.0	True	high
+Coeliac disease	stomach	primary	6	4	28.0	True	high
+Diaphragmatic hernia	stomach	primary	6	1	28.0	True	high
+Diseases of oesophagus, stomach and duodenum	stomach	primary	6	1	28.0	True	high
+Diseases of the digestive system	stomach	primary	6	11	28.0	True	high
+Duodenal ulcer	stomach	primary	6	1	28.0	True	high
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	stomach	primary	6	1	28.0	True	high
+Functional dyspepsia	stomach	primary	6	1	28.0	True	high
+Gastric ulcer	stomach	primary	6	1	28.0	True	high
+Gastroduodenal ulcer	stomach	primary	6	1	28.0	True	high
+Intestinal malabsorption	stomach	primary	6	5	28.0	True	high
+Other diseases of stomach and duodenum	stomach	primary	6	1	28.0	True	high
+Other diseases of the digestive system	stomach	primary	6	5	28.0	True	high
+Other gastritis (incl. Duodenitis)	stomach	primary	6	1	28.0	True	high
+Postprocedural disorders of digestive system, not elsewhere classified	stomach	primary	6	17	28.0	True	high
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	testis	primary	9	33	26.5	False	medium
+Diseases of male genital organs	testis	primary	9	11	26.5	True	high
+Hydrocele	testis	primary	9	1	26.5	True	high
+Hyperplasia of prostate	testis	primary	9	38	26.5	False	high
+Inflammatory diseases of prostate (prostatitis)	testis	primary	9	28	26.5	False	high
+Other disorders of male genital organs	testis	primary	9	1	26.5	True	high
+Diseases of oral cavity, salivary glands and jaws	tongue	primary	8	37	28.0	False	high
+Disorders of lipoprotein metabolism and other lipidaemias	vasculature	secondary	6	68	38.0	False	medium
+Hyperlipidaemia, other/unspecified	vasculature	secondary	6	53	38.0	False	medium
+Pure hypercholesterolaemia	vasculature	secondary	6	72	38.0	False	medium
+Angina pectoris	vasculature	primary	6	109	38.0	False	high
+Coronary atherosclerosis	vasculature	primary	6	93	38.0	False	high
+DVT of lower extremities	vasculature	primary	6	22	38.0	True	high
+Death due to cardiac causes	vasculature	primary	6	79	38.0	False	review
+Heart failure, strict	vasculature	primary	6	20	38.0	True	high
+Hypertension	vasculature	primary	6	56	38.0	False	high
+Hypertension, Pulmonary Arterial	vasculature	secondary	6	35	38.0	True	high
+Hypertension, essential	vasculature	primary	6	60	38.0	False	high
+Hypertensive Renal Disease	vasculature	primary	6	49	38.0	False	high
+Hypotension	vasculature	primary	6	83	38.0	False	high
+Ischaemic heart disease, wide definition	vasculature	primary	6	90	38.0	False	high
+Major coronary heart disease event	vasculature	primary	6	128	38.0	False	high
+Myocardial infarction, strict	vasculature	primary	6	94	38.0	False	high
+Other diseases of arteries and capillaries	vasculature	primary	6	114	38.0	False	high
+Other peripheral vascular diseases	vasculature	primary	6	17	38.0	True	high
+Phlebitis and thrombophlebitis (not including DVT)	vasculature	primary	6	25	38.0	True	high
+Pulmonary embolism	vasculature	secondary	6	11	38.0	True	high
+Secondary right heart disease	vasculature	secondary	6	30	38.0	True	high
+Stroke, excluding SAH	vasculature	primary	6	13	38.0	True	high
+Unstable angina pectoris	vasculature	primary	6	123	38.0	False	high
+Varicose veins	vasculature	primary	6	58	38.0	False	high
+Venous thromboembolism	vasculature	primary	6	25	38.0	True	high

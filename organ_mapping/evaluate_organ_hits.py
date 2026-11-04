@@ -164,7 +164,7 @@ def empirical_chance_rank(X, M):
     return np.array(out)
 
 
-def fig_best_rank(res, n_cols, name="fig3_best_rank_per_disease", title="Per disease: where does its best own-organ cell type rank?", subtitle=None):
+def fig_best_rank(res, n_cols):
     organs = [o for o in ORGAN_ORDER if any((r.organ == o).any() for r in res.values())]
     counts = {o: max(int((res[a].organ == o).sum()) for a in ATLASES) for o in organs}
     ratio = {o: np.nanmedian(np.concatenate([np.log(res[a].loc[res[a].organ == o, "best_own_rank"].to_numpy() / res[a].loc[res[a].organ == o, "chance_rank"].to_numpy())
@@ -180,9 +180,6 @@ def fig_best_rank(res, n_cols, name="fig3_best_rank_per_disease", title="Per dis
             ch = s.chance_rank.median(); v = s.best_own_rank.to_numpy(); win = v < s.chance_rank.to_numpy()
             ax.plot([ch, ch], [i - 0.36, i + 0.36], color=INK, lw=1.6, zorder=2, solid_capstyle="butt")
             y = i + rng.uniform(-0.2, 0.2, len(v))
-            if "primary_only_rank" in s:          # hairline from the primary-only rank to the (better) widened rank
-                for v0, v1, yy in zip(s.primary_only_rank.to_numpy(), v, y):
-                    if v0 > v1: ax.plot([v1, v0], [yy, yy], color=GRAY, lw=0.9, zorder=1)
             ax.scatter(v[~win], y[~win], s=22, color=GRAY, lw=0.8, edgecolors=SURFACE, zorder=3)
             ax.scatter(v[win], y[win], s=26, color=BLUE, lw=0.8, edgecolors=SURFACE, zorder=4)
             ax.text(n * 1.9, i, f"{win.sum()}/{len(v)}", fontsize=7.5, va="center", ha="center", color=INK if win.mean() > 0.5 else MUTED)
@@ -196,11 +193,11 @@ def fig_best_rank(res, n_cols, name="fig3_best_rank_per_disease", title="Per dis
         ax.text(n * 1.9, -1, "beat\nchance", fontsize=7, color=INK2, ha="center", va="center")
     axes[0].set_yticks(range(len(organs))); axes[0].set_yticklabels([f"{o.replace('.', ' ')}  (n={counts[o]})" for o in organs])
     axes[0].set_ylim(len(organs) - 0.5, -1.6)
-    fig.text(0.01, 0.995, title, fontsize=12.5, fontweight="bold", color=INK, va="top")
-    fig.text(0.01, 0.995 - 0.33 / fig.get_figheight(), subtitle or "One dot per single-organ disease. Black tick = chance: the organ's median best rank across all other diseases.\n"
+    fig.text(0.01, 0.995, "Per disease: where does its best own-organ cell type rank?", fontsize=12.5, fontweight="bold", color=INK, va="top")
+    fig.text(0.01, 0.995 - 0.33 / fig.get_figheight(), "One dot per single-organ disease. Black tick = chance: the organ's median best rank across all other diseases.\n"
              "Blue = better than that. Organs sorted by median distance from chance, both atlases.", fontsize=8, color=INK2, va="top")
     fig.subplots_adjust(left=0.17, right=0.98, top=1 - 1.45 / fig.get_figheight(), bottom=0.75 / fig.get_figheight(), wspace=0.08)
-    save(fig, name)
+    save(fig, "fig3_best_rank_per_disease")
 
 
 def fig_examples(d, picks):

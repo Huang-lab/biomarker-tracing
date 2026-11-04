@@ -58,8 +58,9 @@ terms, so this checks a subset. In that subset the two sources **agree for 64 di
 have no match, so for ~76% of diseases the check is silent.
 
 **Known weak spots.** Lipid disorders → liver (medium confidence), gout → kidney (review: its definition
-includes renal codes, N16), and pregnancy/labour → endometrium/placenta, a tissue the cell-type results resolve
-poorly. `organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a
+includes renal codes, N16), and pregnancy/labour → endometrium/placenta. The last is not a weak assignment in the results (placenta 6/6
+beating chance in both atlases, the strongest block in the clustermaps), but the pregnancy diseases are so
+distinctive that this says little about how accurate the mapping is elsewhere. `organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a
 domain expert to correct; **no such expert review has been done yet**, so the table is not clinically validated.
 
 ![Primary organs for 50 representative diseases](figures/disease_primary_organs.png)
@@ -178,18 +179,20 @@ exactly as the primary-only curve does, and the excess is smaller in pp229 (top 
 The raw hit rate goes up simply because the own-organ set is larger. Keep primary organs as the headline
 definition and report this as a sensitivity analysis.
 
-**Per disease (Figure 5).** The same view as Figure 3, with the best rank taken over primary + secondary organs
-(hairline = improvement over the primary-only rank):
+**Per disease and organ (Figure 5).** Here every organ in a disease's own set gets its own dot, so secondary organs
+have rows too (filled = primary, open ring = secondary; a disease with several organs has several dots, and "any
+own organ beats chance" = any blue dot). Chance for an organ is its median best rank across the diseases that do
+*not* have it as an own organ, so the baseline is organ-specific:
 
-![Best own-organ rank per disease, primary + secondary](figures/evaluation/fig5_best_rank_primary_secondary.png)
+![Best rank per disease and organ, primary and secondary](figures/evaluation/fig5_best_rank_primary_secondary.png)
 
-The share of single-organ diseases beating the chance rank is 46% (hpa700) and 51% (pp229), against 48% and 47%
-with primary organs only, so again about half. Only a few diseases change side: in hpa700, 3 start beating chance
-and 5 stop (the chance tick moves too, because a larger own-organ set makes a good rank easier). In pp229, 8 start
-and 3 stop. **Five of those 8 are the alcohol and substance-use diseases**, whose secondary organ is the liver:
-their liver cell types rank 7–14, while their brain cell types rank 127–141. This is biologically sensible
-(alcohol damages the liver, and brain proteins rarely reach plasma). It rests on one cluster of near-duplicate
-diseases in one atlas, and it does not appear in hpa700, so it is a lead to follow, not a result.
+Pooled, about half the pairs beat chance whatever the role: primary 52% (hpa700, n = 291) and 51% (pp229,
+n = 276); secondary 48% (n = 80) and 56% (n = 71). Per organ, the primary-pair picture matches Figure 3 (stomach
+16/17 and 17/17, lung 15/15 and 13/15, heart muscle 18/19 and 19/19, **placenta 6/6 in both atlases**,
+endometrium 14/20 and 11/20; kidney, eye, skin and brain near or below half). Secondary organs add one lead:
+the **liver as a secondary organ of the alcohol and substance-use diseases**. In pp229, 5 of those 6 diseases rank
+the liver at 7–14 (chance 31); in hpa700 3 of 6 beat chance (ranks 28, 68, 82 vs 122). That is biologically
+sensible, and it rests on one cluster of near-duplicate diseases, so it is a lead to follow, not a result.
 
 ### Significant hits
 | | hpa700 | pp229 |

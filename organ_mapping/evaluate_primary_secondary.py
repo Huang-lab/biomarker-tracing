@@ -29,7 +29,7 @@ from scipy.stats import rankdata
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import evaluate_organ_hits as E  # noqa: E402
-from evaluate_organ_hits import ATLASES, ATLAS_LABEL, KMAX, NPERM, OUT, SURFACE, INK, INK2, MUTED, HAIR, BLUE  # noqa: E402
+from evaluate_organ_hits import ATLASES, ATLAS_LABEL, KMAX, NPERM, OUT, SURFACE, INK, INK2, MUTED, HAIR, BLUE, GRAY  # noqa: E402
 
 ORANGE = "#eb6834"        # categorical slot 2: primary + secondary
 BLUE_BAND, ORANGE_BAND = "#bfd6f3", "#f6cdbb"
@@ -60,17 +60,85 @@ def auc_and_share(X, M, k=10, n_perm=2000, seed=0):
                 top10_share=obs_s, top10_null=ns.mean(), top10_p=p(obs_s, ns))
 
 
-def best_rank_table(d, atlas):
-    """Per disease: best rank of its primary+secondary organ cell types, the same for primary only, and the chance rank
-    (median over the other diseases of the best rank that disease's own-organ set gets in their rankings)."""
-    prim, _, both = masks(d)
-    r_both, _ = E.first_hit_rank(d["X"], both)
-    r_prim, _ = E.first_hit_rank(d["X"], prim)
-    single = np.array([len(x) == 1 for x in d["mp"].organ_dict])
-    return pd.DataFrame({"disease": d["mp"].Disease, "organ": [next(iter(x)) if len(x) == 1 else ";".join(x) for x in d["mp"].organ_dict],
-                         "n_own_cell_types": both.sum(1), "n_primary_cell_types": prim.sum(1), "best_own_rank": r_both, "primary_only_rank": r_prim,
-                         "chance_rank": E.empirical_chance_rank(d["X"], both), "confidence": d["mp"].confidence, "single_organ": single,
-                         "has_secondary": both.sum(1) > prim.sum(1)})
+def organ_pair_table(d):
+    """One row per (disease, organ in its own set): the best rank of that organ's cell types in the disease's ranking, and the
+    chance rank for that organ (median best rank of the organ over the diseases that do NOT have it in their own set)."""
+    prim, sec_only, both = masks(d)
+    col_organ, X = d["col_organ"], d["X"]
+    R = (-X).argsort(1).argsort(1) + 1                       # rank of every cell type within each disease (1 = highest specificity_z)
+    rows = []
+    for o in sorted(set(col_organ)):
+        cols = col_organ == o
+        best = R[:, cols].min(1)
+        in_own = both[:, cols].any(1)
+        if not in_own.any(): continue
+        chance = np.median(best[~in_own])
+        for i in np.where(in_own)[0]:
+            rows.append(dict(disease=d["mp"].Disease[i], organ=o, role="primary" if prim[i, cols].any() else "secondary",
+                             n_cell_types=int(cols.sum()), best_rank=int(best[i]), chance_rank=chance, beats_chance=bool(best[i] < chance),
+                             confidence=d["mp"].confidence[i]))
+    return pd.DataFrame(rows)
+
+
+def fig_pairs(res, n_cols):
+    sub = {a: res[a] for a in ATLASES}
+    organs = sorted({o for r in sub.values() for o in r.organ}, key=lambda o: E.ORGAN_ORDER.index(o))
+    def ratio(o):
+        v = [np.log(g.best_rank / g.chance_rank) for r in sub.values() for g in [r[(r.organ == o) & (r.role == "primary")]] if len(g)]
+        return np.nanmedian(np.concatenate(v)) if v else 9.0              # organs with only secondary rows go last
+    organs = sorted(organs, key=ratio)
+    cnt = {o: (max(int(((r.organ == o) & (r.role == "primary")).sum()) for r in sub.values()),
+               max(int(((r.organ == o) & (r.role == "secondary")).sum()) for r in sub.values())) for o in organs}
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 0.34 * len(organs) + 2.3), sharey=True)
+    rng = np.random.default_rng(1)
+    for ax, a in zip(axes, ATLASES):
+        r, n = sub[a], n_cols[a]
+        for i, o in enumerate(organs):
+            g = r[r.organ == o]
+            if g.empty: ax.text(1.2, i, "no cell types in this atlas", fontsize=7, color=MUTED, va="center", style="italic"); continue
+            ch = g.chance_rank.iloc[0]
+            ax.plot([ch, ch], [i - 0.4, i + 0.4], color=INK, lw=1.6, zorder=2, solid_capstyle="butt")
+            for role, dy in (("primary", -0.13), ("secondary", 0.17)):
+                q = g[g.role == role]
+                if q.empty: continue
+                y = i + dy + rng.uniform(-0.09, 0.09, len(q)); win = q.beats_chance.to_numpy(); v = q.best_rank.to_numpy()
+                if role == "primary":
+                    ax.scatter(v[~win], y[~win], s=22, color=GRAY, lw=0.8, edgecolors=SURFACE, zorder=3)
+                    ax.scatter(v[win], y[win], s=26, color=BLUE, lw=0.8, edgecolors=SURFACE, zorder=4)
+                else:
+                    ax.scatter(v[~win], y[~win], s=22, facecolors=SURFACE, edgecolors=MUTED, lw=1.1, zorder=3)
+                    ax.scatter(v[win], y[win], s=26, facecolors=SURFACE, edgecolors=BLUE, lw=1.6, zorder=4)
+            for role, x in (("primary", n * 1.55), ("secondary", n * 3.3)):
+                q = g[g.role == role]
+                ax.text(x, i, f"{int(q.beats_chance.sum())}/{len(q)}" if len(q) else "–", fontsize=7.5, va="center", ha="center",
+                        color=INK if len(q) and q.beats_chance.mean() > 0.5 else MUTED)
+        wp = r[r.role == "primary"].beats_chance.mean(); ws = r[r.role == "secondary"].beats_chance.mean()
+        ax.set_title(f"{ATLAS_LABEL[a]}\nbeat chance: primary pairs {wp:.0%} (n={int((r.role == 'primary').sum())}), "
+                     f"secondary pairs {ws:.0%} (n={int((r.role == 'secondary').sum())})", fontsize=8.8, color=INK, loc="left")
+        ax.set_xscale("log"); ax.set_xlim(0.8, n * 4.2)
+        ticks = [t for t in (1, 3, 10, 30, 100, 300) if t <= n]
+        ax.set_xticks(ticks); ax.set_xticklabels([str(t) for t in ticks]); ax.minorticks_off()
+        E.clean(ax, grid_y=False); ax.xaxis.grid(True, color=HAIR, lw=0.6); ax.set_axisbelow(True)
+        ax.set_xlabel(f"rank of the organ's best cell type (of {n}; left = better)", fontsize=8.5)
+        ax.text(n * 1.55, -0.95, "primary", fontsize=7, color=INK2, ha="center", va="center")
+        ax.text(n * 3.3, -0.95, "secondary", fontsize=7, color=INK2, ha="center", va="center")
+        ax.text(n * 2.3, -1.45, "beat chance", fontsize=7, color=INK2, ha="center", va="center", fontweight="bold")
+    axes[0].set_yticks(range(len(organs)))
+    axes[0].set_yticklabels([f"{o.replace('.', ' ')}  ({cnt[o][0]}+{cnt[o][1]})" for o in organs])
+    axes[0].set_ylim(len(organs) - 0.5, -1.9)
+    axes[0].scatter([], [], s=26, color=BLUE, label="primary organ, beats chance"); axes[0].scatter([], [], s=22, color=GRAY, label="primary organ, does not")
+    axes[0].scatter([], [], s=26, facecolors=SURFACE, edgecolors=BLUE, lw=1.6, label="secondary organ, beats chance")
+    axes[0].scatter([], [], s=22, facecolors=SURFACE, edgecolors=MUTED, lw=1.1, label="secondary organ, does not")
+    fig.legend(*axes[0].get_legend_handles_labels(), loc="lower center", ncol=4, frameon=False, fontsize=8, labelcolor=INK2, bbox_to_anchor=(0.55, 0.0))
+    h = fig.get_figheight()
+    fig.text(0.01, 0.995, "Per disease and organ: where does that organ's best cell type rank?", fontsize=12.5, fontweight="bold", color=INK, va="top")
+    fig.text(0.01, 0.995 - 0.33 / h, "One dot per (disease, organ in its own set): filled = primary organ (upper dots), open ring = secondary organ (lower dots). A disease with several\n"
+             "organs has several dots. Black tick = chance for that organ: its median best rank across diseases that do not have it as own organ. Blue = better than chance.\n"
+             "Row label: organ (primary pairs + secondary pairs). Any own organ beating chance = any blue dot of the disease. Organs sorted by the primary pairs' distance from chance.",
+             fontsize=7.8, color=INK2, va="top")
+    fig.subplots_adjust(left=0.17, right=0.985, top=1 - 1.75 / h, bottom=1.0 / h, wspace=0.08)
+    for ext in ("png", "pdf"): fig.savefig(os.path.join(OUT, f"fig5_best_rank_primary_secondary.{ext}"), dpi=200 if ext == "png" else None)
+    plt.close(fig)
 
 
 def main():
@@ -97,16 +165,11 @@ def main():
 
     res, ncols = {}, {}
     for a in ATLASES:
-        d = E.prepare(a); res[a] = best_rank_table(d, a); ncols[a] = d["X"].shape[1]
-        res[a].to_csv(os.path.join(OUT, f"{a}_best_rank_primary_secondary.tsv"), sep="\t", index=False)
-        r = res[a]; sg = r[r.single_organ]
-        print(a, "beat chance rank (primary+secondary):", round((r.best_own_rank < r.chance_rank).mean(), 3),
-              "| single-organ diseases:", len(sg), "| best rank improved by secondary organs:", int((sg.primary_only_rank > sg.best_own_rank).sum()))
-    sub = ("One dot per single-primary-organ disease (rows = its primary organ), as in Figure 3, but the best rank is taken over its primary + secondary organs' cell types.\n"
-           "Hairline = the improvement over the primary-only rank. Black tick = chance for the widened set (median best rank across the other diseases). "
-           "Blue = better than chance.")
-    E.fig_best_rank({a: res[a][res[a].single_organ] for a in ATLASES}, ncols, name="fig5_best_rank_primary_secondary",
-                    title="Per disease: where does its best own-organ cell type rank? (primary + secondary organs)", subtitle=sub)
+        d = E.prepare(a); res[a] = organ_pair_table(d); ncols[a] = d["X"].shape[1]
+        res[a].round(3).to_csv(os.path.join(OUT, f"{a}_organ_pair_ranks.tsv"), sep="\t", index=False)
+        g = res[a].groupby("role").beats_chance.agg(["sum", "size", "mean"])
+        print(a, "pairs beating chance:", g.round(3).to_dict("index"))
+    fig_pairs(res, ncols)
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 5.4), sharey=True)
     fmt = lambda q: "p<0.001" if q < 0.001 else f"p={q:.3f}"
