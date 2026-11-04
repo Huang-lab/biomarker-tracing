@@ -155,6 +155,29 @@ organ-level split is consistent across the two atlases:
 * **Mixed:** skin, vasculature, esophagus, eye, brain (8–9 of 25), liver (4/7 hpa700, 2/7 pp229).
 * **Fails:** kidney (0/9 in both), adipose (0/2), pancreas, breast.
 
+### Does adding secondary organs help?
+![Primary vs primary+secondary](figures/evaluation/fig4_primary_vs_secondary.png)
+
+Secondary organs are organs the block table lists for a disease, or that fewer than 25% of its ICD-10 categories
+point to. They widen the own-organ set for 68 (hpa700) and 61 (pp229) of the evaluated diseases (hpa700: median
+28 → 38 own cell types per disease). A wider set raises the chance of a hit, so each definition is compared with
+its own shuffled-organ null.
+
+| ≥1 own-organ cell type in the top k (observed vs shuffled) | hpa700 | pp229 |
+|---|---|---|
+| Primary, top 1 | 13% vs 6% (p < 0.001) | 12% vs 6% (p < 0.001) |
+| Primary + secondary, top 1 | 14% vs 7% (p < 0.001) | 12% vs 8% (p = 0.006) |
+| Primary, top 10 | 29% vs 27% (p = 0.27) | 31% vs 32% (p = 0.59) |
+| Primary + secondary, top 10 | 35% vs 31% (p = 0.15) | 38% vs 36% (p = 0.35) |
+| **Secondary organs alone**, top 1 (primary cell types excluded) | 3% vs 3% (p = 0.51) | 2% vs 7% (p = 0.98) |
+| **Secondary organs alone**, top 10 | 16% vs 16% (p = 0.64) | 26% vs 28% (p = 0.68) |
+
+Secondary organs add **no signal**. The secondary organs on their own do no better than chance, and the pooled
+mean-rank AUC stays at 0.50. The primary + secondary curve rises above its null only for the first few ranks,
+exactly as the primary-only curve does, and the excess is smaller in pp229 (top 1: +5 points vs +6 for primary).
+The raw hit rate goes up simply because the own-organ set is larger. Keep primary organs as the headline
+definition and report this as a sensitivity analysis.
+
 ### Significant hits
 | | hpa700 | pp229 |
 |---|---|---|
@@ -193,6 +216,8 @@ and 86% (pp229) of evaluated diseases have no disease-specific hit at all.
 ```bash
 python organ_mapping/plot_organ_heatmaps.py --atlas both   # AUC, top-10 share, clustermaps
 python organ_mapping/evaluate_organ_hits.py                 # this report's figures and tables
+python organ_mapping/evaluate_primary_secondary.py          # primary vs primary+secondary organs
+python organ_mapping/plot_disease_organ_examples.py         # primary-organ example figure
 ```
 Tables behind the figures are in `figures/evaluation/`: `hit_rate_by_depth.tsv`, `<atlas>_best_rank_per_disease.tsv`
 and `significant_hits_in_own_organ.tsv`.

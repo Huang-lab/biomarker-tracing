@@ -1,0 +1,43 @@
+atlas	own_organ_set	n_diseases	measure	observed	null_median	p
+hpa700	primary	191	≥1 in top 1	0.1309	0.0628	0.0005
+hpa700	primary	191	≥1 in top 5	0.2356	0.1832	0.0335
+hpa700	primary	191	≥1 in top 10	0.2932	0.2723	0.2699
+hpa700	primary	191	≥1 in top 20	0.3979	0.4084	0.6752
+hpa700	primary	191	≥1 in top 50	0.6126	0.6387	0.8316
+hpa700	primary	191	mean-rank AUC	0.5003	0.5029	0.5827
+hpa700	primary	191	top-10 own share	0.1136	0.058	0.0005
+hpa700	primary+secondary	191	≥1 in top 1	0.1414	0.0681	0.0005
+hpa700	primary+secondary	191	≥1 in top 5	0.2723	0.2094	0.017
+hpa700	primary+secondary	191	≥1 in top 10	0.3455	0.3089	0.1529
+hpa700	primary+secondary	191	≥1 in top 20	0.4712	0.4607	0.3978
+hpa700	primary+secondary	191	≥1 in top 50	0.6754	0.6911	0.7471
+hpa700	primary+secondary	191	mean-rank AUC	0.5009	0.5033	0.5727
+hpa700	primary+secondary	191	top-10 own share	0.1251	0.0675	0.0005
+hpa700	secondary only	68	≥1 in top 1	0.0294	0.0294	0.5057
+hpa700	secondary only	68	≥1 in top 5	0.1176	0.1029	0.4963
+hpa700	secondary only	68	≥1 in top 10	0.1618	0.1618	0.6392
+hpa700	secondary only	68	≥1 in top 20	0.2647	0.2941	0.7891
+hpa700	secondary only	68	≥1 in top 50	0.4559	0.5	0.8291
+hpa700	secondary only	68	mean-rank AUC	0.4861	0.5105	0.8406
+hpa700	secondary only	68	top-10 own share	0.0324	0.031	0.4628
+pp229	primary	184	≥1 in top 1	0.1196	0.0598	0.0005
+pp229	primary	184	≥1 in top 5	0.25	0.1957	0.028
+pp229	primary	184	≥1 in top 10	0.3098	0.3152	0.5857
+pp229	primary	184	≥1 in top 20	0.462	0.4946	0.8466
+pp229	primary	184	≥1 in top 50	0.7011	0.75	0.965
+pp229	primary	184	mean-rank AUC	0.4974	0.5088	0.8051
+pp229	primary	184	top-10 own share	0.0793	0.0542	0.001
+pp229	primary+secondary	184	≥1 in top 1	0.125	0.0761	0.0065
+pp229	primary+secondary	184	≥1 in top 5	0.2826	0.2283	0.042
+pp229	primary+secondary	184	≥1 in top 10	0.3804	0.3641	0.3448
+pp229	primary+secondary	184	≥1 in top 20	0.5707	0.5543	0.3433
+pp229	primary+secondary	184	≥1 in top 50	0.7826	0.7935	0.7306
+pp229	primary+secondary	184	mean-rank AUC	0.5019	0.5075	0.6722
+pp229	primary+secondary	184	top-10 own share	0.0891	0.0669	0.0055
+pp229	secondary only	61	≥1 in top 1	0.0164	0.0656	0.984
+pp229	secondary only	61	≥1 in top 5	0.1148	0.1803	0.9365
+pp229	secondary only	61	≥1 in top 10	0.2623	0.2787	0.6837
+pp229	secondary only	61	≥1 in top 20	0.4754	0.4262	0.2809
+pp229	secondary only	61	≥1 in top 50	0.7049	0.6721	0.3063
+pp229	secondary only	61	mean-rank AUC	0.4979	0.5077	0.6677
+pp229	secondary only	61	top-10 own share	0.0295	0.0469	0.9635
