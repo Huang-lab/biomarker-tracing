@@ -149,11 +149,22 @@ not because many diseases have one.
 ### Which organs work
 ![Best own-organ rank per disease](figures/evaluation/fig3_best_rank_per_disease.png)
 
-Overall, 48% (hpa700) and 47% (pp229) of diseases beat the chance rank, so most diseases look random. The
+**What "chance rank" means (the black tick).** For an organ, take every disease that does *not* have that organ among
+its own organs (primary or secondary) and find where the organ's best cell type lands in that disease's ranking.
+The **median** of those positions is the organ's chance rank: where the organ typically ranks for a disease that
+is not about it. A disease beats chance when it ranks its own organ better (a smaller number) than that median.
+Because it is a median, a disease whose ranking carried no organ information would beat it about half the time,
+so about 50% is the expected value under no signal; it is not an assumed constant. Figures 3 and 5 use this same
+definition (`fig3b_how_chance_works.png` shows the calculation for three diseases). An organ that ranks high
+for every disease gets a low chance rank and is hard to beat, which is how generic signals are discounted at this step.
+
+![How the chance rank is computed](figures/evaluation/fig3b_how_chance_works.png)
+
+Overall, 48% (hpa700) and 46% (pp229) of diseases beat the chance rank, so most diseases look random. The
 organ-level split is consistent across the two atlases:
 
 * **Works:** stomach (4/4 in both), lung (11/11, 10/11), heart muscle (7/7 in both), urinary bladder (5/6, hpa700 only).
-* **Mixed:** skin, vasculature, esophagus, eye, brain (8–9 of 25), liver (4/7 hpa700, 2/7 pp229).
+* **Mixed:** skin, vasculature, esophagus, eye, brain (8 of 25 in both), liver (4/7 hpa700, 2/7 pp229).
 * **Fails:** kidney (0/9 in both), adipose (0/2), pancreas, breast.
 
 ### Does adding secondary organs help?

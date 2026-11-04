@@ -53,8 +53,9 @@ def prepare(atlas):
     mp, Z, col_tissue, col_organ = load(atlas, ROOT)
     lineage = np.array([lineage_of(c.split("_", 1)[1]) for c in Z.columns])
     own = np.array([[o in d for o in col_organ] for d in mp.organ_dict])
+    sec = np.array([[o in {x for x in s.split(";") if x} for o in col_organ] for s in mp.organs_secondary])
     keep = own.any(1) & ~own.all(1)                      # organ has cell types in this atlas
-    return dict(mp=mp[keep].reset_index(drop=True), Z=Z[keep], X=Z.to_numpy()[keep], own=own[keep],
+    return dict(mp=mp[keep].reset_index(drop=True), Z=Z[keep], X=Z.to_numpy()[keep], own=own[keep], own_any=(own | sec)[keep],
                 col_organ=col_organ, lineage=lineage, par=np.isin(lineage, list(PARENCHYMAL)))
 
 
@@ -151,16 +152,20 @@ def chance_median_rank(n, m):
     return int(r[np.searchsorted(hypergeom.sf(0, n, m, r), 0.5)])
 
 
-def empirical_chance_rank(X, M):
-    """For each disease: median, over the OTHER diseases, of the best rank its own-organ cell set gets in their rankings.
-    Unlike chance_median_rank this keeps the correlation between cell types of the same tissue (they rise and fall
-    together, so the best of m behaves like fewer than m independent draws)."""
+def chance_rank_by_set(X, M, M_excl):
+    """Chance rank for each disease's own-organ cell set S (row of M): the MEDIAN, over all diseases that do not have any
+    of S's organs among their own organs (M_excl: primary or secondary), of the best rank S's cell types get in that
+    disease's ranking. It says where this organ typically ranks for a disease that is not about it; a disease whose
+    ranking carried no organ information would rank S better than this about half the time. Same definition in
+    Figures 3 and 5 (in Figure 5 S is a single organ)."""
     order = np.argsort(-X, axis=1)
-    out = []
+    out, cache = [], {}
     for i in range(len(M)):
-        hit = M[i][order]                                    # this organ's cells in every disease's ranking
-        r = hit.argmax(1) + 1.0
-        out.append(np.median(np.delete(r, i)))
+        key = M[i].tobytes()
+        if key not in cache:
+            others = ~(M_excl & M[i][None, :]).any(1)
+            cache[key] = np.median(M[i][order[others]].argmax(1) + 1.0) if others.any() else np.nan
+        out.append(cache[key])
     return np.array(out)
 
 
@@ -184,7 +189,7 @@ def fig_best_rank(res, n_cols):
             ax.scatter(v[win], y[win], s=26, color=BLUE, lw=0.8, edgecolors=SURFACE, zorder=4)
             ax.text(n * 1.9, i, f"{win.sum()}/{len(v)}", fontsize=7.5, va="center", ha="center", color=INK if win.mean() > 0.5 else MUTED)
         win_all = (r.best_own_rank < r.chance_rank).mean()
-        ax.set_title(f"{ATLAS_LABEL[atlas]}\n{win_all:.0%} of diseases beat the chance rank (≈50% expected)", fontsize=9, color=INK, loc="left")
+        ax.set_title(f"{ATLAS_LABEL[atlas]}\n{win_all:.0%} beat the chance rank (≈50% expected if no organ signal)", fontsize=8.8, color=INK, loc="left")
         ax.set_xscale("log"); ax.set_xlim(0.8, n * 2.6)
         ticks = [t for t in (1, 3, 10, 30, 100, 300) if t <= n]
         ax.set_xticks(ticks); ax.set_xticklabels([str(t) for t in ticks]); ax.minorticks_off()
@@ -194,9 +199,10 @@ def fig_best_rank(res, n_cols):
     axes[0].set_yticks(range(len(organs))); axes[0].set_yticklabels([f"{o.replace('.', ' ')}  (n={counts[o]})" for o in organs])
     axes[0].set_ylim(len(organs) - 0.5, -1.6)
     fig.text(0.01, 0.995, "Per disease: where does its best own-organ cell type rank?", fontsize=12.5, fontweight="bold", color=INK, va="top")
-    fig.text(0.01, 0.995 - 0.33 / fig.get_figheight(), "One dot per single-organ disease. Black tick = chance: the organ's median best rank across all other diseases.\n"
-             "Blue = better than that. Organs sorted by median distance from chance, both atlases.", fontsize=8, color=INK2, va="top")
-    fig.subplots_adjust(left=0.17, right=0.98, top=1 - 1.45 / fig.get_figheight(), bottom=0.75 / fig.get_figheight(), wspace=0.08)
+    fig.text(0.01, 0.995 - 0.33 / fig.get_figheight(), "One dot per single-organ disease. Black tick = the organ's chance rank: the MEDIAN rank of that organ's best cell type across all diseases that do not have it as an organ.\n"
+             "Blue = this disease ranks its own organ better (further left) than that median; gray = worse. A disease with no organ information would land left of the tick about half the time.\n"
+             "Organs sorted by median distance from chance, both atlases.", fontsize=7.8, color=INK2, va="top")
+    fig.subplots_adjust(left=0.17, right=0.98, top=1 - 1.6 / fig.get_figheight(), bottom=0.75 / fig.get_figheight(), wspace=0.08)
     save(fig, "fig3_best_rank_per_disease")
 
 
@@ -246,7 +252,7 @@ def main():
         single = np.array([len(x) == 1 for x in d["mp"].organ_dict])
         ranks[a] = pd.DataFrame({"disease": d["mp"].Disease, "organ": [next(iter(x)) if len(x) == 1 else ";".join(x) for x in d["mp"].organ_dict],
                                  "n_own_cell_types": m, "best_own_rank": r,
-                                 "chance_rank": empirical_chance_rank(d["X"], d["own"]), "p": p,
+                                 "chance_rank": chance_rank_by_set(d["X"], d["own"], d["own_any"]), "p": p,
                                  "confidence": d["mp"].confidence, "single_organ": single})
         ranks[a].sort_values("p").to_csv(os.path.join(OUT, f"{a}_best_rank_per_disease.tsv"), sep="\t", index=False)
         sig.append(significance_table(a, d))

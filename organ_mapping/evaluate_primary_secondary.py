@@ -113,8 +113,8 @@ def fig_pairs(res, n_cols):
                 ax.text(x, i, f"{int(q.beats_chance.sum())}/{len(q)}" if len(q) else "–", fontsize=7.5, va="center", ha="center",
                         color=INK if len(q) and q.beats_chance.mean() > 0.5 else MUTED)
         wp = r[r.role == "primary"].beats_chance.mean(); ws = r[r.role == "secondary"].beats_chance.mean()
-        ax.set_title(f"{ATLAS_LABEL[a]}\nbeat chance: primary pairs {wp:.0%} (n={int((r.role == 'primary').sum())}), "
-                     f"secondary pairs {ws:.0%} (n={int((r.role == 'secondary').sum())})", fontsize=8.8, color=INK, loc="left")
+        ax.set_title(f"{ATLAS_LABEL[a]}\nprimary pairs: {wp:.0%} beat the chance rank (n={int((r.role == 'primary').sum())})\n"
+                     f"secondary pairs: {ws:.0%} beat it (n={int((r.role == 'secondary').sum())}); ≈50% expected if no organ signal", fontsize=8.6, color=INK, loc="left")
         ax.set_xscale("log"); ax.set_xlim(0.8, n * 4.2)
         ticks = [t for t in (1, 3, 10, 30, 100, 300) if t <= n]
         ax.set_xticks(ticks); ax.set_xticklabels([str(t) for t in ticks]); ax.minorticks_off()
@@ -125,18 +125,19 @@ def fig_pairs(res, n_cols):
         ax.text(n * 2.3, -1.45, "beat chance", fontsize=7, color=INK2, ha="center", va="center", fontweight="bold")
     axes[0].set_yticks(range(len(organs)))
     axes[0].set_yticklabels([f"{o.replace('.', ' ')}  ({cnt[o][0]}+{cnt[o][1]})" for o in organs])
-    axes[0].set_ylim(len(organs) - 0.5, -1.9)
+    axes[0].set_ylim(len(organs) - 0.5, -2.0)
     axes[0].scatter([], [], s=26, color=BLUE, label="primary organ, beats chance"); axes[0].scatter([], [], s=22, color=GRAY, label="primary organ, does not")
     axes[0].scatter([], [], s=26, facecolors=SURFACE, edgecolors=BLUE, lw=1.6, label="secondary organ, beats chance")
     axes[0].scatter([], [], s=22, facecolors=SURFACE, edgecolors=MUTED, lw=1.1, label="secondary organ, does not")
     fig.legend(*axes[0].get_legend_handles_labels(), loc="lower center", ncol=4, frameon=False, fontsize=8, labelcolor=INK2, bbox_to_anchor=(0.55, 0.0))
     h = fig.get_figheight()
     fig.text(0.01, 0.995, "Per disease and organ: where does that organ's best cell type rank?", fontsize=12.5, fontweight="bold", color=INK, va="top")
-    fig.text(0.01, 0.995 - 0.33 / h, "One dot per (disease, organ in its own set): filled = primary organ (upper dots), open ring = secondary organ (lower dots). A disease with several\n"
-             "organs has several dots. Black tick = chance for that organ: its median best rank across diseases that do not have it as own organ. Blue = better than chance.\n"
+    fig.text(0.01, 0.995 - 0.33 / h, "One dot per (disease, organ in its own set): filled = primary organ (upper dots), open ring = secondary organ (lower dots). A disease with several organs has several dots.\n"
+             "Black tick = the organ's chance rank: the MEDIAN rank of that organ's best cell type across all diseases that do not have it as an organ (same definition as Figure 3).\n"
+             "Blue = this disease ranks the organ better (further left) than that median; a disease with no organ information would land left of the tick about half the time.\n"
              "Row label: organ (primary pairs + secondary pairs). Any own organ beating chance = any blue dot of the disease. Organs sorted by the primary pairs' distance from chance.",
              fontsize=7.8, color=INK2, va="top")
-    fig.subplots_adjust(left=0.17, right=0.985, top=1 - 1.75 / h, bottom=1.0 / h, wspace=0.08)
+    fig.subplots_adjust(left=0.17, right=0.985, top=1 - 2.05 / h, bottom=1.0 / h, wspace=0.08)
     for ext in ("png", "pdf"): fig.savefig(os.path.join(OUT, f"fig5_best_rank_primary_secondary.{ext}"), dpi=200 if ext == "png" else None)
     plt.close(fig)
 
