@@ -1,0 +1,269 @@
+Disease	Disease_code	status	confidence	tier1_primary	tier2_secondary	tier3_corroborated	tier3_evidence	all_possible	level1_rejected	mondo_outside_chapter
+Bacterial, viral and other infectious agents	AB1_BACT_BIR_OTHER_INF_AGENTS	not_scorable								
+Intestinal infectious diseases	AB1_INTESTINAL_INFECTIONS	scorable	medium	colon;small.intestine	rectum;stomach			colon;small.intestine;rectum;stomach		
+Mycoses	AB1_MYCOSES	scorable	medium	skin				skin		
+Other bacterial agents as the cause of diseases classified to other chapters	AB1_OTHER_BACT_INOTHER	not_scorable								
+Other bacterial diseases	AB1_OTHER_BACTERIAL	not_scorable								
+Other bacterial intestinal infections	AB1_BACT_INTEST_OTH	scorable	medium	colon;small.intestine	rectum;stomach			colon;small.intestine;rectum;stomach		
+Other septicaemia	AB1_OTHER_SEPSIS	not_scorable								
+Other specified/unspecified bacterial intestinal infections	BACT_INTEST_INFECTION_NOS	scorable	medium	colon;small.intestine	rectum;stomach			colon;small.intestine;rectum;stomach		
+Other viral diseases	AB1_OTHER_VIRAL	not_scorable								
+Other viral diseases, not elsewhere classified	AB1_VIRAL_NOS	not_scorable								
+Streptococcus and staphylococcus as the cause of diseases classified to other chapters	AB1_STREPTSTAPHYCOCC_INOTHER	not_scorable								
+Viral infections characterized by skin and mucous membrane lesions	AB1_VIRAL_SKIN_MUCOUS_MEMBRANE	scorable	medium	skin				skin		
+Benign neoplasm of colon, rectum, anus and anal canal	CD2_BENIGN_COLORECANI	scorable	medium	colon;rectum				colon;rectum		
+Benign neoplasm of other and ill-defined parts of digestive system	CD2_BENIGN_OTHERDIGESTIVE	scorable	medium	liver;small.intestine;stomach				liver;small.intestine;stomach		
+Benign neoplasm: Stomach	CD2_BENIGN_STOMACH	scorable	medium	liver;small.intestine;stomach				liver;small.intestine;stomach		
+Leiomyoma of uterus	CD2_BENIGN_LEIOMYOMA_UTERI	scorable	medium	endometrium;fallopian.tube;ovary				endometrium;fallopian.tube;ovary		
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	C3_MELANOMA_SKIN_EXALLC	scorable	medium	skin				skin		
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	C3_BREAST_EXALLC	scorable	medium	breast				breast		
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	C3_PROSTATE_EXALLC	scorable	medium	epididymis;prostate;testis				epididymis;prostate;testis		
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	C3_NONHODGKIN_EXALLC	scorable	medium	blood;bone.marrow;lymph.node;spleen				blood;bone.marrow;lymph.node;spleen		
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	C3_OTHER_SKIN_EXALLC	scorable	medium	skin				skin		
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	C3_SQUOMOUS_CELL_CARCINOMA_SKIN_EXALLC	scorable	review	skin				skin		
+Agranulocytosis	D3_AGRANULOCYTOSIS	scorable	high	blood;bone.marrow;spleen	lymph.node			blood;bone.marrow;spleen;lymph.node	thymus	
+Other and unspecified anaemias	D3_ANAEMIANAS	scorable	high	blood;bone.marrow				blood;bone.marrow	lymph.node;spleen;thymus	
+Other and unspecified iron deficiency	D3_ANAEMIA_IRONDEF_NAS	scorable	high	blood;bone.marrow				blood;bone.marrow	lymph.node;spleen;thymus	
+Acute alcohol intoxication	F5_ALCOHOLAC	scorable	medium	brain	liver			brain;liver	adipose.tissue;adrenal.gland;pancreas;pituitary.gland	
+Alcohol dependence	F5_ALCOHOL_DEPENDENCE	scorable	medium	brain	liver			brain;liver	adipose.tissue;adrenal.gland;pancreas;pituitary.gland	
+Depression	F5_DEPRESSIO	scorable	medium	brain				brain	adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Depression or dysthymia	F5_DEPRESSION_DYSTHYMIA	scorable	medium	brain				brain	adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Disorders of lipoprotein metabolism and other lipidaemias	E4_LIPOPROT	scorable	medium	liver	adipose.tissue;vasculature			liver;adipose.tissue;vasculature	adrenal.gland;pancreas;pituitary.gland	
+Disorders of other endocrine glands	E4_ENDOGLAND	scorable	medium	adrenal.gland;pituitary.gland	ovary;testis;thymus			adrenal.gland;pituitary.gland;ovary;testis;thymus	adipose.tissue;liver;pancreas	
+Disorders of the thyroid gland	E4_THYROID	not_scorable							adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Hyperlipidaemia, other/unspecified	E4_HYPERLIPNAS	scorable	medium	liver	adipose.tissue;vasculature			liver;adipose.tissue;vasculature	adrenal.gland;pancreas;pituitary.gland	
+Metabolic disorders	E4_METABOLIA	scorable	medium	liver	kidney;pancreas			liver;kidney;pancreas	adipose.tissue;adrenal.gland;pituitary.gland	
+Obesity	E4_OBESITY	scorable	medium	adipose.tissue				adipose.tissue	adrenal.gland;liver;pancreas;pituitary.gland	
+Obesity, other/unspecified	E4_OBESITYNAS	scorable	medium	adipose.tissue				adipose.tissue	adrenal.gland;liver;pancreas;pituitary.gland	
+Other anxiety disorders	F5_ANXIETY	scorable	medium	brain				brain	adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Other disorders of fluid, electrolyte and acid-base balance	E4_FLUIDELECTRO	scorable	medium	kidney				kidney	adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Pure hypercholesterolaemia	E4_HYPERCHOL	scorable	medium	liver	adipose.tissue;vasculature			liver;adipose.tissue;vasculature	adrenal.gland;pancreas;pituitary.gland	
+Volume depletion	E4_VOLUME	scorable	medium	kidney				kidney	adipose.tissue;adrenal.gland;liver;pancreas;pituitary.gland	
+Angina pectoris	I9_ANGINA	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Atrial fibrillation and flutter	I9_AF	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Cardiomyopathy	I9_CARDMYO	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Conduction disorders	I9_CONDUCTIO	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Coronary atherosclerosis	I9_CORATHER	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+DVT of lower extremities	I9_PHLETHROMBDVTLOW	scorable	high	vasculature	lymph.node			vasculature;lymph.node	brain;heart.muscle;kidney;lung	
+Death due to cardiac causes	I9_K_CARDIAC	scorable	review	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Heart failure, strict	I9_HEARTFAIL	scorable	high	vasculature;heart.muscle	kidney			vasculature;heart.muscle;kidney	brain;lung;lymph.node	
+Hypertension	I9_HYPTENS	scorable	high	vasculature;brain	heart.muscle;kidney			vasculature;brain;heart.muscle;kidney	lung;lymph.node	
+Hypertension, Pulmonary Arterial	I9_HYPTENSPUL	scorable	high	heart.muscle;lung	vasculature			heart.muscle;lung;vasculature	brain;kidney;lymph.node	
+Hypertension, essential	I9_HYPTENSESS	scorable	high	vasculature	heart.muscle;kidney			vasculature;heart.muscle;kidney	brain;lung;lymph.node	
+Hypertensive Renal Disease	I9_HYPTENSRD	scorable	high	vasculature	heart.muscle;kidney			vasculature;heart.muscle;kidney	brain;lung;lymph.node	
+Hypotension	I9_HYPOTE	scorable	high	vasculature	heart.muscle			vasculature;heart.muscle	brain;kidney;lung;lymph.node	
+Ischaemic heart disease, wide definition	I9_IHD	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Major coronary heart disease event	I9_CHD	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Myocardial infarction, strict	I9_MI_STRICT	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Other arrhythmias	I9_OTHARR	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Other diseases of arteries and capillaries	I9_ARTOTH	scorable	high	vasculature				vasculature	brain;heart.muscle;kidney;lung;lymph.node	
+Other or ill-defined heart diseases	I9_OTHILLHEART	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Other peripheral vascular diseases	I9_OTHPER	scorable	high	vasculature				vasculature	brain;heart.muscle;kidney;lung;lymph.node	
+Paroxysmal tachycardia	I9_PAROXTAC	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Phlebitis and thrombophlebitis (not including DVT)	I9_PHLETHROM	scorable	high	vasculature	lymph.node			vasculature;lymph.node	brain;heart.muscle;kidney;lung	
+Pulmonary embolism	I9_PULMEMB	scorable	high	heart.muscle;lung	vasculature			heart.muscle;lung;vasculature	brain;kidney;lymph.node	
+Rheumatic valve diseases	I9_RHEUVALV	scorable	high	heart.muscle				heart.muscle	brain;kidney;lung;lymph.node;vasculature	
+Secondary right heart disease	I9_SECONDRIGHT	scorable	high	heart.muscle;lung	vasculature			heart.muscle;lung;vasculature	brain;kidney;lymph.node	
+Stroke, excluding SAH	I9_STR	scorable	high	brain;vasculature				brain;vasculature	heart.muscle;kidney;lung;lymph.node	
+Transient ischemic attack	I9_TIA	scorable	high	brain		vasculature	vasculature:MONDO	brain;vasculature	heart.muscle;kidney;lung;lymph.node	
+Unstable angina pectoris	I9_UAP	scorable	high	heart.muscle;vasculature				heart.muscle;vasculature	brain;kidney;lung;lymph.node	
+Varicose veins	I9_VARICVE	scorable	high	vasculature	lymph.node			vasculature;lymph.node	brain;heart.muscle;kidney;lung	
+Venous thromboembolism	I9_VTE	scorable	high	vasculature;lung;heart.muscle	lymph.node			vasculature;lung;heart.muscle;lymph.node	brain;kidney	
+Acute alcohol intoxication, ICD10	ALCOHOLACUTE10	scorable	high	brain	liver			brain;liver		
+Alcohol abuse, main dg, excluding more controls	KRA_PSY_ALCOH_EXMORE	scorable	high	brain	liver			brain;liver		
+Alcohol use disorder, ICD-based	AUD	scorable	high	brain	liver			brain;liver		
+Anxiety disorders, excluding more controls	KRA_PSY_ANXIETY_EXMORE	scorable	high	brain				brain		
+Any mental disorder	KRA_PSY_ANYMENTAL	scorable	high	brain				brain		
+Schizophrenia or delusion, excluding more controls	KRA_PSY_SCHIZODEL_EXMORE	scorable	high	brain				brain		
+Smoking dependency	SMOKING_DEPEND	scorable	high	brain				brain		
+Substance abuse, excluding more controls	KRA_PSY_SUBSTANCE_EXMORE	scorable	high	brain	liver			brain;liver		
+Carpal tunnel syndrome	G6_CARPTU	not_scorable							brain;skeletal.muscle	
+Cerebral palsy and other paralytic syndromes	G6_CPETAL	scorable	high	brain				brain	skeletal.muscle	
+Epilepsy	G6_EPLEPSY	scorable	high	brain				brain	skeletal.muscle	
+Episodal and paroxysmal disorders	G6_EPIPAROX	scorable	high	brain				brain	skeletal.muscle	
+Falls/tendency to fall	FALLS	not_scorable							brain;skeletal.muscle	
+Hemiplegia	G6_HEMIPLE	scorable	high	brain				brain	skeletal.muscle	
+MS-disease / Multiple Sclerosis	G6_MS	scorable	high	brain				brain	skeletal.muscle	
+Migraine	G6_MIGRAINE	scorable	high	brain				brain	skeletal.muscle	vasculature
+Migraine, unspecified, drug-induced	MIGRAINE_UNSPE	scorable	high	brain				brain	skeletal.muscle	vasculature
+Nerve, nerve root and plexus disorders	G6_NERPLEX	not_scorable							brain;skeletal.muscle	
+Other and unspecified nerve root and plexus disorders, also in other diseases	G6_ROOTPLEXOTHUNS	not_scorable							brain;skeletal.muscle	
+Other degenerative diseases of the nervous system	NEURODEGOTH	scorable	high	brain				brain	skeletal.muscle	
+Other neurological diseases	G6_OTHNEU	scorable	high	brain				brain	skeletal.muscle	
+Other sleep disorders	G6_SLEEPDISOTH	scorable	high	brain				brain	skeletal.muscle	
+Sleep apnoea	G6_SLEEPAPNO	scorable	high	brain				brain	skeletal.muscle	
+Diabetic maculopathy, excluding more controls	DM_MACULOPATHY_EXMORE	scorable	high	eye				eye		
+Disorders of choroid and retina	H7_CHOROIDRETINA	scorable	high	eye				eye		
+Disorders of ocular muscles, binocular movement, accommodation and refraction	H7_OCUMUSCLE	scorable	high	eye				eye		
+Glaucoma	H7_GLAUCOMA	scorable	high	eye				eye		
+Other and unspecified glaucoma	H7_GLAUCNAS	scorable	high	eye				eye		
+Other cataract	H7_CATARACTOTHER	scorable	high	eye				eye		
+Senile cataract	H7_CATARACTSENILE	scorable	high	eye				eye		
+Visual disturbances	H7_VISUDISTURB	scorable	high	eye				eye		
+Other disorders of ear	H8_OTHEREAR	not_scorable								
+Acute upper respiratory infections	J10_UPPERINFEC	secondary_only	medium		lung			lung		
+Asthma, excluding more controls	J10_ASTHMA_EXMORE	scorable	high	lung				lung		
+Asthma, unspecified (mode)	ASTHMA_NAS	scorable	high	lung				lung		
+Chronic lower respiratory diseases	J10_LOWCHRON	scorable	high	lung				lung		
+Chronic sinusitis	J10_CHRONSINUSITIS	secondary_only	medium		lung			lung		
+Diseases of vocal cords and larynx+other diseases of upper respiratory tract, no elsewhere classified	J10_VOCALLARYNX	secondary_only	medium		lung			lung		
+Early onset COPD	COPD_EARLY	scorable	high	lung				lung		
+Idiopathic pulmonary fibrosis	IPF	scorable	high	lung				lung		
+Influenza and pneumonia	J10_INFLUPNEU	scorable	high	lung				lung		
+Interstitial lung disease	ILD	scorable	high	lung				lung		
+Nasal polyp	J10_NASALPOLYP	secondary_only	medium		lung			lung		
+Other acute lower respiratory infections	J10_LOWERINF	scorable	high	lung				lung		
+Other diseases of pleura	J10_PLEURA	scorable	high	lung				lung		
+Other diseases of upper respiratory tract	J10_UPPERDIS	secondary_only	medium		lung			lung		
+Pleural effusion	J10_PLEUREFFUSION	scorable	high	lung				lung		
+Unspecified acute lower respiratory infection	J10_ACUTELOWERNAS	scorable	high	lung				lung		
+Vocal cord dysfunction	VOCALCORDDYS	secondary_only	medium		lung			lung		
+Abscess of anal and rectal regions	K11_ABSCANAL	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Acute pancreatitis	K11_ACUTPANC	scorable	high	pancreas				pancreas	colon;esophagus;liver;rectum;salivary.gland;small.intestine;stomach;tongue	
+Cholecystitis	K11_CHOLECYST	secondary_only	medium		liver			liver	colon;esophagus;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Cholelithiasis	K11_CHOLELITH	secondary_only	medium		liver			liver	colon;esophagus;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Chronic gastritis	K11_CHRONGASTR	scorable	high	stomach	small.intestine			stomach;small.intestine	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Coeliac disease	K11_COELIAC	scorable	high	colon;small.intestine;stomach				colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Colonic or urogenital fistula	K11_FISTULA	secondary_only	medium		small.intestine			small.intestine	colon;esophagus;liver;pancreas;rectum;salivary.gland;stomach;tongue	
+Constipation	K11_CONSTIPATION	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Crohn disease (strict definition, require KELA, min 2 HDR)	K11_CD_STRICT2	scorable	high	colon;small.intestine	rectum			colon;small.intestine;rectum	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Crohn's disease NAS	CHRONNAS	scorable	high	colon;small.intestine	rectum			colon;small.intestine;rectum	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Diaphragmatic hernia	K11_DIAHER	scorable	high	esophagus;stomach				esophagus;stomach	colon;liver;pancreas;rectum;salivary.gland;small.intestine;tongue	
+Diseases of liver	K11_LIVER	scorable	high	liver				liver	colon;esophagus;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Diseases of oesophagus, stomach and duodenum	K11_OESSTODUO	scorable	high	stomach;esophagus;small.intestine				stomach;esophagus;small.intestine	colon;liver;pancreas;rectum;salivary.gland;tongue	
+Diseases of oral cavity, salivary glands and jaws	K11_ORAL	scorable	high	salivary.gland;tongue				salivary.gland;tongue	colon;esophagus;liver;pancreas;rectum;small.intestine;stomach	
+Diseases of peritoneum	K11_PERITON	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Diseases of the digestive system	K11_OTHDIG	scorable	high	colon;small.intestine;stomach				colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Diverticular disease of intestine	K11_DIVERTIC	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Duodenal ulcer	K11_DULC	scorable	high	small.intestine;stomach				small.intestine;stomach	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	DUODENAL_ULCER_UNSPE_ACUTE_CHRONIC_WO_HAEMORRHAGE_PERFORATION	scorable	high	small.intestine;stomach				small.intestine;stomach	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Functional dyspepsia	K11_FUNCDYSP	scorable	high	stomach	small.intestine			stomach;small.intestine	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Gastric ulcer	K11_GULC	scorable	high	small.intestine;stomach				small.intestine;stomach	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Gastro-oesophageal reflux disease	K11_REFLUX	scorable	high	esophagus		stomach	stomach:name	esophagus;stomach	colon;liver;pancreas;rectum;salivary.gland;small.intestine;tongue	
+Gastroduodenal ulcer	K11_GASTRODUOULC	scorable	high	small.intestine;stomach				small.intestine;stomach	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Hernia	K11_HERNIA	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Inguinal hernia	K11_HERING	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Intestinal malabsorption	K11_MALABSORB	scorable	high	colon;small.intestine;stomach				colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Irritable bowel syndrome	K11_IBS	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Noninfective enteritis and colitis	K11_ENERCOLNONINF	scorable	high	colon;small.intestine;rectum				colon;small.intestine;rectum	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Oesophageal obstruction	K11_OESOBST	scorable	high	esophagus				esophagus	colon;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Oesophagitis	K11_OESITIS	scorable	high	esophagus				esophagus	colon;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Other diseases of anus and rectum	K11_OTHANRECT	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Other diseases of biliary tract	K11_BILIAOTH	scorable	high	liver				liver	colon;esophagus;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Other diseases of intestine	K11_OTHINT	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Other diseases of intestines	K11_INTESTOTH	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Other diseases of liver	K11_DISLIVOTH	scorable	high	liver				liver	colon;esophagus;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Other diseases of oesophagus	K11_OTHDISOES	scorable	high	esophagus				esophagus	colon;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Other diseases of peritoneum	K11_OTHPERITON	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Other diseases of stomach and duodenum	K11_OTHDISSTOMDUOD	scorable	high	stomach	small.intestine			stomach;small.intestine	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Other diseases of the digestive system	K11_OTHDISDIG	scorable	high	colon;small.intestine;stomach				colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Other functional intestinal disorders	K11_OTHFUNC	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Other gastritis (incl. Duodenitis)	K11_OTHGASTR	scorable	high	stomach	small.intestine			stomach;small.intestine	colon;esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Other noninfective gastroenteritis and colitis	K11_OTHENTERCOL	scorable	high	colon;small.intestine		stomach	stomach:name	colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Other or unspecified ileus, impaction or obstruction	K11_OTHILEUS	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Paralytic ileus and intestinal obstruction	K11_ILEUS	scorable	high	colon;rectum	small.intestine			colon;rectum;small.intestine	esophagus;liver;pancreas;salivary.gland;stomach;tongue	
+Postprocedural disorders of digestive system, not elsewhere classified	K11_POSTOPDIS	scorable	high	colon;small.intestine;stomach				colon;small.intestine;stomach	esophagus;liver;pancreas;rectum;salivary.gland;tongue	
+Ulcer of oesophagus	K11_OESULC	scorable	high	esophagus				esophagus	colon;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	K11_UC_STRICT2	scorable	high	colon;rectum				colon;rectum	esophagus;liver;pancreas;salivary.gland;small.intestine;stomach;tongue	
+Ulcerative colitis, NAS	ULCERNAS	scorable	high	colon;rectum				colon;rectum	esophagus;liver;pancreas;salivary.gland;small.intestine;stomach;tongue	
+Umbilical hernia	K11_UMBHER	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Ventral hernia	K11_VENTHER	not_scorable							colon;esophagus;liver;pancreas;rectum;salivary.gland;small.intestine;stomach;tongue	
+Cellulitis	L12_CELLULITIS	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Cutaneous abscess, furuncle and carbuncle	L12_ABSCESS_CUT	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Dermatitis and eczema	L12_DERMATITISECZEMA	scorable	high	skin				skin	adipose.tissue	
+Infections of the skin and subcutaneous tissue	L12_INFECT_SKIN	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Nail disorders	L12_NAILDIS	scorable	high	skin				skin	adipose.tissue	
+Other and unspecified disorders of skin and subcutaneous tissue	L12_SKINSUBCUTISNAS	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Other and unspecified psoriasis	L12_PSORI_NAS	scorable	high	skin				skin	adipose.tissue	
+Other disorders of skin and subcutaneous tissue	L12_OTHERSKINSUBCUTIS	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	L12_OTHERDISSKINANDSUBCUTIS	scorable	high	skin	adipose.tissue			skin;adipose.tissue		
+Papulosquamous disorders	L12_PAPULOSQUAMOUS	scorable	high	skin				skin	adipose.tissue	
+Psoriasis	L12_PSORIASIS	scorable	high	skin				skin	adipose.tissue	
+Arthropathies	M13_ARTHROPATHIES	not_scorable							skeletal.muscle	
+Arthrosis	M13_ARTHROSIS	not_scorable							skeletal.muscle	
+Artrosis, including avohilmo	M13_ARTHROSIS_INCLAVO	not_scorable							skeletal.muscle	
+Cervical disc disorders	M13_CERVICDISC	not_scorable							skeletal.muscle	
+Cervicalgia	M13_CERVICALGIA	not_scorable							skeletal.muscle	
+Coxarthrosis	M13_ARTHTROSIS_COX	not_scorable							skeletal.muscle	
+Coxarthrosis, primary	M13_ARTHTROSIS_COX_PRIM_ICD10	not_scorable							skeletal.muscle	
+Deforming dorsopathies	M13_DEFORMDORSO	not_scorable							skeletal.muscle	
+Disorders of continuity of bone	M13_BONECONTINUITY	not_scorable							skeletal.muscle	
+Disorders of synovium and tendon	M13_SYNOTEND	not_scorable							skeletal.muscle	
+Dorsopathies	M13_DORSOPATHY	not_scorable							skeletal.muscle	
+Fibroblastic disorders	M13_FIBROBLASTIC	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Gonarthrosis	M13_ARTHROSIS_KNEE	not_scorable							skeletal.muscle	
+Gout	M13_GOUT	not_scorable							skeletal.muscle	
+Gout, unspecified	GOUT_NOS	scorable	review	kidney				kidney	skeletal.muscle	
+Hallux rigidus	M13_HALLUXRIGIDUS	not_scorable							skeletal.muscle	
+Hallux valgus (acquired)	M13_HALLUXVALGUS	not_scorable							skeletal.muscle	
+Internal derangement of knee	M13_KNEEDERANGEMENTS	not_scorable							skeletal.muscle	
+Low back pain	M13_LOWBACKPAIN	not_scorable							skeletal.muscle	
+Meniscus derangement	M13_MENISCUSDERANGEMENTS	not_scorable							skeletal.muscle	
+Osteopathies and chondropathies	M13_OSTEOCHONDRO	not_scorable							skeletal.muscle	
+Osteoporosis	M13_OSTEOPOROSIS	not_scorable							skeletal.muscle	
+Other (seronegative) rheumatoid arthritis, wide	RHEUMA_OTHER_WIDE	not_scorable							skeletal.muscle	
+Other arthrosis	M13_ARTHROSIS_OTH	not_scorable							skeletal.muscle	
+Other deformities of toe(s)	M13_TOEDEFORMOTH	not_scorable							skeletal.muscle	
+Other dorsopathies, not elsewhere classified	M13_DORSOPATHYOTH	not_scorable							skeletal.muscle	
+Other enthesopathies	M13_ENTESOPATHYOTH	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Other hammer toe(s) (acquired)	M13_HAMMERTOE	not_scorable							skeletal.muscle	
+Other intervertebral disc disorders	M13_INTERVERTEB	not_scorable							skeletal.muscle	
+Other joint disorders	M13_OTHERJOINT	not_scorable							skeletal.muscle	
+Other soft tissue disorders, not elsewhere classified	M13_SOFTTISSUEOTH	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Other specified/unspecified soft tissue disorders	M13_SOFTTISSUENAS	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Other/unspecified dorsalgia	M13_DORSALGIANAS	not_scorable							skeletal.muscle	
+Other/unspecified rheumatoid arthritis	RHEUMA_NOS	not_scorable							skeletal.muscle	
+Other/unspecified synovitis and tenosynovitis	M13_TENDOSYNOVITISNAS	not_scorable							skeletal.muscle	
+Pain in joint	JOINTPAIN	not_scorable							skeletal.muscle	
+Pain in limb	M13_LIMBPAIN	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Palmar fascial fibromatosis [Dupuytren]	M13_DUPUTRYEN	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Polyarthropathies	M13_POLYARTHROPATHIES	not_scorable							skeletal.muscle	
+Polyarthrosis	M13_ARTHROSIS_POLY	not_scorable							skeletal.muscle	
+Rheumatoid arthritis	M13_RHEUMA	not_scorable							skeletal.muscle	
+Rotator cuff syndrome	M13_ROTATORCUFF	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Sciatica+with lumbago	M13_SCIATICA	not_scorable							skeletal.muscle	
+Shoulder lesions	M13_SHOULDER	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Soft tissue disorders	M13_SOFTTISSUE	scorable	high	skeletal.muscle				skeletal.muscle		
+Soft tissue disorders related to use, overuse and pressure	M13_SOFTOVERUSE	secondary_only	medium		skeletal.muscle			skeletal.muscle		
+Spinal stenosis	M13_SPINSTENOSIS	not_scorable							skeletal.muscle	
+Spondylopathies	M13_SPONDYLOPATHY	not_scorable							skeletal.muscle	
+Spondylosis	M13_SPONDYLOSIS	not_scorable							skeletal.muscle	
+Trigger finger	M13_TRIGGERFINGER	not_scorable							skeletal.muscle	
+Acute renal failure	N14_ACUTERENFAIL	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Adenomyosis (Endometriosis of uterus)	N14_ENDOMETRIOSIS_UTERUS	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Calculus of kidney and ureter	N14_CALCUKIDUR	scorable	high	kidney;urinary.bladder				kidney;urinary.bladder	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Chronic kidney disease	N14_CHRONKIDNEYDIS	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Cystitis	N14_CYSTITIS	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Diseases of male genital organs	N14_MALEGEN	scorable	high	epididymis;prostate;testis				epididymis;prostate;testis	breast;endometrium;fallopian.tube;kidney;ovary;urinary.bladder	
+Endometriosis	N14_ENDOMETRIOSIS	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Erosion and ectropion of cervix uteri	N14_EROSECTROPUT	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Excessive, frequent and irregular menstruation	N14_MESNRUIRREG	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Female genital prolapse	N14_FEMGENPROL	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Hydrocele	N14_HYDROCELE	scorable	high	epididymis;prostate;testis				epididymis;prostate;testis	breast;endometrium;fallopian.tube;kidney;ovary;urinary.bladder	
+Hyperplasia of prostate	N14_PROSTHYPERPLA	scorable	high	epididymis;prostate;testis				epididymis;prostate;testis	breast;endometrium;fallopian.tube;kidney;ovary;urinary.bladder	
+Inflammatory diseases of prostate (prostatitis)	N14_PROSTATITIS	scorable	high	epididymis;prostate;testis				epididymis;prostate;testis	breast;endometrium;fallopian.tube;kidney;ovary;urinary.bladder	
+Irregular menses	N14_MENSIRREG	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Menorrhagia	N14_MENORRHAGIA	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Neuromuscular dysfunction of bladder	N14_NEUROMUSCDYSBLADD	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Noninflammatory disorders of female genital tract	N14_FEMALEGENNONINF	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Other abnormal uterine and vaginal bleeding	N14_ABNORMALBLEED	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Other diseases of urinary system	N14_URINOTH	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Other disorders of  bladder	N14_OTHBLADD	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Other disorders of kidney and ureter	N14_KIDUROTH	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Other disorders of male genital organs	N14_OTHDISMALEGEN	scorable	high	epididymis;prostate;testis				epididymis;prostate;testis	breast;endometrium;fallopian.tube;kidney;ovary;urinary.bladder	
+Other disorders of urethra and urinary system	N14_URETHRAOTH	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Other noninflammatory disorders of uterus, except cervix	N14_OTHNONINFUTER	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Other obstructive and reflux uropathy	N14_OBSTRUREFLUROPATH	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Ovarian cyst	N14_OVARYCYST	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Pain and other conditions associated with female genital organs and menstrual cycle	N14_FEMGENPAIN	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Polyp of the female genital tract	N14_POLYPFEMGEN	scorable	high	endometrium;ovary	fallopian.tube			endometrium;ovary;fallopian.tube	breast;epididymis;kidney;prostate;testis;urinary.bladder	
+Renal tubulo-interstitial diseases	N14_RENALTUB	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Unspecified kidney failure	N14_RENFAILNAS	scorable	high	kidney				kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis;urinary.bladder	
+Urethral stricture	N14_URETHRALSTRICT	scorable	high	urinary.bladder	kidney			urinary.bladder;kidney	breast;endometrium;epididymis;fallopian.tube;ovary;prostate;testis	
+Complications of labour and delivery	O15_COMPLIC_LAB_DELIV	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
+Labour and delivery complicated by fetal stress [distress]	O15_LABOUR_FETAL_STRESS	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
+Long labour	O15_LABOUR_LONG	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	O15_MATERN_CARE	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
+Perineal laceration during delivery	O15_DELIV_PERIN_LACER	not_scorable				placenta	placenta:name	placenta	breast;endometrium;fallopian.tube;ovary	
+Prolonged pregnancy	O15_PREG_PROLONGED	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
+Single spontaneous delivery	O15_DELIV_SPONT	scorable	high	endometrium;placenta				endometrium;placenta	breast;fallopian.tube;ovary	
