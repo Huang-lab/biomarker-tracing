@@ -24,17 +24,48 @@ flowchart LR
   C --> E
 ```
 
-### 1a. Which organ does each disease belong to? (`build_disease_organ_map.py`)
-Each Atlas disease is a FinnGen endpoint. Its ICD-10 codes come from the endpoint definition on Risteys.
-Each 3-character ICD-10 category maps to organs through a hand-written block table
-(`icd10_block_to_organs.tsv`). An organ is *primary* when at least 25% of the disease's organ-relevant
-codes point to it. Symptom, injury and external-cause codes (R, S, T, V–Z) are ignored. Diseases with a
-primary organ present in the atlas are evaluated. A disease can have more than one primary organ (e.g.
-gastric ulcer: stomach and small intestine).
+### 1a. Which organ does each disease belong to? (`fetch_finngen_icd10.py`, `build_disease_organ_map.py`)
+The organ assignment is made from disease definitions only. It uses no expression data and no results from
+the cell-type analysis, so it cannot be circular.
 
-The assignments were cross-checked against MONDO/UBERON where MONDO records a location (~8% of terms). The
-ICD-10 chapter the Atlas files the disease under was also compared with the disease's own codes.
-Details: [README.md](README.md).
+1. **Disease → ICD-10 codes.** Each Atlas disease is a FinnGen endpoint (e.g. `K11_ALCOLIV`). Its ICD-10
+   codes come from the endpoint's definition on [Risteys](https://risteys.finngen.fi), with included endpoints
+   resolved recursively. The endpoint name on Risteys matched the Atlas disease name in every case found, which
+   confirms the codes belong to the right disease. Two endpoints that are not on Risteys were assigned by hand
+   (`manual_overrides.tsv`, with the reason).
+2. **ICD-10 category → organs.** Each 3-character category (e.g. K25) is mapped to atlas organs through the
+   narrowest matching block in a hand-written table (`icd10_block_to_organs.tsv`: K25–K28 peptic ulcer →
+   stomach, small intestine). The table was written from ICD-10 knowledge; edit it to change what a code means.
+3. **Aggregate to the disease.** `organ_support(o)` = the share of the disease's organ-bearing categories that
+   point to organ *o*. Symptom, injury and external-cause codes (R, S, T, V–Z) are ignored. Organs with support
+   ≥ 0.25 are **primary**; all others the table lists are **secondary**. The 0.25 floor stops one stray
+   cross-chapter code from defining a disease. A disease can have several primary organs (gastric ulcer:
+   stomach and small intestine).
+4. **Status.** Of 268 diseases, **191 are *scorable*** (≥1 primary organ present in the atlas). 18 have only
+   secondary organs. **59 are not scorable**: the organ is not in either atlas (joints, bone, thyroid, ear,
+   peripheral nerve, abdominal wall) or the disease is not organ-based (sepsis, injury).
+5. **Confidence.** Of the 191 scorable diseases, **160 high**: the Atlas chapter and the ICD-10 block table
+   agree on the organ system. **28 medium**: the chapter cannot corroborate the organ (infections, neoplasms and
+   endocrine/metabolic diseases span many organs; five diseases filed under "Endocrine" are really mental
+   disorders such as depression), so the organ rests on the block table alone. **3 review**: two manual
+   assignments (skin squamous cell carcinoma, death due to cardiac causes) and gout, where the ICD-10 block table
+   and the Atlas chapter disagree.
+
+**Independent cross-check.** The block table is compared with MONDO (disease → `disease_has_location`) rolled up
+through UBERON anatomy to atlas organs (`mondo_crosscheck.py`). MONDO records a location for only ~8% of
+terms, so this checks a subset. In that subset the two sources **agree for 64 diseases and disagree for none**
+(61 share a primary organ, 3 share a secondary organ). 68 diseases have a MONDO match without a location and 136
+have no match, so for ~76% of diseases the check is silent.
+
+**Known weak spots.** Lipid disorders → liver (medium confidence), gout → kidney (review: its definition
+includes renal codes, N16), and pregnancy/labour → endometrium/placenta, a tissue the cell-type results resolve
+poorly. `organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a
+domain expert to correct; **no such expert review has been done yet**, so the table is not clinically validated.
+
+![Primary organs for 36 example diseases](figures/disease_primary_organs.png)
+
+The figure shows 36 of the 191 diseases with the organs assigned and the ICD-10 categories they came from. The
+full table is `disease_organ_map.tsv`. Reproduce with `python organ_mapping/plot_disease_organ_examples.py`.
 
 ### 1b. How each cell type is scored for a disease (`univar_association_testing.py`)
 For one disease and one cell type *c*, across all measured proteins:
