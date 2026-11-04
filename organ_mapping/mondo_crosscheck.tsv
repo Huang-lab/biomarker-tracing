@@ -1,0 +1,269 @@
+Disease	Disease_code	chapter	my_status	my_primary	my_secondary	mondo_organs	mondo_extra	n_icd10_categories	mondo_coverage	mondo_basis	mondo_terms	comparison
+Bacterial, viral and other infectious agents	AB1_BACT_BIR_OTHER_INF_AGENTS	I	not_scorable					3	0.00			no_mondo_match
+Intestinal infectious diseases	AB1_INTESTINAL_INFECTIONS	I	scorable	colon;small.intestine	rectum;stomach			10	0.10	icd10	MONDO:0019345	no_mondo_location
+Mycoses	AB1_MYCOSES	I	scorable	skin				15	0.07	icd10	MONDO:0004678	no_mondo_location
+Other bacterial agents as the cause of diseases classified to other chapters	AB1_OTHER_BACT_INOTHER	I	not_scorable					1	0.00			no_mondo_match
+Other bacterial diseases	AB1_OTHER_BACTERIAL	I	not_scorable					13	0.08	icd10	MONDO:0001266	no_mondo_location
+Other bacterial intestinal infections	AB1_BACT_INTEST_OTH	I	scorable	colon;small.intestine	rectum;stomach			2	0.00			no_mondo_match
+Other septicaemia	AB1_OTHER_SEPSIS	I	not_scorable					1	0.00			no_mondo_match
+Other specified/unspecified bacterial intestinal infections	BACT_INTEST_INFECTION_NOS	I	scorable	colon;small.intestine	rectum;stomach			1	0.00			no_mondo_match
+Other viral diseases	AB1_OTHER_VIRAL	I	not_scorable					6	0.17	icd10	MONDO:0043541	no_mondo_location
+Other viral diseases, not elsewhere classified	AB1_VIRAL_NOS	I	not_scorable					2	0.00			no_mondo_match
+Streptococcus and staphylococcus as the cause of diseases classified to other chapters	AB1_STREPTSTAPHYCOCC_INOTHER	I	not_scorable					1	0.00			no_mondo_match
+Viral infections characterized by skin and mucous membrane lesions	AB1_VIRAL_SKIN_MUCOUS_MEMBRANE	I	scorable	skin		skin:0.30		10	0.30	icd10	MONDO:0005700,MONDO:0005609,MONDO:0001209	agree
+Benign neoplasm of colon, rectum, anus and anal canal	CD2_BENIGN_COLORECANI	II	scorable	colon;rectum		colon		1	0.00	name		agree
+Benign neoplasm of other and ill-defined parts of digestive system	CD2_BENIGN_OTHERDIGESTIVE	II	scorable	liver;small.intestine;stomach				1	0.00			no_mondo_match
+Benign neoplasm: Stomach	CD2_BENIGN_STOMACH	II	scorable	liver;small.intestine;stomach				1	0.00			no_mondo_match
+Leiomyoma of uterus	CD2_BENIGN_LEIOMYOMA_UTERI	II	scorable	endometrium;fallopian.tube;ovary		fallopian.tube:1.00		1	1.00	icd10	MONDO:0007886	agree
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	C3_MELANOMA_SKIN_EXALLC	II	scorable	skin		skin:1.00		1	1.00	icd10+name	MONDO:0005012	agree
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	C3_BREAST_EXALLC	II	scorable	breast		breast:1.00		1	1.00	icd10+name	MONDO:0007254	agree
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	C3_PROSTATE_EXALLC	II	scorable	epididymis;prostate;testis		prostate:1.00		1	1.00	icd10+name	MONDO:0008315	agree
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	C3_NONHODGKIN_EXALLC	II	scorable	blood;bone.marrow;lymph.node;spleen				4	0.00	icd10+name		no_mondo_location
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	C3_OTHER_SKIN_EXALLC	II	scorable	skin				1	0.00			no_mondo_match
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	C3_SQUOMOUS_CELL_CARCINOMA_SKIN_EXALLC	II	scorable	skin				0	0.00			no_mondo_match
+Agranulocytosis	D3_AGRANULOCYTOSIS	III	scorable	blood;bone.marrow;spleen	lymph.node			1	0.00	icd10+name		no_mondo_location
+Other and unspecified anaemias	D3_ANAEMIANAS	III	scorable	blood;bone.marrow				1	0.00			no_mondo_match
+Other and unspecified iron deficiency	D3_ANAEMIA_IRONDEF_NAS	III	scorable	blood;bone.marrow				1	0.00	icd10		no_mondo_location
+Acute alcohol intoxication	F5_ALCOHOLAC	IV	scorable	brain	liver			1	0.00			no_mondo_match
+Alcohol dependence	F5_ALCOHOL_DEPENDENCE	IV	scorable	brain	liver			1	0.00	name		no_mondo_location
+Depression	F5_DEPRESSIO	IV	scorable	brain		brain:0.50		2	0.50	icd10+name	MONDO:0002050	agree
+Depression or dysthymia	F5_DEPRESSION_DYSTHYMIA	IV	scorable	brain		brain:0.33		3	0.33	icd10	MONDO:0002050	agree
+Disorders of lipoprotein metabolism and other lipidaemias	E4_LIPOPROT	IV	scorable	liver	adipose.tissue;vasculature			2	0.00			no_mondo_match
+Disorders of other endocrine glands	E4_ENDOGLAND	IV	scorable	adrenal.gland;pituitary.gland	ovary;testis;thymus			16	0.12	icd10	MONDO:0003009,MONDO:0001889	no_mondo_location
+Disorders of the thyroid gland	E4_THYROID	IV	not_scorable					13	0.00	icd10		no_mondo_location
+Hyperlipidaemia, other/unspecified	E4_HYPERLIPNAS	IV	scorable	liver	adipose.tissue;vasculature			1	0.00			no_mondo_match
+Metabolic disorders	E4_METABOLIA	IV	scorable	liver	kidney;pancreas			24	0.00	icd10		no_mondo_location
+Obesity	E4_OBESITY	IV	scorable	adipose.tissue				1	0.00	name		no_mondo_location
+Obesity, other/unspecified	E4_OBESITYNAS	IV	scorable	adipose.tissue				1	0.00	name		no_mondo_location
+Other anxiety disorders	F5_ANXIETY	IV	scorable	brain				1	0.00			no_mondo_match
+Other disorders of fluid, electrolyte and acid-base balance	E4_FLUIDELECTRO	IV	scorable	kidney				1	0.00			no_mondo_match
+Pure hypercholesterolaemia	E4_HYPERCHOL	IV	scorable	liver	adipose.tissue;vasculature			1	0.00			no_mondo_match
+Volume depletion	E4_VOLUME	IV	scorable	kidney				1	0.00			no_mondo_match
+Angina pectoris	I9_ANGINA	IX	scorable	heart.muscle;vasculature				1	0.00			no_mondo_match
+Atrial fibrillation and flutter	I9_AF	IX	scorable	heart.muscle				1	0.00			no_mondo_match
+Cardiomyopathy	I9_CARDMYO	IX	scorable	heart.muscle				2	0.00	icd10+name		no_mondo_location
+Conduction disorders	I9_CONDUCTIO	IX	scorable	heart.muscle				2	0.00			no_mondo_match
+Coronary atherosclerosis	I9_CORATHER	IX	scorable	heart.muscle;vasculature				2	0.00	name		no_mondo_location
+DVT of lower extremities	I9_PHLETHROMBDVTLOW	IX	scorable	vasculature	lymph.node			1	0.00			no_mondo_match
+Death due to cardiac causes	I9_K_CARDIAC	IX	scorable	heart.muscle;vasculature				0	0.00			no_mondo_match
+Heart failure, strict	I9_HEARTFAIL	IX	scorable	vasculature;heart.muscle	kidney	heart.muscle:0.33		3	0.33	icd10+name	MONDO:0005252	agree
+Hypertension	I9_HYPTENS	IX	scorable	vasculature;brain	heart.muscle;kidney	vasculature:0.33		3	0.33	icd10	MONDO:0005044	agree
+Hypertension, Pulmonary Arterial	I9_HYPTENSPUL	IX	scorable	heart.muscle;lung	vasculature			1	0.00			no_mondo_match
+Hypertension, essential	I9_HYPTENSESS	IX	scorable	vasculature	heart.muscle;kidney			1	0.00			no_mondo_match
+Hypertensive Renal Disease	I9_HYPTENSRD	IX	scorable	vasculature	heart.muscle;kidney	kidney		1	0.00	name		agree_secondary_only
+Hypotension	I9_HYPOTE	IX	scorable	vasculature	heart.muscle	vasculature:1.00		1	1.00	icd10+name	MONDO:0005468	agree
+Ischaemic heart disease, wide definition	I9_IHD	IX	scorable	heart.muscle;vasculature		heart.muscle:0.29		7	0.29	icd10+name	MONDO:0005068,MONDO:0006716	agree
+Major coronary heart disease event	I9_CHD	IX	scorable	heart.muscle;vasculature		heart.muscle:0.29		7	0.29	icd10	MONDO:0005068,MONDO:0006716	agree
+Myocardial infarction, strict	I9_MI_STRICT	IX	scorable	heart.muscle;vasculature		heart.muscle:1.00;vasculature:0.50		2	1.00	icd10+name	MONDO:0005068,MONDO:0006716	agree
+Other arrhythmias	I9_OTHARR	IX	scorable	heart.muscle				1	0.00			no_mondo_match
+Other diseases of arteries and capillaries	I9_ARTOTH	IX	scorable	vasculature				3	0.00			no_mondo_match
+Other or ill-defined heart diseases	I9_OTHILLHEART	IX	scorable	heart.muscle				2	0.00			no_mondo_match
+Other peripheral vascular diseases	I9_OTHPER	IX	scorable	vasculature				1	0.00			no_mondo_match
+Paroxysmal tachycardia	I9_PAROXTAC	IX	scorable	heart.muscle				1	0.00			no_mondo_match
+Phlebitis and thrombophlebitis (not including DVT)	I9_PHLETHROM	IX	scorable	vasculature	lymph.node			1	0.00			no_mondo_match
+Pulmonary embolism	I9_PULMEMB	IX	scorable	heart.muscle;lung	vasculature	vasculature:1.00		1	1.00	icd10+name	MONDO:0005279	agree_secondary_only
+Rheumatic valve diseases	I9_RHEUVALV	IX	scorable	heart.muscle				4	0.00			no_mondo_match
+Secondary right heart disease	I9_SECONDRIGHT	IX	scorable	heart.muscle;lung	vasculature			1	0.00			no_mondo_match
+Stroke, excluding SAH	I9_STR	IX	scorable	brain;vasculature		brain:0.33;vasculature:0.33		3	0.33	icd10+name	MONDO:0002679	agree
+Transient ischemic attack	I9_TIA	IX	scorable	brain		brain;vasculature	vasculature	1	0.00	name		agree
+Unstable angina pectoris	I9_UAP	IX	scorable	heart.muscle;vasculature				1	0.00			no_mondo_match
+Varicose veins	I9_VARICVE	IX	scorable	vasculature	lymph.node			1	0.00			no_mondo_match
+Venous thromboembolism	I9_VTE	IX	scorable	vasculature;lung;heart.muscle	lymph.node	vasculature:0.25		4	0.25	icd10+name	MONDO:0005279	agree
+Acute alcohol intoxication, ICD10	ALCOHOLACUTE10	V	scorable	brain	liver			1	0.00			no_mondo_match
+Alcohol abuse, main dg, excluding more controls	KRA_PSY_ALCOH_EXMORE	V	scorable	brain	liver			1	0.00	name		no_mondo_location
+Alcohol use disorder, ICD-based	AUD	V	scorable	brain	liver			1	0.00			no_mondo_match
+Anxiety disorders, excluding more controls	KRA_PSY_ANXIETY_EXMORE	V	scorable	brain				2	0.00			no_mondo_match
+Any mental disorder	KRA_PSY_ANYMENTAL	V	scorable	brain		brain:0.25		4	0.25	icd10	MONDO:0004975	agree
+Schizophrenia or delusion, excluding more controls	KRA_PSY_SCHIZODEL_EXMORE	V	scorable	brain		brain:0.50		2	0.50	icd10	MONDO:0005090	agree
+Smoking dependency	SMOKING_DEPEND	V	scorable	brain				1	0.00	icd10		no_mondo_location
+Substance abuse, excluding more controls	KRA_PSY_SUBSTANCE_EXMORE	V	scorable	brain	liver			2	0.00	name		no_mondo_location
+Carpal tunnel syndrome	G6_CARPTU	VI	not_scorable					1	0.00	name		no_mondo_location
+Cerebral palsy and other paralytic syndromes	G6_CPETAL	VI	scorable	brain		brain:0.25		4	0.25	icd10	MONDO:0006497	agree
+Epilepsy	G6_EPLEPSY	VI	scorable	brain		brain:1.00		1	1.00	icd10+name	MONDO:0005027	agree
+Episodal and paroxysmal disorders	G6_EPIPAROX	VI	scorable	brain		brain:0.40		5	0.40	icd10	MONDO:0005027,MONDO:0005277	agree
+Falls/tendency to fall	FALLS	VI	not_scorable					0	0.00			no_mondo_match
+Hemiplegia	G6_HEMIPLE	VI	scorable	brain		brain		1	0.00	name		agree
+MS-disease / Multiple Sclerosis	G6_MS	VI	scorable	brain		brain:1.00		1	1.00	icd10	MONDO:0005301	agree
+Migraine	G6_MIGRAINE	VI	scorable	brain		brain:1.00;vasculature:1.00	vasculature	1	1.00	icd10+name	MONDO:0005277	agree
+Migraine, unspecified, drug-induced	MIGRAINE_UNSPE	VI	scorable	brain		brain:1.00;vasculature:1.00	vasculature	1	1.00	icd10+name	MONDO:0005277	agree
+Nerve, nerve root and plexus disorders	G6_NERPLEX	VI	not_scorable					11	0.09	icd10	MONDO:0005609	no_mondo_location
+Other and unspecified nerve root and plexus disorders, also in other diseases	G6_ROOTPLEXOTHUNS	VI	not_scorable					2	0.00			no_mondo_match
+Other degenerative diseases of the nervous system	NEURODEGOTH	VI	scorable	brain		brain:0.40		5	0.40	icd10	MONDO:0004975,MONDO:0005301	agree
+Other neurological diseases	G6_OTHNEU	VI	scorable	brain				12	0.17	icd10	MONDO:0001150,MONDO:0016349	no_mondo_location
+Other sleep disorders	G6_SLEEPDISOTH	VI	scorable	brain				1	0.00	icd10		no_mondo_location
+Sleep apnoea	G6_SLEEPAPNO	VI	scorable	brain				1	0.00	icd10		no_mondo_location
+Diabetic maculopathy, excluding more controls	DM_MACULOPATHY_EXMORE	VII	scorable	eye				1	0.00			no_mondo_match
+Disorders of choroid and retina	H7_CHOROIDRETINA	VII	scorable	eye				7	0.00	icd10		no_mondo_location
+Disorders of ocular muscles, binocular movement, accommodation and refraction	H7_OCUMUSCLE	VII	scorable	eye				4	0.00	icd10		no_mondo_location
+Glaucoma	H7_GLAUCOMA	VII	scorable	eye		eye:0.50		2	0.50	icd10+name	MONDO:0005041	agree
+Other and unspecified glaucoma	H7_GLAUCNAS	VII	scorable	eye		eye:1.00		1	1.00	icd10	MONDO:0005041	agree
+Other cataract	H7_CATARACTOTHER	VII	scorable	eye				1	0.00			no_mondo_match
+Senile cataract	H7_CATARACTSENILE	VII	scorable	eye		eye:1.00		1	1.00	icd10+name	MONDO:0004847	agree
+Visual disturbances	H7_VISUDISTURB	VII	scorable	eye				1	0.00			no_mondo_match
+Other disorders of ear	H8_OTHEREAR	VIII	not_scorable					5	0.00	icd10		no_mondo_location
+Acute upper respiratory infections	J10_UPPERINFEC	X	secondary_only		lung			7	0.00	icd10		no_mondo_location
+Asthma, excluding more controls	J10_ASTHMA_EXMORE	X	scorable	lung		lung:0.50		2	0.50	icd10+name	MONDO:0004979	agree
+Asthma, unspecified (mode)	ASTHMA_NAS	X	scorable	lung		lung:1.00		1	1.00	icd10+name	MONDO:0004979	agree
+Chronic lower respiratory diseases	J10_LOWCHRON	X	scorable	lung		lung:0.33		6	0.33	icd10	MONDO:0004979,MONDO:0004822	agree
+Chronic sinusitis	J10_CHRONSINUSITIS	X	secondary_only		lung			1	0.00	name		no_mondo_location
+Diseases of vocal cords and larynx+other diseases of upper respiratory tract, no elsewhere classified	J10_VOCALLARYNX	X	secondary_only		lung			3	0.00			no_mondo_match
+Early onset COPD	COPD_EARLY	X	scorable	lung				1	0.00			no_mondo_match
+Idiopathic pulmonary fibrosis	IPF	X	scorable	lung		lung		1	0.00	name		agree
+Influenza and pneumonia	J10_INFLUPNEU	X	scorable	lung				10	0.10	icd10	MONDO:0005700	no_mondo_location
+Interstitial lung disease	ILD	X	scorable	lung		lung		1	0.00	name		agree
+Nasal polyp	J10_NASALPOLYP	X	secondary_only		lung			1	0.00	name		no_mondo_location
+Other acute lower respiratory infections	J10_LOWERINF	X	scorable	lung		lung:0.33		3	0.33	icd10	MONDO:0020680	agree
+Other diseases of pleura	J10_PLEURA	X	scorable	lung				7	0.00			no_mondo_match
+Other diseases of upper respiratory tract	J10_UPPERDIS	X	secondary_only		lung			10	0.00	icd10		no_mondo_location
+Pleural effusion	J10_PLEUREFFUSION	X	scorable	lung				2	0.00			no_mondo_match
+Unspecified acute lower respiratory infection	J10_ACUTELOWERNAS	X	scorable	lung				1	0.00			no_mondo_match
+Vocal cord dysfunction	VOCALCORDDYS	X	secondary_only		lung			1	0.00			no_mondo_match
+Abscess of anal and rectal regions	K11_ABSCANAL	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Acute pancreatitis	K11_ACUTPANC	XI	scorable	pancreas		pancreas:1.00		1	1.00	icd10+name	MONDO:0006515	agree
+Cholecystitis	K11_CHOLECYST	XI	secondary_only		liver			1	0.00	icd10+name		no_mondo_location
+Cholelithiasis	K11_CHOLELITH	XI	secondary_only		liver			1	0.00	icd10+name		no_mondo_location
+Chronic gastritis	K11_CHRONGASTR	XI	scorable	stomach	small.intestine	stomach		1	0.00	name		agree
+Coeliac disease	K11_COELIAC	XI	scorable	colon;small.intestine;stomach				1	0.00			no_mondo_match
+Colonic or urogenital fistula	K11_FISTULA	XI	secondary_only		small.intestine			5	0.00			no_mondo_match
+Constipation	K11_CONSTIPATION	XI	scorable	colon;rectum	small.intestine			1	0.00	name		no_mondo_location
+Crohn disease (strict definition, require KELA, min 2 HDR)	K11_CD_STRICT2	XI	scorable	colon;small.intestine	rectum			1	0.00	icd10		no_mondo_location
+Crohn's disease NAS	CHRONNAS	XI	scorable	colon;small.intestine	rectum			1	0.00	icd10		no_mondo_location
+Diaphragmatic hernia	K11_DIAHER	XI	scorable	esophagus;stomach				1	0.00			no_mondo_match
+Diseases of liver	K11_LIVER	XI	scorable	liver				9	0.11	icd10	MONDO:0043693	no_mondo_location
+Diseases of oesophagus, stomach and duodenum	K11_OESSTODUO	XI	scorable	stomach;esophagus;small.intestine				11	0.36	icd10	MONDO:0001409,MONDO:0001126,MONDO:0005412,MONDO:0002268	no_mondo_location
+Diseases of oral cavity, salivary glands and jaws	K11_ORAL	XI	scorable	salivary.gland;tongue				14	0.00	icd10		no_mondo_location
+Diseases of peritoneum	K11_PERITON	XI	not_scorable					3	0.00	icd10		no_mondo_location
+Diseases of the digestive system	K11_OTHDIG	XI	scorable	colon;small.intestine;stomach				4	0.00			no_mondo_match
+Diverticular disease of intestine	K11_DIVERTIC	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Duodenal ulcer	K11_DULC	XI	scorable	small.intestine;stomach		small.intestine:1.00		1	1.00	icd10+name	MONDO:0005412	agree
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	DUODENAL_ULCER_UNSPE_ACUTE_CHRONIC_WO_HAEMORRHAGE_PERFORATION	XI	scorable	small.intestine;stomach		small.intestine:1.00		1	1.00	icd10	MONDO:0005412	agree
+Functional dyspepsia	K11_FUNCDYSP	XI	scorable	stomach	small.intestine	stomach:1.00		1	1.00	icd10	MONDO:0002268	agree
+Gastric ulcer	K11_GULC	XI	scorable	small.intestine;stomach		stomach:1.00		1	1.00	icd10+name	MONDO:0001126	agree
+Gastro-oesophageal reflux disease	K11_REFLUX	XI	scorable	esophagus				1	0.00			no_mondo_match
+Gastroduodenal ulcer	K11_GASTRODUOULC	XI	scorable	small.intestine;stomach		stomach:0.25;small.intestine:0.25		4	0.50	icd10	MONDO:0001126,MONDO:0005412	agree
+Hernia	K11_HERNIA	XI	not_scorable					7	0.00			no_mondo_match
+Inguinal hernia	K11_HERING	XI	not_scorable					1	0.00			no_mondo_match
+Intestinal malabsorption	K11_MALABSORB	XI	scorable	colon;small.intestine;stomach				1	0.00			no_mondo_match
+Irritable bowel syndrome	K11_IBS	XI	scorable	colon;rectum	small.intestine			1	0.00	icd10+name		no_mondo_location
+Noninfective enteritis and colitis	K11_ENERCOLNONINF	XI	scorable	colon;small.intestine;rectum		colon:0.33		3	0.33	icd10	MONDO:0005101	agree
+Oesophageal obstruction	K11_OESOBST	XI	scorable	esophagus				1	0.00			no_mondo_match
+Oesophagitis	K11_OESITIS	XI	scorable	esophagus		esophagus:1.00		1	1.00	icd10	MONDO:0001409	agree
+Other diseases of anus and rectum	K11_OTHANRECT	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Other diseases of biliary tract	K11_BILIAOTH	XI	scorable	liver				1	0.00			no_mondo_match
+Other diseases of intestine	K11_OTHINT	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Other diseases of intestines	K11_INTESTOTH	XI	scorable	colon;rectum	small.intestine			10	0.00	icd10		no_mondo_location
+Other diseases of liver	K11_DISLIVOTH	XI	scorable	liver				1	0.00			no_mondo_match
+Other diseases of oesophagus	K11_OTHDISOES	XI	scorable	esophagus				1	0.00			no_mondo_match
+Other diseases of peritoneum	K11_OTHPERITON	XI	not_scorable					1	0.00			no_mondo_match
+Other diseases of stomach and duodenum	K11_OTHDISSTOMDUOD	XI	scorable	stomach	small.intestine			1	0.00			no_mondo_match
+Other diseases of the digestive system	K11_OTHDISDIG	XI	scorable	colon;small.intestine;stomach				1	0.00			no_mondo_match
+Other functional intestinal disorders	K11_OTHFUNC	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Other gastritis (incl. Duodenitis)	K11_OTHGASTR	XI	scorable	stomach	small.intestine			1	0.00			no_mondo_match
+Other noninfective gastroenteritis and colitis	K11_OTHENTERCOL	XI	scorable	colon;small.intestine				1	0.00			no_mondo_match
+Other or unspecified ileus, impaction or obstruction	K11_OTHILEUS	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Paralytic ileus and intestinal obstruction	K11_ILEUS	XI	scorable	colon;rectum	small.intestine			1	0.00			no_mondo_match
+Postprocedural disorders of digestive system, not elsewhere classified	K11_POSTOPDIS	XI	scorable	colon;small.intestine;stomach				1	0.00			no_mondo_match
+Ulcer of oesophagus	K11_OESULC	XI	scorable	esophagus				1	0.00			no_mondo_match
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	K11_UC_STRICT2	XI	scorable	colon;rectum		colon:1.00		1	1.00	icd10	MONDO:0005101	agree
+Ulcerative colitis, NAS	ULCERNAS	XI	scorable	colon;rectum		colon:1.00		1	1.00	icd10+name	MONDO:0005101	agree
+Umbilical hernia	K11_UMBHER	XI	not_scorable					1	0.00			no_mondo_match
+Ventral hernia	K11_VENTHER	XI	not_scorable					1	0.00			no_mondo_match
+Cellulitis	L12_CELLULITIS	XII	scorable	skin	adipose.tissue	skin		1	0.00	name		agree
+Cutaneous abscess, furuncle and carbuncle	L12_ABSCESS_CUT	XII	scorable	skin	adipose.tissue			1	0.00			no_mondo_match
+Dermatitis and eczema	L12_DERMATITISECZEMA	XII	scorable	skin		skin:0.45		11	0.45	icd10	MONDO:0004980,MONDO:0006608,MONDO:0006525,MONDO:0006564,MONDO:0043233	agree
+Infections of the skin and subcutaneous tissue	L12_INFECT_SKIN	XII	scorable	skin	adipose.tissue	skin:0.29		7	0.29	icd10	MONDO:0018181,MONDO:0004592	agree
+Nail disorders	L12_NAILDIS	XII	scorable	skin				2	0.00			no_mondo_match
+Other and unspecified disorders of skin and subcutaneous tissue	L12_SKINSUBCUTISNAS	XII	scorable	skin	adipose.tissue			1	0.00			no_mondo_match
+Other and unspecified psoriasis	L12_PSORI_NAS	XII	scorable	skin		skin:1.00		1	1.00	icd10	MONDO:0005083	agree
+Other disorders of skin and subcutaneous tissue	L12_OTHERSKINSUBCUTIS	XII	scorable	skin	adipose.tissue			19	0.21	icd10	MONDO:0008661,MONDO:0008420,MONDO:0007035,MONDO:0004646	no_mondo_location
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	L12_OTHERDISSKINANDSUBCUTIS	XII	scorable	skin	adipose.tissue			1	0.00			no_mondo_match
+Papulosquamous disorders	L12_PAPULOSQUAMOUS	XII	scorable	skin		skin:0.50		8	0.50	icd10	MONDO:0005083,MONDO:0006592,MONDO:0006601,MONDO:0006572	agree
+Psoriasis	L12_PSORIASIS	XII	scorable	skin		skin:0.33		3	0.33	icd10+name	MONDO:0005083	agree
+Arthropathies	M13_ARTHROPATHIES	XIII	not_scorable					28	0.07	icd10	MONDO:0005101,MONDO:0005083	no_mondo_location
+Arthrosis	M13_ARTHROSIS	XIII	not_scorable					5	0.00	icd10		no_mondo_location
+Artrosis, including avohilmo	M13_ARTHROSIS_INCLAVO	XIII	not_scorable					5	0.00	icd10		no_mondo_location
+Cervical disc disorders	M13_CERVICDISC	XIII	not_scorable					1	0.00			no_mondo_match
+Cervicalgia	M13_CERVICALGIA	XIII	not_scorable					1	0.00			no_mondo_match
+Coxarthrosis	M13_ARTHTROSIS_COX	XIII	not_scorable					1	0.00			no_mondo_match
+Coxarthrosis, primary	M13_ARTHTROSIS_COX_PRIM_ICD10	XIII	not_scorable					1	0.00			no_mondo_match
+Deforming dorsopathies	M13_DEFORMDORSO	XIII	not_scorable					4	0.00	icd10		no_mondo_location
+Disorders of continuity of bone	M13_BONECONTINUITY	XIII	not_scorable					1	0.00			no_mondo_match
+Disorders of synovium and tendon	M13_SYNOTEND	XIII	not_scorable					5	0.00			no_mondo_match
+Dorsopathies	M13_DORSOPATHY	XIII	not_scorable					14	0.00	icd10		no_mondo_location
+Fibroblastic disorders	M13_FIBROBLASTIC	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Gonarthrosis	M13_ARTHROSIS_KNEE	XIII	not_scorable					1	0.00			no_mondo_match
+Gout	M13_GOUT	XIII	not_scorable					1	0.00	icd10+name		no_mondo_location
+Gout, unspecified	GOUT_NOS	XIII	scorable	kidney				2	0.00	icd10+name		no_mondo_location
+Hallux rigidus	M13_HALLUXRIGIDUS	XIII	not_scorable					1	0.00			no_mondo_match
+Hallux valgus (acquired)	M13_HALLUXVALGUS	XIII	not_scorable					1	0.00			no_mondo_match
+Internal derangement of knee	M13_KNEEDERANGEMENTS	XIII	not_scorable					1	0.00			no_mondo_match
+Low back pain	M13_LOWBACKPAIN	XIII	not_scorable					1	0.00			no_mondo_match
+Meniscus derangement	M13_MENISCUSDERANGEMENTS	XIII	not_scorable					1	0.00			no_mondo_match
+Osteopathies and chondropathies	M13_OSTEOCHONDRO	XIII	not_scorable					17	0.06	icd10	MONDO:0005246	no_mondo_location
+Osteoporosis	M13_OSTEOPOROSIS	XIII	not_scorable					3	0.00	icd10+name		no_mondo_location
+Other (seronegative) rheumatoid arthritis, wide	RHEUMA_OTHER_WIDE	XIII	not_scorable					1	0.00			no_mondo_match
+Other arthrosis	M13_ARTHROSIS_OTH	XIII	not_scorable					2	0.00	icd10		no_mondo_location
+Other deformities of toe(s)	M13_TOEDEFORMOTH	XIII	not_scorable					1	0.00			no_mondo_match
+Other dorsopathies, not elsewhere classified	M13_DORSOPATHYOTH	XIII	not_scorable					3	0.00			no_mondo_match
+Other enthesopathies	M13_ENTESOPATHYOTH	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Other hammer toe(s) (acquired)	M13_HAMMERTOE	XIII	not_scorable					1	0.00			no_mondo_match
+Other intervertebral disc disorders	M13_INTERVERTEB	XIII	not_scorable					1	0.00			no_mondo_match
+Other joint disorders	M13_OTHERJOINT	XIII	not_scorable					6	0.00			no_mondo_match
+Other soft tissue disorders, not elsewhere classified	M13_SOFTTISSUEOTH	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Other specified/unspecified soft tissue disorders	M13_SOFTTISSUENAS	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Other/unspecified dorsalgia	M13_DORSALGIANAS	XIII	not_scorable					1	0.00			no_mondo_match
+Other/unspecified rheumatoid arthritis	RHEUMA_NOS	XIII	not_scorable					1	0.00			no_mondo_match
+Other/unspecified synovitis and tenosynovitis	M13_TENDOSYNOVITISNAS	XIII	not_scorable					1	0.00			no_mondo_match
+Pain in joint	JOINTPAIN	XIII	not_scorable					1	0.00			no_mondo_match
+Pain in limb	M13_LIMBPAIN	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Palmar fascial fibromatosis [Dupuytren]	M13_DUPUTRYEN	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Polyarthropathies	M13_POLYARTHROPATHIES	XIII	not_scorable					13	0.15	icd10	MONDO:0005101,MONDO:0005083	no_mondo_location
+Polyarthrosis	M13_ARTHROSIS_POLY	XIII	not_scorable					1	0.00			no_mondo_match
+Rheumatoid arthritis	M13_RHEUMA	XIII	not_scorable					2	0.00	name		no_mondo_location
+Rotator cuff syndrome	M13_ROTATORCUFF	XIII	secondary_only		skeletal.muscle	skeletal.muscle		1	0.00	name		agree_secondary_only
+Sciatica+with lumbago	M13_SCIATICA	XIII	not_scorable					1	0.00			no_mondo_match
+Shoulder lesions	M13_SHOULDER	XIII	secondary_only		skeletal.muscle			1	0.00			no_mondo_match
+Soft tissue disorders	M13_SOFTTISSUE	XIII	scorable	skeletal.muscle				15	0.00			no_mondo_match
+Soft tissue disorders related to use, overuse and pressure	M13_SOFTOVERUSE	XIII	secondary_only		skeletal.muscle			2	0.00			no_mondo_match
+Spinal stenosis	M13_SPINSTENOSIS	XIII	not_scorable					1	0.00	name		no_mondo_location
+Spondylopathies	M13_SPONDYLOPATHY	XIII	not_scorable					5	0.00	icd10		no_mondo_location
+Spondylosis	M13_SPONDYLOSIS	XIII	not_scorable					1	0.00	icd10+name		no_mondo_location
+Trigger finger	M13_TRIGGERFINGER	XIII	not_scorable					1	0.00			no_mondo_match
+Acute renal failure	N14_ACUTERENFAIL	XIV	scorable	kidney		kidney:1.00		1	1.00	icd10+name	MONDO:0002492	agree
+Adenomyosis (Endometriosis of uterus)	N14_ENDOMETRIOSIS_UTERUS	XIV	scorable	endometrium;ovary	fallopian.tube	endometrium:1.00;fallopian.tube:1.00		1	1.00	icd10	MONDO:0005133	agree
+Calculus of kidney and ureter	N14_CALCUKIDUR	XIV	scorable	kidney;urinary.bladder		kidney		1	0.00	name		agree
+Chronic kidney disease	N14_CHRONKIDNEYDIS	XIV	scorable	kidney		kidney:1.00		1	1.00	icd10+name	MONDO:0005300	agree
+Cystitis	N14_CYSTITIS	XIV	scorable	urinary.bladder	kidney	urinary.bladder:1.00		1	1.00	icd10+name	MONDO:0006032	agree
+Diseases of male genital organs	N14_MALEGEN	XIV	scorable	epididymis;prostate;testis				12	0.08	icd10	MONDO:0010811	no_mondo_location
+Endometriosis	N14_ENDOMETRIOSIS	XIV	scorable	endometrium;ovary	fallopian.tube	endometrium:1.00;fallopian.tube:1.00		1	1.00	icd10+name	MONDO:0005133	agree
+Erosion and ectropion of cervix uteri	N14_EROSECTROPUT	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Excessive, frequent and irregular menstruation	N14_MESNRUIRREG	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Female genital prolapse	N14_FEMGENPROL	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00	icd10		no_mondo_location
+Hydrocele	N14_HYDROCELE	XIV	scorable	epididymis;prostate;testis				1	0.00	name		no_mondo_location
+Hyperplasia of prostate	N14_PROSTHYPERPLA	XIV	scorable	epididymis;prostate;testis		prostate:1.00		1	1.00	icd10	MONDO:0010811	agree
+Inflammatory diseases of prostate (prostatitis)	N14_PROSTATITIS	XIV	scorable	epididymis;prostate;testis				1	0.00			no_mondo_match
+Irregular menses	N14_MENSIRREG	XIV	scorable	endometrium;ovary	fallopian.tube			2	0.00			no_mondo_match
+Menorrhagia	N14_MENORRHAGIA	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Neuromuscular dysfunction of bladder	N14_NEUROMUSCDYSBLADD	XIV	scorable	urinary.bladder	kidney			1	0.00			no_mondo_match
+Noninflammatory disorders of female genital tract	N14_FEMALEGENNONINF	XIV	scorable	endometrium;ovary	fallopian.tube			19	0.05	icd10	MONDO:0005133	no_mondo_location
+Other abnormal uterine and vaginal bleeding	N14_ABNORMALBLEED	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Other diseases of urinary system	N14_URINOTH	XIV	scorable	urinary.bladder	kidney			9	0.11	icd10	MONDO:0006032	no_mondo_location
+Other disorders of  bladder	N14_OTHBLADD	XIV	scorable	urinary.bladder	kidney			1	0.00			no_mondo_match
+Other disorders of kidney and ureter	N14_KIDUROTH	XIV	scorable	kidney				5	0.20	icd10	MONDO:0001343	no_mondo_location
+Other disorders of male genital organs	N14_OTHDISMALEGEN	XIV	scorable	epididymis;prostate;testis				1	0.00			no_mondo_match
+Other disorders of urethra and urinary system	N14_URETHRAOTH	XIV	scorable	urinary.bladder	kidney			2	0.00			no_mondo_match
+Other noninflammatory disorders of uterus, except cervix	N14_OTHNONINFUTER	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Other obstructive and reflux uropathy	N14_OBSTRUREFLUROPATH	XIV	scorable	kidney				1	0.00			no_mondo_match
+Ovarian cyst	N14_OVARYCYST	XIV	scorable	endometrium;ovary	fallopian.tube	ovary		1	0.00	name		agree
+Pain and other conditions associated with female genital organs and menstrual cycle	N14_FEMGENPAIN	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00			no_mondo_match
+Polyp of the female genital tract	N14_POLYPFEMGEN	XIV	scorable	endometrium;ovary	fallopian.tube			1	0.00	icd10		no_mondo_location
+Renal tubulo-interstitial diseases	N14_RENALTUB	XIV	scorable	kidney				9	0.22	icd10	MONDO:0003529,MONDO:0002492	no_mondo_location
+Unspecified kidney failure	N14_RENFAILNAS	XIV	scorable	kidney				1	0.00			no_mondo_match
+Urethral stricture	N14_URETHRALSTRICT	XIV	scorable	urinary.bladder	kidney			1	0.00	icd10+name		no_mondo_location
+Complications of labour and delivery	O15_COMPLIC_LAB_DELIV	XV	scorable	endometrium;placenta				16	0.00			no_mondo_match
+Labour and delivery complicated by fetal stress [distress]	O15_LABOUR_FETAL_STRESS	XV	scorable	endometrium;placenta				1	0.00			no_mondo_match
+Long labour	O15_LABOUR_LONG	XV	scorable	endometrium;placenta				1	0.00			no_mondo_match
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	O15_MATERN_CARE	XV	scorable	endometrium;placenta				16	0.12	icd10	MONDO:0005918,MONDO:0004846	no_mondo_location
+Perineal laceration during delivery	O15_DELIV_PERIN_LACER	XV	not_scorable					1	0.00			no_mondo_match
+Prolonged pregnancy	O15_PREG_PROLONGED	XV	scorable	endometrium;placenta				1	0.00			no_mondo_match
+Single spontaneous delivery	O15_DELIV_SPONT	XV	scorable	endometrium;placenta				1	0.00			no_mondo_match

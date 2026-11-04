@@ -1,0 +1,35 @@
+organ	uberon_anchors	uberon_anchors_exact_only
+adipose.tissue	UBERON:0001013	
+adrenal.gland	UBERON:0002369	
+blood	UBERON:0000178	
+bone.marrow	UBERON:0002371	
+brain	UBERON:0000955	UBERON:0001017
+breast	UBERON:0000310	
+colon	UBERON:0001155	UBERON:0000059
+endometrium	UBERON:0001295	
+epididymis	UBERON:0001301	
+esophagus	UBERON:0001043	
+eye	UBERON:0000970	
+fallopian.tube	UBERON:0003889;UBERON:0000993	
+heart.muscle	UBERON:0000948	
+kidney	UBERON:0002113	
+liver	UBERON:0002107	
+lung	UBERON:0002048;UBERON:0002185	
+lymph.node	UBERON:0000029	
+ovary	UBERON:0000992	
+pancreas	UBERON:0001264	
+pituitary.gland	UBERON:0000007	
+placenta	UBERON:0001987	
+prostate	UBERON:0002367	
+rectum	UBERON:0001052	
+salivary.gland	UBERON:0001829;UBERON:0001830	
+skeletal.muscle	UBERON:0001134;UBERON:0014892	
+skin	UBERON:0002097	
+small.intestine	UBERON:0002108	
+spleen	UBERON:0002106	
+stomach	UBERON:0000945	
+testis	UBERON:0000473	
+thymus	UBERON:0002370	
+tongue	UBERON:0001723	
+urinary.bladder	UBERON:0001255	
+vasculature	UBERON:0002049;UBERON:0001981	

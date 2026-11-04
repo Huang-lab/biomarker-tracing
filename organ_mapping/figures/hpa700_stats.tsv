@@ -1,0 +1,6 @@
+measure	observed	null_mean	p_value	note
+organ concordance: mean AUC (own-organ cell types vs the rest)	0.5002991843906807	0.5032101297031335	0.6020795840831834	191 diseases; 49% have AUC > 0.5
+cell types: silhouette by tissue	-0.12058307515681374	-0.212299598005616	0.001996007984031936	correlation distance across diseases
+cell types: silhouette by cell lineage (approximate)	0.0697640351271507	-0.13680565874753278	0.001996007984031936	immune: 254; epithelial/other: 254; stromal: 87; endothelial: 67; neural: 28; erythroid/platelet: 7; muscle: 3
+diseases: silhouette by primary organ system	-0.02064468322392002	-0.13181037034390736	0.001996007984031936	correlation distance across cell types
+top-10 cell types in the disease's own organ: mean share	0.1136125654450262	0.05795602094240837	0.0004997501249375312	191 diseases; chance from column share 0.052; 29% have at least one

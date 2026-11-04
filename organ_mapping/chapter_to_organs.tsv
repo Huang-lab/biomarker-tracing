@@ -1,0 +1,22 @@
+chapter	chapter_name	level1_type	organs	lineage	note
+I	Certain infectious and parasitic diseases	systemic		immune	Not tied to one organ; organ comes from the ICD-10 block (e.g. A09 gastroenteritis, B15-B19 hepatitis)
+II	Neoplasms	by_site			The chapter says nothing about organ; organ comes from the C/D block (C18 colon, C50 breast, ...)
+III	Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism	organ_system	blood;bone.marrow;spleen;lymph.node;thymus	immune	Haematopoietic and lymphoid system
+IV	Endocrine, nutritional and metabolic diseases	mixed	pancreas;adipose.tissue;liver;pituitary.gland;adrenal.gland		Thyroid is not in either atlas; diabetes -> pancreas, obesity -> adipose, lipid disorders -> liver. Needs block-level mapping
+V	Mental and behavioural disorders	organ_system	brain		
+VI	Diseases of the nervous system	organ_system	brain;skeletal.muscle		Peripheral nerve is not in either atlas
+VII	Diseases of the eye and adnexa	organ_system	eye		
+VIII	Diseases of the ear and mastoid process	organ_system			No ear tissue in either atlas
+IX	Diseases of the circulatory system	organ_system	heart.muscle;vasculature;brain;lung;kidney;lymph.node		
+X	Diseases of the respiratory system	organ_system	lung	immune	Upper airway (nose, sinus, tonsil) is not in either atlas
+XI	Diseases of the digestive system	organ_system	esophagus;stomach;small.intestine;colon;rectum;liver;pancreas;salivary.gland;tongue		Eight+ tissues: needs block-level mapping to be informative
+XII	Diseases of the skin and subcutaneous tissue	organ_system	skin;adipose.tissue	immune	
+XIII	Diseases of the musculoskeletal system and connective tissue	organ_system	skeletal.muscle	immune	Bone, cartilage and synovium are not in either atlas
+XIV	Diseases of the genitourinary system	organ_system	kidney;urinary.bladder;prostate;testis;epididymis;ovary;fallopian.tube;endometrium;breast		Needs block-level mapping (N60-N64 breast is in this chapter)
+XV	Pregnancy, childbirth and the puerperium	organ_system	placenta;endometrium;ovary;fallopian.tube;breast		
+XVI	Certain conditions originating in the perinatal period	systemic			
+XVII	Congenital malformations	by_site			
+XVIII	Symptoms, signs and abnormal findings	none			No organ
+XIX	Injury, poisoning and certain other consequences of external causes	none			No organ
+XX	External causes of morbidity	none			No organ
+XXI	Factors influencing health status	none			No organ

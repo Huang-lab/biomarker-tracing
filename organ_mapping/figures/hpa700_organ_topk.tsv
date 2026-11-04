@@ -1,0 +1,16 @@
+organ	n_diseases	share_in_own_organ	chance	fold_over_chance
+stomach	4	0.65	0.04	16.25
+lung	11	0.3636	0.05	7.2727
+heart.muscle	7	0.0714	0.0129	5.5556
+skin	16	0.0375	0.0229	1.6406
+brain	25	0.108	0.12	0.9
+urinary.bladder	6	0.0167	0.0343	0.4861
+eye	8	0.0125	0.0571	0.2188
+adipose.tissue	2	0.0	0.0257	0.0
+breast	1	0.0	0.0329	0.0
+esophagus	5	0.0	0.0229	0.0
+kidney	9	0.0	0.0529	0.0
+liver	7	0.0	0.0214	0.0
+pancreas	1	0.0	0.0329	0.0
+skeletal.muscle	1	0.0	0.0114	0.0
+vasculature	8	0.0	0.0257	0.0

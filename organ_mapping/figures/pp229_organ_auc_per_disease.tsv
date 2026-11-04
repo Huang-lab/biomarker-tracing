@@ -1,0 +1,277 @@
+disease	organ	auc	n_cell_types
+Intestinal infectious diseases	colon	0.3487	6
+Intestinal infectious diseases	small.intestine	0.5599	6
+Mycoses	skin	0.4316	11
+Other bacterial intestinal infections	colon	0.4531	6
+Other bacterial intestinal infections	small.intestine	0.6621	6
+Other specified/unspecified bacterial intestinal infections	colon	0.5968	6
+Other specified/unspecified bacterial intestinal infections	small.intestine	0.6467	6
+Viral infections characterized by skin and mucous membrane lesions	skin	0.329	11
+Benign neoplasm of colon, rectum, anus and anal canal	colon	0.7074	6
+Benign neoplasm of colon, rectum, anus and anal canal	rectum	0.7688	6
+Benign neoplasm of other and ill-defined parts of digestive system	liver	0.6541	10
+Benign neoplasm of other and ill-defined parts of digestive system	small.intestine	0.6731	6
+Benign neoplasm of other and ill-defined parts of digestive system	stomach	0.5628	6
+Benign neoplasm: Stomach	liver	0.6589	10
+Benign neoplasm: Stomach	small.intestine	0.6892	6
+Benign neoplasm: Stomach	stomach	0.5459	6
+Leiomyoma of uterus	endometrium	0.3214	7
+Leiomyoma of uterus	fallopian.tube	0.3026	11
+Leiomyoma of uterus	ovary	0.4384	7
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	skin	0.7473	11
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	breast	0.5175	8
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	prostate	0.1106	9
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	testis	0.4481	9
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	blood	0.4891	7
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	bone.marrow	0.5419	5
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	lymph.node	0.7984	3
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	spleen	0.6024	4
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	skin	0.4279	11
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	skin	0.4224	11
+Agranulocytosis	blood	0.1194	7
+Agranulocytosis	bone.marrow	0.216	5
+Agranulocytosis	spleen	0.1984	4
+Other and unspecified anaemias	blood	0.4977	7
+Other and unspecified anaemias	bone.marrow	0.4166	5
+Other and unspecified iron deficiency	blood	0.551	7
+Other and unspecified iron deficiency	bone.marrow	0.5115	5
+Acute alcohol intoxication	brain	0.2138	6
+Alcohol dependence	brain	0.1368	6
+Depression	brain	0.2616	6
+Depression or dysthymia	brain	0.2167	6
+Disorders of lipoprotein metabolism and other lipidaemias	liver	0.6731	10
+Hyperlipidaemia, other/unspecified	liver	0.3904	10
+Metabolic disorders	liver	0.5457	10
+Obesity	adipose.tissue	0.3005	10
+Obesity, other/unspecified	adipose.tissue	0.2963	10
+Other anxiety disorders	brain	0.3333	6
+Other disorders of fluid, electrolyte and acid-base balance	kidney	0.3019	6
+Pure hypercholesterolaemia	liver	0.7041	10
+Volume depletion	kidney	0.065	6
+Angina pectoris	heart.muscle	0.758	4
+Angina pectoris	vasculature	0.2747	6
+Atrial fibrillation and flutter	heart.muscle	0.8644	4
+Cardiomyopathy	heart.muscle	0.9644	4
+Conduction disorders	heart.muscle	0.9778	4
+Coronary atherosclerosis	heart.muscle	0.8071	4
+Coronary atherosclerosis	vasculature	0.3044	6
+DVT of lower extremities	vasculature	0.713	6
+Death due to cardiac causes	heart.muscle	0.9041	4
+Death due to cardiac causes	vasculature	0.3721	6
+Heart failure, strict	vasculature	0.6012	6
+Heart failure, strict	heart.muscle	0.8242	4
+Hypertension	vasculature	0.4194	6
+Hypertension	brain	0.6843	6
+Hypertension, Pulmonary Arterial	heart.muscle	0.9258	4
+Hypertension, Pulmonary Arterial	lung	0.4701	16
+Hypertension, essential	vasculature	0.4208	6
+Hypertensive Renal Disease	vasculature	0.3602	6
+Hypotension	vasculature	0.4088	6
+Ischaemic heart disease, wide definition	heart.muscle	0.79	4
+Ischaemic heart disease, wide definition	vasculature	0.2877	6
+Major coronary heart disease event	heart.muscle	0.7557	4
+Major coronary heart disease event	vasculature	0.2519	6
+Myocardial infarction, strict	heart.muscle	0.8105	4
+Myocardial infarction, strict	vasculature	0.2823	6
+Other arrhythmias	heart.muscle	0.8933	4
+Other diseases of arteries and capillaries	vasculature	0.3109	6
+Other or ill-defined heart diseases	heart.muscle	0.9322	4
+Other peripheral vascular diseases	vasculature	0.6405	6
+Paroxysmal tachycardia	heart.muscle	0.7722	4
+Phlebitis and thrombophlebitis (not including DVT)	vasculature	0.7309	6
+Pulmonary embolism	heart.muscle	0.6244	4
+Pulmonary embolism	lung	0.497	16
+Rheumatic valve diseases	heart.muscle	0.7933	4
+Secondary right heart disease	heart.muscle	0.9258	4
+Secondary right heart disease	lung	0.4901	16
+Stroke, excluding SAH	brain	0.2896	6
+Stroke, excluding SAH	vasculature	0.573	6
+Transient ischemic attack	brain	0.7145	6
+Unstable angina pectoris	heart.muscle	0.661	4
+Unstable angina pectoris	vasculature	0.2588	6
+Varicose veins	vasculature	0.5127	6
+Venous thromboembolism	vasculature	0.7455	6
+Venous thromboembolism	lung	0.524	16
+Venous thromboembolism	heart.muscle	0.7118	4
+Acute alcohol intoxication, ICD10	brain	0.2235	6
+Alcohol abuse, main dg, excluding more controls	brain	0.2257	6
+Alcohol use disorder, ICD-based	brain	0.0792	6
+Anxiety disorders, excluding more controls	brain	0.272	6
+Any mental disorder	brain	0.1315	6
+Schizophrenia or delusion, excluding more controls	brain	0.5703	6
+Smoking dependency	brain	0.1084	6
+Substance abuse, excluding more controls	brain	0.0919	6
+Cerebral palsy and other paralytic syndromes	brain	0.296	6
+Epilepsy	brain	0.8146	6
+Episodal and paroxysmal disorders	brain	0.7616	6
+Hemiplegia	brain	0.0792	6
+MS-disease / Multiple Sclerosis	brain	0.6697	6
+Migraine	brain	0.9395	6
+Migraine, unspecified, drug-induced	brain	0.9873	6
+Other degenerative diseases of the nervous system	brain	0.6293	6
+Other neurological diseases	brain	0.5419	6
+Other sleep disorders	brain	0.1413	6
+Sleep apnoea	brain	0.3625	6
+Diabetic maculopathy, excluding more controls	eye	0.5062	5
+Disorders of choroid and retina	eye	0.2009	5
+Disorders of ocular muscles, binocular movement, accommodation and refraction	eye	0.35	5
+Glaucoma	eye	0.6795	5
+Other and unspecified glaucoma	eye	0.7152	5
+Other cataract	eye	0.5598	5
+Senile cataract	eye	0.092	5
+Visual disturbances	eye	0.3616	5
+Asthma, excluding more controls	lung	0.652	16
+Asthma, unspecified (mode)	lung	0.657	16
+Chronic lower respiratory diseases	lung	0.6731	16
+Early onset COPD	lung	0.7365	16
+Idiopathic pulmonary fibrosis	lung	0.9214	16
+Influenza and pneumonia	lung	0.8451	16
+Interstitial lung disease	lung	0.9161	16
+Other acute lower respiratory infections	lung	0.8201	16
+Other diseases of pleura	lung	0.7421	16
+Pleural effusion	lung	0.3806	16
+Unspecified acute lower respiratory infection	lung	0.8081	16
+Abscess of anal and rectal regions	colon	0.3333	6
+Abscess of anal and rectal regions	rectum	0.179	6
+Acute pancreatitis	pancreas	0.2342	8
+Chronic gastritis	stomach	0.7265	6
+Coeliac disease	colon	0.8752	6
+Coeliac disease	small.intestine	0.9242	6
+Coeliac disease	stomach	0.6027	6
+Constipation	colon	0.3065	6
+Constipation	rectum	0.3149	6
+Crohn disease (strict definition, require KELA, min 2 HDR)	colon	0.2588	6
+Crohn disease (strict definition, require KELA, min 2 HDR)	small.intestine	0.2704	6
+Crohn's disease NAS	colon	0.172	6
+Crohn's disease NAS	small.intestine	0.1882	6
+Diaphragmatic hernia	esophagus	0.3531	10
+Diaphragmatic hernia	stomach	0.802	6
+Diseases of liver	liver	0.221	10
+Diseases of oesophagus, stomach and duodenum	stomach	0.8543	6
+Diseases of oesophagus, stomach and duodenum	esophagus	0.4285	10
+Diseases of oesophagus, stomach and duodenum	small.intestine	0.4493	6
+Diseases of oral cavity, salivary glands and jaws	salivary.gland	0.6364	11
+Diseases of oral cavity, salivary glands and jaws	tongue	0.3631	8
+Diseases of the digestive system	colon	0.7259	6
+Diseases of the digestive system	small.intestine	0.7567	6
+Diseases of the digestive system	stomach	0.6959	6
+Diverticular disease of intestine	colon	0.5269	6
+Diverticular disease of intestine	rectum	0.7089	6
+Duodenal ulcer	small.intestine	0.3134	6
+Duodenal ulcer	stomach	0.8172	6
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	small.intestine	0.2873	6
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	stomach	0.7849	6
+Functional dyspepsia	stomach	0.7175	6
+Gastric ulcer	small.intestine	0.778	6
+Gastric ulcer	stomach	0.7611	6
+Gastro-oesophageal reflux disease	esophagus	0.4352	10
+Gastroduodenal ulcer	small.intestine	0.5253	6
+Gastroduodenal ulcer	stomach	0.8694	6
+Intestinal malabsorption	colon	0.9084	6
+Intestinal malabsorption	small.intestine	0.9344	6
+Intestinal malabsorption	stomach	0.5916	6
+Irritable bowel syndrome	colon	0.8387	6
+Irritable bowel syndrome	rectum	0.884	6
+Noninfective enteritis and colitis	colon	0.267	6
+Noninfective enteritis and colitis	small.intestine	0.252	6
+Noninfective enteritis and colitis	rectum	0.4724	6
+Oesophageal obstruction	esophagus	0.4521	10
+Oesophagitis	esophagus	0.4306	10
+Other diseases of anus and rectum	colon	0.8095	6
+Other diseases of anus and rectum	rectum	0.8978	6
+Other diseases of biliary tract	liver	0.4466	10
+Other diseases of intestine	colon	0.5507	6
+Other diseases of intestine	rectum	0.6022	6
+Other diseases of intestines	colon	0.4616	6
+Other diseases of intestines	rectum	0.6421	6
+Other diseases of liver	liver	0.1242	10
+Other diseases of oesophagus	esophagus	0.4694	10
+Other diseases of stomach and duodenum	stomach	0.8363	6
+Other diseases of the digestive system	colon	0.4842	6
+Other diseases of the digestive system	small.intestine	0.2788	6
+Other diseases of the digestive system	stomach	0.6619	6
+Other functional intestinal disorders	colon	0.2788	6
+Other functional intestinal disorders	rectum	0.3425	6
+Other gastritis (incl. Duodenitis)	stomach	0.8625	6
+Other noninfective gastroenteritis and colitis	colon	0.427	6
+Other noninfective gastroenteritis and colitis	small.intestine	0.3441	6
+Other or unspecified ileus, impaction or obstruction	colon	0.278	6
+Other or unspecified ileus, impaction or obstruction	rectum	0.629	6
+Paralytic ileus and intestinal obstruction	colon	0.4293	6
+Paralytic ileus and intestinal obstruction	rectum	0.6767	6
+Postprocedural disorders of digestive system, not elsewhere classified	colon	0.1011	6
+Postprocedural disorders of digestive system, not elsewhere classified	small.intestine	0.124	6
+Postprocedural disorders of digestive system, not elsewhere classified	stomach	0.5498	6
+Ulcer of oesophagus	esophagus	0.4635	10
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	colon	0.0661	6
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	rectum	0.0922	6
+Ulcerative colitis, NAS	colon	0.0814	6
+Ulcerative colitis, NAS	rectum	0.0998	6
+Cellulitis	skin	0.4612	11
+Cutaneous abscess, furuncle and carbuncle	skin	0.6814	11
+Dermatitis and eczema	skin	0.5838	11
+Infections of the skin and subcutaneous tissue	skin	0.553	11
+Nail disorders	skin	0.4566	11
+Other and unspecified disorders of skin and subcutaneous tissue	skin	0.5567	11
+Other and unspecified psoriasis	skin	0.741	11
+Other disorders of skin and subcutaneous tissue	skin	0.5892	11
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	skin	0.465	11
+Papulosquamous disorders	skin	0.7043	11
+Psoriasis	skin	0.6864	11
+Gout, unspecified	kidney	0.3274	6
+Soft tissue disorders	skeletal.muscle	0.4524	7
+Acute renal failure	kidney	0.1502	6
+Adenomyosis (Endometriosis of uterus)	endometrium	0.3116	7
+Adenomyosis (Endometriosis of uterus)	ovary	0.2405	7
+Calculus of kidney and ureter	kidney	0.2152	6
+Chronic kidney disease	kidney	0.1839	6
+Diseases of male genital organs	prostate	0.5987	9
+Diseases of male genital organs	testis	0.8189	9
+Endometriosis	endometrium	0.3389	7
+Endometriosis	ovary	0.2777	7
+Erosion and ectropion of cervix uteri	endometrium	0.5017	7
+Erosion and ectropion of cervix uteri	ovary	0.4711	7
+Excessive, frequent and irregular menstruation	endometrium	0.3349	7
+Excessive, frequent and irregular menstruation	ovary	0.3336	7
+Female genital prolapse	endometrium	0.5223	7
+Female genital prolapse	ovary	0.3116	7
+Hydrocele	prostate	0.4766	9
+Hydrocele	testis	0.8299	9
+Hyperplasia of prostate	prostate	0.6187	9
+Hyperplasia of prostate	testis	0.5613	9
+Inflammatory diseases of prostate (prostatitis)	prostate	0.475	9
+Inflammatory diseases of prostate (prostatitis)	testis	0.5482	9
+Irregular menses	endometrium	0.4738	7
+Irregular menses	ovary	0.2485	7
+Menorrhagia	endometrium	0.2924	7
+Menorrhagia	ovary	0.4206	7
+Noninflammatory disorders of female genital tract	endometrium	0.4093	7
+Noninflammatory disorders of female genital tract	ovary	0.3422	7
+Other abnormal uterine and vaginal bleeding	endometrium	0.3668	7
+Other abnormal uterine and vaginal bleeding	ovary	0.5748	7
+Other disorders of kidney and ureter	kidney	0.1816	6
+Other disorders of male genital organs	prostate	0.4397	9
+Other disorders of male genital organs	testis	0.8947	9
+Other noninflammatory disorders of uterus, except cervix	endometrium	0.5794	7
+Other noninflammatory disorders of uterus, except cervix	ovary	0.4904	7
+Other obstructive and reflux uropathy	kidney	0.0994	6
+Ovarian cyst	endometrium	0.194	7
+Ovarian cyst	ovary	0.2598	7
+Pain and other conditions associated with female genital organs and menstrual cycle	endometrium	0.1774	7
+Pain and other conditions associated with female genital organs and menstrual cycle	ovary	0.5362	7
+Polyp of the female genital tract	endometrium	0.6346	7
+Polyp of the female genital tract	ovary	0.6007	7
+Renal tubulo-interstitial diseases	kidney	0.1435	6
+Unspecified kidney failure	kidney	0.219	6
+Complications of labour and delivery	endometrium	0.6258	7
+Complications of labour and delivery	placenta	0.531	9
+Labour and delivery complicated by fetal stress [distress]	endometrium	0.5822	7
+Labour and delivery complicated by fetal stress [distress]	placenta	0.5368	9
+Long labour	endometrium	0.613	7
+Long labour	placenta	0.5274	9
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	endometrium	0.548	7
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	placenta	0.5446	9
+Prolonged pregnancy	endometrium	0.495	7
+Prolonged pregnancy	placenta	0.3761	9
+Single spontaneous delivery	endometrium	0.5962	7
+Single spontaneous delivery	placenta	0.5895	9

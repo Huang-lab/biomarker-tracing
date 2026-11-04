@@ -1,0 +1,4 @@
+Disease_code	organs_primary	organs_secondary	lineage	reason
+C3_SQUOMOUS_CELL_CARCINOMA_SKIN_EXALLC	skin			No Risteys page for this endpoint or its base name; the name says skin (squamous cell carcinoma of the skin, ICD-10 C44)
+I9_K_CARDIAC	heart.muscle;vasculature			Mortality endpoint "Death due to cardiac causes"; not on Risteys. Cardiac causes -> heart (and coronary vasculature)
+H8_OTHEREAR				Ear not in either atlas. The only organ-bearing code is D33 (vestibular schwannoma, a cranial-nerve tumour), which is not brain parenchyma

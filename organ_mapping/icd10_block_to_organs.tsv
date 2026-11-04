@@ -1,0 +1,182 @@
+first	last	block_name	organs_primary	organs_secondary	lineage	note
+A00	A09	Intestinal infectious diseases	small.intestine;colon	stomach;rectum
+A15	A19	Tuberculosis	lung		immune
+A20	A28	Certain zoonotic bacterial diseases				systemic
+A30	A49	Other bacterial diseases				systemic (sepsis, streptococcus, etc.)
+A50	A64	Infections with a predominantly sexual mode of transmission		prostate;testis;endometrium;fallopian.tube		site varies
+A65	A69	Other spirochaetal diseases				systemic
+A70	A74	Other diseases caused by chlamydiae		eye		site varies
+A75	A79	Rickettsioses				systemic
+A80	A89	Viral infections of the central nervous system	brain
+A92	A99	Arthropod-borne viral fevers and viral haemorrhagic fevers				systemic
+B00	B09	Viral infections with skin and mucous membrane lesions	skin		immune
+B15	B19	Viral hepatitis	liver		immune
+B20	B24	HIV disease	lymph.node;blood		immune
+B25	B34	Other viral diseases				systemic
+B35	B49	Mycoses	skin		immune
+B50	B64	Protozoal diseases	blood	spleen;liver
+B65	B83	Helminthiases	small.intestine	liver
+B85	B89	Pediculosis, acariasis and other infestations	skin
+B90	B99	Sequelae and infectious agents				systemic / unspecified
+C00	C14	Malignant neoplasms of lip, oral cavity and pharynx	tongue;salivary.gland
+C15	C15	Malignant neoplasm of oesophagus	esophagus
+C16	C16	Malignant neoplasm of stomach	stomach
+C17	C17	Malignant neoplasm of small intestine	small.intestine
+C18	C20	Malignant neoplasm of colon, rectosigmoid junction and rectum	colon;rectum
+C21	C21	Malignant neoplasm of anus and anal canal	rectum
+C22	C24	Malignant neoplasm of liver, gallbladder and biliary tract	liver
+C25	C25	Malignant neoplasm of pancreas	pancreas
+C30	C39	Malignant neoplasms of respiratory and intrathoracic organs	lung	thymus
+C40	C41	Malignant neoplasm of bone and articular cartilage				bone not in atlas
+C43	C44	Melanoma and other malignant neoplasms of skin	skin
+C45	C49	Malignant neoplasms of mesothelial and soft tissue		adipose.tissue;skeletal.muscle
+C50	C50	Malignant neoplasm of breast	breast
+C51	C58	Malignant neoplasms of female genital organs	ovary;endometrium;fallopian.tube			cervix not in atlas
+C60	C63	Malignant neoplasms of male genital organs	prostate;testis;epididymis
+C64	C68	Malignant neoplasms of urinary tract	kidney;urinary.bladder
+C69	C72	Malignant neoplasms of eye, brain and other parts of CNS	brain;eye
+C73	C73	Malignant neoplasm of thyroid gland				thyroid not in atlas
+C74	C74	Malignant neoplasm of adrenal gland	adrenal.gland			
+C75	C75	Malignant neoplasm of other endocrine glands	pituitary.gland			
+C76	C80	Ill-defined, secondary and unspecified sites				no organ
+C81	C96	Malignant neoplasms of lymphoid, haematopoietic and related tissue	blood;bone.marrow;lymph.node;spleen		immune
+D00	D09	In situ neoplasms				site varies
+D10	D36	Benign neoplasms				site varies; see single-category rows
+D10	D10	Benign neoplasm of mouth and pharynx	tongue;salivary.gland
+D12	D12	Benign neoplasm of colon, rectum and anus	colon;rectum
+D13	D13	Benign neoplasm of other parts of digestive system	small.intestine;liver;stomach
+D14	D15	Benign neoplasm of respiratory and intrathoracic organs	lung
+D17	D17	Benign lipomatous neoplasm	adipose.tissue
+D22	D23	Melanocytic naevi and other benign neoplasms of skin	skin
+D24	D24	Benign neoplasm of breast	breast
+D25	D28	Benign neoplasms of uterus, ovary and other female genital organs	endometrium;ovary;fallopian.tube
+D29	D29	Benign neoplasm of male genital organs	prostate;testis;epididymis
+D30	D30	Benign neoplasm of urinary organs	kidney;urinary.bladder
+D32	D33	Benign neoplasm of meninges, brain and CNS	brain
+D34	D34	Benign neoplasm of thyroid gland				thyroid not in atlas
+D35	D35	Benign neoplasm of other and unspecified endocrine glands	adrenal.gland;pituitary.gland			
+D37	D48	Neoplasms of uncertain or unknown behaviour				site varies
+D50	D53	Nutritional anaemias	blood;bone.marrow
+D55	D59	Haemolytic anaemias	blood;bone.marrow	spleen
+D60	D64	Aplastic and other anaemias	bone.marrow;blood
+D65	D69	Coagulation defects, purpura and other haemorrhagic conditions	blood;bone.marrow	liver
+D70	D77	Other diseases of blood and blood-forming organs	blood;bone.marrow;spleen	lymph.node
+D80	D89	Disorders involving the immune mechanism	lymph.node;blood;spleen;thymus		immune
+E00	E07	Disorders of thyroid gland				thyroid not in atlas
+E10	E14	Diabetes mellitus	pancreas	liver;adipose.tissue;skeletal.muscle;kidney
+E15	E16	Other disorders of glucose regulation and pancreatic internal secretion	pancreas
+E20	E35	Disorders of other endocrine glands	pituitary.gland;adrenal.gland	ovary;testis;thymus
+E40	E64	Malnutrition and other nutritional deficiencies				systemic
+E65	E68	Obesity and other hyperalimentation	adipose.tissue
+E70	E88	Metabolic disorders	liver	kidney;pancreas
+E78	E78	Disorders of lipoprotein metabolism and other lipidaemias	liver	vasculature;adipose.tissue
+E84	E84	Cystic fibrosis	lung;pancreas
+E86	E87	Volume depletion; fluid, electrolyte and acid-base disorders	kidney
+E89	E89	Postprocedural endocrine and metabolic disorders
+F00	F09	Organic, including symptomatic, mental disorders	brain
+F10	F19	Mental and behavioural disorders due to psychoactive substance use	brain
+F10	F10	Mental and behavioural disorders due to use of alcohol	brain	liver
+F20	F29	Schizophrenia, schizotypal and delusional disorders	brain
+F30	F39	Mood [affective] disorders	brain
+F40	F48	Neurotic, stress-related and somatoform disorders	brain
+F50	F59	Behavioural syndromes associated with physiological disturbances	brain
+F60	F69	Disorders of adult personality and behaviour	brain
+F70	F99	Intellectual disability, developmental and childhood-onset disorders	brain
+G00	G09	Inflammatory diseases of the central nervous system	brain		immune
+G10	G14	Systemic atrophies primarily affecting the CNS	brain
+G20	G26	Extrapyramidal and movement disorders	brain
+G30	G32	Other degenerative diseases of the nervous system	brain
+G35	G37	Demyelinating diseases of the CNS	brain		immune
+G40	G47	Episodic and paroxysmal disorders	brain
+G50	G59	Nerve, nerve root and plexus disorders				peripheral nerve not in atlas
+G60	G64	Polyneuropathies and other disorders of the peripheral nervous system				peripheral nerve not in atlas
+G70	G73	Diseases of myoneural junction and muscle	skeletal.muscle
+G80	G83	Cerebral palsy and other paralytic syndromes	brain
+G90	G99	Other disorders of the nervous system	brain
+H00	H06	Disorders of eyelid, lacrimal system and orbit	eye
+H10	H13	Disorders of conjunctiva	eye
+H15	H22	Disorders of sclera, cornea, iris and ciliary body	eye
+H25	H28	Disorders of lens	eye
+H30	H36	Disorders of choroid and retina	eye
+H40	H42	Glaucoma	eye
+H43	H45	Disorders of vitreous body and globe	eye
+H46	H48	Disorders of optic nerve and visual pathways	eye	brain
+H49	H59	Ocular muscles, refraction, visual disturbances and other disorders of eye	eye
+H60	H95	Diseases of the ear and mastoid process				ear not in atlas
+I00	I09	Rheumatic heart disease	heart.muscle		immune
+I10	I15	Hypertensive diseases	vasculature	kidney;heart.muscle
+I20	I25	Ischaemic heart diseases	heart.muscle;vasculature
+I26	I28	Pulmonary heart disease and diseases of pulmonary circulation	lung;heart.muscle	vasculature		pulmonary arteries (MONDO places pulmonary embolism in the pulmonary artery)
+I30	I52	Other forms of heart disease	heart.muscle
+I60	I69	Cerebrovascular diseases	brain;vasculature
+I70	I79	Diseases of arteries, arterioles and capillaries	vasculature
+I80	I89	Diseases of veins, lymphatic vessels and lymph nodes	vasculature	lymph.node
+I95	I99	Other and unspecified disorders of the circulatory system	vasculature	heart.muscle
+J00	J06	Acute upper respiratory infections		lung	immune	upper airway not in atlas
+J09	J18	Influenza and pneumonia	lung		immune
+J20	J22	Other acute lower respiratory infections	lung		immune
+J30	J39	Other diseases of upper respiratory tract		lung	immune	upper airway not in atlas
+J40	J47	Chronic lower respiratory diseases	lung		immune
+J60	J70	Lung diseases due to external agents	lung
+J80	J84	Respiratory diseases principally affecting the interstitium	lung
+J85	J99	Other respiratory diseases (abscess, pleura, other)	lung
+K00	K14	Diseases of oral cavity, salivary glands and jaws	tongue;salivary.gland			teeth and jaws not in atlas
+K20	K23	Diseases of oesophagus	esophagus
+K25	K28	Gastric, duodenal, peptic and gastrojejunal ulcer	stomach;small.intestine
+K29	K31	Gastritis, duodenitis and other diseases of stomach and duodenum	stomach	small.intestine
+K35	K38	Diseases of appendix		colon		appendix not in atlas; nearest is colon
+K40	K46	Hernia				abdominal wall not in atlas
+K44	K44	Diaphragmatic hernia (hiatus hernia)	stomach;esophagus			
+K50	K50	Crohn disease	small.intestine;colon	rectum	immune
+K51	K51	Ulcerative colitis	colon;rectum		immune
+K52	K52	Other noninfective gastroenteritis and colitis	small.intestine;colon
+K55	K64	Other diseases of intestines	colon;rectum	small.intestine
+K65	K67	Diseases of peritoneum				peritoneum not in atlas
+K70	K77	Diseases of liver	liver
+K80	K82	Disorders of gallbladder and bile ducts (gallstones, cholecystitis)		liver		gallbladder not in atlas; nearest is liver
+K83	K83	Other diseases of biliary tract (incl. cholangitis)	liver			
+K85	K87	Disorders of pancreas	pancreas
+K90	K93	Other diseases of the digestive system	small.intestine;stomach;colon			whole gut; no single organ
+L00	L08	Infections of the skin and subcutaneous tissue	skin	adipose.tissue	immune
+L10	L14	Bullous disorders	skin		immune
+L20	L30	Dermatitis and eczema	skin		immune
+L40	L45	Papulosquamous disorders	skin		immune
+L50	L54	Urticaria and erythema	skin		immune
+L55	L59	Radiation-related disorders of the skin	skin
+L60	L75	Disorders of skin appendages	skin
+L80	L99	Other disorders of the skin and subcutaneous tissue	skin	adipose.tissue
+M00	M25	Arthropathies			immune	joints not in atlas
+M30	M36	Systemic connective tissue disorders		skin;kidney;vasculature	immune	connective tissue not in atlas
+M40	M54	Dorsopathies				spine not in atlas
+M60	M63	Disorders of muscles	skeletal.muscle
+M65	M68	Disorders of synovium and tendon				not in atlas
+M70	M79	Other soft tissue disorders		skeletal.muscle
+M80	M99	Osteopathies, chondropathies and other musculoskeletal disorders				bone and cartilage not in atlas
+N00	N08	Glomerular diseases	kidney
+N10	N16	Renal tubulo-interstitial diseases	kidney
+N17	N19	Renal failure	kidney
+N20	N23	Urolithiasis	kidney;urinary.bladder
+N25	N29	Other disorders of kidney and ureter	kidney
+N30	N39	Other diseases of the urinary system	urinary.bladder	kidney
+N40	N51	Diseases of male genital organs	prostate;testis;epididymis
+N60	N64	Disorders of breast	breast
+N70	N77	Inflammatory diseases of female pelvic organs	ovary;fallopian.tube;endometrium
+N80	N98	Noninflammatory disorders of female genital tract	endometrium;ovary	fallopian.tube		cervix and vulva not in atlas
+N99	N99	Other disorders of the genitourinary system	kidney;urinary.bladder
+O00	O08	Pregnancy with abortive outcome	endometrium;placenta
+O10	O16	Oedema, proteinuria and hypertensive disorders in pregnancy	placenta	vasculature;kidney
+O20	O29	Other maternal disorders predominantly related to pregnancy	placenta;endometrium
+O30	O48	Maternal care related to the fetus, amniotic cavity and delivery problems	placenta;endometrium
+O60	O84	Complications of labour and delivery; delivery	endometrium;placenta			
+O70	O70	Perineal laceration during delivery				perineum not in atlas
+O85	O86	Puerperal sepsis and other puerperal infection	endometrium			
+O87	O87	Venous complications and haemorrhoids in the puerperium	vasculature			
+O88	O88	Obstetric embolism	lung;vasculature			
+O89	O92	Other puerperal complications, anaesthesia and lactation disorders	endometrium;breast	
+O94	O99	Other obstetric conditions	placenta;endometrium
+P00	P96	Conditions originating in the perinatal period
+Q00	Q99	Congenital malformations				site varies
+R00	R99	Symptoms, signs and abnormal findings				no organ
+S00	T98	Injury, poisoning and other consequences of external causes				no organ
+V01	Y98	External causes of morbidity				no organ
+Z00	Z99	Factors influencing health status				no organ
