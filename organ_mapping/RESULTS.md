@@ -62,10 +62,14 @@ includes renal codes, N16), and pregnancy/labour → endometrium/placenta, a tis
 poorly. `organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a
 domain expert to correct; **no such expert review has been done yet**, so the table is not clinically validated.
 
-![Primary organs for 36 example diseases](figures/disease_primary_organs.png)
+![Primary organs for 50 representative diseases](figures/disease_primary_organs.png)
 
-The figure shows 36 of the 191 diseases with the organs assigned and the ICD-10 categories they came from. The
-full table is `disease_organ_map.tsv`. Reproduce with `python organ_mapping/plot_disease_organ_examples.py`.
+The figure shows 50 representative diseases with the organs assigned and the ICD-10 categories they came from.
+They are chosen by rule, not by hand: near-duplicate diseases (same primary organs, ICD-10 category sets with
+Jaccard overlap ≥ 0.5) are merged into 158 groups; each group is shown by its most typical member (`×n` = how
+many diseases it stands for). Groups are picked so that every primary organ appears at least once, then by new
+organ combinations, then by size. The 50 rows stand for 83 of the 191 diseases. The full table is
+`disease_organ_map.tsv`. Reproduce with `python organ_mapping/plot_disease_organ_examples.py`.
 
 ### 1b. How each cell type is scored for a disease (`univar_association_testing.py`)
 For one disease and one cell type *c*, across all measured proteins:
