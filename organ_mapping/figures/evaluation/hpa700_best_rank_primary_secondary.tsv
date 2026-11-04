@@ -1,0 +1,192 @@
+disease	organ	n_own_cell_types	n_primary_cell_types	best_own_rank	primary_only_rank	chance_rank	confidence	single_organ	has_secondary
+Intestinal infectious diseases	colon;small.intestine	53	16	3.0	292.0	12.0	medium	False	True
+Mycoses	skin	16	16	3.0	3.0	29.5	medium	True	False
+Other bacterial intestinal infections	colon;small.intestine	53	16	2.0	169.0	12.0	medium	False	True
+Other specified/unspecified bacterial intestinal infections	colon;small.intestine	53	16	1.0	86.0	12.0	medium	False	True
+Viral infections characterized by skin and mucous membrane lesions	skin	16	16	45.0	45.0	28.5	medium	True	False
+Benign neoplasm of colon, rectum, anus and anal canal	colon;rectum	19	19	71.0	71.0	53.0	medium	False	False
+Benign neoplasm of other and ill-defined parts of digestive system	liver;small.intestine;stomach	49	49	2.0	2.0	18.5	medium	False	False
+Benign neoplasm: Stomach	liver;small.intestine;stomach	49	49	11.0	11.0	18.5	medium	False	False
+Leiomyoma of uterus	endometrium;fallopian.tube;ovary	48	48	3.0	3.0	12.0	medium	False	False
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	skin	16	16	2.0	2.0	29.5	medium	True	False
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	breast	23	23	71.0	71.0	31.0	medium	True	False
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	epididymis;prostate;testis	49	49	37.0	37.0	15.5	medium	False	False
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	blood;bone.marrow;lymph.node;spleen	71	71	39.0	39.0	29.0	medium	False	False
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	skin	16	16	107.0	107.0	28.5	medium	True	False
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	skin	16	16	101.0	101.0	28.5	review	True	False
+Agranulocytosis	blood;bone.marrow;spleen	71	52	16.0	32.0	29.0	high	False	True
+Other and unspecified anaemias	blood;bone.marrow	39	39	57.0	57.0	52.5	high	False	False
+Other and unspecified iron deficiency	blood;bone.marrow	39	39	27.0	27.0	53.0	high	False	False
+Acute alcohol intoxication	brain	99	84	132.0	132.0	16.5	medium	True	True
+Alcohol dependence	brain	99	84	28.0	101.0	16.5	medium	True	True
+Depression	brain	84	84	148.0	148.0	20.0	medium	True	False
+Depression or dysthymia	brain	84	84	112.0	112.0	20.0	medium	True	False
+Disorders of lipoprotein metabolism and other lipidaemias	liver	51	15	96.0	96.0	24.0	medium	True	True
+Disorders of other endocrine glands	adrenal.gland;pituitary.gland	65	19	16.0	22.0	12.0	medium	False	True
+Hyperlipidaemia, other/unspecified	liver	51	15	148.0	264.0	24.0	medium	True	True
+Metabolic disorders	liver	75	15	2.0	143.0	14.0	medium	True	True
+Obesity	adipose.tissue	18	18	83.0	83.0	63.5	medium	True	False
+Obesity, other/unspecified	adipose.tissue	18	18	104.0	104.0	63.5	medium	True	False
+Other anxiety disorders	brain	84	84	26.0	26.0	20.0	medium	True	False
+Other disorders of fluid, electrolyte and acid-base balance	kidney	37	37	188.0	188.0	29.0	medium	True	False
+Pure hypercholesterolaemia	liver	51	15	77.0	77.0	24.0	medium	True	True
+Volume depletion	kidney	37	37	93.0	93.0	29.0	medium	True	False
+Angina pectoris	heart.muscle;vasculature	27	27	84.0	84.0	33.5	high	False	False
+Atrial fibrillation and flutter	heart.muscle	9	9	34.0	34.0	104.0	high	True	False
+Cardiomyopathy	heart.muscle	9	9	44.0	44.0	104.0	high	True	False
+Conduction disorders	heart.muscle	9	9	6.0	6.0	104.0	high	True	False
+Coronary atherosclerosis	heart.muscle;vasculature	27	27	98.0	98.0	33.5	high	False	False
+DVT of lower extremities	vasculature	37	18	21.0	21.0	44.5	high	True	True
+Death due to cardiac causes	heart.muscle;vasculature	27	27	69.0	69.0	33.5	review	False	False
+Heart failure, strict	vasculature;heart.muscle	64	27	14.0	14.0	16.0	high	False	True
+Hypertension	vasculature;brain	148	102	22.0	22.0	6.0	high	False	True
+Hypertension, Pulmonary Arterial	heart.muscle;lung	62	44	3.0	3.0	14.0	high	False	True
+Hypertension, essential	vasculature	64	18	38.0	117.0	16.0	high	True	True
+Hypertensive Renal Disease	vasculature	64	18	52.0	189.0	16.0	high	True	True
+Hypotension	vasculature	27	18	66.0	66.0	33.5	high	True	True
+Ischaemic heart disease, wide definition	heart.muscle;vasculature	27	27	67.0	67.0	33.5	high	False	False
+Major coronary heart disease event	heart.muscle;vasculature	27	27	124.0	124.0	33.5	high	False	False
+Myocardial infarction, strict	heart.muscle;vasculature	27	27	36.0	36.0	33.5	high	False	False
+Other arrhythmias	heart.muscle	9	9	21.0	21.0	104.0	high	True	False
+Other diseases of arteries and capillaries	vasculature	18	18	167.0	167.0	62.0	high	True	False
+Other or ill-defined heart diseases	heart.muscle	9	9	2.0	2.0	104.0	high	True	False
+Other peripheral vascular diseases	vasculature	18	18	43.0	43.0	63.5	high	True	False
+Paroxysmal tachycardia	heart.muscle	9	9	42.0	42.0	104.0	high	True	False
+Phlebitis and thrombophlebitis (not including DVT)	vasculature	37	18	34.0	34.0	44.5	high	True	True
+Pulmonary embolism	heart.muscle;lung	62	44	12.0	12.0	14.0	high	False	True
+Rheumatic valve diseases	heart.muscle	9	9	38.0	38.0	104.0	high	True	False
+Secondary right heart disease	heart.muscle;lung	62	44	3.0	3.0	14.0	high	False	True
+Stroke, excluding SAH	brain;vasculature	102	102	2.0	2.0	12.0	high	False	False
+Transient ischemic attack	brain	84	84	10.0	10.0	20.0	high	True	False
+Unstable angina pectoris	heart.muscle;vasculature	27	27	208.0	208.0	33.5	high	False	False
+Varicose veins	vasculature	37	18	78.0	172.0	43.5	high	True	True
+Venous thromboembolism	vasculature;lung;heart.muscle	81	62	30.0	30.0	12.5	high	False	True
+Acute alcohol intoxication, ICD10	brain	99	84	135.0	135.0	16.5	high	True	True
+Alcohol abuse, main dg, excluding more controls	brain	99	84	121.0	121.0	16.5	high	True	True
+Alcohol use disorder, ICD-based	brain	99	84	82.0	186.0	16.5	high	True	True
+Anxiety disorders, excluding more controls	brain	84	84	57.0	57.0	20.0	high	True	False
+Any mental disorder	brain	84	84	209.0	209.0	20.0	high	True	False
+Schizophrenia or delusion, excluding more controls	brain	84	84	82.0	82.0	20.0	high	True	False
+Smoking dependency	brain	84	84	39.0	39.0	20.0	high	True	False
+Substance abuse, excluding more controls	brain	99	84	68.0	226.0	16.5	high	True	True
+Cerebral palsy and other paralytic syndromes	brain	84	84	8.0	8.0	20.0	high	True	False
+Epilepsy	brain	84	84	16.0	16.0	20.0	high	True	False
+Episodal and paroxysmal disorders	brain	84	84	12.0	12.0	20.0	high	True	False
+Hemiplegia	brain	84	84	24.0	24.0	20.0	high	True	False
+MS-disease / Multiple Sclerosis	brain	84	84	1.0	1.0	20.0	high	True	False
+Migraine	brain	84	84	2.0	2.0	20.0	high	True	False
+Migraine, unspecified, drug-induced	brain	84	84	1.0	1.0	20.0	high	True	False
+Other degenerative diseases of the nervous system	brain	84	84	2.0	2.0	20.0	high	True	False
+Other neurological diseases	brain	84	84	37.0	37.0	20.0	high	True	False
+Other sleep disorders	brain	84	84	280.0	280.0	20.0	high	True	False
+Sleep apnoea	brain	84	84	185.0	185.0	20.0	high	True	False
+Diabetic maculopathy, excluding more controls	eye	40	40	33.0	33.0	17.0	high	True	False
+Disorders of choroid and retina	eye	40	40	11.0	11.0	17.0	high	True	False
+Disorders of ocular muscles, binocular movement, accommodation and refraction	eye	40	40	23.0	23.0	17.0	high	True	False
+Glaucoma	eye	40	40	33.0	33.0	17.0	high	True	False
+Other and unspecified glaucoma	eye	40	40	5.0	5.0	17.0	high	True	False
+Other cataract	eye	40	40	27.0	27.0	17.0	high	True	False
+Senile cataract	eye	40	40	30.0	30.0	17.0	high	True	False
+Visual disturbances	eye	40	40	20.0	20.0	17.0	high	True	False
+Asthma, excluding more controls	lung	35	35	4.0	4.0	27.0	high	True	False
+Asthma, unspecified (mode)	lung	35	35	4.0	4.0	27.0	high	True	False
+Chronic lower respiratory diseases	lung	35	35	4.0	4.0	27.0	high	True	False
+Early onset COPD	lung	35	35	1.0	1.0	27.0	high	True	False
+Idiopathic pulmonary fibrosis	lung	35	35	1.0	1.0	27.0	high	True	False
+Influenza and pneumonia	lung	35	35	2.0	2.0	27.0	high	True	False
+Interstitial lung disease	lung	35	35	1.0	1.0	27.0	high	True	False
+Other acute lower respiratory infections	lung	35	35	1.0	1.0	27.0	high	True	False
+Other diseases of pleura	lung	35	35	15.0	15.0	27.0	high	True	False
+Pleural effusion	lung	35	35	12.0	12.0	27.0	high	True	False
+Unspecified acute lower respiratory infection	lung	35	35	1.0	1.0	27.0	high	True	False
+Abscess of anal and rectal regions	colon;rectum	25	19	100.0	100.0	50.0	high	False	True
+Acute pancreatitis	pancreas	23	23	281.0	281.0	43.5	high	True	False
+Chronic gastritis	stomach	34	28	4.0	4.0	21.5	high	True	True
+Coeliac disease	colon;small.intestine;stomach	44	44	1.0	1.0	13.0	high	False	False
+Constipation	colon;rectum	25	19	532.0	532.0	50.0	high	False	True
+Crohn disease (strict definition, require KELA, min 2 HDR)	colon;small.intestine	25	16	12.0	119.0	51.5	high	False	True
+Crohn's disease NAS	colon;small.intestine	25	16	13.0	178.0	51.5	high	False	True
+Diaphragmatic hernia	esophagus;stomach	44	44	1.0	1.0	12.0	high	False	False
+Diseases of liver	liver	15	15	105.0	105.0	123.0	high	True	False
+Diseases of oesophagus, stomach and duodenum	stomach;esophagus;small.intestine	50	50	1.0	1.0	10.0	high	False	False
+Diseases of oral cavity, salivary glands and jaws	salivary.gland;tongue	53	53	15.0	15.0	15.0	high	False	False
+Diseases of the digestive system	colon;small.intestine;stomach	44	44	1.0	1.0	13.0	high	False	False
+Diverticular disease of intestine	colon;rectum	25	19	16.0	16.0	51.5	high	False	True
+Duodenal ulcer	small.intestine;stomach	34	34	1.0	1.0	21.5	high	False	False
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	small.intestine;stomach	34	34	1.0	1.0	21.5	high	False	False
+Functional dyspepsia	stomach	34	28	1.0	1.0	21.5	high	True	True
+Gastric ulcer	small.intestine;stomach	34	34	1.0	1.0	21.5	high	False	False
+Gastro-oesophageal reflux disease	esophagus	16	16	43.0	43.0	50.0	high	True	False
+Gastroduodenal ulcer	small.intestine;stomach	34	34	1.0	1.0	21.5	high	False	False
+Intestinal malabsorption	colon;small.intestine;stomach	44	44	1.0	1.0	13.0	high	False	False
+Irritable bowel syndrome	colon;rectum	25	19	21.0	21.0	51.5	high	False	True
+Noninfective enteritis and colitis	colon;small.intestine;rectum	25	25	182.0	182.0	50.0	high	False	False
+Oesophageal obstruction	esophagus	16	16	138.0	138.0	49.5	high	True	False
+Oesophagitis	esophagus	16	16	205.0	205.0	49.5	high	True	False
+Other diseases of anus and rectum	colon;rectum	25	19	29.0	29.0	51.5	high	False	True
+Other diseases of biliary tract	liver	15	15	111.0	111.0	123.0	high	True	False
+Other diseases of intestine	colon;rectum	25	19	66.0	113.0	50.0	high	False	True
+Other diseases of intestines	colon;rectum	25	19	185.0	185.0	50.0	high	False	True
+Other diseases of liver	liver	15	15	314.0	314.0	121.5	high	True	False
+Other diseases of oesophagus	esophagus	16	16	75.0	75.0	49.5	high	True	False
+Other diseases of stomach and duodenum	stomach	34	28	1.0	1.0	21.5	high	True	True
+Other diseases of the digestive system	colon;small.intestine;stomach	44	44	1.0	1.0	13.0	high	False	False
+Other functional intestinal disorders	colon;rectum	25	19	528.0	528.0	50.0	high	False	True
+Other gastritis (incl. Duodenitis)	stomach	34	28	1.0	1.0	21.5	high	True	True
+Other noninfective gastroenteritis and colitis	colon;small.intestine	16	16	29.0	29.0	66.5	high	False	False
+Other or unspecified ileus, impaction or obstruction	colon;rectum	25	19	191.0	191.0	50.0	high	False	True
+Paralytic ileus and intestinal obstruction	colon;rectum	25	19	52.0	52.0	50.0	high	False	True
+Postprocedural disorders of digestive system, not elsewhere classified	colon;small.intestine;stomach	44	44	85.0	85.0	13.0	high	False	False
+Ulcer of oesophagus	esophagus	16	16	56.0	56.0	49.5	high	True	False
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	colon;rectum	19	19	433.0	433.0	53.0	high	False	False
+Ulcerative colitis, NAS	colon;rectum	19	19	360.0	360.0	53.0	high	False	False
+Cellulitis	skin	34	16	37.0	37.0	17.5	high	True	True
+Cutaneous abscess, furuncle and carbuncle	skin	34	16	10.0	10.0	18.0	high	True	True
+Dermatitis and eczema	skin	16	16	43.0	43.0	28.5	high	True	False
+Infections of the skin and subcutaneous tissue	skin	34	16	38.0	38.0	17.5	high	True	True
+Nail disorders	skin	16	16	145.0	145.0	28.5	high	True	False
+Other and unspecified disorders of skin and subcutaneous tissue	skin	34	16	4.0	44.0	18.0	high	True	True
+Other and unspecified psoriasis	skin	16	16	6.0	6.0	29.5	high	True	False
+Other disorders of skin and subcutaneous tissue	skin	34	16	2.0	2.0	18.0	high	True	True
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	skin	34	16	3.0	64.0	18.0	high	True	True
+Papulosquamous disorders	skin	16	16	14.0	14.0	29.5	high	True	False
+Psoriasis	skin	16	16	10.0	10.0	29.5	high	True	False
+Gout, unspecified	kidney	37	37	214.0	214.0	29.0	review	True	False
+Soft tissue disorders	skeletal.muscle	8	8	25.0	25.0	169.5	high	True	False
+Acute renal failure	kidney	37	37	300.0	300.0	29.0	high	True	False
+Adenomyosis (Endometriosis of uterus)	endometrium;ovary	48	28	6.0	98.0	12.0	high	False	True
+Calculus of kidney and ureter	kidney;urinary.bladder	61	61	22.0	22.0	15.5	high	False	False
+Chronic kidney disease	kidney	37	37	150.0	150.0	29.0	high	True	False
+Cystitis	urinary.bladder	61	24	30.0	30.0	15.5	high	True	True
+Diseases of male genital organs	epididymis;prostate;testis	49	49	1.0	1.0	16.0	high	False	False
+Endometriosis	endometrium;ovary	48	28	6.0	65.0	12.0	high	False	True
+Erosion and ectropion of cervix uteri	endometrium;ovary	48	28	28.0	28.0	12.0	high	False	True
+Excessive, frequent and irregular menstruation	endometrium;ovary	48	28	17.0	17.0	12.0	high	False	True
+Female genital prolapse	endometrium;ovary	48	28	2.0	11.0	12.0	high	False	True
+Hydrocele	epididymis;prostate;testis	49	49	10.0	10.0	16.0	high	False	False
+Hyperplasia of prostate	epididymis;prostate;testis	49	49	1.0	1.0	16.0	high	False	False
+Inflammatory diseases of prostate (prostatitis)	epididymis;prostate;testis	49	49	2.0	2.0	16.0	high	False	False
+Irregular menses	endometrium;ovary	48	28	8.0	8.0	12.0	high	False	True
+Menorrhagia	endometrium;ovary	48	28	19.0	19.0	12.0	high	False	True
+Neuromuscular dysfunction of bladder	urinary.bladder	61	24	18.0	18.0	15.5	high	True	True
+Noninflammatory disorders of female genital tract	endometrium;ovary	48	28	1.0	1.0	12.0	high	False	True
+Other abnormal uterine and vaginal bleeding	endometrium;ovary	48	28	8.0	8.0	12.0	high	False	True
+Other diseases of urinary system	urinary.bladder	61	24	16.0	28.0	15.5	high	True	True
+Other disorders of  bladder	urinary.bladder	61	24	10.0	10.0	16.0	high	True	True
+Other disorders of kidney and ureter	kidney	37	37	125.0	125.0	29.0	high	True	False
+Other disorders of male genital organs	epididymis;prostate;testis	49	49	1.0	1.0	16.0	high	False	False
+Other disorders of urethra and urinary system	urinary.bladder	61	24	7.0	29.0	16.0	high	True	True
+Other noninflammatory disorders of uterus, except cervix	endometrium;ovary	48	28	1.0	2.0	12.0	high	False	True
+Other obstructive and reflux uropathy	kidney	37	37	279.0	279.0	29.0	high	True	False
+Ovarian cyst	endometrium;ovary	48	28	37.0	101.0	12.0	high	False	True
+Pain and other conditions associated with female genital organs and menstrual cycle	endometrium;ovary	48	28	44.0	44.0	12.0	high	False	True
+Polyp of the female genital tract	endometrium;ovary	48	28	1.0	1.0	12.0	high	False	True
+Renal tubulo-interstitial diseases	kidney	37	37	171.0	171.0	29.0	high	True	False
+Unspecified kidney failure	kidney	37	37	105.0	105.0	29.0	high	True	False
+Urethral stricture	urinary.bladder	61	24	63.0	63.0	15.5	high	True	True
+Complications of labour and delivery	endometrium;placenta	38	38	11.0	11.0	10.0	high	False	False
+Labour and delivery complicated by fetal stress [distress]	endometrium;placenta	38	38	20.0	20.0	10.0	high	False	False
+Long labour	endometrium;placenta	38	38	7.0	7.0	10.5	high	False	False
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	endometrium;placenta	38	38	11.0	11.0	10.0	high	False	False
+Prolonged pregnancy	endometrium;placenta	38	38	20.0	20.0	10.0	high	False	False
+Single spontaneous delivery	endometrium;placenta	38	38	4.0	4.0	10.5	high	False	False

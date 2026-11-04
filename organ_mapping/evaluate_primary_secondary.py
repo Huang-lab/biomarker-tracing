@@ -60,6 +60,19 @@ def auc_and_share(X, M, k=10, n_perm=2000, seed=0):
                 top10_share=obs_s, top10_null=ns.mean(), top10_p=p(obs_s, ns))
 
 
+def best_rank_table(d, atlas):
+    """Per disease: best rank of its primary+secondary organ cell types, the same for primary only, and the chance rank
+    (median over the other diseases of the best rank that disease's own-organ set gets in their rankings)."""
+    prim, _, both = masks(d)
+    r_both, _ = E.first_hit_rank(d["X"], both)
+    r_prim, _ = E.first_hit_rank(d["X"], prim)
+    single = np.array([len(x) == 1 for x in d["mp"].organ_dict])
+    return pd.DataFrame({"disease": d["mp"].Disease, "organ": [next(iter(x)) if len(x) == 1 else ";".join(x) for x in d["mp"].organ_dict],
+                         "n_own_cell_types": both.sum(1), "n_primary_cell_types": prim.sum(1), "best_own_rank": r_both, "primary_only_rank": r_prim,
+                         "chance_rank": E.empirical_chance_rank(d["X"], both), "confidence": d["mp"].confidence, "single_organ": single,
+                         "has_secondary": both.sum(1) > prim.sum(1)})
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     rows, curves = [], {}
@@ -81,6 +94,19 @@ def main():
                              null_median=st["top10_null"], p=st["top10_p"]))
     t = pd.DataFrame(rows); t.round(4).to_csv(os.path.join(OUT, "primary_vs_secondary.tsv"), sep="\t", index=False)
     print(t.round(3).to_string(index=False))
+
+    res, ncols = {}, {}
+    for a in ATLASES:
+        d = E.prepare(a); res[a] = best_rank_table(d, a); ncols[a] = d["X"].shape[1]
+        res[a].to_csv(os.path.join(OUT, f"{a}_best_rank_primary_secondary.tsv"), sep="\t", index=False)
+        r = res[a]; sg = r[r.single_organ]
+        print(a, "beat chance rank (primary+secondary):", round((r.best_own_rank < r.chance_rank).mean(), 3),
+              "| single-organ diseases:", len(sg), "| best rank improved by secondary organs:", int((sg.primary_only_rank > sg.best_own_rank).sum()))
+    sub = ("One dot per single-primary-organ disease (rows = its primary organ), as in Figure 3, but the best rank is taken over its primary + secondary organs' cell types.\n"
+           "Hairline = the improvement over the primary-only rank. Black tick = chance for the widened set (median best rank across the other diseases). "
+           "Blue = better than chance.")
+    E.fig_best_rank({a: res[a][res[a].single_organ] for a in ATLASES}, ncols, name="fig5_best_rank_primary_secondary",
+                    title="Per disease: where does its best own-organ cell type rank? (primary + secondary organs)", subtitle=sub)
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 5.4), sharey=True)
     fmt = lambda q: "p<0.001" if q < 0.001 else f"p={q:.3f}"

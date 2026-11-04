@@ -178,6 +178,19 @@ exactly as the primary-only curve does, and the excess is smaller in pp229 (top 
 The raw hit rate goes up simply because the own-organ set is larger. Keep primary organs as the headline
 definition and report this as a sensitivity analysis.
 
+**Per disease (Figure 5).** The same view as Figure 3, with the best rank taken over primary + secondary organs
+(hairline = improvement over the primary-only rank):
+
+![Best own-organ rank per disease, primary + secondary](figures/evaluation/fig5_best_rank_primary_secondary.png)
+
+The share of single-organ diseases beating the chance rank is 46% (hpa700) and 51% (pp229), against 48% and 47%
+with primary organs only, so again about half. Only a few diseases change side: in hpa700, 3 start beating chance
+and 5 stop (the chance tick moves too, because a larger own-organ set makes a good rank easier). In pp229, 8 start
+and 3 stop. **Five of those 8 are the alcohol and substance-use diseases**, whose secondary organ is the liver:
+their liver cell types rank 7–14, while their brain cell types rank 127–141. This is biologically sensible
+(alcohol damages the liver, and brain proteins rarely reach plasma). It rests on one cluster of near-duplicate
+diseases in one atlas, and it does not appear in hpa700, so it is a lead to follow, not a result.
+
 ### Significant hits
 | | hpa700 | pp229 |
 |---|---|---|
