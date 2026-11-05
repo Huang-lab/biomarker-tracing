@@ -1,0 +1,348 @@
+disease	organ	role	n_cell_types	organ_score	z	dup_group	confidence	p_norm	p_cal	family_p	family_q	selected	q_within	significant	model_effect
+Interstitial lung disease	lung	primary	16	2.18586	6.06873	73	high	0.0	1e-05	1e-05	0.00015	True	0.00017	True	5.53579
+Idiopathic pulmonary fibrosis	lung	primary	16	1.95114	5.40015	73	high	0.0	5e-05	1e-05	0.00015	True	0.00035	True	5.53579
+Gastroduodenal ulcer	stomach	primary	6	1.58587	3.46882	95	high	0.00026	0.00066	0.0	0.0	True	0.0038	False	3.32091
+Diseases of oesophagus, stomach and duodenum	stomach	primary	6	1.55127	3.39421	87	high	0.00034	0.00077	0.0	0.0	True	0.0038	False	3.2531
+Other diseases of stomach and duodenum	stomach	primary	6	1.51841	3.32339	105	high	0.00044	0.00092	0.0	0.0	True	0.0038	False	3.18873
+Diaphragmatic hernia	stomach	primary	6	1.47977	3.24008	85	high	0.0006	0.0011	0.0	0.0	True	0.0038	False	3.11302
+Cardiomyopathy	heart.muscle	primary	4	2.36862	3.23309	26	high	0.00061	0.00111	0.0	0.0	True	0.01172	False	3.09744
+Duodenal ulcer	stomach	primary	6	1.43904	3.15228	91	high	0.00081	0.00112	0.0	0.0	True	0.0038	False	2.78946
+Other acute lower respiratory infections	lung	primary	16	1.15923	3.14447	75	high	0.00083	0.00112	1e-05	0.00015	True	0.00559	False	3.0013
+Other disorders of male genital organs	testis	primary	9	1.56113	3.16666	137	high	0.00077	0.00112	0.0216	0.21597	False		False	2.9639
+Conduction disorders	heart.muscle	primary	4	2.24638	3.08245	27	high	0.00103	0.00123	0.0	0.0	True	0.01172	False	2.96052
+Other gastritis (incl. Duodenitis)	stomach	primary	6	1.35459	2.97021	81	high	0.00149	0.00165	0.0	0.0	True	0.00467	False	2.17694
+Influenza and pneumonia	lung	primary	16	1.09537	2.96255	74	high	0.00153	0.00168	1e-05	0.00015	True	0.0056	False	2.83596
+Unspecified acute lower respiratory infection	lung	primary	16	1.08035	2.91978	78	high	0.00175	0.00187	1e-05	0.00015	True	0.0056	False	2.79709
+Early onset COPD	lung	primary	16	1.03991	2.80458	72	high	0.00252	0.00266	1e-05	0.00015	True	0.00666	False	2.69239
+Secondary right heart disease	heart.muscle	primary	4	2.02098	2.80468	33	high	0.00252	0.00266	0.0	0.0	True	0.01266	False	2.73284
+Hypertension, Pulmonary Arterial	heart.muscle	primary	4	1.98481	2.7601	33	high	0.00289	0.00332	0.0	0.0	True	0.01266	False	2.73284
+Other or ill-defined heart diseases	heart.muscle	primary	4	1.98218	2.75687	41	high	0.00292	0.00333	0.0	0.0	True	0.01266	False	2.66461
+Intestinal malabsorption	colon	primary	6	2.23078	2.64721	82	high	0.00406	0.00484	0.75895	1.0	False		False	2.40081
+Coeliac disease	small.intestine	primary	6	2.71859	2.52664	82	high	0.00576	0.00699	0.6375	1.0	False		False	2.38874
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	stomach	primary	6	1.14635	2.52126	91	high	0.00585	0.00711	0.0	0.0	True	0.01727	False	2.78946
+Intestinal malabsorption	small.intestine	primary	6	2.69492	2.50282	82	high	0.00616	0.0074	0.6375	1.0	False		False	2.38874
+Coeliac disease	colon	primary	6	2.04927	2.41795	82	high	0.0078	0.00973	0.75895	1.0	False		False	2.40081
+Pulmonary embolism	vasculature	secondary	6	0.99546	2.40489	44	high	0.00809	0.01019	0.06114	0.40853	False		False	
+Atrial fibrillation and flutter	heart.muscle	primary	4	1.57744	2.25808	25	high	0.01197	0.01504	0.0	0.0	True	0.04542	False	2.21128
+Hydrocele	testis	primary	9	1.07744	2.20384	131	high	0.01377	0.01752	0.0216	0.21597	False		False	2.08882
+Venous thromboembolism	vasculature	primary	6	0.89913	2.19919	49	high	0.01393	0.01776	0.54953	1.0	False		False	1.99492
+Other arrhythmias	heart.muscle	primary	4	1.52089	2.18839	39	high	0.01432	0.01827	0.0	0.0	True	0.04542	False	2.14794
+Heart failure, strict	heart.muscle	primary	4	1.50478	2.16854	31	high	0.01506	0.01912	0.0	0.0	True	0.04542	False	2.1299
+Gastric ulcer	stomach	primary	6	0.96678	2.13415	93	high	0.01642	0.02045	0.0	0.0	True	0.04345	False	2.10787
+Hyperplasia of prostate	prostate	primary	9	0.74863	2.02632	132	high	0.02137	0.0246	0.84478	1.0	False		False	1.79862
+DVT of lower extremities	vasculature	primary	6	0.8109	2.01079	29	high	0.02217	0.02536	0.54953	1.0	False		False	1.90209
+Chronic lower respiratory diseases	lung	primary	16	0.75782	2.00108	71	high	0.02269	0.02597	1e-05	0.00015	True	0.05163	False	1.9621
+Phlebitis and thrombophlebitis (not including DVT)	vasculature	primary	6	0.8004	1.98836	29	high	0.02339	0.02667	0.54953	1.0	False		False	1.90209
+Other diseases of pleura	lung	primary	16	0.74917	1.97645	76	high	0.02405	0.02754	1e-05	0.00015	True	0.05163	False	1.93971
+Other and unspecified psoriasis	skin	primary	11	0.86618	1.94488	117	high	0.02589	0.03021	0.15092	0.67074	False		False	1.80041
+Death due to cardiac causes	heart.muscle	primary	4	1.31307	1.93229	30	review	0.02666	0.03137	0.0	0.0	True	0.06622	False	1.91517
+Hypertensive Renal Disease	heart.muscle	secondary	4	1.28188	1.89385	35	high	0.02912	0.03429	0.11238	0.64219	False		False	
+Asthma, unspecified (mode)	lung	primary	16	0.70653	1.85499	70	high	0.0318	0.03698	1e-05	0.00015	True	0.06163	False	1.79327
+Asthma, excluding more controls	lung	primary	16	0.67094	1.7536	70	high	0.03975	0.04284	1e-05	0.00015	True	0.06425	False	1.79327
+Migraine, unspecified, drug-induced	brain	primary	6	1.59986	1.73524	59	high	0.04135	0.04411	0.87053	1.0	False		False	1.47911
+Functional dyspepsia	stomach	primary	6	0.7801	1.73169	92	high	0.04166	0.04444	0.0	0.0	True	0.08394	False	1.74208
+DVT of lower extremities	lymph.node	secondary	3	0.88675	1.58319	29	high	0.05669	0.0564	0.1301	0.65052	False		False	
+Varicose veins	lymph.node	secondary	3	0.87468	1.56462	48	high	0.05884	0.05832	0.1301	0.65052	False		False	
+Diseases of the digestive system	stomach	primary	6	0.69849	1.55575	89	high	0.05988	0.05909	0.0	0.0	True	0.10045	False	1.58218
+Rheumatic valve diseases	heart.muscle	primary	4	1.00393	1.55132	45	high	0.06041	0.05948	0.0	0.0	True	0.10044	False	1.56892
+Metabolic disorders	pancreas	secondary	8	0.95172	1.53545	19	medium	0.06234	0.06128	0.06128	0.40853	False		False	
+Coronary atherosclerosis	heart.muscle	primary	4	0.98991	1.53403	28	high	0.06251	0.06149	0.0	0.0	True	0.10044	False	1.55321
+Paroxysmal tachycardia	heart.muscle	primary	4	0.97832	1.51975	43	high	0.06429	0.06343	0.0	0.0	True	0.10044	False	1.54023
+Papulosquamous disorders	skin	primary	11	0.66236	1.50723	119	high	0.06588	0.06529	0.15092	0.67074	False		False	1.40264
+Hypertension	heart.muscle	secondary	4	0.96141	1.49891	32	high	0.06695	0.06641	0.11238	0.64219	False		False	
+Heart failure, strict	vasculature	primary	6	0.55969	1.47438	31	high	0.07019	0.07062	0.54953	1.0	False		False	1.33615
+Other diseases of the digestive system	stomach	primary	6	0.65511	1.46222	106	high	0.07184	0.07296	0.0	0.0	True	0.11275	False	1.49717
+Myocardial infarction, strict	heart.muscle	primary	4	0.93117	1.46165	38	high	0.07192	0.07309	0.0	0.0	True	0.10683	False	1.48743
+Other specified/unspecified bacterial intestinal infections	stomach	secondary	6	0.64958	1.4503	2	medium	0.07349	0.07509	0.22527	0.80177	False		False	
+Psoriasis	skin	primary	11	0.63475	1.44794	120	high	0.07382	0.07549	0.15092	0.67074	False		False	1.34876
+Phlebitis and thrombophlebitis (not including DVT)	lymph.node	secondary	3	0.79124	1.43626	29	high	0.07546	0.07806	0.1301	0.65052	False		False	
+Diseases of male genital organs	testis	primary	9	0.68785	1.42832	127	high	0.0766	0.0797	0.0216	0.21597	False		False	1.38397
+Ischaemic heart disease, wide definition	heart.muscle	primary	4	0.90403	1.42821	37	high	0.07662	0.07972	0.0	0.0	True	0.10819	False	1.34403
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	lymph.node	primary	3	0.7811	1.42066	10	medium	0.07771	0.08119	0.22736	0.80177	False		False	1.34215
+Chronic gastritis	stomach	primary	6	0.63407	1.41688	81	high	0.07826	0.08179	0.0	0.0	True	0.11586	False	2.17694
+Migraine	brain	primary	6	1.33193	1.40798	59	high	0.07957	0.08326	0.87053	1.0	False		False	1.47911
+Hypertension, essential	heart.muscle	secondary	4	0.88327	1.40262	34	high	0.08036	0.08429	0.11238	0.64219	False		False	
+Polyp of the female genital tract	endometrium	primary	7	0.55729	1.37808	142	high	0.08409	0.08914	0.74678	1.0	False		False	1.23221
+Complications of labour and delivery	endometrium	primary	7	0.54419	1.34699	145	high	0.08899	0.09481	0.74678	1.0	False		False	1.20395
+Other peripheral vascular diseases	vasculature	primary	6	0.47894	1.30193	42	high	0.09647	0.10327	0.54953	1.0	False		False	1.17942
+Angina pectoris	heart.muscle	primary	4	0.78869	1.28606	24	high	0.09921	0.10628	0.0	0.0	True	0.13462	False	1.15111
+Other diseases of anus and rectum	rectum	primary	6	1.19977	1.26616	100	high	0.10273	0.1099	0.39977	1.0	False		False	1.15962
+Cutaneous abscess, furuncle and carbuncle	skin	primary	11	0.5373	1.23871	112	high	0.10773	0.11512	0.15092	0.67074	False		False	1.15859
+Major coronary heart disease event	heart.muscle	primary	4	0.73484	1.2197	37	high	0.11129	0.11802	0.0	0.0	True	0.14014	False	1.34403
+Hypotension	heart.muscle	secondary	4	0.67372	1.14438	36	high	0.12623	0.1332	0.11238	0.64219	False		False	
+Irritable bowel syndrome	rectum	primary	6	1.05968	1.09416	96	high	0.13694	0.1435	0.39977	1.0	False		False	1.00329
+Coeliac disease	stomach	primary	6	0.4796	1.08385	82	high	0.13922	0.14516	0.0	0.0	True	0.18983	False	1.01195
+Diseases of male genital organs	prostate	primary	9	0.39391	1.07938	127	high	0.14021	0.14621	0.84478	1.0	False		False	0.93798
+Venous thromboembolism	heart.muscle	primary	4	0.57185	1.01884	49	high	0.15414	0.15995	0.0	0.0	True	0.17877	False	1.08496
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	skin	primary	11	0.42131	0.98965	7	medium	0.16117	0.16666	0.15092	0.67074	False		False	0.93223
+Other diseases of anus and rectum	colon	primary	6	0.91332	0.98316	100	high	0.16276	0.16814	0.75895	1.0	False		False	0.87281
+Long labour	endometrium	primary	7	0.38965	0.98005	147	high	0.16353	0.16902	0.74678	1.0	False		False	0.87044
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	placenta	primary	9	0.28384	0.96413	148	high	0.16749	0.17259	0.24053	0.80177	False		False	0.90618
+Unstable angina pectoris	heart.muscle	primary	4	0.5214	0.95666	24	high	0.16937	0.17419	0.0	0.0	True	0.18387	False	1.15111
+Diseases of the digestive system	colon	primary	6	0.84659	0.89887	89	high	0.18436	0.18824	0.75895	1.0	False		False	0.79621
+Irritable bowel syndrome	colon	primary	6	0.84127	0.89216	96	high	0.18615	0.19012	0.75895	1.0	False		False	0.7901
+Other diseases of intestine	small.intestine	secondary	6	1.09271	0.89047	102	high	0.18661	0.19043	0.81895	1.0	False		False	
+Diverticular disease of intestine	rectum	primary	6	0.87711	0.86999	90	high	0.19215	0.19581	0.39977	1.0	False		False	0.79955
+Intestinal malabsorption	stomach	primary	6	0.37411	0.85644	82	high	0.19588	0.19958	0.0	0.0	True	0.24235	False	1.01195
+Pure hypercholesterolaemia	liver	primary	10	0.64213	0.83617	18	medium	0.20153	0.20457	0.57746	1.0	False		False	0.38879
+Venous thromboembolism	lymph.node	secondary	3	0.39138	0.82108	49	high	0.2058	0.20806	0.1301	0.65052	False		False	
+Stroke, excluding SAH	vasculature	primary	6	0.25145	0.81616	46	high	0.2072	0.20912	0.54953	1.0	False		False	0.73792
+Diseases of the digestive system	small.intestine	primary	6	1.0161	0.81338	89	high	0.208	0.20984	0.6375	1.0	False		False	0.72791
+Substance abuse, excluding more controls	liver	secondary	10	0.59999	0.78613	16	high	0.21589	0.21621	0.35426	1.0	False		False	
+Long labour	placenta	primary	9	0.20385	0.7489	147	high	0.22696	0.22552	0.24053	0.80177	False		False	0.71056
+Single spontaneous delivery	placenta	primary	9	0.1956	0.72669	150	high	0.23371	0.23064	0.24053	0.80177	False		False	0.69038
+Polyp of the female genital tract	ovary	primary	7	0.39146	0.72072	142	high	0.23554	0.23216	0.9236	1.0	False		False	0.60525
+Pulmonary embolism	heart.muscle	primary	4	0.30872	0.69457	44	high	0.24366	0.23874	0.0	0.0	True	0.23874	False	0.79024
+Single spontaneous delivery	endometrium	primary	7	0.26006	0.67237	150	high	0.25068	0.24478	0.74678	1.0	False		False	0.5908
+Disorders of lipoprotein metabolism and other lipidaemias	liver	primary	10	0.50019	0.66764	18	medium	0.25218	0.2462	0.57746	1.0	False		False	0.38879
+Epilepsy	brain	primary	6	0.71429	0.65359	55	high	0.25669	0.25027	0.87053	1.0	False		False	0.56067
+Other diseases of anus and rectum	small.intestine	secondary	6	0.85081	0.64705	100	high	0.2588	0.25218	0.81895	1.0	False		False	
+Diseases of oral cavity, salivary glands and jaws	salivary.gland	primary	11	0.30582	0.63332	88	high	0.26326	0.25661	0.36805	1.0	False		False	0.59858
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	endometrium	primary	7	0.24109	0.62732	148	high	0.26523	0.25836	0.74678	1.0	False		False	0.54985
+Benign neoplasm of colon, rectum, anus and anal canal	rectum	primary	6	0.67931	0.62712	4	medium	0.26529	0.25842	0.39977	1.0	False		False	0.57881
+Other noninflammatory disorders of uterus, except cervix	endometrium	primary	7	0.23887	0.62206	138	high	0.26695	0.25987	0.74678	1.0	False		False	0.54508
+Labour and delivery complicated by fetal stress [distress]	endometrium	primary	7	0.23399	0.61046	146	high	0.27078	0.26349	0.74678	1.0	False		False	0.53453
+Alcohol abuse, main dg, excluding more controls	liver	secondary	10	0.43957	0.59567	16	high	0.2757	0.26803	0.35426	1.0	False		False	
+Other disorders of skin and subcutaneous tissue	skin	primary	11	0.23301	0.58533	118	high	0.27916	0.27098	0.15092	0.67074	False		False	0.56475
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	spleen	primary	4	0.42648	0.5844	10	medium	0.27947	0.27124	0.5312	1.0	False		False	0.52656
+Other diseases of intestines	rectum	primary	6	0.6317	0.56867	103	high	0.28479	0.27603	0.39977	1.0	False		False	0.52568
+Acute alcohol intoxication	liver	secondary	10	0.41519	0.56672	16	medium	0.28545	0.27655	0.35426	1.0	False		False	
+Gastric ulcer	small.intestine	primary	6	0.768	0.56371	93	high	0.28648	0.27744	0.6375	1.0	False		False	0.50099
+Alcohol dependence	liver	secondary	10	0.39684	0.54493	16	medium	0.2929	0.28314	0.35426	1.0	False		False	
+Female genital prolapse	fallopian.tube	secondary	11	0.1425	0.52525	130	high	0.2997	0.28885	0.97346	1.0	False		False	
+Benign neoplasm: Stomach	liver	primary	10	0.37746	0.52193	5	medium	0.30086	0.28998	0.57746	1.0	False		False	0.46456
+Erosion and ectropion of cervix uteri	endometrium	primary	7	0.19232	0.51153	128	high	0.30449	0.29362	0.74678	1.0	False		False	0.44462
+Acute alcohol intoxication, ICD10	liver	secondary	10	0.36409	0.50605	16	high	0.30641	0.29521	0.35426	1.0	False		False	
+Other and unspecified iron deficiency	blood	primary	7	0.18252	0.5003	15	high	0.30843	0.29744	0.57829	1.0	False		False	0.44518
+Episodal and paroxysmal disorders	brain	primary	6	0.58722	0.49838	56	high	0.30911	0.29826	0.87053	1.0	False		False	0.4196
+Benign neoplasm of other and ill-defined parts of digestive system	stomach	primary	6	0.20587	0.49373	5	medium	0.31075	0.30003	0.0	0.0	True	0.34004	False	0.48293
+Irritable bowel syndrome	small.intestine	secondary	6	0.67266	0.46777	96	high	0.31997	0.30964	0.81895	1.0	False		False	
+Benign neoplasm of other and ill-defined parts of digestive system	liver	primary	10	0.32769	0.46284	5	medium	0.32174	0.31141	0.57746	1.0	False		False	0.46456
+Complications of labour and delivery	placenta	primary	9	0.09729	0.46216	145	high	0.32199	0.31157	0.24053	0.80177	False		False	0.44994
+Transient ischemic attack	brain	primary	6	0.54886	0.45152	47	high	0.32581	0.31539	0.87053	1.0	False		False	0.37702
+Other diseases of intestine	rectum	primary	6	0.52985	0.44361	102	high	0.32866	0.31829	0.39977	1.0	False		False	0.41202
+Other noninflammatory disorders of uterus, except cervix	fallopian.tube	secondary	11	0.11384	0.43608	138	high	0.33139	0.3212	0.97346	1.0	False		False	
+Other and unspecified glaucoma	eye	primary	5	0.48947	0.40414	66	high	0.34306	0.33281	0.86453	1.0	False		False	0.33516
+Other abnormal uterine and vaginal bleeding	ovary	primary	7	0.22765	0.40273	135	high	0.34357	0.33328	0.9236	1.0	False		False	0.31624
+Benign neoplasm of colon, rectum, anus and anal canal	colon	primary	6	0.4519	0.40036	4	medium	0.34445	0.33423	0.75895	1.0	False		False	0.34312
+Other bacterial intestinal infections	stomach	secondary	6	0.16212	0.39941	2	medium	0.3448	0.33451	0.22527	0.80177	False		False	
+Other gastritis (incl. Duodenitis)	small.intestine	secondary	6	0.6019	0.39656	81	high	0.34585	0.33545	0.81895	1.0	False		False	
+MS-disease / Multiple Sclerosis	brain	primary	6	0.50156	0.39375	58	high	0.34688	0.3364	0.87053	1.0	False		False	0.32451
+Infections of the skin and subcutaneous tissue	skin	primary	11	0.13071	0.36568	114	high	0.3573	0.34698	0.15092	0.67074	False		False	0.36512
+Paralytic ileus and intestinal obstruction	rectum	primary	6	0.45697	0.35412	108	high	0.36163	0.3516	0.39977	1.0	False		False	0.22186
+Glaucoma	eye	primary	5	0.44575	0.3486	66	high	0.3637	0.35378	0.86453	1.0	False		False	0.33516
+Metabolic disorders	kidney	secondary	6	0.25393	0.34359	19	medium	0.36558	0.356	0.99591	1.0	False		False	
+Other and unspecified disorders of skin and subcutaneous tissue	skin	primary	11	0.11987	0.34239	116	high	0.36603	0.35661	0.15092	0.67074	False		False	0.07797
+Hypertension	brain	primary	6	0.45623	0.33839	32	high	0.36754	0.35805	0.87053	1.0	False		False	0.27419
+Benign neoplasm: Stomach	stomach	primary	6	0.13247	0.3355	5	medium	0.36863	0.35912	0.0	0.0	True	0.38156	False	0.48293
+Other and unspecified disorders of skin and subcutaneous tissue	adipose.tissue	secondary	10	0.02793	0.33011	116	high	0.37066	0.36118	0.95778	1.0	False		False	
+Chronic gastritis	small.intestine	secondary	6	0.52986	0.32407	81	high	0.37294	0.3637	0.81895	1.0	False		False	
+Other degenerative diseases of the nervous system	brain	primary	6	0.43816	0.31631	60	high	0.37588	0.36683	0.87053	1.0	False		False	0.25412
+Inflammatory diseases of prostate (prostatitis)	testis	primary	9	0.12254	0.30302	133	high	0.38094	0.3716	0.0216	0.21597	False		False	0.36121
+Other bacterial intestinal infections	small.intestine	primary	6	0.50459	0.29864	2	medium	0.38261	0.37349	0.6375	1.0	False		False	0.16618
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	bone.marrow	primary	5	0.15636	0.28918	10	medium	0.38622	0.37732	0.60632	1.0	False		False	0.24982
+Secondary right heart disease	vasculature	secondary	6	0.00045	0.28019	33	high	0.38966	0.38063	0.06114	0.40853	False		False	
+Varicose veins	vasculature	primary	6	-0.00349	0.27178	48	high	0.3929	0.38375	0.54953	1.0	False		False	0.24314
+Crohn disease (strict definition, require KELA, min 2 HDR)	rectum	secondary	6	0.38808	0.26954	84	high	0.39376	0.38459	0.78705	1.0	False		False	
+Female genital prolapse	endometrium	primary	7	0.08977	0.26803	130	high	0.39434	0.38514	0.74678	1.0	False		False	0.22331
+Other disorders of skin and subcutaneous tissue	adipose.tissue	secondary	10	-0.00651	0.2444	118	high	0.40346	0.39367	0.95778	1.0	False		False	
+Benign neoplasm: Stomach	small.intestine	primary	6	0.44465	0.23832	5	medium	0.40582	0.39585	0.6375	1.0	False		False	0.18311
+Inflammatory diseases of prostate (prostatitis)	prostate	primary	9	0.07436	0.22633	133	high	0.41047	0.40062	0.84478	1.0	False		False	0.16266
+Dermatitis and eczema	skin	primary	11	0.06237	0.21893	113	high	0.41335	0.4032	0.15092	0.67074	False		False	0.23174
+Labour and delivery complicated by fetal stress [distress]	placenta	primary	9	0.0055	0.21517	146	high	0.41482	0.4044	0.24053	0.80177	False		False	0.22547
+Other and unspecified anaemias	blood	primary	7	-0.01361	0.21212	14	high	0.41601	0.40552	0.57829	1.0	False		False	0.18327
+Hyperplasia of prostate	testis	primary	9	0.07654	0.21145	132	high	0.41627	0.40575	0.0216	0.21597	False		False	0.27799
+Hypertension, Pulmonary Arterial	vasculature	secondary	6	-0.03909	0.19576	33	high	0.4224	0.41189	0.06114	0.40853	False		False	
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	blood	primary	7	-0.02752	0.19168	10	medium	0.424	0.41351	0.57829	1.0	False		False	0.16469
+Postprocedural disorders of digestive system, not elsewhere classified	stomach	primary	6	0.0646	0.18918	109	high	0.42498	0.41455	0.0	0.0	True	0.41455	False	0.34014
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	breast	primary	8	0.05539	0.18569	8	medium	0.42634	0.4158	0.45874	1.0	False		False	0.17583
+Prolonged pregnancy	endometrium	primary	7	0.05439	0.18403	149	high	0.42699	0.41644	0.74678	1.0	False		False	0.14696
+Metabolic disorders	liver	primary	10	0.09199	0.18299	19	medium	0.4274	0.41699	0.57746	1.0	False		False	0.15807
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	adipose.tissue	secondary	10	-0.04054	0.15973	116	high	0.43655	0.42659	0.95778	1.0	False		False	
+Benign neoplasm of other and ill-defined parts of digestive system	small.intestine	primary	6	0.36557	0.15874	5	medium	0.43694	0.42702	0.6375	1.0	False		False	0.18311
+Other diseases of intestine	colon	primary	6	0.2446	0.13852	102	high	0.44491	0.43561	0.75895	1.0	False		False	0.10514
+Adenomyosis (Endometriosis of uterus)	fallopian.tube	secondary	11	0.01681	0.13414	124	high	0.44665	0.43724	0.97346	1.0	False		False	
+Other diseases of stomach and duodenum	small.intestine	secondary	6	0.33569	0.12867	105	high	0.44881	0.43951	0.81895	1.0	False		False	
+Diverticular disease of intestine	small.intestine	secondary	6	0.31719	0.11005	90	high	0.45618	0.44624	0.81895	1.0	False		False	
+Other or unspecified ileus, impaction or obstruction	rectum	primary	6	0.25174	0.10213	108	high	0.45933	0.44934	0.39977	1.0	False		False	0.22186
+Irregular menses	fallopian.tube	secondary	11	0.00099	0.08491	129	high	0.46616	0.45596	0.97346	1.0	False		False	
+Other and unspecified iron deficiency	bone.marrow	primary	5	0.00338	0.07752	15	high	0.46911	0.45881	0.60632	1.0	False		False	0.05744
+Diverticular disease of intestine	colon	primary	6	0.19513	0.07604	90	high	0.46969	0.45914	0.75895	1.0	False		False	0.04836
+Other specified/unspecified bacterial intestinal infections	small.intestine	primary	6	0.27032	0.06288	2	medium	0.47493	0.46378	0.6375	1.0	False		False	0.16618
+Other diseases of intestines	small.intestine	secondary	6	0.25939	0.05189	103	high	0.47931	0.46797	0.81895	1.0	False		False	
+Alcohol use disorder, ICD-based	liver	secondary	10	-0.02616	0.0427	16	high	0.48297	0.47137	0.35426	1.0	False		False	
+Other specified/unspecified bacterial intestinal infections	colon	primary	6	0.16536	0.03843	2	medium	0.48467	0.47296	0.75895	1.0	False		False	-0.21179
+Pain and other conditions associated with female genital organs and menstrual cycle	ovary	primary	7	0.02305	0.0056	141	high	0.49777	0.48542	0.9236	1.0	False		False	-0.04471
+Other diseases of biliary tract	liver	primary	10	-0.07584	-0.01628	101	high	0.50649	0.49348	0.57746	1.0	False		False	-0.02304
+Schizophrenia or delusion, excluding more controls	brain	primary	6	0.14279	-0.04446	52	high	0.51773	0.50261	0.87053	1.0	False		False	-0.07377
+Gastroduodenal ulcer	small.intestine	primary	6	0.16096	-0.04717	95	high	0.51881	0.5035	0.6375	1.0	False		False	-0.05422
+Venous thromboembolism	lung	primary	16	0.03599	-0.05498	49	high	0.52192	0.50577	1e-05	0.00015	True	0.68969	False	0.0934
+Other noninflammatory disorders of uterus, except cervix	ovary	primary	7	-0.01737	-0.07286	138	high	0.52904	0.51158	0.9236	1.0	False		False	-0.11601
+Intestinal infectious diseases	small.intestine	primary	6	0.12849	-0.07985	0	medium	0.53182	0.51372	0.6375	1.0	False		False	-0.08392
+Endometriosis	fallopian.tube	secondary	11	-0.05254	-0.08164	124	high	0.53253	0.51445	0.97346	1.0	False		False	
+Soft tissue disorders	skeletal.muscle	primary	7	-0.12961	-0.09832	122	high	0.53916	0.52058	0.51774	1.0	False		False	-0.0924
+Cellulitis	adipose.tissue	secondary	10	-0.15356	-0.12152	111	high	0.54836	0.52982	0.95778	1.0	False		False	
+Other specified/unspecified bacterial intestinal infections	rectum	secondary	6	0.05148	-0.14376	2	medium	0.55716	0.53997	0.78705	1.0	False		False	
+Hypotension	vasculature	primary	6	-0.19875	-0.14518	36	high	0.55772	0.54052	0.54953	1.0	False		False	-0.13582
+Other diseases of intestines	colon	primary	6	0.0185	-0.14706	103	high	0.55846	0.54147	0.75895	1.0	False		False	-0.15441
+Nail disorders	skin	primary	11	-0.10813	-0.14718	115	high	0.5585	0.54153	0.15092	0.67074	False		False	-0.101
+Other cataract	eye	primary	5	0.04564	-0.15965	67	high	0.56342	0.54691	0.86453	1.0	False		False	-0.18947
+Other neurological diseases	brain	primary	6	0.04714	-0.16129	61	high	0.56407	0.54759	0.87053	1.0	False		False	-0.17995
+Noninfective enteritis and colitis	rectum	primary	6	0.03111	-0.16877	97	high	0.56701	0.55062	0.39977	1.0	False		False	-0.14455
+Diabetic maculopathy, excluding more controls	eye	primary	5	0.03502	-0.17314	63	high	0.56873	0.55251	0.86453	1.0	False		False	-0.20173
+Pulmonary embolism	lung	primary	16	-0.00714	-0.17785	44	high	0.57058	0.55432	1e-05	0.00015	True	0.6929	False	-0.01827
+Other and unspecified anaemias	bone.marrow	primary	5	-0.18646	-0.18516	14	high	0.57345	0.55735	0.60632	1.0	False		False	-0.18129
+Hypertension, essential	kidney	secondary	6	-0.04695	-0.18997	34	high	0.57533	0.55934	0.99591	1.0	False		False	
+Crohn's disease NAS	rectum	secondary	6	0.01123	-0.19318	84	high	0.57659	0.56073	0.78705	1.0	False		False	
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	testis	primary	9	-0.13203	-0.20372	9	medium	0.58071	0.56494	0.0216	0.21597	False		False	-0.09935
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	skin	primary	11	-0.13957	-0.21468	116	high	0.58499	0.56934	0.15092	0.67074	False		False	0.07797
+Irregular menses	endometrium	primary	7	-0.1205	-0.23123	129	high	0.59143	0.57606	0.74678	1.0	False		False	-1.05146
+Erosion and ectropion of cervix uteri	ovary	primary	7	-0.10401	-0.24105	128	high	0.59524	0.57979	0.9236	1.0	False		False	-0.26887
+Paralytic ileus and intestinal obstruction	small.intestine	secondary	6	-0.0389	-0.24829	108	high	0.59805	0.5826	0.81895	1.0	False		False	
+Other diseases of the digestive system	colon	primary	6	-0.06735	-0.25549	106	high	0.60083	0.58543	0.75895	1.0	False		False	-0.25297
+Oesophageal obstruction	esophagus	primary	10	-0.09892	-0.27399	98	high	0.60796	0.5932	0.87914	1.0	False		False	-0.32159
+Mycoses	skin	primary	11	-0.1687	-0.27722	1	medium	0.60919	0.59462	0.15092	0.67074	False		False	-0.2192
+Hyperlipidaemia, other/unspecified	liver	primary	10	-0.30587	-0.28939	18	medium	0.61386	0.59939	0.57746	1.0	False		False	0.38879
+Other diseases of oesophagus	esophagus	primary	10	-0.1081	-0.29995	98	high	0.61789	0.603	0.87914	1.0	False		False	-0.32159
+Paralytic ileus and intestinal obstruction	colon	primary	6	-0.11946	-0.32132	108	high	0.62602	0.6103	0.75895	1.0	False		False	-0.52264
+Cellulitis	skin	primary	11	-0.19026	-0.32352	111	high	0.62685	0.61104	0.15092	0.67074	False		False	-0.26128
+Hydrocele	prostate	primary	9	-0.13176	-0.32391	131	high	0.627	0.61119	0.84478	1.0	False		False	-0.33744
+Leiomyoma of uterus	ovary	primary	7	-0.14975	-0.32983	6	medium	0.62924	0.6132	0.9236	1.0	False		False	-0.34957
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	skin	primary	11	-0.19533	-0.3344	12	review	0.63096	0.61494	0.15092	0.67074	False		False	-0.27117
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	skin	primary	11	-0.20288	-0.35062	11	medium	0.63706	0.62098	0.15092	0.67074	False		False	-0.2859
+Ulcer of oesophagus	esophagus	primary	10	-0.13124	-0.36537	98	high	0.64258	0.62649	0.87914	1.0	False		False	-0.32159
+Diseases of oesophagus, stomach and duodenum	small.intestine	primary	6	-0.15959	-0.36975	87	high	0.64422	0.62811	0.6375	1.0	False		False	-0.3474
+Secondary right heart disease	lung	primary	16	-0.08261	-0.39281	33	high	0.65277	0.63695	1e-05	0.00015	True	0.73494	False	-0.41646
+Infections of the skin and subcutaneous tissue	adipose.tissue	secondary	10	-0.265	-0.39883	114	high	0.65499	0.63914	0.95778	1.0	False		False	
+Hypertension	kidney	secondary	6	-0.17919	-0.42448	32	high	0.66439	0.64867	0.99591	1.0	False		False	
+Hypertension	vasculature	primary	6	-0.33096	-0.42748	32	high	0.66549	0.64971	0.54953	1.0	False		False	-0.3924
+Intestinal infectious diseases	stomach	secondary	6	-0.22495	-0.43506	0	medium	0.66824	0.65257	0.22527	0.80177	False		False	
+Abscess of anal and rectal regions	small.intestine	secondary	6	-0.22825	-0.43884	79	high	0.66961	0.65404	0.81895	1.0	False		False	
+Hypertension, essential	vasculature	primary	6	-0.33753	-0.44151	34	high	0.67058	0.65524	0.54953	1.0	False		False	-0.40515
+Other disorders of male genital organs	prostate	primary	9	-0.17838	-0.44837	137	high	0.67306	0.65794	0.84478	1.0	False		False	-0.45056
+Other bacterial intestinal infections	colon	primary	6	-0.22958	-0.46041	2	medium	0.67739	0.66234	0.75895	1.0	False		False	-0.21179
+Other noninfective gastroenteritis and colitis	colon	primary	6	-0.23791	-0.47092	107	high	0.68115	0.6661	0.75895	1.0	False		False	-0.44876
+Gastro-oesophageal reflux disease	esophagus	primary	10	-0.17442	-0.48743	94	high	0.68702	0.67136	0.87914	1.0	False		False	-0.49546
+Other bacterial intestinal infections	rectum	secondary	6	-0.23727	-0.4983	2	medium	0.69087	0.67486	0.78705	1.0	False		False	
+Disorders of ocular muscles, binocular movement, accommodation and refraction	eye	primary	5	-0.25545	-0.54213	65	high	0.70613	0.69082	0.86453	1.0	False		False	-0.53709
+Menorrhagia	ovary	primary	7	-0.28087	-0.58435	129	high	0.72051	0.70619	0.9236	1.0	False		False	-1.05531
+Oesophagitis	esophagus	primary	10	-0.22254	-0.62349	99	high	0.73352	0.71938	0.87914	1.0	False		False	-0.61912
+Other anxiety disorders	brain	primary	6	-0.33752	-0.63112	21	medium	0.73602	0.72184	0.87053	1.0	False		False	-0.60697
+Visual disturbances	eye	primary	5	-0.32943	-0.6361	69	high	0.73765	0.72342	0.86453	1.0	False		False	-0.6225
+Hypertension, Pulmonary Arterial	lung	primary	16	-0.16926	-0.63962	33	high	0.73879	0.72458	1e-05	0.00015	True	0.77634	False	-0.41646
+Abscess of anal and rectal regions	colon	primary	6	-0.37288	-0.6414	79	high	0.73937	0.72526	0.75895	1.0	False		False	-0.6037
+Cutaneous abscess, furuncle and carbuncle	adipose.tissue	secondary	10	-0.3637	-0.64445	112	high	0.74036	0.72645	0.95778	1.0	False		False	
+Prolonged pregnancy	placenta	primary	9	-0.31524	-0.64789	149	high	0.74147	0.72758	0.24053	0.80177	False		False	-0.55894
+Death due to cardiac causes	vasculature	primary	6	-0.43802	-0.65611	30	review	0.74412	0.73012	0.54953	1.0	False		False	-0.60019
+Other functional intestinal disorders	rectum	primary	6	-0.39239	-0.68876	83	high	0.75451	0.74087	0.39977	1.0	False		False	-0.68653
+Diseases of oral cavity, salivary glands and jaws	tongue	primary	8	-0.42641	-0.69852	88	high	0.75757	0.74411	0.63962	1.0	False		False	-0.65923
+Hyperlipidaemia, other/unspecified	vasculature	secondary	6	-0.45857	-0.69998	18	medium	0.75803	0.74458	0.06114	0.40853	False		False	
+Erosion and ectropion of cervix uteri	fallopian.tube	secondary	11	-0.2537	-0.70759	128	high	0.7604	0.74727	0.97346	1.0	False		False	
+Agranulocytosis	lymph.node	secondary	3	-0.60985	-0.71931	13	high	0.76402	0.75139	0.1301	0.65052	False		False	
+Other noninfective gastroenteritis and colitis	small.intestine	primary	6	-0.50883	-0.7212	107	high	0.76461	0.75207	0.6375	1.0	False		False	-0.66683
+Sleep apnoea	brain	primary	6	-0.41724	-0.72849	62	high	0.76684	0.75455	0.87053	1.0	False		False	-1.0652
+Other or unspecified ileus, impaction or obstruction	colon	primary	6	-0.46166	-0.75354	108	high	0.77444	0.76292	0.75895	1.0	False		False	-0.52264
+Diseases of liver	liver	primary	10	-0.70137	-0.75897	86	high	0.77606	0.76458	0.57746	1.0	False		False	-0.69805
+Stroke, excluding SAH	brain	primary	6	-0.44315	-0.76014	46	high	0.77641	0.76491	0.87053	1.0	False		False	-0.72423
+Constipation	colon	primary	6	-0.46808	-0.76165	83	high	0.77687	0.76546	0.75895	1.0	False		False	-0.8352
+Constipation	rectum	primary	6	-0.45274	-0.76286	83	high	0.77723	0.76587	0.39977	1.0	False		False	-0.68653
+Agranulocytosis	spleen	primary	4	-0.66755	-0.77697	13	high	0.78141	0.77078	0.5312	1.0	False		False	-0.71076
+Functional dyspepsia	small.intestine	secondary	6	-0.5813	-0.79413	92	high	0.78644	0.7765	0.81895	1.0	False		False	
+Diseases of oesophagus, stomach and duodenum	esophagus	primary	10	-0.28537	-0.80112	87	high	0.78847	0.77849	0.87914	1.0	False		False	-0.78057
+Other or unspecified ileus, impaction or obstruction	small.intestine	secondary	6	-0.59194	-0.80483	108	high	0.78954	0.77946	0.81895	1.0	False		False	
+Anxiety disorders, excluding more controls	brain	primary	6	-0.49772	-0.82678	50	high	0.79582	0.78643	0.87053	1.0	False		False	-0.7848
+Intestinal infectious diseases	rectum	secondary	6	-0.50651	-0.82889	0	medium	0.79642	0.78705	0.78705	1.0	False		False	
+Noninflammatory disorders of female genital tract	endometrium	primary	7	-0.373	-0.83075	134	high	0.79694	0.78755	0.74678	1.0	False		False	-0.77535
+Cerebral palsy and other paralytic syndromes	brain	primary	6	-0.53154	-0.86809	54	high	0.80733	0.79973	0.87053	1.0	False		False	-0.82235
+Hypertensive Renal Disease	vasculature	primary	6	-0.54438	-0.88323	35	high	0.81144	0.80481	0.54953	1.0	False		False	-0.80661
+Noninfective enteritis and colitis	small.intestine	primary	6	-0.66995	-0.88334	97	high	0.81147	0.80481	0.6375	1.0	False		False	-0.81419
+Intestinal infectious diseases	colon	primary	6	-0.56444	-0.88335	0	medium	0.81148	0.80481	0.75895	1.0	False		False	-0.82361
+Duodenal ulcer	small.intestine	primary	6	-0.67269	-0.88609	91	high	0.81222	0.80559	0.6375	1.0	False		False	-0.90691
+Leiomyoma of uterus	endometrium	primary	7	-0.40959	-0.91762	6	medium	0.82059	0.81486	0.74678	1.0	False		False	-0.8543
+Other abnormal uterine and vaginal bleeding	endometrium	primary	7	-0.41396	-0.928	135	high	0.8233	0.81759	0.74678	1.0	False		False	-0.86373
+Crohn disease (strict definition, require KELA, min 2 HDR)	small.intestine	primary	6	-0.71681	-0.93049	84	high	0.82394	0.8182	0.6375	1.0	False		False	-1.04666
+Other diseases of the digestive system	small.intestine	primary	6	-0.74706	-0.96094	106	high	0.83171	0.82681	0.6375	1.0	False		False	-0.88472
+Other functional intestinal disorders	colon	primary	6	-0.63277	-0.96966	83	high	0.83389	0.82906	0.75895	1.0	False		False	-0.8352
+Viral infections characterized by skin and mucous membrane lesions	skin	primary	11	-0.49278	-0.97309	3	medium	0.83475	0.83019	0.15092	0.67074	False		False	-0.85165
+Agranulocytosis	bone.marrow	primary	5	-0.76726	-0.98875	13	high	0.83861	0.83464	0.60632	1.0	False		False	-0.91166
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	small.intestine	primary	6	-0.79201	-1.00617	91	high	0.84283	0.83944	0.6375	1.0	False		False	-0.90691
+Pure hypercholesterolaemia	vasculature	secondary	6	-0.61174	-1.02706	18	medium	0.8478	0.84467	0.06114	0.40853	False		False	
+Disorders of lipoprotein metabolism and other lipidaemias	vasculature	secondary	6	-0.62314	-1.05139	18	medium	0.85346	0.85125	0.06114	0.40853	False		False	
+Other diseases of liver	liver	primary	10	-0.95666	-1.06206	104	high	0.8559	0.85416	0.57746	1.0	False		False	-0.97352
+Noninflammatory disorders of female genital tract	fallopian.tube	secondary	11	-0.36999	-1.06943	134	high	0.85756	0.85631	0.97346	1.0	False		False	
+Depression	brain	primary	6	-0.69858	-1.07211	17	medium	0.85817	0.8569	0.87053	1.0	False		False	-1.13632
+Other diseases of arteries and capillaries	vasculature	primary	6	-0.63297	-1.07239	40	high	0.85823	0.85697	0.54953	1.0	False		False	-0.97853
+Excessive, frequent and irregular menstruation	ovary	primary	7	-0.53734	-1.08217	129	high	0.86041	0.85993	0.9236	1.0	False		False	-1.05531
+Noninfective enteritis and colitis	colon	primary	6	-0.73915	-1.10402	97	high	0.86521	0.86592	0.75895	1.0	False		False	-1.02417
+Acute alcohol intoxication, ICD10	brain	primary	6	-0.72868	-1.10888	16	high	0.86626	0.8674	0.87053	1.0	False		False	-1.42306
+Noninflammatory disorders of female genital tract	ovary	primary	7	-0.56095	-1.128	134	high	0.87034	0.87266	0.9236	1.0	False		False	-1.075
+Coronary atherosclerosis	vasculature	primary	6	-0.66335	-1.13726	28	high	0.87228	0.87519	0.54953	1.0	False		False	-1.03749
+Abscess of anal and rectal regions	rectum	primary	6	-0.75822	-1.13794	79	high	0.87243	0.87531	0.39977	1.0	False		False	-1.02541
+Alcohol abuse, main dg, excluding more controls	brain	primary	6	-0.75687	-1.14331	16	high	0.87355	0.8768	0.87053	1.0	False		False	-1.42306
+Polyp of the female genital tract	fallopian.tube	secondary	11	-0.39895	-1.15955	142	high	0.87688	0.88072	0.97346	1.0	False		False	
+Acute alcohol intoxication	brain	primary	6	-0.79513	-1.19005	16	medium	0.88299	0.88796	0.87053	1.0	False		False	-1.42306
+Postprocedural disorders of digestive system, not elsewhere classified	small.intestine	primary	6	-0.97648	-1.19181	109	high	0.88333	0.88834	0.6375	1.0	False		False	-1.09455
+Hyperlipidaemia, other/unspecified	adipose.tissue	secondary	10	-0.59296	-1.21496	18	medium	0.88781	0.89319	0.95778	1.0	False		False	
+Crohn disease (strict definition, require KELA, min 2 HDR)	colon	primary	6	-0.83271	-1.2222	84	high	0.88918	0.89447	0.75895	1.0	False		False	-1.36631
+Crohn's disease NAS	small.intestine	primary	6	-1.03956	-1.25529	84	high	0.89531	0.90074	0.6375	1.0	False		False	-1.04666
+Ischaemic heart disease, wide definition	vasculature	primary	6	-0.72168	-1.26182	37	high	0.89649	0.90179	0.54953	1.0	False		False	-1.26806
+Alcohol dependence	brain	primary	6	-0.85567	-1.264	16	medium	0.89688	0.90212	0.87053	1.0	False		False	-1.42306
+Depression or dysthymia	brain	primary	6	-0.86693	-1.27775	17	medium	0.89933	0.90447	0.87053	1.0	False		False	-1.13632
+Myocardial infarction, strict	vasculature	primary	6	-0.73383	-1.28775	38	high	0.90108	0.90648	0.54953	1.0	False		False	-1.17427
+Unstable angina pectoris	vasculature	primary	6	-0.73431	-1.28878	24	high	0.90126	0.90662	0.54953	1.0	False		False	-1.34648
+Excessive, frequent and irregular menstruation	endometrium	primary	7	-0.5839	-1.33151	129	high	0.90849	0.91328	0.74678	1.0	False		False	-1.05146
+Excessive, frequent and irregular menstruation	fallopian.tube	secondary	11	-0.4624	-1.35699	129	high	0.91261	0.9175	0.97346	1.0	False		False	
+Pleural effusion	lung	primary	16	-0.42935	-1.38048	77	high	0.91628	0.92118	1e-05	0.00015	True	0.92118	False	-1.1113
+Ovarian cyst	fallopian.tube	secondary	11	-0.47366	-1.39203	140	high	0.91804	0.92289	0.97346	1.0	False		False	
+Major coronary heart disease event	vasculature	primary	6	-0.78508	-1.39719	37	high	0.91882	0.92359	0.54953	1.0	False		False	-1.26806
+Acute pancreatitis	pancreas	primary	8	-0.66074	-1.41895	80	high	0.92204	0.9264	0.76826	1.0	False		False	-1.33962
+Hemiplegia	brain	primary	6	-0.9851	-1.42207	57	high	0.9225	0.92668	0.87053	1.0	False		False	-1.32585
+Constipation	small.intestine	secondary	6	-1.23966	-1.45665	83	high	0.92739	0.93079	0.81895	1.0	False		False	
+Endometriosis	ovary	primary	7	-0.73695	-1.46965	124	high	0.92917	0.93246	0.9236	1.0	False		False	-1.547
+Disorders of choroid and retina	eye	primary	5	-0.9865	-1.47076	64	high	0.92932	0.93261	0.86453	1.0	False		False	-1.3811
+Other sleep disorders	brain	primary	6	-1.02598	-1.47201	62	high	0.92949	0.93276	0.87053	1.0	False		False	-1.0652
+Hypertensive Renal Disease	kidney	secondary	6	-0.77289	-1.47731	35	high	0.9302	0.93334	0.99591	1.0	False		False	
+Agranulocytosis	blood	primary	7	-1.178	-1.49868	13	high	0.93302	0.93575	0.57829	1.0	False		False	-1.37163
+Ovarian cyst	ovary	primary	7	-0.75256	-1.49993	140	high	0.93318	0.93587	0.9236	1.0	False		False	-1.41304
+Gout, unspecified	kidney	primary	6	-0.796	-1.51829	121	review	0.93553	0.93828	1.0	1.0	False		False	-1.56046
+Angina pectoris	vasculature	primary	6	-0.84958	-1.53493	24	high	0.9376	0.94061	0.54953	1.0	False		False	-1.34648
+Irregular menses	ovary	primary	7	-0.77857	-1.55044	129	high	0.93948	0.94284	0.9236	1.0	False		False	-1.05531
+Leiomyoma of uterus	fallopian.tube	primary	11	-0.53002	-1.56741	6	medium	0.94149	0.94488	0.79118	1.0	False		False	-1.47982
+Diaphragmatic hernia	esophagus	primary	10	-0.56183	-1.58272	85	high	0.94326	0.94707	0.87914	1.0	False		False	-1.49093
+Any mental disorder	brain	primary	6	-1.12781	-1.59639	51	high	0.9448	0.94847	0.87053	1.0	False		False	-1.48427
+Obesity	adipose.tissue	primary	10	-0.74922	-1.6038	20	medium	0.94562	0.94958	0.809	1.0	False		False	-1.58171
+Disorders of lipoprotein metabolism and other lipidaemias	adipose.tissue	secondary	10	-0.7506	-1.60725	18	medium	0.946	0.95002	0.95778	1.0	False		False	
+Other functional intestinal disorders	small.intestine	secondary	6	-1.39851	-1.61651	83	high	0.94701	0.95133	0.81895	1.0	False		False	
+Senile cataract	eye	primary	5	-1.1024	-1.61799	68	high	0.94717	0.95152	0.86453	1.0	False		False	-1.51491
+Crohn's disease NAS	colon	primary	6	-1.15128	-1.62458	84	high	0.94787	0.95222	0.75895	1.0	False		False	-1.36631
+Obesity, other/unspecified	adipose.tissue	primary	10	-0.76908	-1.65322	20	medium	0.95086	0.9561	0.809	1.0	False		False	-1.58171
+Other abnormal uterine and vaginal bleeding	fallopian.tube	secondary	11	-0.56135	-1.6649	135	high	0.95203	0.95761	0.97346	1.0	False		False	
+Pure hypercholesterolaemia	adipose.tissue	secondary	10	-0.77471	-1.66724	18	medium	0.95227	0.95778	0.95778	1.0	False		False	
+Smoking dependency	brain	primary	6	-1.18756	-1.66937	53	high	0.95248	0.95794	0.87053	1.0	False		False	-1.5506
+Menorrhagia	endometrium	primary	7	-0.72846	-1.67474	129	high	0.95301	0.95857	0.74678	1.0	False		False	-1.05146
+Ulcerative colitis, NAS	rectum	primary	6	-1.22118	-1.70639	110	high	0.95603	0.96193	0.39977	1.0	False		False	-1.65169
+Adenomyosis (Endometriosis of uterus)	ovary	primary	7	-0.86834	-1.72468	124	high	0.95771	0.9636	0.9236	1.0	False		False	-1.547
+Menorrhagia	fallopian.tube	secondary	11	-0.5854	-1.73971	129	high	0.95905	0.96475	0.97346	1.0	False		False	
+Endometriosis	endometrium	primary	7	-0.761	-1.752	124	high	0.96011	0.96574	0.74678	1.0	False		False	-1.7182
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	rectum	primary	6	-1.27486	-1.77231	110	high	0.96183	0.96729	0.39977	1.0	False		False	-1.65169
+Adenomyosis (Endometriosis of uterus)	endometrium	primary	7	-0.79568	-1.83434	124	high	0.9667	0.97232	0.74678	1.0	False		False	-1.7182
+Pain and other conditions associated with female genital organs and menstrual cycle	fallopian.tube	secondary	11	-0.62253	-1.85525	141	high	0.96822	0.97346	0.97346	1.0	False		False	
+Ulcerative colitis, NAS	colon	primary	6	-1.34373	-1.86765	110	high	0.96909	0.97423	0.75895	1.0	False		False	-1.82671
+Other disorders of fluid, electrolyte and acid-base balance	kidney	primary	6	-1.0126	-1.9024	22	medium	0.97144	0.97609	1.0	1.0	False		False	-1.90956
+Alcohol use disorder, ICD-based	brain	primary	6	-1.40078	-1.9298	16	high	0.97318	0.9773	0.87053	1.0	False		False	-1.42306
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	colon	primary	6	-1.40583	-1.94609	110	high	0.97418	0.97833	0.75895	1.0	False		False	-1.82671
+Female genital prolapse	ovary	primary	7	-1.00085	-1.9819	130	high	0.97625	0.9806	0.9236	1.0	False		False	-1.85109
+Other disorders of kidney and ureter	kidney	primary	6	-1.06361	-1.99286	136	high	0.97686	0.98125	1.0	1.0	False		False	-1.99177
+Substance abuse, excluding more controls	brain	primary	6	-1.46504	-2.00829	16	high	0.97769	0.98227	0.87053	1.0	False		False	-1.42306
+Calculus of kidney and ureter	kidney	primary	6	-1.08386	-2.02878	125	high	0.97876	0.98355	1.0	1.0	False		False	-2.02442
+Postprocedural disorders of digestive system, not elsewhere classified	colon	primary	6	-1.54502	-2.1219	109	high	0.98308	0.9872	0.75895	1.0	False		False	-1.94929
+Pain and other conditions associated with female genital organs and menstrual cycle	endometrium	primary	7	-0.97717	-2.26527	141	high	0.98825	0.9923	0.74678	1.0	False		False	-2.07914
+Unspecified kidney failure	kidney	primary	6	-1.24188	-2.309	144	high	0.98953	0.99368	1.0	1.0	False		False	-2.2791
+Acute renal failure	kidney	primary	6	-1.2629	-2.34628	123	high	0.99052	0.99451	1.0	1.0	False		False	-2.31299
+Chronic kidney disease	kidney	primary	6	-1.28361	-2.383	126	high	0.99141	0.99514	1.0	1.0	False		False	-2.34637
+Other obstructive and reflux uropathy	kidney	primary	6	-1.33234	-2.46942	139	high	0.99323	0.99587	1.0	1.0	False		False	-2.42491
+Heart failure, strict	kidney	secondary	6	-1.336	-2.4759	31	high	0.99335	0.99591	0.99591	1.0	False		False	
+Renal tubulo-interstitial diseases	kidney	primary	6	-1.42244	-2.62919	143	high	0.99572	0.99644	1.0	1.0	False		False	-2.57012
+Volume depletion	kidney	primary	6	-1.82437	-3.34195	23	medium	0.99958	0.99984	1.0	1.0	False		False	-3.21793
+Ovarian cyst	endometrium	primary	7	-1.45702	-3.40461	140	high	0.99967	0.99992	0.74678	1.0	False		False	-3.11466
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	prostate	primary	9	-2.3127	-6.14599	9	medium	1.0	1.0	0.84478	1.0	False		False	-5.62897

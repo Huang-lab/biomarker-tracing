@@ -1,5 +1,0 @@
-atlas	hit_set	n_hits	n_diseases_with_hits	share_in_own_organ	chance	fold	share_in_own_organ_parenchymal	diseases_with_own_organ_hit
-hpa700	significant (max-T p ≤ 0.05)	3734	179	0.0822	0.0527	1.5598	0.0399	56
-hpa700	disease-specific (also specificity FDR ≤ 0.05)	245	41	0.1918	0.0523	3.6649	0.1265	19
-pp229	significant (max-T p ≤ 0.05)	1776	171	0.0788	0.0535	1.4746	0.0287	50
-pp229	disease-specific (also specificity FDR ≤ 0.05)	101	25	0.198	0.0632	3.1327	0.0693	14

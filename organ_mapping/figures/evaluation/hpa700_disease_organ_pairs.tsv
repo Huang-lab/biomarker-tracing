@@ -1,0 +1,372 @@
+disease	organ	role	n_cell_types	best_rank	best_cell_type	chance_rank	beats_chance	n_compared	p	confidence	dup_group	dup_group_size	n_primary_organs	q	significant	nominal
+Intestinal malabsorption	colon	primary	10	1	colon_t.cells	74.0	True	166	0.01198	high	83	2	3	0.74379	False	True
+Diseases of the digestive system	colon	primary	10	1	colon_t.cells	74.0	True	166	0.01198	high	90	1	3	0.74379	False	True
+Coeliac disease	colon	primary	10	1	colon_t.cells	74.0	True	166	0.01198	high	83	2	3	0.74379	False	True
+Other noninflammatory disorders of uterus, except cervix	fallopian.tube	secondary	20	1	fallopian.tube_ilcs	39.0	True	177	0.01685	high	144	1	2	0.74379	False	True
+Other disorders of male genital organs	testis	primary	15	1	testis_late.primary.spermatocytes	51.5	True	184	0.02162	high	142	1	3	0.74379	False	True
+Polyp of the female genital tract	endometrium	primary	20	1	endometrium_pre.luminal.cells.secretory.phase.	34.0	True	171	0.02907	high	148	1	2	0.74379	False	True
+Noninflammatory disorders of female genital tract	endometrium	primary	20	1	endometrium_pre.luminal.cells.secretory.phase.	34.0	True	171	0.02907	high	137	1	2	0.74379	False	True
+Diseases of male genital organs	prostate	primary	17	1	prostate_prostatic.glandular.like.cells	47.0	True	185	0.03226	high	129	1	3	0.74379	False	True
+Hyperplasia of prostate	prostate	primary	17	1	prostate_prostatic.glandular.cells	47.0	True	185	0.03226	high	134	1	3	0.74379	False	True
+Inflammatory diseases of prostate (prostatitis)	epididymis	primary	17	2	epididymis_arterial.endothelial.cells	44.0	True	185	0.03226	high	135	1	3	0.74379	False	True
+Female genital prolapse	fallopian.tube	secondary	20	2	fallopian.tube_t.cells.cd8.	39.0	True	177	0.03371	high	132	1	2	0.74379	False	True
+Other acute lower respiratory infections	lung	primary	35	1	lung_club.goblet.cells	30.5	True	176	0.0339	high	76	1	1	0.74379	False	True
+Interstitial lung disease	lung	primary	35	1	lung_at2	30.5	True	176	0.0339	high	74	2	1	0.74379	False	True
+Early onset COPD	lung	primary	35	1	lung_submucosal.gland.mucous.cells	30.5	True	176	0.0339	high	73	1	1	0.74379	False	True
+Idiopathic pulmonary fibrosis	lung	primary	35	1	lung_at2	30.5	True	176	0.0339	high	74	2	1	0.74379	False	True
+Unspecified acute lower respiratory infection	lung	primary	35	1	lung_club.goblet.cells	30.5	True	176	0.0339	high	79	1	1	0.74379	False	True
+Influenza and pneumonia	lung	primary	35	2	lung_submucosal.gland.mucous.cells	30.5	True	176	0.0452	high	75	1	1	0.74379	False	True
+Metabolic disorders	pancreas	secondary	23	2	pancreas_alpha.beta.islet.cells	45.0	True	189	0.04737	medium	20	1	1	0.74379	False	True
+Other or ill-defined heart diseases	heart.muscle	primary	9	2	heart.muscle_mast.cells	124.5	True	168	0.05917	high	42	1	1	0.74379	False	False
+Polyp of the female genital tract	ovary	primary	8	6	ovary_granulosa.cells	69.0	True	176	0.0678	high	148	1	2	0.74379	False	False
+Hypertension, Pulmonary Arterial	lung	primary	35	3	lung_vascular.smooth.muscle.cells	30.5	True	176	0.07345	high	34	2	2	0.74379	False	False
+Secondary right heart disease	lung	primary	35	3	lung_vascular.smooth.muscle.cells	30.5	True	176	0.07345	high	34	2	2	0.74379	False	False
+Intestinal malabsorption	small.intestine	primary	6	8	small.intestine_early.goblet.cells	193.0	True	158	0.07547	high	83	2	3	0.74379	False	False
+Coeliac disease	small.intestine	primary	6	8	small.intestine_early.goblet.cells	193.0	True	158	0.07547	high	83	2	3	0.74379	False	False
+Other noninflammatory disorders of uterus, except cervix	endometrium	primary	20	2	endometrium_pre.luminal.cells.secretory.phase.	34.0	True	171	0.0814	high	144	1	2	0.74379	False	False
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	adipose.tissue	secondary	18	3	adipose.tissue_macrophages	63.5	True	180	0.08287	high	117	2	1	0.74379	False	False
+Soft tissue disorders	skeletal.muscle	primary	8	25	skeletal.muscle_macrophages	169.5	True	190	0.08377	high	123	1	1	0.74379	False	False
+Asthma, excluding more controls	lung	primary	35	4	lung_submucosal.gland.mucous.cells	30.5	True	176	0.08475	high	71	2	1	0.74379	False	False
+Asthma, unspecified (mode)	lung	primary	35	4	lung_at2.proliferating.	30.5	True	176	0.08475	high	71	2	1	0.74379	False	False
+Chronic lower respiratory diseases	lung	primary	35	4	lung_submucosal.gland.mucous.cells	30.5	True	176	0.08475	high	72	1	1	0.74379	False	False
+Other disorders of skin and subcutaneous tissue	skin	primary	16	2	skin_gdt.cells	28.0	True	175	0.08523	high	119	1	1	0.74379	False	False
+Malignant melanoma of skin, excluding all cancers (controls excluding all cancers)	skin	primary	16	2	skin_nk.t.cells	28.0	True	175	0.08523	medium	7	1	1	0.74379	False	False
+Other and unspecified disorders of skin and subcutaneous tissue	adipose.tissue	secondary	18	4	adipose.tissue_macrophages	63.5	True	180	0.09392	high	117	2	1	0.74379	False	False
+Hydrocele	testis	primary	15	10	testis_round.spermatids	51.5	True	184	0.0973	high	133	1	3	0.74379	False	False
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	92	2	2	0.74379	False	False
+Other gastritis (incl. Duodenitis)	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	82	2	1	0.74379	False	False
+Diaphragmatic hernia	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	86	1	2	0.74379	False	False
+Diseases of oesophagus, stomach and duodenum	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	88	1	3	0.74379	False	False
+Duodenal ulcer	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	92	2	2	0.74379	False	False
+Other diseases of the digestive system	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	107	1	3	0.74379	False	False
+Other diseases of stomach and duodenum	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	106	1	1	0.74379	False	False
+Other specified/unspecified bacterial intestinal infections	stomach	secondary	28	1	stomach_nk.cells	33.0	True	171	0.10465	medium	2	2	2	0.74379	False	False
+Functional dyspepsia	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	93	1	1	0.74379	False	False
+Gastric ulcer	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	94	1	2	0.74379	False	False
+Gastroduodenal ulcer	stomach	primary	28	1	stomach_chief.cells	33.0	True	171	0.10465	high	96	1	2	0.74379	False	False
+Mycoses	skin	primary	16	3	skin_vascular.endothelial.cells	28.0	True	175	0.10795	medium	1	1	1	0.74379	False	False
+Migraine, unspecified, drug-induced	brain	primary	84	1	brain.neurons_midbrain.excitatory	17.0	True	164	0.10909	high	60	2	1	0.74379	False	False
+MS-disease / Multiple Sclerosis	brain	primary	84	1	brain.non.neurons_microglia	17.0	True	164	0.10909	high	59	1	1	0.74379	False	False
+Other bacterial intestinal infections	stomach	secondary	28	2	stomach_arterial.ecs	33.0	True	171	0.11047	medium	2	2	2	0.74379	False	False
+Benign neoplasm of other and ill-defined parts of digestive system	stomach	primary	28	2	stomach_chief.cells	33.0	True	171	0.11047	medium	5	2	3	0.74379	False	False
+Adenomyosis (Endometriosis of uterus)	fallopian.tube	secondary	20	6	fallopian.tube_mast.cells	39.0	True	177	0.11236	high	125	2	2	0.74379	False	False
+Endometriosis	fallopian.tube	secondary	20	6	fallopian.tube_ilcs	39.0	True	177	0.11236	high	125	2	2	0.74379	False	False
+Conduction disorders	heart.muscle	primary	9	6	heart.muscle_fibroblasts	124.5	True	168	0.11243	high	28	1	1	0.74379	False	False
+Crohn disease (strict definition, require KELA, min 2 HDR)	rectum	secondary	9	12	rectum_l.cells	123.5	True	172	0.11561	high	85	2	2	0.74379	False	False
+Intestinal infectious diseases	stomach	secondary	28	3	stomach_arterial.ecs	33.0	True	171	0.11628	medium	0	1	2	0.74379	False	False
+Intestinal malabsorption	stomach	primary	28	3	stomach_intestinal.stem.cells	33.0	True	171	0.11628	high	83	2	3	0.74379	False	False
+Coeliac disease	stomach	primary	28	3	stomach_intestinal.stem.cells	33.0	True	171	0.11628	high	83	2	3	0.74379	False	False
+Leiomyoma of uterus	endometrium	primary	20	3	endometrium_pre.ciliated.epithelial.cells	34.0	True	171	0.11628	medium	6	1	3	0.74379	False	False
+Crohn's disease NAS	rectum	secondary	9	13	rectum_l.cells	123.5	True	172	0.12139	high	85	2	2	0.7633	False	False
+Agranulocytosis	lymph.node	secondary	19	16	lymph.node_fibroblasts	76.0	True	185	0.12366	high	13	1	3	0.76461	False	False
+Chronic gastritis	stomach	primary	28	4	stomach_t.cells.cd8.	33.0	True	171	0.13372	high	82	2	1	0.81329	False	False
+Heart failure, strict	vasculature	primary	18	14	vasculature_vascular.smooth.muscle.cells.des.	54.5	True	166	0.15569	high	32	1	2	0.91908	False	False
+Diverticular disease of intestine	rectum	primary	9	16	rectum_l.cells	123.5	True	172	0.15607	high	91	1	2	0.91908	False	False
+Other disorders of  bladder	urinary.bladder	primary	24	10	urinary.bladder_neutrophils	37.0	True	184	0.16216	high	140	1	1	0.93516	False	False
+Alcohol dependence	liver	secondary	15	28	liver_kupffer.cells	121.5	True	176	0.16384	medium	16	6	1	0.93516	False	False
+Other disorders of urethra and urinary system	kidney	secondary	37	7	kidney_papillary.tip.epithelial.cells	27.0	True	170	0.18713	high	143	1	1	0.9859	False	False
+Disorders of other endocrine glands	thymus	secondary	23	16	thymus_thymic.myoid.cells	49.0	True	190	0.19372	medium	19	1	2	0.9859	False	False
+Single spontaneous delivery	placenta	primary	18	4	placenta_extravillous.trophoblasts	36.0	True	185	0.19892	high	157	1	2	0.9859	False	False
+Irritable bowel syndrome	rectum	primary	9	21	rectum_ta.cells	123.5	True	172	0.20231	high	97	1	2	0.9859	False	False
+Pulmonary embolism	vasculature	secondary	18	19	vasculature_arterial.endothelial.cells	54.5	True	166	0.20359	high	45	1	2	0.9859	False	False
+Other and unspecified psoriasis	skin	primary	16	6	skin_basal.keratinocytes	28.0	True	175	0.20455	high	118	1	1	0.9859	False	False
+Single spontaneous delivery	endometrium	primary	20	7	endometrium_glandular.secretory.cells.secretory.phase.	34.0	True	171	0.2093	high	157	1	2	0.9859	False	False
+Hypertension, Pulmonary Arterial	heart.muscle	primary	9	25	heart.muscle_vascular.smooth.muscle.cells	124.5	True	168	0.21302	high	34	2	2	0.9859	False	False
+Other arrhythmias	heart.muscle	primary	9	21	heart.muscle_vascular.smooth.muscle.cells	124.5	True	168	0.21302	high	40	1	1	0.9859	False	False
+Irregular menses	endometrium	primary	20	8	endometrium_pre.glandular.cells.secretory.phase.	34.0	True	171	0.21512	high	131	3	2	0.9859	False	False
+Other abnormal uterine and vaginal bleeding	endometrium	primary	20	8	endometrium_luminal.cells.secretory.phase.	34.0	True	171	0.21512	high	138	1	2	0.9859	False	False
+DVT of lower extremities	vasculature	primary	18	21	vasculature_arterial.endothelial.cells	54.5	True	166	0.22156	high	30	2	1	0.9859	False	False
+Other and unspecified glaucoma	eye	primary	40	5	eye_serous.acinar.cells	17.0	True	183	0.22283	high	67	2	1	0.9859	False	False
+Migraine	brain	primary	84	2	brain.neurons_midbrain.excitatory	17.0	True	164	0.22424	high	60	2	1	0.9859	False	False
+Other degenerative diseases of the nervous system	brain	primary	84	2	brain.non.neurons_astrocytes	17.0	True	164	0.22424	high	61	1	1	0.9859	False	False
+Stroke, excluding SAH	brain	primary	84	2	brain.non.neurons_capillary.endothelial.cells	17.0	True	164	0.22424	high	47	1	2	0.9859	False	False
+Disorders of other endocrine glands	pituitary.gland	primary	12	22	pituitary.gland_capillary.endothelial.cells	58.5	True	190	0.22513	medium	19	1	2	0.9859	False	False
+Inflammatory diseases of prostate (prostatitis)	prostate	primary	17	21	prostate_t.cells.cd8.	47.0	True	185	0.23118	high	135	1	3	0.9859	False	False
+Other diseases of anus and rectum	small.intestine	secondary	6	33	small.intestine_ta.cells.intermediate.progenitors.	193.0	True	158	0.2327	high	101	1	2	0.9859	False	False
+Other diseases of anus and rectum	rectum	primary	9	29	rectum_enteric.stem.cells	123.5	True	172	0.23699	high	101	1	2	0.9859	False	False
+Irritable bowel syndrome	small.intestine	secondary	6	34	small.intestine_ta.cells.intermediate.progenitors.	193.0	True	158	0.24528	high	97	1	2	0.9859	False	False
+Noninflammatory disorders of female genital tract	fallopian.tube	secondary	20	15	fallopian.tube_ilcs	39.0	True	177	0.24719	high	137	1	2	0.9859	False	False
+Secondary right heart disease	heart.muscle	primary	9	32	heart.muscle_vascular.smooth.muscle.cells	124.5	True	168	0.24852	high	34	2	2	0.9859	False	False
+Female genital prolapse	endometrium	primary	20	11	endometrium_t.cells	34.0	True	171	0.25	high	132	1	2	0.9859	False	False
+Pleural effusion	lung	primary	35	12	lung_adventitial.fibroblasts	30.5	True	176	0.25424	high	78	1	1	0.9859	False	False
+Pulmonary embolism	lung	primary	35	12	lung_arterial.endothelial.cells	30.5	True	176	0.25424	high	45	1	2	0.9859	False	False
+Myocardial infarction, strict	heart.muscle	primary	9	36	heart.muscle_mast.cells	124.5	True	168	0.25444	high	39	1	2	0.9859	False	False
+Atrial fibrillation and flutter	heart.muscle	primary	9	34	heart.muscle_adipocytes	124.5	True	168	0.25444	high	26	1	1	0.9859	False	False
+Rheumatic valve diseases	heart.muscle	primary	9	38	heart.muscle_mast.cells	124.5	True	168	0.26627	high	46	1	1	0.9859	False	False
+Psoriasis	skin	primary	16	10	skin_basal.keratinocytes	28.0	True	175	0.26705	high	121	1	1	0.9859	False	False
+Cutaneous abscess, furuncle and carbuncle	skin	primary	16	10	skin_conventional.dendritic.cells.1	28.0	True	175	0.26705	high	113	1	1	0.9859	False	False
+Benign neoplasm: Stomach	stomach	primary	28	11	stomach_chief.cells	33.0	True	171	0.26744	medium	5	2	3	0.9859	False	False
+Long labour	placenta	primary	18	7	placenta_t.cells.maternal.	36.0	True	185	0.26882	high	154	1	2	0.9859	False	False
+Diseases of male genital organs	testis	primary	15	24	testis_early.primary.spermatocytes	51.5	True	184	0.27027	high	129	1	3	0.9859	False	False
+Other and unspecified iron deficiency	bone.marrow	primary	28	27	bone.marrow_plasma.cells	72.0	True	187	0.27128	high	15	1	2	0.9859	False	False
+Cutaneous abscess, furuncle and carbuncle	adipose.tissue	secondary	18	24	adipose.tissue_conventional.dendritic.cells.1	63.5	True	180	0.28729	high	113	1	1	0.9859	False	False
+Other disorders of skin and subcutaneous tissue	adipose.tissue	secondary	18	24	adipose.tissue_vascular.smooth.muscle.cells	63.5	True	180	0.28729	high	119	1	1	0.9859	False	False
+Other diseases of pleura	lung	primary	35	15	lung_fibroblasts	30.5	True	176	0.28814	high	77	1	1	0.9859	False	False
+Paroxysmal tachycardia	heart.muscle	primary	9	42	heart.muscle_vascular.smooth.muscle.cells	124.5	True	168	0.28994	high	44	1	1	0.9859	False	False
+Irritable bowel syndrome	colon	primary	10	27	colon_ta.cells.intermediate.progenitors.	74.0	True	166	0.29341	high	97	1	2	0.9859	False	False
+Cardiomyopathy	heart.muscle	primary	9	44	heart.muscle_cardiomyocytes	124.5	True	168	0.29586	high	27	1	1	0.9859	False	False
+Pulmonary embolism	heart.muscle	primary	9	48	heart.muscle_adipocytes	124.5	True	168	0.29586	high	45	1	2	0.9859	False	False
+Other noninfective gastroenteritis and colitis	colon	primary	10	29	colon_nk.cells	74.0	True	166	0.2994	high	108	1	2	0.9859	False	False
+Other disorders of male genital organs	prostate	primary	17	26	prostate_prostatic.glandular.like.cells	47.0	True	185	0.30645	high	142	1	3	0.9859	False	False
+Complications of labour and delivery	placenta	primary	18	11	placenta_t.cells.maternal.	36.0	True	185	0.31183	high	152	1	2	0.9859	False	False
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	placenta	primary	18	11	placenta_t.cells.maternal.	36.0	True	185	0.31183	high	155	1	2	0.9859	False	False
+Papulosquamous disorders	skin	primary	16	14	skin_basal.keratinocytes	28.0	True	175	0.31818	high	120	1	1	0.9859	False	False
+Agranulocytosis	blood	primary	11	32	blood_erythrocytes	72.0	True	187	0.31915	high	13	1	3	0.9859	False	False
+Other diseases of intestine	small.intestine	secondary	6	66	small.intestine_enterocytes	193.0	True	158	0.32075	high	103	1	2	0.9859	False	False
+Excessive, frequent and irregular menstruation	endometrium	primary	20	17	endometrium_pre.glandular.cells.secretory.phase.	34.0	True	171	0.32558	high	131	3	2	0.9859	False	False
+Hypertensive Renal Disease	heart.muscle	secondary	9	52	heart.muscle_pericytes	124.5	True	168	0.33136	high	36	1	1	0.9859	False	False
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	lymph.node	primary	19	39	lymph.node_nkt.cells	76.0	True	185	0.33333	medium	10	1	4	0.9859	False	False
+Neuromuscular dysfunction of bladder	urinary.bladder	primary	24	18	urinary.bladder_nk.cells	37.0	True	184	0.33514	high	136	1	1	0.9859	False	False
+Hypertension, Pulmonary Arterial	vasculature	secondary	18	33	vasculature_vascular.smooth.muscle.cells.des.	54.5	True	166	0.33533	high	34	2	2	0.9859	False	False
+Menorrhagia	endometrium	primary	20	19	endometrium_pre.glandular.cells.secretory.phase.	34.0	True	171	0.33721	high	131	3	2	0.9859	False	False
+Venous thromboembolism	vasculature	primary	18	35	vasculature_arterial.endothelial.cells	54.5	True	166	0.34132	high	50	1	3	0.9859	False	False
+Secondary right heart disease	vasculature	secondary	18	34	vasculature_vascular.smooth.muscle.cells.des.	54.5	True	166	0.34132	high	34	2	2	0.9859	False	False
+Phlebitis and thrombophlebitis (not including DVT)	vasculature	primary	18	34	vasculature_arterial.endothelial.cells	54.5	True	166	0.34132	high	30	2	1	0.9859	False	False
+Substance abuse, excluding more controls	liver	secondary	15	68	liver_monocytes	121.5	True	176	0.34463	high	16	6	1	0.9859	False	False
+Prolonged pregnancy	endometrium	primary	20	20	endometrium_nk.cells	34.0	True	171	0.34884	high	156	1	2	0.9859	False	False
+Gastric ulcer	small.intestine	primary	6	86	small.intestine_enterocytes	193.0	True	158	0.3522	high	94	1	2	0.9859	False	False
+Diseases of oral cavity, salivary glands and jaws	salivary.gland	primary	36	15	salivary.gland_lymphatic.endothelial.cells	21.0	True	190	0.35602	high	89	1	2	0.9859	False	False
+Diseases of the digestive system	stomach	primary	28	22	stomach_nk.cells	33.0	True	171	0.36047	high	90	1	3	0.9859	False	False
+Ischaemic heart disease, wide definition	heart.muscle	primary	9	67	heart.muscle_mast.cells	124.5	True	168	0.36095	high	38	2	2	0.9859	False	False
+Death due to cardiac causes	heart.muscle	primary	9	69	heart.muscle_pericytes	124.5	True	168	0.36095	review	31	1	2	0.9859	False	False
+Heart failure, strict	heart.muscle	primary	9	62	heart.muscle_fibroblasts	124.5	True	168	0.36095	high	32	1	2	0.9859	False	False
+Erosion and ectropion of cervix uteri	ovary	primary	8	42	ovary_pericytes	69.0	True	176	0.36158	high	130	1	2	0.9859	False	False
+Other diseases of urinary system	kidney	secondary	37	16	kidney_papillary.tip.epithelial.cells	27.0	True	170	0.36257	high	139	1	1	0.9859	False	False
+Stroke, excluding SAH	vasculature	primary	18	40	vasculature_capillary.endothelial.cells	54.5	True	166	0.36527	high	47	1	2	0.9859	False	False
+Pure hypercholesterolaemia	liver	primary	15	77	liver_cholangiocytes	121.5	True	176	0.37853	medium	18	3	1	0.9859	False	False
+Cerebral palsy and other paralytic syndromes	brain	primary	84	8	brain.non.neurons_astrocytes	17.0	True	164	0.38182	high	55	1	1	0.9859	False	False
+Labour and delivery complicated by fetal stress [distress]	placenta	primary	18	20	placenta_t.cells.maternal.	36.0	True	185	0.3871	high	153	1	2	0.9859	False	False
+Angina pectoris	heart.muscle	primary	9	84	heart.muscle_epicardium	124.5	True	168	0.39053	high	25	2	2	0.9859	False	False
+Disorders of choroid and retina	eye	primary	40	11	eye_vascular.smooth.muscle.cells	17.0	True	183	0.39674	high	65	1	1	0.9859	False	False
+Disorders of other endocrine glands	adrenal.gland	primary	7	49	adrenal.gland_zona.glomerulosa.cells	84.5	True	190	0.39791	medium	19	1	2	0.9859	False	False
+Maternal care related to the fetus and amniotic cavity and possible delivery problems	endometrium	primary	20	24	endometrium_t.cells	34.0	True	171	0.40116	high	155	1	2	0.9859	False	False
+Other diseases of anus and rectum	colon	primary	10	48	colon_early.differentiating.colonocytes.mid.crypt.	74.0	True	166	0.4012	high	101	1	2	0.9859	False	False
+Hypotension	heart.muscle	secondary	9	88	heart.muscle_cardiomyocytes	124.5	True	168	0.40237	high	37	1	1	0.9859	False	False
+Venous thromboembolism	heart.muscle	primary	9	88	heart.muscle_vascular.smooth.muscle.cells	124.5	True	168	0.40237	high	50	1	3	0.9859	False	False
+Leiomyoma of uterus	fallopian.tube	primary	20	27	fallopian.tube_ilcs	39.0	True	177	0.40449	medium	6	1	3	0.9859	False	False
+Other specified/unspecified bacterial intestinal infections	rectum	secondary	9	72	rectum_best4.colonocytes	123.5	True	172	0.40462	medium	2	2	2	0.9859	False	False
+Alcohol use disorder, ICD-based	liver	secondary	15	82	liver_monocytes	121.5	True	176	0.40678	high	16	6	1	0.9859	False	False
+Paralytic ileus and intestinal obstruction	colon	primary	10	52	colon_nk.cells	74.0	True	166	0.40719	high	109	2	2	0.9859	False	False
+Other gastritis (incl. Duodenitis)	small.intestine	secondary	6	133	small.intestine_enterocytes	193.0	True	158	0.41509	high	82	2	1	0.9859	False	False
+Chronic gastritis	small.intestine	secondary	6	128	small.intestine_enterocytes.best.4.	193.0	True	158	0.41509	high	82	2	1	0.9859	False	False
+Benign neoplasm of other and ill-defined parts of digestive system	small.intestine	primary	6	128	small.intestine_enterocytes	193.0	True	158	0.41509	medium	5	2	3	0.9859	False	False
+Other peripheral vascular diseases	vasculature	primary	18	43	vasculature_mast.cells	54.5	True	166	0.41916	high	43	1	1	0.9859	False	False
+Diseases of the digestive system	small.intestine	primary	6	137	small.intestine_early.goblet.cells	193.0	True	158	0.42138	high	90	1	3	0.9859	False	False
+Hyperplasia of prostate	testis	primary	15	40	testis_differentiating.spermatogonia	51.5	True	184	0.42162	high	134	1	3	0.9859	False	False
+Transient ischemic attack	brain	primary	84	10	brain.neurons_cerebellar.unipolar.brush.cells	17.0	True	164	0.42424	high	48	1	1	0.9859	False	False
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	epididymis	primary	17	37	epididymis_venous.endothelial.cells	44.0	True	185	0.42473	medium	9	1	3	0.9859	False	False
+Diverticular disease of intestine	small.intestine	secondary	6	144	small.intestine_enterocytes	193.0	True	158	0.42767	high	91	1	2	0.9859	False	False
+Disorders of lipoprotein metabolism and other lipidaemias	liver	primary	15	96	liver_cholangiocytes	121.5	True	176	0.42938	medium	18	3	1	0.9859	False	False
+Other and unspecified iron deficiency	blood	primary	11	57	blood_platelets	72.0	True	187	0.43085	high	15	1	2	0.9859	False	False
+Cellulitis	adipose.tissue	secondary	18	48	adipose.tissue_vascular.smooth.muscle.cells	63.5	True	180	0.43094	high	112	1	1	0.9859	False	False
+Coronary atherosclerosis	heart.muscle	primary	9	98	heart.muscle_mast.cells	124.5	True	168	0.43195	high	29	1	2	0.9859	False	False
+Other noninflammatory disorders of uterus, except cervix	ovary	primary	8	57	ovary_t.cells	69.0	True	176	0.43503	high	144	1	2	0.9859	False	False
+Female genital prolapse	ovary	primary	8	57	ovary_t.cells	69.0	True	176	0.43503	high	132	1	2	0.9859	False	False
+Other diseases of urinary system	urinary.bladder	primary	24	28	urinary.bladder_neutrophils	37.0	True	184	0.43784	high	139	1	1	0.9859	False	False
+Prolonged pregnancy	placenta	primary	18	24	placenta_t.cells.maternal.	36.0	True	185	0.44086	high	156	1	2	0.9859	False	False
+Other disorders of urethra and urinary system	urinary.bladder	primary	24	29	urinary.bladder_plasma.cells	37.0	True	184	0.44324	high	143	1	1	0.9859	False	False
+Hypertension	heart.muscle	secondary	9	102	heart.muscle_pericytes	124.5	True	168	0.44379	high	33	1	2	0.9859	False	False
+Gastro-oesophageal reflux disease	esophagus	primary	16	43	esophagus_b.cells	48.5	True	184	0.45405	high	95	1	1	0.9859	False	False
+Hypertension, essential	heart.muscle	secondary	9	105	heart.muscle_pericytes	124.5	True	168	0.45562	high	35	1	1	0.9859	False	False
+Benign neoplasm: Stomach	small.intestine	primary	6	166	small.intestine_enterocytes	193.0	True	158	0.45912	medium	5	2	3	0.9859	False	False
+Erosion and ectropion of cervix uteri	endometrium	primary	20	28	endometrium_vascular.endothelial.cells	34.0	True	171	0.4593	high	130	1	2	0.9859	False	False
+Cystitis	urinary.bladder	primary	24	30	urinary.bladder_neutrophils	37.0	True	184	0.45946	high	128	1	1	0.9859	False	False
+Calculus of kidney and ureter	kidney	primary	37	22	kidney_papillary.tip.epithelial.cells	27.0	True	170	0.46199	high	126	1	2	0.9859	False	False
+Other bacterial intestinal infections	small.intestine	primary	6	169	small.intestine_enterocytes	193.0	True	158	0.46541	medium	2	2	2	0.9859	False	False
+Episodal and paroxysmal disorders	brain	primary	84	12	brain.neurons_midbrain.hypothalamic.dopaminergic.calb2.foxp2.	17.0	True	164	0.46667	high	57	1	1	0.9859	False	False
+Other and unspecified anaemias	bone.marrow	primary	28	57	bone.marrow_hematopoietic.stem.cells	72.0	True	187	0.46809	high	14	1	2	0.9859	False	False
+Diseases of liver	liver	primary	15	105	liver_kupffer.cells	121.5	True	176	0.47458	high	87	1	1	0.9859	False	False
+Other diseases of biliary tract	liver	primary	15	111	liver_plasma.cells	121.5	True	176	0.47458	high	102	1	1	0.9859	False	False
+Diseases of oesophagus, stomach and duodenum	esophagus	primary	16	46	esophagus_b.cells	48.5	True	184	0.47568	high	88	1	3	0.9859	False	False
+Ovarian cyst	fallopian.tube	secondary	20	37	fallopian.tube_mast.cells	39.0	True	177	0.48315	high	146	1	2	0.98954	False	False
+Other diseases of intestine	rectum	primary	9	113	rectum_l.cells	123.5	True	172	0.48555	high	103	1	2	0.98954	False	False
+Benign neoplasm of colon, rectum, anus and anal canal	rectum	primary	9	115	rectum_early.best4.colonocytes	123.5	True	172	0.48555	medium	4	1	2	0.98954	False	False
+Complications of labour and delivery	endometrium	primary	20	33	endometrium_t.cells	34.0	True	171	0.49419	high	152	1	2	0.98954	False	False
+Hydrocele	prostate	primary	17	45	prostate_vascular.smooth.muscle.cells	47.0	True	185	0.49462	high	133	1	3	0.98954	False	False
+Epilepsy	brain	primary	84	16	brain.neurons_mammillary.body.excitatory.vglut2.cux2.	17.0	True	164	0.49697	high	56	1	1	0.98954	False	False
+Benign neoplasm of colon, rectum, anus and anal canal	colon	primary	10	71	colon_t.cells	74.0	True	166	0.49701	medium	4	1	2	0.98954	False	False
+Venous thromboembolism	lung	primary	35	30	lung_arterial.endothelial.cells	30.5	True	176	0.50282	high	50	1	3	0.98954	False	False
+Major coronary heart disease event	heart.muscle	primary	9	124	heart.muscle_mast.cells	124.5	True	168	0.50296	high	38	2	2	0.98954	False	False
+Polyp of the female genital tract	fallopian.tube	secondary	20	39	fallopian.tube_t.cells.il4i1.	39.0	False	177	0.50562	high	148	1	2	0.98954	False	False
+Other specified/unspecified bacterial intestinal infections	small.intestine	primary	6	198	small.intestine_enterocytes	193.0	False	158	0.50943	medium	2	2	2	0.98954	False	False
+Benign neoplasm of other and ill-defined parts of digestive system	liver	primary	15	124	liver_cholangiocytes	121.5	False	176	0.51412	medium	5	2	3	0.98954	False	False
+Benign neoplasm: Stomach	liver	primary	15	124	liver_hepatocytes	121.5	False	176	0.51412	medium	5	2	3	0.98954	False	False
+Varicose veins	lymph.node	secondary	19	78	lymph.node_nkt.cells	76.0	False	185	0.51613	high	49	1	1	0.98954	False	False
+Labour and delivery complicated by fetal stress [distress]	endometrium	primary	20	35	endometrium_t.cells	34.0	False	171	0.51744	high	153	1	2	0.98954	False	False
+Inflammatory diseases of prostate (prostatitis)	testis	primary	15	56	testis_peritubular.myoid.cells	51.5	False	184	0.53514	high	135	1	3	1.0	False	False
+Infections of the skin and subcutaneous tissue	adipose.tissue	secondary	18	73	adipose.tissue_vascular.smooth.muscle.cells	63.5	False	180	0.53591	high	115	1	1	1.0	False	False
+Neuromuscular dysfunction of bladder	kidney	secondary	37	28	kidney_t.cells.cd8.	27.0	False	170	0.53801	high	136	1	1	1.0	False	False
+Hypotension	vasculature	primary	18	66	vasculature_nk.cells	54.5	False	166	0.54491	high	37	1	1	1.0	False	False
+Ulcer of oesophagus	esophagus	primary	16	56	esophagus_b.cells	48.5	False	184	0.54595	high	99	3	1	1.0	False	False
+Pain and other conditions associated with female genital organs and menstrual cycle	endometrium	primary	20	44	endometrium_pre.luminal.cells.secretory.phase.	34.0	False	171	0.55814	high	147	1	2	1.0	False	False
+Hemiplegia	brain	primary	84	24	brain.non.neurons_astrocytes	17.0	False	164	0.56364	high	58	1	1	1.0	False	False
+Hypertension	brain	primary	84	22	brain.neurons_cerebellar.unipolar.brush.cells	17.0	False	164	0.56364	high	33	1	2	1.0	False	False
+Long labour	endometrium	primary	20	48	endometrium_nk.cells	34.0	False	171	0.56395	high	154	1	2	1.0	False	False
+Venous thromboembolism	lymph.node	secondary	19	87	lymph.node_fibroblasts	76.0	False	185	0.56452	high	50	1	3	1.0	False	False
+Other specified/unspecified bacterial intestinal infections	colon	primary	10	86	colon_best4.colonocytes	74.0	False	166	0.56886	medium	2	2	2	1.0	False	False
+Metabolic disorders	kidney	secondary	37	32	kidney_distal.convoluted.tubule.cells	27.0	False	170	0.5731	medium	20	1	1	1.0	False	False
+Obesity	adipose.tissue	primary	18	83	adipose.tissue_pericytes	63.5	False	180	0.57459	medium	21	2	1	1.0	False	False
+Diseases of oral cavity, salivary glands and jaws	tongue	primary	17	86	tongue_myosatellite.cells	65.5	False	190	0.57592	high	89	1	2	1.0	False	False
+DVT of lower extremities	lymph.node	secondary	19	90	lymph.node_venous.endothelial.cells	76.0	False	185	0.58065	high	30	2	1	1.0	False	False
+Phlebitis and thrombophlebitis (not including DVT)	lymph.node	secondary	19	93	lymph.node_venous.endothelial.cells	76.0	False	185	0.58065	high	30	2	1	1.0	False	False
+Other diseases of intestines	small.intestine	secondary	6	227	small.intestine_enterocytes	193.0	False	158	0.58491	high	104	1	2	1.0	False	False
+Other diseases of stomach and duodenum	small.intestine	secondary	6	226	small.intestine_enterocytes	193.0	False	158	0.58491	high	106	1	1	1.0	False	False
+Agranulocytosis	bone.marrow	primary	28	88	bone.marrow_reticulocytes	72.0	False	187	0.58511	high	13	1	3	1.0	False	False
+Other and unspecified anaemias	blood	primary	11	97	blood_nk.cells	72.0	False	187	0.58511	high	14	1	2	1.0	False	False
+Cellulitis	skin	primary	16	37	skin_vascular.smooth.muscle.cells	28.0	False	175	0.58523	high	112	1	1	1.0	False	False
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	spleen	primary	13	70	spleen_nk.cells	53.0	False	189	0.58947	medium	10	1	4	1.0	False	False
+Infections of the skin and subcutaneous tissue	skin	primary	16	38	skin_vascular.smooth.muscle.cells.il6.	28.0	False	175	0.59091	high	115	1	1	1.0	False	False
+Metabolic disorders	liver	primary	15	143	liver_cholangiocytes	121.5	False	176	0.59322	medium	20	1	1	1.0	False	False
+Visual disturbances	eye	primary	40	20	eye_corneal.suprabasal.epithelial.cells	17.0	False	183	0.59783	high	70	1	1	1.0	False	False
+Other anxiety disorders	brain	primary	84	26	brain.neurons_deep.cerebellar.nuclei.excitatory.vglut2.pvalb.cbln1.	17.0	False	164	0.6	medium	22	1	1	1.0	False	False
+Hypertension, essential	kidney	secondary	37	38	kidney_mesangial.cells	27.0	False	170	0.60234	high	35	1	1	1.0	False	False
+Alcohol abuse, main dg, excluding more controls	liver	secondary	15	150	liver_hepatocytes	121.5	False	176	0.60452	high	16	6	1	1.0	False	False
+Endometriosis	endometrium	primary	20	65	endometrium_pre.glandular.cells.secretory.phase.	34.0	False	171	0.60465	high	125	2	2	1.0	False	False
+Agranulocytosis	spleen	primary	13	73	spleen_erythrocytes	53.0	False	189	0.60526	high	13	1	3	1.0	False	False
+Abscess of anal and rectal regions	colon	primary	10	100	colon_t.cells	74.0	False	166	0.61078	high	80	1	2	1.0	False	False
+Other diseases of oesophagus	esophagus	primary	16	75	esophagus_b.cells	48.5	False	184	0.61081	high	99	3	1	1.0	False	False
+Acute alcohol intoxication	liver	secondary	15	159	liver_hepatocytes	121.5	False	176	0.61582	medium	16	6	1	1.0	False	False
+Other diseases of intestines	rectum	primary	9	185	rectum_best4.colonocytes	123.5	False	172	0.62428	high	104	1	2	1.0	False	False
+Dermatitis and eczema	skin	primary	16	43	skin_macrophages	28.0	False	175	0.625	high	114	1	1	1.0	False	False
+Other and unspecified disorders of skin and subcutaneous tissue	skin	primary	16	44	skin_vascular.smooth.muscle.cells	28.0	False	175	0.625	high	117	2	1	1.0	False	False
+Hypertension	kidney	secondary	37	42	kidney_mesangial.cells	27.0	False	170	0.62573	high	33	1	2	1.0	False	False
+Other or unspecified ileus, impaction or obstruction	rectum	primary	9	191	rectum_ta.cells	123.5	False	172	0.63006	high	109	2	2	1.0	False	False
+Viral infections characterized by skin and mucous membrane lesions	skin	primary	16	45	skin_macrophages	28.0	False	175	0.63068	medium	3	1	1	1.0	False	False
+Irregular menses	fallopian.tube	secondary	20	60	fallopian.tube_lymphatic.endothelial.cells	39.0	False	177	0.64045	high	131	3	2	1.0	False	False
+Disorders of ocular muscles, binocular movement, accommodation and refraction	eye	primary	40	23	eye_m2.like.macrophages	17.0	False	183	0.6413	high	66	1	1	1.0	False	False
+Abscess of anal and rectal regions	small.intestine	secondary	6	264	small.intestine_enterocytes	193.0	False	158	0.64151	high	80	1	2	1.0	False	False
+Other bacterial intestinal infections	rectum	secondary	9	221	rectum_l.cells	123.5	False	172	0.64162	medium	2	2	2	1.0	False	False
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	bone.marrow	primary	28	106	bone.marrow_nk.cells	72.0	False	187	0.64894	medium	10	1	4	1.0	False	False
+Acute alcohol intoxication, ICD10	liver	secondary	15	178	liver_kupffer.cells	121.5	False	176	0.64972	high	16	6	1	1.0	False	False
+Intestinal infectious diseases	small.intestine	primary	6	292	small.intestine_enterocytes	193.0	False	158	0.66038	medium	0	1	2	1.0	False	False
+Other neurological diseases	brain	primary	84	37	brain.non.neurons_astrocytes	17.0	False	164	0.66061	high	62	1	1	1.0	False	False
+Obesity, other/unspecified	adipose.tissue	primary	18	104	adipose.tissue_pericytes	63.5	False	180	0.66298	medium	21	2	1	1.0	False	False
+Crohn disease (strict definition, require KELA, min 2 HDR)	colon	primary	10	119	colon_enteroendocrine.cells	74.0	False	166	0.66467	high	85	2	2	1.0	False	False
+Urethral stricture	urinary.bladder	primary	24	63	urinary.bladder_schwann.cells	37.0	False	184	0.66486	high	151	1	1	1.0	False	False
+Other disorders of male genital organs	epididymis	primary	17	66	epididymis_mast.cells	44.0	False	185	0.67204	high	142	1	3	1.0	False	False
+Other disorders of skin and subcutaneous tissue, not elsewhere classified	skin	primary	16	64	skin_vascular.smooth.muscle.cells	28.0	False	175	0.6875	high	117	2	1	1.0	False	False
+Smoking dependency	brain	primary	84	39	brain.non.neurons_venous.endothelial.cells	17.0	False	164	0.69091	high	54	1	1	1.0	False	False
+Gastroduodenal ulcer	small.intestine	primary	6	302	small.intestine_enterocytes	193.0	False	158	0.69182	high	96	1	2	1.0	False	False
+Other cataract	eye	primary	40	27	retina_rod.bipolar.cells	17.0	False	183	0.69565	high	68	1	1	1.0	False	False
+Adenomyosis (Endometriosis of uterus)	endometrium	primary	20	98	endometrium_pre.ciliated.epithelial.cells	34.0	False	171	0.70349	high	125	2	2	1.0	False	False
+Other diseases of intestine	colon	primary	10	152	colon_goblet.cells	74.0	False	166	0.70659	high	103	1	2	1.0	False	False
+Ovarian cyst	endometrium	primary	20	101	endometrium_pre.glandular.cells.secretory.phase.	34.0	False	171	0.7093	high	146	1	2	1.0	False	False
+Senile cataract	eye	primary	40	30	eye_venous.ecs	17.0	False	183	0.71196	high	69	1	1	1.0	False	False
+Malignant neoplasm of breast, excluding all cancers (controls excluding all cancers)	breast	primary	23	71	breast_lymphoid.epithelial.cells	31.0	False	190	0.71204	medium	8	1	1	1.0	False	False
+Cystitis	kidney	secondary	37	56	kidney_podocytes	27.0	False	170	0.71345	high	128	1	1	1.0	False	False
+Other disorders of  bladder	kidney	secondary	37	57	kidney_collecting.duct.intercalated.cells.type.a	27.0	False	170	0.71345	high	140	1	1	1.0	False	False
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	testis	primary	15	89	testis_macrophages	51.5	False	184	0.72973	medium	9	1	3	1.0	False	False
+Non-Hodgkin lymphoma, all, excluding all cancers (controls excluding all cancers)	blood	primary	11	158	blood_nk.cells	72.0	False	187	0.73404	medium	10	1	4	1.0	False	False
+Diverticular disease of intestine	colon	primary	10	167	colon_inflammated.epithelial.cells.s100a4.tnfaip2.	74.0	False	166	0.73653	high	91	1	2	1.0	False	False
+Crohn disease (strict definition, require KELA, min 2 HDR)	small.intestine	primary	6	332	small.intestine_enteric.stem.cells	193.0	False	158	0.74214	high	85	2	2	1.0	False	False
+Paralytic ileus and intestinal obstruction	small.intestine	secondary	6	334	small.intestine_enteric.stem.cells	193.0	False	158	0.74214	high	109	2	2	1.0	False	False
+Hypertension	vasculature	primary	18	111	vasculature_myofibroblasts	54.5	False	166	0.74251	high	33	1	2	1.0	False	False
+Hyperlipidaemia, other/unspecified	liver	primary	15	264	liver_cd8.t.cells	121.5	False	176	0.75141	medium	18	3	1	1.0	False	False
+Crohn's disease NAS	colon	primary	10	178	colon_enteroendocrine.cells	74.0	False	166	0.75449	high	85	2	2	1.0	False	False
+Diabetic maculopathy, excluding more controls	eye	primary	40	33	eye_vascular.smooth.muscle.cells	17.0	False	183	0.75543	high	64	1	1	1.0	False	False
+Glaucoma	eye	primary	40	33	eye_serous.acinar.cells	17.0	False	183	0.75543	high	67	2	1	1.0	False	False
+Hypertension, essential	vasculature	primary	18	117	vasculature_vascular.smooth.muscle.cells	54.5	False	166	0.76048	high	35	1	1	1.0	False	False
+Diseases of oesophagus, stomach and duodenum	small.intestine	primary	6	383	small.intestine_enterocytes	193.0	False	158	0.76101	high	88	1	3	1.0	False	False
+Abscess of anal and rectal regions	rectum	primary	9	299	rectum_colonocytes	123.5	False	172	0.76301	high	80	1	2	1.0	False	False
+Paralytic ileus and intestinal obstruction	rectum	primary	9	300	rectum_l.cells	123.5	False	172	0.76301	high	109	2	2	1.0	False	False
+Noninfective enteritis and colitis	colon	primary	10	182	colon_nk.cells	74.0	False	166	0.76647	high	98	1	3	1.0	False	False
+Death due to cardiac causes	vasculature	primary	18	122	vasculature_vascular.smooth.muscle.cells	54.5	False	166	0.77246	review	31	1	2	1.0	False	False
+Postprocedural disorders of digestive system, not elsewhere classified	stomach	primary	28	85	stomach_plasma.cells	33.0	False	171	0.77326	high	110	1	3	1.0	False	False
+Anxiety disorders, excluding more controls	brain	primary	84	57	brain.neurons_deep.cerebellar.nuclei.excitatory.vglut2.pvalb.cbln1.	17.0	False	164	0.77576	high	51	1	1	1.0	False	False
+Unstable angina pectoris	heart.muscle	primary	9	235	heart.muscle_pericytes	124.5	False	168	0.78107	high	25	2	2	1.0	False	False
+Hyperlipidaemia, other/unspecified	adipose.tissue	secondary	18	148	adipose.tissue_mesothelial.cells	63.5	False	180	0.78453	medium	18	3	1	1.0	False	False
+Calculus of kidney and ureter	urinary.bladder	primary	24	94	urinary.bladder_schwann.cells	37.0	False	184	0.78919	high	126	1	2	1.0	False	False
+Other diseases of liver	liver	primary	15	314	liver_kupffer.cells	121.5	False	176	0.79096	high	105	1	1	1.0	False	False
+Other diseases of the digestive system	small.intestine	primary	6	426	small.intestine_enterocytes	193.0	False	158	0.79245	high	107	1	3	1.0	False	False
+Other noninfective gastroenteritis and colitis	small.intestine	primary	6	429	small.intestine_ta.cells.intermediate.progenitors.	193.0	False	158	0.79245	high	108	1	2	1.0	False	False
+Adenomyosis (Endometriosis of uterus)	ovary	primary	8	154	ovary_macrophages	69.0	False	176	0.80226	high	125	2	2	1.0	False	False
+Postprocedural disorders of digestive system, not elsewhere classified	colon	primary	10	204	colon_t.cells	74.0	False	166	0.8024	high	110	1	3	1.0	False	False
+Squamous cell neoplasms and carcinomas of the skin, excluding all cancers (controls excluding all cancers)	skin	primary	16	101	skin_t.cells.cd8.	28.0	False	175	0.80682	review	12	1	1	1.0	False	False
+Crohn's disease NAS	small.intestine	primary	6	439	small.intestine_enterocytes	193.0	False	158	0.81132	high	85	2	2	1.0	False	False
+Functional dyspepsia	small.intestine	secondary	6	455	small.intestine_ta.cells.intermediate.progenitors.	193.0	False	158	0.81761	high	93	1	1	1.0	False	False
+Other malignant neoplasms of skin (=non-melanoma skin cancer), excluding all cancers (controls excluding all cancers)	skin	primary	16	107	skin_t.cells.cd8.	28.0	False	175	0.81818	medium	11	1	1	1.0	False	False
+Diaphragmatic hernia	esophagus	primary	16	136	esophagus_nk.cells	48.5	False	184	0.82162	high	86	1	2	1.0	False	False
+Oesophageal obstruction	esophagus	primary	16	138	esophagus_apical.cells	48.5	False	184	0.82162	high	99	3	1	1.0	False	False
+Heart failure, strict	kidney	secondary	37	89	kidney_vascular.smooth.muscle.cells	27.0	False	170	0.83626	high	32	1	2	1.0	False	False
+Duodenal ulcer	small.intestine	primary	6	476	small.intestine_enterocytes	193.0	False	158	0.83648	high	92	2	2	1.0	False	False
+Other or unspecified ileus, impaction or obstruction	colon	primary	10	223	colon_nk.cells	74.0	False	166	0.83832	high	109	2	2	1.0	False	False
+Noninfective enteritis and colitis	small.intestine	primary	6	487	small.intestine_enteric.stem.cells	193.0	False	158	0.84277	high	98	1	3	1.0	False	False
+Duodenal ulcer - Unspecified as acute or chronic, without haemorrhage or perforation, drug-induced	small.intestine	primary	6	485	small.intestine_enterocytes.best.4.	193.0	False	158	0.84277	high	92	2	2	1.0	False	False
+Hyperplasia of prostate	epididymis	primary	17	101	epididymis_cd8.t.cells	44.0	False	185	0.84409	high	134	1	3	1.0	False	False
+Intestinal infectious diseases	rectum	secondary	9	360	rectum_l.cells	123.5	False	172	0.84971	medium	0	1	2	1.0	False	False
+Volume depletion	kidney	primary	37	93	kidney_papillary.tip.epithelial.cells	27.0	False	170	0.8538	medium	24	1	1	1.0	False	False
+Other bacterial intestinal infections	colon	primary	10	237	colon_best4.colonocytes	74.0	False	166	0.85629	medium	2	2	2	1.0	False	False
+Other diseases of the digestive system	colon	primary	10	241	colon_inflammated.epithelial.cells.s100a4.tnfaip2.	74.0	False	166	0.85629	high	107	1	3	1.0	False	False
+Hypertensive Renal Disease	kidney	secondary	37	95	kidney_glomerular.capillary.ecs	27.0	False	170	0.85965	high	36	1	1	1.0	False	False
+Hydrocele	epididymis	primary	17	104	epididymis_pericytes	44.0	False	185	0.86022	high	133	1	3	1.0	False	False
+Schizophrenia or delusion, excluding more controls	brain	primary	84	82	brain.neurons_cortex.hippocampus.mge.interneurons.sst.npy.	17.0	False	164	0.86667	high	53	1	1	1.0	False	False
+Pure hypercholesterolaemia	adipose.tissue	secondary	18	192	adipose.tissue_arterial.endothelial.cells	63.5	False	180	0.87845	medium	18	3	1	1.0	False	False
+Other or unspecified ileus, impaction or obstruction	small.intestine	secondary	6	528	small.intestine_enteric.stem.cells	193.0	False	158	0.8805	high	109	2	2	1.0	False	False
+Disorders of lipoprotein metabolism and other lipidaemias	adipose.tissue	secondary	18	202	adipose.tissue_arterial.endothelial.cells	63.5	False	180	0.88398	medium	18	3	1	1.0	False	False
+Other diseases of arteries and capillaries	vasculature	primary	18	167	vasculature_capillary.endothelial.cells	54.5	False	166	0.88623	high	41	1	1	1.0	False	False
+Constipation	small.intestine	secondary	6	541	small.intestine_early.goblet.cells	193.0	False	158	0.88679	high	84	2	2	1.0	False	False
+Erosion and ectropion of cervix uteri	fallopian.tube	secondary	20	128	fallopian.tube_pericytes	39.0	False	177	0.88764	high	130	1	2	1.0	False	False
+Unspecified kidney failure	kidney	primary	37	105	kidney_glomerular.capillary.ecs	27.0	False	170	0.88889	high	150	1	1	1.0	False	False
+Noninfective enteritis and colitis	rectum	primary	9	399	rectum_l.cells	123.5	False	172	0.89017	high	98	1	3	1.0	False	False
+Nail disorders	skin	primary	16	145	skin_basal.keratinocytes	28.0	False	175	0.89205	high	116	1	1	1.0	False	False
+Varicose veins	vasculature	primary	18	172	vasculature_nk.cells	54.5	False	166	0.8982	high	49	1	1	1.0	False	False
+Other functional intestinal disorders	small.intestine	secondary	6	585	small.intestine_early.goblet.cells	193.0	False	158	0.90566	high	84	2	2	1.0	False	False
+Diseases of male genital organs	epididymis	primary	17	113	epididymis_cd8.t.cells	44.0	False	185	0.9086	high	129	1	3	1.0	False	False
+Postprocedural disorders of digestive system, not elsewhere classified	small.intestine	primary	6	606	small.intestine_goblet.cells	193.0	False	158	0.91195	high	110	1	3	1.0	False	False
+Other abnormal uterine and vaginal bleeding	ovary	primary	8	213	ovary_endothelial.cells	69.0	False	176	0.91525	high	138	1	2	1.0	False	False
+Endometriosis	ovary	primary	8	212	ovary_t.cells	69.0	False	176	0.91525	high	125	2	2	1.0	False	False
+Urethral stricture	kidney	secondary	37	123	kidney_nk.cells	27.0	False	170	0.91813	high	151	1	1	1.0	False	False
+Oesophagitis	esophagus	primary	16	205	esophagus_macrophages	48.5	False	184	0.91892	high	100	1	1	1.0	False	False
+Hypertensive Renal Disease	vasculature	primary	18	189	vasculature_myofibroblasts	54.5	False	166	0.92216	high	36	1	1	1.0	False	False
+Other disorders of kidney and ureter	kidney	primary	37	125	kidney_descending.vasa.recta.ecs	27.0	False	170	0.92398	high	141	1	1	1.0	False	False
+Ulcerative colitis, NAS	rectum	primary	9	470	rectum_early.goblet.cells	123.5	False	172	0.92486	high	111	2	2	1.0	False	False
+Alcohol dependence	brain	primary	84	101	brain.non.neurons_monocytes	17.0	False	164	0.92727	medium	16	6	1	1.0	False	False
+Depression or dysthymia	brain	primary	84	112	brain.non.neurons_monocytes	17.0	False	164	0.92727	medium	17	2	1	1.0	False	False
+Disorders of other endocrine glands	testis	secondary	15	197	testis_capillary.arterial.endothelial.cells	51.5	False	184	0.92973	medium	19	1	2	1.0	False	False
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	rectum	primary	9	491	rectum_early.goblet.cells	123.5	False	172	0.93064	high	111	2	2	1.0	False	False
+Alcohol abuse, main dg, excluding more controls	brain	primary	84	121	brain.non.neurons_macrophages	17.0	False	164	0.93333	high	16	6	1	1.0	False	False
+Other diseases of intestines	colon	primary	10	338	colon_best4.colonocytes	74.0	False	166	0.94611	high	104	1	2	1.0	False	False
+Unstable angina pectoris	vasculature	primary	18	208	vasculature_nk.cells	54.5	False	166	0.94611	high	25	2	2	1.0	False	False
+Ulcerative colitis, NAS	colon	primary	10	360	colon_t.cells	74.0	False	166	0.94611	high	111	2	2	1.0	False	False
+Intestinal infectious diseases	colon	primary	10	352	colon_enteroendocrine.cells	74.0	False	166	0.94611	medium	0	1	2	1.0	False	False
+Pain and other conditions associated with female genital organs and menstrual cycle	fallopian.tube	secondary	20	167	fallopian.tube_ilcs	39.0	False	177	0.94944	high	147	1	2	1.0	False	False
+Ischaemic heart disease, wide definition	vasculature	primary	18	210	vasculature_mast.cells	54.5	False	166	0.9521	high	38	2	2	1.0	False	False
+Excessive, frequent and irregular menstruation	fallopian.tube	secondary	20	170	fallopian.tube_ilcs	39.0	False	177	0.95506	high	131	3	2	1.0	False	False
+Acute alcohol intoxication	brain	primary	84	132	brain.non.neurons_macrophages	17.0	False	164	0.95758	medium	16	6	1	1.0	False	False
+Acute alcohol intoxication, ICD10	brain	primary	84	135	brain.non.neurons_macrophages	17.0	False	164	0.95758	high	16	6	1	1.0	False	False
+Major coronary heart disease event	vasculature	primary	18	236	vasculature_nk.cells	54.5	False	166	0.95808	high	38	2	2	1.0	False	False
+Myocardial infarction, strict	vasculature	primary	18	251	vasculature_mast.cells	54.5	False	166	0.95808	high	39	1	2	1.0	False	False
+Pure hypercholesterolaemia	vasculature	secondary	18	223	vasculature_myofibroblasts	54.5	False	166	0.95808	medium	18	3	1	1.0	False	False
+Disorders of lipoprotein metabolism and other lipidaemias	vasculature	secondary	18	238	vasculature_schwann.cells	54.5	False	166	0.95808	medium	18	3	1	1.0	False	False
+Coronary atherosclerosis	vasculature	primary	18	235	vasculature_myofibroblasts	54.5	False	166	0.95808	high	29	1	2	1.0	False	False
+Ulcerative colitis (strict definition, require KELA, min 2 HDR)	colon	primary	10	433	colon_t.cells	74.0	False	166	0.96407	high	111	2	2	1.0	False	False
+Chronic kidney disease	kidney	primary	37	150	kidney_glomerular.capillary.ecs	27.0	False	170	0.96491	high	127	1	1	1.0	False	False
+Menorrhagia	fallopian.tube	secondary	20	189	fallopian.tube_ciliated.fallopian.epithelial.cells	39.0	False	177	0.96629	high	131	3	2	1.0	False	False
+Angina pectoris	vasculature	primary	18	260	vasculature_myofibroblasts	54.5	False	166	0.97006	high	25	2	2	1.0	False	False
+Depression	brain	primary	84	148	brain.non.neurons_t.cells	17.0	False	164	0.97576	medium	17	2	1	1.0	False	False
+Other disorders of fluid, electrolyte and acid-base balance	kidney	primary	37	188	kidney_ascending.thin.limb	27.0	False	170	0.97661	medium	23	1	1	1.0	False	False
+Renal tubulo-interstitial diseases	kidney	primary	37	171	kidney_glomerular.capillary.ecs	27.0	False	170	0.97661	high	149	1	1	1.0	False	False
+Gout, unspecified	kidney	primary	37	214	kidney_vascular.smooth.muscle.cells	27.0	False	170	0.98246	review	122	1	1	1.0	False	False
+Constipation	rectum	primary	9	608	rectum_ta.cells	123.5	False	172	0.98266	high	84	2	2	1.0	False	False
+Other functional intestinal disorders	rectum	primary	9	604	rectum_ta.cells	123.5	False	172	0.98266	high	84	2	2	1.0	False	False
+Malignant neoplasm of prostate, excluding all cancers (controls excluding all cancers)	prostate	primary	17	254	prostate_vascular.smooth.muscle.cells	47.0	False	185	0.98387	medium	9	1	3	1.0	False	False
+Other functional intestinal disorders	colon	primary	10	528	colon_enteric.stem.cells	74.0	False	166	0.98802	high	84	2	2	1.0	False	False
+Constipation	colon	primary	10	532	colon_enteric.stem.cells	74.0	False	166	0.98802	high	84	2	2	1.0	False	False
+Disorders of other endocrine glands	ovary	secondary	8	262	ovary_vascular.smooth.muscle.cells	69.0	False	176	0.9887	medium	19	1	2	1.0	False	False
+Alcohol use disorder, ICD-based	brain	primary	84	186	brain.non.neurons_monocytes	17.0	False	164	0.99394	high	16	6	1	1.0	False	False
+Sleep apnoea	brain	primary	84	185	brain.neurons_midbrain.inhibitory.pcp4.foxp2.	17.0	False	164	0.99394	high	63	2	1	1.0	False	False
+Hyperlipidaemia, other/unspecified	vasculature	secondary	18	334	vasculature_schwann.cells	54.5	False	166	0.99401	medium	18	3	1	1.0	False	False
+Acute renal failure	kidney	primary	37	300	kidney_glomerular.capillary.ecs	27.0	False	170	0.99415	high	124	1	1	1.0	False	False
+Other obstructive and reflux uropathy	kidney	primary	37	279	kidney_glomerular.capillary.ecs	27.0	False	170	0.99415	high	145	1	1	1.0	False	False
+Acute pancreatitis	pancreas	primary	23	281	pancreas_capillary.endothelial.cells	45.0	False	189	0.99474	high	81	1	1	1.0	False	False
+Excessive, frequent and irregular menstruation	ovary	primary	8	503	ovary_vascular.smooth.muscle.cells	69.0	False	176	1.0	high	131	3	2	1.0	False	False
+Leiomyoma of uterus	ovary	primary	8	387	ovary_vascular.smooth.muscle.cells	69.0	False	176	1.0	medium	6	1	3	1.0	False	False
+Any mental disorder	brain	primary	84	209	brain.non.neurons_venous.endothelial.cells	17.0	False	164	1.0	high	52	1	1	1.0	False	False
+Substance abuse, excluding more controls	brain	primary	84	226	brain.non.neurons_monocytes	17.0	False	164	1.0	high	16	6	1	1.0	False	False
+Irregular menses	ovary	primary	8	431	ovary_macrophages	69.0	False	176	1.0	high	131	3	2	1.0	False	False
+Pain and other conditions associated with female genital organs and menstrual cycle	ovary	primary	8	489	ovary_t.cells	69.0	False	176	1.0	high	147	1	2	1.0	False	False
+Ovarian cyst	ovary	primary	8	341	ovary_macrophages	69.0	False	176	1.0	high	146	1	2	1.0	False	False
+Menorrhagia	ovary	primary	8	424	ovary_vascular.smooth.muscle.cells	69.0	False	176	1.0	high	131	3	2	1.0	False	False
+Other sleep disorders	brain	primary	84	280	brain.neurons_hypothalamic.avp.magnocellular.neurosecretory.foxp2.	17.0	False	164	1.0	high	63	2	1	1.0	False	False
+Other abnormal uterine and vaginal bleeding	fallopian.tube	secondary	20	286	fallopian.tube_ciliated.fallopian.epithelial.cells	39.0	False	177	1.0	high	138	1	2	1.0	False	False
+Noninflammatory disorders of female genital tract	ovary	primary	8	325	ovary_t.cells	69.0	False	176	1.0	high	137	1	2	1.0	False	False

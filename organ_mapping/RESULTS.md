@@ -1,11 +1,15 @@
 # Do the cell-type results point to the disease's own organ?
 
-**Short answer.** Sometimes, and only at the very top of the ranking. For about 1 in 8 diseases, the
-top-ranked cell type is in the disease's own organ. That is twice what chance gives (p < 0.001, both atlases).
-The signal is concentrated in **stomach, lung and heart**, where the own organ beats chance in every
-disease, and it is absent for **kidney** (0 of 9 diseases), adipose and pancreas. Below the top 5 the
-rankings no longer follow the organ. The cell types the pipeline calls *disease-specific* are 3–4× enriched
-for the disease's own organ, but only 25–41 diseases have any.
+**Short answer.** Reported per disease and per organ; no claim is made about "all diseases".
+* **Organs:** **lung, stomach and heart** diseases have clearly higher scores for their own organ than diseases without
+  it, in both atlases. Effect 1.3–2.1 SD, all 95% intervals above 0, each selected at 5% FDR. **Kidney** diseases score
+  their own organ clearly *lower* (−1.3 and −2.0 SD). Most other organs show nothing either way.
+* **Single diseases:** after hierarchical FDR, **interstitial lung disease and idiopathic pulmonary fibrosis** (both
+  atlases) and influenza/pneumonia (hpa700) are significant on their own. Stomach diseases (ulcers, gastritis) just
+  miss, and cardiomyopathy and conduction disorders come close in pp229.
+* **What the test can see:** it is calibrated under shuffled labels. For one disease to pass on its own, its organ's
+  score has to sit about 6 SD above diseases without that organ, and only the lung-fibrosis diseases reach that. Most
+  real effects are 1–4 SD, which the test detects for groups of diseases (organs) but not for single diseases.
 
 Atlases: HPA v25.1 (`hpa700`, 700 cell types) and `pp229` (229 cell types). Diseases: UK Biobank
 Proteome-Phenome Atlas, prevalent cases (268 diseases, of which 191 / 184 have a primary organ present in the
@@ -58,10 +62,12 @@ terms, so this checks a subset. In that subset the two sources **agree for 64 di
 have no match, so for ~76% of diseases the check is silent.
 
 **Known weak spots.** Lipid disorders → liver (medium confidence), gout → kidney (review: its definition
-includes renal codes, N16), and pregnancy/labour → endometrium/placenta. The last is not a weak assignment in the results (placenta 6/6
-beating chance in both atlases, the strongest block in the clustermaps), but the pregnancy diseases are so
-distinctive that this says little about how accurate the mapping is elsewhere. `organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a
-domain expert to correct; **no such expert review has been done yet**, so the table is not clinically validated.
+includes renal codes, N16), and pregnancy/labour → endometrium/placenta. The last is not a weak assignment in the
+results (placenta 6/6 beating chance in both atlases, the strongest block in the clustermaps), but the pregnancy
+diseases are so distinctive that this says little about how accurate the mapping is elsewhere.
+
+`organ_review_sheet.csv` lists every assignment with its flags and MONDO result, with empty columns for a domain
+expert to correct. **No such expert review has been done yet**, so the table is not clinically validated.
 
 ![Primary organs for 50 representative diseases](figures/disease_primary_organs.png)
 
@@ -99,19 +105,44 @@ it is significant (max-T p ≤ 0.05) *and* its specificity_z has FDR ≤ 0.05.
 The organ of the tissue it was sampled from (`organ_vocabulary.tsv`). This includes the tissue's immune,
 endothelial and stromal cells: a "kidney macrophage" counts as kidney.
 
-### 1e. What counts as an organ match: the evaluations
-No single cut-off defines a hit, so the results are reported several ways. All of them use the same null:
-**organ assignments shuffled across diseases** (2,000×). The shuffle keeps each disease's ranking and each
-organ's number of cell types, so organs with many cell types (brain: 84 in hpa700) get no advantage.
+### 1e. Best-rank view (descriptive): chance rank and pair p
+Every evaluation is per (disease, organ) pair. The organ can be one of the disease's primary organs or one of its
+secondary organs (`evaluate_organ_hits.py`).
 
-| Evaluation | Question | Uses significance? | Script |
-|---|---|---|---|
-| Mean-rank AUC | Do the own organ's cell types rank above the rest on average? | no | `plot_organ_heatmaps.py` |
-| Top-10 share | What fraction of the top 10 cell types are own-organ? | no | `plot_organ_heatmaps.py` |
-| **Hit rate at depth k** (new) | Is ≥1 own-organ cell type in the top k, for every k = 1…50? | no | `evaluate_organ_hits.py` |
-| **Organ-defining cells only** (new) | Same, counting only parenchymal cells (no immune, endothelial, stromal, blood) | no | `evaluate_organ_hits.py` |
-| **Best own-organ rank** (new) | Per disease: does the organ's best cell type beat that organ's typical best rank? | no | `evaluate_organ_hits.py` |
-| **Significant hits** (new) | Of the cell types called significant / disease-specific, what share is own-organ? | **yes** | `evaluate_organ_hits.py` |
+* **Best rank:** the rank of the organ's best cell type in the disease's ranking (1 = top).
+* **Comparison diseases:** every disease that does *not* have that organ among its primary or secondary organs.
+  Related diseases (for heart: heart failure, atrial fibrillation, cardiomyopathy …) are therefore never compared
+  with each other; a heart disease is compared with non-heart diseases.
+* **Chance rank** (black tick in Figures 3 and 5): the median best rank of the organ across the comparison diseases.
+  A disease *beats chance* if its best rank is smaller.
+* **Pair p-value:** (1 + number of comparison diseases ranking the organ at least as high) / (1 + number of
+  comparison diseases). It uses the whole spread behind the tick, not just its median, so an organ that ranks high
+  for every disease (generic signal) is automatically harder to pass. Ties count against the disease.
+  **q-value:** Benjamini–Hochberg across all pairs of the atlas (primary and secondary together).
+* **Organ-level test (exploratory):** for one organ and role (primary or secondary), the mean pair p of its diseases,
+  with near-duplicate diseases (same primary organs, ICD-10 overlap ≥ 0.5) averaged into one value. This is compared with
+  the same mean for the same number of near-duplicate groups drawn at random from the comparison diseases
+  (20,000 draws). Benjamini–Hochberg across organs × roles.
+
+### 1f. Formal test: organ score, hierarchical FDR and mixed model (`organ_hierarchical_test.py`)
+The best rank (1e) is intuitive but uses one cell type per organ and cannot give small p-values. The formal test uses
+every cell type of the organ:
+
+1. **Organ score** S(d, o) = mean specificity_z over all of organ *o*'s cell types in disease *d*, minus *d*'s mean over all
+   cell types (removes disease-wide shifts).
+2. **Pair z** = (S(d, o) − mean) / SD over the comparison diseases (the same set as for the chance rank: diseases without *o*
+   as a primary or secondary organ). Normal p-values are slightly optimistic in the far tail, so they are **calibrated by
+   label shuffles**: organ assignments are permuted across diseases 250 times, and p_cal is the share of shuffled-label
+   p-values at or below the observed one. Another 250 shuffles are held out to check the calibration (Figure 7A).
+3. **Hierarchical FDR** (Benjamini & Bogomolov 2014), matching how results are reported. First, organs are selected by
+   BH at 5% on an organ-level p-value: the mixed-model p (step 4) for primary organs, and Simes for secondary organs, which
+   are too small for the model. Second, inside the R selected organs out of m, diseases are tested by BH at 5% × R / m.
+4. **Mixed model** on the primary pairs' z: `z ~ 1 + (1 | organ) + (1 | near-duplicate group within organ)` (REML,
+   statsmodels; R/lme4 was not available). Near-duplicate diseases share a group effect, so five asthma definitions count
+   roughly once, and organs with few diseases are pulled toward the average. The organ effect is the intercept plus the
+   organ's random effect, with an approximate 95% interval.
+5. **Calibration and power** (Figure 7): calibration is checked under held-out label shuffles. For power, a known shift is
+   added to the score of disease–organ pairs that are not real pairs, and the share then detected is recorded.
 
 ---
 
@@ -125,126 +156,142 @@ Gastric ulcer is a clean hit: chief and parietal cells rank first and second. As
 many tissues, which is a lineage signal, not an organ signal. Chronic kidney disease has no kidney cell type
 in its top 15.
 
-### Top 10 or top 50? The signal is at rank 1
-![Hit rate by depth](figures/evaluation/fig2_hit_rate_by_depth.png)
-
-| | hpa700 | pp229 |
-|---|---|---|
-| Own organ ranked #1 | **13% vs 6%** shuffled (p < 0.001) | **12% vs 6%** (p < 0.001) |
-| ≥1 own-organ cell type in top 10 | 29% vs 27% (p = 0.27) | 31% vs 32% (p = 0.59) |
-| ≥1 own-organ cell type in top 50 | 61% vs 64% (p = 0.83) | 70% vs 75% (p = 0.97) |
-| Organ-defining cells only: #1 | 10% vs 4% (p < 0.001) | 9% vs 3% (p < 0.001) |
-| Organ-defining cells only: top 10 | 23% vs 17% (p = 0.026) | 23% vs 18% (p = 0.056) |
-
-Two consequences for how hits are defined:
-* **A deeper cut-off adds noise, not hits.** By k = 10 the curve has merged with the shuffled band. A top-50
-  definition would report "matches" for 61–70% of diseases, but chance alone gives 64–75%.
-* **Counting only organ-defining cells sharpens the test.** Immune and stromal cells appear in every tissue
-  and dilute the own-organ set.
-
-The existing top-10 *share* (11% vs 6% for hpa700, p < 0.001) is significant while "≥1 in top 10" is
-not. That is because a few diseases contribute many own-organ cell types each (gastric ulcer: 11 of 15),
-not because many diseases have one.
-
-### Which organs work
-![Best own-organ rank per disease](figures/evaluation/fig3_best_rank_per_disease.png)
-
-**What "chance rank" means (the black tick).** For an organ, take every disease that does *not* have that organ among
-its own organs (primary or secondary) and find where the organ's best cell type lands in that disease's ranking.
-The **median** of those positions is the organ's chance rank: where the organ typically ranks for a disease that
-is not about it. A disease beats chance when it ranks its own organ better (a smaller number) than that median.
-Because it is a median, a disease whose ranking carried no organ information would beat it about half the time,
-so about 50% is the expected value under no signal; it is not an assumed constant. Figures 3 and 5 use this same
-definition (`fig3b_how_chance_works.png` shows the calculation for three diseases). An organ that ranks high
-for every disease gets a low chance rank and is hard to beat, which is how generic signals are discounted at this step.
-
+### How the chance rank and the p-value are computed
 ![How the chance rank is computed](figures/evaluation/fig3b_how_chance_works.png)
 
-Overall, 48% (hpa700) and 46% (pp229) of diseases beat the chance rank, so most diseases look random. The
-organ-level split is consistent across the two atlases:
+Gray bars are the comparison diseases. The black line (their median) is the chance rank; the disease's p is the share
+of gray bars at or left of its dot.
 
-* **Works:** stomach (4/4 in both), lung (11/11, 10/11), heart muscle (7/7 in both), urinary bladder (5/6, hpa700 only).
-* **Mixed:** skin, vasculature, esophagus, eye, brain (8 of 25 in both), liver (4/7 hpa700, 2/7 pp229).
-* **Fails:** kidney (0/9 in both), adipose (0/2), pancreas, breast.
+### Per disease, single-organ diseases
+![Best own-organ rank per disease](figures/evaluation/fig3_best_rank_per_disease.png)
 
-### Does adding secondary organs help?
-![Primary vs primary+secondary](figures/evaluation/fig4_primary_vs_secondary.png)
+Read row by row. Rings mark the pairs with p < 0.05; none survive correction. Organ q (right column) is the
+organ-level test on the diseases shown in that row:
 
-Secondary organs are organs the block table lists for a disease, or that fewer than 25% of its ICD-10 categories
-point to. They widen the own-organ set for 68 (hpa700) and 61 (pp229) of the evaluated diseases (hpa700: median
-28 → 38 own cell types per disease). A wider set raises the chance of a hit, so each definition is compared with
-its own shuffled-organ null.
-
-| ≥1 own-organ cell type in the top k (observed vs shuffled) | hpa700 | pp229 |
+| organ (single-organ diseases) | hpa700: beat chance, organ q | pp229: beat chance, organ q |
 |---|---|---|
-| Primary, top 1 | 13% vs 6% (p < 0.001) | 12% vs 6% (p < 0.001) |
-| Primary + secondary, top 1 | 14% vs 7% (p < 0.001) | 12% vs 8% (p = 0.006) |
-| Primary, top 10 | 29% vs 27% (p = 0.27) | 31% vs 32% (p = 0.59) |
-| Primary + secondary, top 10 | 35% vs 31% (p = 0.15) | 38% vs 36% (p = 0.35) |
-| **Secondary organs alone**, top 1 (primary cell types excluded) | 3% vs 3% (p = 0.51) | 2% vs 7% (p = 0.98) |
-| **Secondary organs alone**, top 10 | 16% vs 16% (p = 0.64) | 26% vs 28% (p = 0.68) |
+| stomach | 4/4, **0.012** | 4/4, **0.003** |
+| lung | 11/11, **< 0.001** | 10/11, **< 0.001** |
+| heart muscle | 7/7, **0.012** | 7/7, **< 0.001** |
+| urinary bladder | 5/6, 0.67 | not in atlas |
+| liver, skin, esophagus, vasculature, eye, brain | about half or fewer, q ≥ 0.75 | same |
+| kidney | 0/9, 1.0 | 0/9, 1.0 |
 
-Secondary organs add **no signal**. The secondary organs on their own do no better than chance, and the pooled
-mean-rank AUC stays at 0.50. The primary + secondary curve rises above its null only for the first few ranks,
-exactly as the primary-only curve does, and the excess is smaller in pp229 (top 1: +5 points vs +6 for primary).
-The raw hit rate goes up simply because the own-organ set is larger. Keep primary organs as the headline
-definition and report this as a sensitivity analysis.
-
-**Per disease and organ (Figure 5).** Here every organ in a disease's own set gets its own dot, so secondary organs
-have rows too (filled = primary, open ring = secondary; a disease with several organs has several dots, and "any
-own organ beats chance" = any blue dot). Chance for an organ is its median best rank across the diseases that do
-*not* have it as an own organ, so the baseline is organ-specific:
-
+### Per disease and organ, primary and secondary
 ![Best rank per disease and organ, primary and secondary](figures/evaluation/fig5_best_rank_primary_secondary.png)
 
-Pooled, about half the pairs beat chance whatever the role: primary 52% (hpa700, n = 291) and 51% (pp229,
-n = 276); secondary 48% (n = 80) and 56% (n = 71). Per organ, the primary-pair picture matches Figure 3 (stomach
-16/17 and 17/17, lung 15/15 and 13/15, heart muscle 18/19 and 19/19, **placenta 6/6 in both atlases**,
-endometrium 14/20 and 11/20; kidney, eye, skin and brain near or below half). Secondary organs add one lead:
-the **liver as a secondary organ of the alcohol and substance-use diseases**. In pp229, 5 of those 6 diseases rank
-the liver at 7–14 (chance 31); in hpa700 3 of 6 beat chance (ranks 28, 68, 82 vs 122). That is biologically
-sensible, and it rests on one cluster of near-duplicate diseases, so it is a lead to follow, not a result.
+Every organ in a disease's own set gets a dot, so diseases with several organs appear in several rows. With all
+primary pairs, the organ-level test passes (q < 0.05) for stomach, lung and heart in both atlases, endometrium in hpa700
+(14/20, q = 0.032) and placenta in pp229 (6/6, q = 0.002; 6/6 but q = 0.30 in hpa700). Among secondary organs only
+lymph node in pp229 passes (5/5, q = 0.040: varicose veins, DVT and phlebitis), and not in hpa700 (1/5). The
+earlier lead of the liver as a secondary organ of the alcohol and substance-use diseases (pp229 5/6 beat chance) is
+one near-duplicate group and does not pass (q = 0.87).
 
-### Significant hits
-| | hpa700 | pp229 |
+This organ q is the simple best-rank test. Only stomach, lung and heart are also selected by the stricter formal test
+below, so treat endometrium, placenta and lymph node as leads.
+
+### Formal test: organ score per disease, with the organ-level effect
+![Organ score per disease with organ effects](figures/evaluation/fig6_organ_effects.png)
+
+The organ score already does far better than the best rank. 45 of 371 pairs (hpa700) and 42 of 347 (pp229) have
+p_cal < 0.05, against 19 and 17 expected by chance.
+
+| organ | hpa700: effect (95% interval), selected? | pp229: effect (95% interval), selected? |
 |---|---|---|
-| Significant (max-T p ≤ 0.05): hits / diseases | 3,734 / 179 | 1,776 / 171 |
-| … share in own organ (chance) | 8.2% (5.3%) — 1.6× | 7.9% (5.3%) — 1.5× |
-| Disease-specific (also specificity FDR ≤ 0.05): hits / diseases | 245 / 41 | 101 / 25 |
-| … share in own organ (chance) | **19.2% (5.2%) — 3.7×** | **19.8% (6.3%) — 3.1×** |
-| Diseases with ≥1 own-organ disease-specific hit | 19 | 14 |
+| lung | **2.14 (1.39, 2.90)**, yes | **1.57 (0.84, 2.30)**, yes |
+| stomach | **1.70 (0.97, 2.44)**, yes | **1.85 (1.14, 2.56)**, yes |
+| heart muscle | **1.35 (0.66, 2.04)**, yes | **1.74 (1.08, 2.41)**, yes |
+| testis | 0.61 (−0.33, 1.56), no | 0.94 (0.03, 1.85), no (FDR q = 0.22) |
+| ovary | −1.25 (−2.03, −0.48) | −0.55 (−1.30, 0.20) |
+| kidney | **−1.27 (−2.08, −0.47)** | **−1.98 (−2.76, −1.21)** |
 
-Applying the pipeline's significance calls raises organ precision 3–4×. Coverage is low, though: 79% (hpa700)
-and 86% (pp229) of evaluated diseases have no disease-specific hit at all.
+Effects are in SDs of the organ score among diseases without that organ. Intervals are not corrected for the ~30 organs;
+"selected" is the FDR-corrected statement.
+
+**Single diseases significant after hierarchical FDR:**
+
+| disease | organ | hpa700: z, p_cal | pp229: z, p_cal |
+|---|---|---|---|
+| Interstitial lung disease | lung | 7.6, < 0.0001 | 6.1, < 0.0001 |
+| Idiopathic pulmonary fibrosis | lung | 6.9, < 0.0001 | 5.4, < 0.0001 |
+| Influenza and pneumonia | lung | 3.8, 0.0006 | not significant |
+
+The two fibrosis diseases are one near-duplicate group, so this is one independent finding plus pneumonia. Stomach
+diseases just miss: gastroduodenal ulcer, gastritis and "oesophagus, stomach and duodenum" have within-organ q ≈ 0.0037,
+against thresholds of 0.0032 (hpa700) and 0.0038 (pp229). Heart diseases are next in pp229 (cardiomyopathy, conduction
+disorders, q ≈ 0.012).
+
+### Is the test calibrated, and what can it detect?
+![Calibration and power](figures/evaluation/fig7_calibration_power.png)
+
+* **Calibration (A).** On held-out label shuffles, the calibrated p-values fall below 0.05, 0.01 and 0.001 in 5.1%, 1.0%
+  and 0.09% of pairs, as they should. The uncalibrated normal p was up to 2× too optimistic at 0.001. Under shuffled labels,
+  hierarchical FDR made a discovery in 0% (hpa700) and 2% (pp229) of shuffles. Organ intervals excluded 0 for 0.3% and 5.2%
+  of organs.
+* **Power (B, C).** A single disease needs its organ score about **6 SD** above diseases without that organ for 80% power
+  after correcting for all pairs; p < 0.05 alone needs about 2.6 SD. Real primary pairs are mostly between −2 and 4 SD, and
+  only the lung-fibrosis diseases exceed 6. In units of the original scores, a disease's organ would need its cell types to
+  rise on average by about 2.1 (lung), 2.8–3.9 (stomach) or 4.7–4.9 (heart) disease-specific z above their usual level.
+  **A non-significant single disease is therefore weak evidence of no organ signal.** Organ-level effects of 1–2 SD are
+  detected because several diseases are pooled.
+
+### Best-rank view (descriptive)
+Figures 3 and 5 use the best-ranked cell type of each organ. They are easier to read, but less powerful. They are kept as
+the intuitive view, and the formal statements above come from Figures 6 and 7.
+
+### Why the best-rank test cannot make single diseases significant
+Two reasons, both visible in Figure 3b:
+1. **Resolution.** With ~170 comparison diseases the smallest p is ~0.006. Benjamini–Hochberg over ~350 pairs would need
+   p ≈ 0.0001 for the best pair, or dozens of pairs tied at the minimum.
+2. **Some unrelated diseases rank the organ near the top as well.** In hpa700, 12 of 176 non-lung diseases rank a
+   lung cell type in the top 3 (depression, schizophrenia, labour, nail disorders …), so even rank 1 gives p ≈ 0.03.
+   In pp229, 23 of 161 non-heart diseases rank heart above the heart diseases' median (kidney failure, cataract,
+   labour …). Only 1–2 of these have the organ in their ICD-10 chapter's organ list. They are not related heart or lung
+   diseases (those are excluded) but leftover shared signal (see limitations).
+
+A single disease can be significant only if hardly any unrelated disease ranks its organ as high. The organ-level
+test is the way to ask whether a group of related diseases does better than unrelated ones together.
 
 ---
 
-## 3. Recommended way to report organ concordance
-1. **Headline: hit rate at rank 1 and top 5, against the shuffled-organ null.** This is where the signal
-   is. Show the full curve (Figure 2) rather than one cut-off, so the choice of k is visible.
-2. **Count organ-defining cells as the own organ;** report "any cell type in the tissue" as secondary.
-3. **For significance-based claims, use disease-specific hits**, not max-T significance alone. Report the
-   precision (19–20%, 3–4× chance) together with the coverage (25–41 diseases).
-4. **Report per organ (Figure 3), not only pooled.** The pooled AUC (0.50) averages organs that work against
-   organs that don't, and hides both.
-5. **Limit the headline set to diseases where an organ match is expected.** The 25 "brain" diseases are
-   mostly psychiatric and substance use, and brain proteins rarely reach plasma.
+## 3. How to report organ concordance
+1. **Per organ, then per disease.** Show Figure 5 for the picture. Take the statements of significance from the organ
+   effects (Figure 6) and the hierarchical-FDR result, then name the significant diseases. Do not quote a pooled AUC or a
+   pooled share of diseases.
+2. **Keep the denominator and the power.** Report how many pairs pass next to how many chance gives, and say that single
+   diseases need about 6 SD to be detectable.
+3. **Defensible claims:** lung, stomach and heart concordance (both atlases), lung fibrosis as single diseases, and kidney
+   discordance. Testis (pp229) is a lead only.
+4. **Count near-duplicate diseases once** (done in the model).
 
 ## 4. Limitations
-* Organ labels come from ICD-10 and are only partly validated (MONDO has locations for ~8% of terms).
-* "Organ-defining" uses an approximate regular-expression lineage call on cell-type names.
+* Organ labels come from ICD-10 and are only partly validated (MONDO has locations for ~8% of terms). A disease
+  that truly involves an organ but is not labelled with it sits among the comparison diseases and makes the test
+  stricter (e.g. kidney failure ranking heart #1 may be real cardio-renal biology).
 * Diseases are not independent. Related endpoints (e.g. four duodenal and gastric ulcer definitions) share
-  most cases, so per-organ counts overstate the evidence.
+  most cases; the organ-level test averages near-duplicates, but the grouping rule is approximate.
+* The organ-level results for stomach, lung and heart were first noticed in these same data (best-rank view). The formal
+  test was designed afterwards, so it is not an independent confirmation; a held-out cohort or platform is needed.
+* The mixed model's intervals are approximate (intercept variance + conditional variance of the organ effect), and the
+  model was fitted with statsmodels instead of lme4. Calibration under label shuffles (Figure 7A) is the check that
+  matters, and it holds.
+* Power was simulated by shifting the organ score directly, not by injecting signal into protein-level data, so it
+  describes the test's last step, not the whole pipeline.
+* The reference labels (ICD-10 → organ) have not been checked against an independent source such as genetics-based tissue
+  enrichment (LDSC-SEG / MAGMA).
 * A shared signal across diseases remains even after the pleiotropy covariate: the first principal component
   of the protein × disease z-matrix explains 40% of the variance. Removing more of it, and scoring tissue
   *within* lineage, are the next methodological steps.
 
 ## Reproduce
 ```bash
-python organ_mapping/plot_organ_heatmaps.py --atlas both   # AUC, top-10 share, clustermaps
-python organ_mapping/evaluate_organ_hits.py                 # this report's figures and tables
-python organ_mapping/evaluate_primary_secondary.py          # primary vs primary+secondary organs
+python organ_mapping/evaluate_organ_hits.py                 # Figures 1, 3, 5 (best-rank view)
+python organ_mapping/organ_hierarchical_test.py             # Figures 6, 7 (formal test); needs statsmodels
+python organ_mapping/plot_chance_explainer.py               # Figure 3b
 python organ_mapping/plot_disease_organ_examples.py         # primary-organ example figure
+python organ_mapping/plot_organ_heatmaps.py --atlas both    # clustermaps
 ```
-Tables behind the figures are in `figures/evaluation/`: `hit_rate_by_depth.tsv`, `<atlas>_best_rank_per_disease.tsv`
-and `significant_hits_in_own_organ.tsv`.
+Tables in `figures/evaluation/`: `<atlas>_disease_organ_pairs.tsv` (one row per disease–organ pair: best rank, best cell
+type, chance rank, p, q, near-duplicate group), `<atlas>_organ_level_test.tsv` (best-rank organ test),
+`<atlas>_organ_scores.tsv` (formal test, one row per pair: organ score, z, p_cal, hierarchical-FDR result, model effect),
+`<atlas>_organ_effects.tsv` (mixed-model organ effects, FDR selection, shift needed for 80% power) and `calibration.tsv`.

@@ -14,6 +14,7 @@ import sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,11 +25,9 @@ N_SHOW = 50                # number of diseases drawn
 MIN_JACCARD = 0.5          # diseases with the same primary organs and this much ICD-10 overlap are near-duplicates
 
 
-def pick_representatives(m, n_show=N_SHOW):
-    """Group near-duplicate diseases (same primary organs, ICD-10 category sets overlapping by Jaccard >= MIN_JACCARD),
-    represent each group by its medoid (highest mean overlap with the group; ties: higher confidence, shorter name),
-    then choose n_show groups: first the largest group for every primary organ (so no organ is missed), then groups
-    with a not-yet-shown organ combination (largest first), then the largest remaining groups. Returns [(row index, group size)]."""
+def near_duplicate_groups(m):
+    """Group near-duplicate diseases: same primary organs and ICD-10 category sets overlapping by Jaccard >= MIN_JACCARD (diseases
+    with no ICD-10 categories group by organs alone). Returns (groups as lists of row positions, per-row group id, plus helpers used by pick_representatives)."""
     cats = [set(c.split(",")) - {""} for c in m.icd10_categories]
     organs = [frozenset(o for o in x.split(";") if o) for x in m.organs_primary]
     jac = lambda i, j: len(cats[i] & cats[j]) / max(1, len(cats[i] | cats[j]))
@@ -41,6 +40,18 @@ def pick_representatives(m, n_show=N_SHOW):
             if organs[i] == organs[j] and (jac(i, j) >= MIN_JACCARD or (not cats[i] and not cats[j])): parent[find(i)] = find(j)
     groups = {}
     for i in range(len(m)): groups.setdefault(find(i), []).append(i)
+    gid = np.empty(len(m), dtype=int)
+    for k, g in enumerate(groups.values()): gid[g] = k
+    return list(groups.values()), gid, cats, organs, jac
+
+
+def pick_representatives(m, n_show=N_SHOW):
+    """Group near-duplicate diseases (see near_duplicate_groups),
+    represent each group by its medoid (highest mean overlap with the group; ties: higher confidence, shorter name),
+    then choose n_show groups: first the largest group for every primary organ (so no organ is missed), then groups
+    with a not-yet-shown organ combination (largest first), then the largest remaining groups. Returns [(row index, group size)]."""
+    glist, _, cats, organs, jac = near_duplicate_groups(m)
+    groups = {k: g for k, g in enumerate(glist)}
     conf_rank = {"high": 0, "medium": 1, "review": 2}
     reps = []
     for g in groups.values():

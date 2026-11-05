@@ -4,8 +4,7 @@ Explainer for Figures 3 and 5: how an organ's "chance rank" (the black tick) is 
 For one organ (e.g. the 35 lung cell types), take every disease that does not have that organ among its own organs (primary
 or secondary) and find where the organ's best cell type lands in that disease's cell-type ranking. The median of those
 positions is the chance rank: where the organ typically ranks for a disease that is not about it. A disease "beats chance"
-when its own best rank for the organ is better (smaller) than that median. By the definition of a median, a disease whose
-ranking carried no organ information would beat it about half the time - hence "~50% expected". Organs that rank high for
+when its own best rank for the organ is better (smaller) than that median. Organs that rank high for
 every disease (generically associated proteins) get a low (strict) chance rank.
 
 Usage (repository root):  python organ_mapping/plot_chance_explainer.py
@@ -47,16 +46,16 @@ def main():
         ax.scatter([mine], [0], s=70, color=E.BLUE if win else E.INK2, zorder=5, clip_on=False, edgecolors=E.SURFACE, lw=1.2)
         organs = " + ".join(o.replace(".", " ") for o in d["mp"].organ_dict[i])
         ax.set_title(f"{nm}   ·   own organ: {organs} ({int(M.sum())} of {n} cell types)   ·   "
-                     f"{(others <= mine).sum()} of {len(others)} diseases without it rank it at least as high",
+                     f"{(others <= mine).sum()} of {len(others)} diseases without it rank it at least as high → p = {(1 + (others <= mine).sum()) / (1 + len(others)):.3f}",
                      fontsize=8.8, color=E.INK, loc="left")
         ax.set_xscale("log"); ax.set_xlim(0.8, n * 1.1)
         ax.set_xticks([1, 3, 10, 30, 100, 300]); ax.set_xticklabels(["1", "3", "10", "30", "100", "300"]); ax.minorticks_off()
         E.clean(ax); ax.set_ylabel("diseases without\nthis organ", fontsize=8)
     axes[-1].set_xlabel("rank of the organ's best cell type in a disease's ranking (of 700; left = higher)")
-    fig.text(0.01, 0.99, "How the chance rank (the black tick in Figures 3 and 5) is computed", fontsize=12.5, fontweight="bold", color=E.INK, va="top")
+    fig.text(0.01, 0.99, "How the chance rank (black tick) and the p-value in Figures 3 and 5 are computed", fontsize=12.5, fontweight="bold", color=E.INK, va="top")
     fig.text(0.01, 0.955, "Gray bars: take every disease that does NOT have this organ among its own organs, and find where the organ's best cell type lands in that disease's ranking.\n"
              "Black line: the median of those positions = the organ's chance rank. The disease beats chance if its own rank (dot) is left of the black line.\n"
-             "Because it is a median, a disease whose ranking says nothing about its organ would land left of it about half the time: that is the '~50% expected'.",
+             "p = (1 + gray diseases at or left of the dot) / (1 + all gray diseases): how unusual the disease is against the whole spread, not just the median.",
              fontsize=8, color=E.INK2, va="top")
     fig.subplots_adjust(left=0.07, right=0.98, top=0.83, bottom=0.08, hspace=0.55)
     for ext in ("png", "pdf"):
