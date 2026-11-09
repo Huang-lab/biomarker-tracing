@@ -40,7 +40,9 @@ METHOD_ARGS = {
                       ["--param_search", "0", "--num_trees", "50", "--min_samples_split", "10",
                        "--min_samples_leaf", "2", "--max_samples", "0.7", "--kfold_n", "3",
                        "--n_permute_repeat", "3"]),
-    "stability_selection": ("stability_analyses.py", ["--thres", "0.6"]),
+    # Specificity z-scored per cell type (1, the script's default): the fixed penalty grid (alpha 0.1 to 1) is
+    # sized for that and selects nothing on the unscaled values the other methods use here (-1)
+    "stability_selection": ("stability_analyses.py", ["--thres", "0.6", "--ztransform_type", "1"]),
 }
 
 
@@ -104,10 +106,9 @@ def test_random_forest(tmp_path):
                            sort_by=["fold", "cell_tissue"])
 
 
-@pytest.mark.xfail(strict=True, reason="Known bugs on master: stability-selection needs a sklearn.linear_model.base "
-                   "shim that is missing, and once that is added the fixed penalty grid (alpha 0.1 to 1) selects no "
-                   "cell type. The expected output is added together with the fix.")
 def test_stability_selection(tmp_path):
     run_method("stability_selection", tmp_path)
+    # Fraction of subsamples selecting each cell type at each penalty, then the cell types kept at the threshold
+    check_against_expected("stability_selection", tmp_path, "feature_scores.tsv", sort_by="feature_label")
     check_against_expected("stability_selection", tmp_path, "selected_features_thres_0.6.tsv",
                            sort_by="selected_features")

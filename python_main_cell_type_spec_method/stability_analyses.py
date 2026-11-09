@@ -18,6 +18,9 @@ import os, argparse, kneed, pickle, logging
 import joblib
 import sys
 sys.modules['sklearn.externals.joblib'] = joblib
+# stability-selection also imports sklearn.linear_model.base, which newer scikit-learn renamed to _base
+import sklearn.linear_model._base as linear_model_base
+sys.modules['sklearn.linear_model.base'] = linear_model_base
 
 import warnings, json, logging
 import matplotlib.pyplot as plt
@@ -66,8 +69,9 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     ])
 
     lambda_array = np.logspace(-1, 0, 20)
+    # Fixed seed so the subsamples, and so the stability scores, are the same on every run
     selector = StabilitySelection(base_estimator=base_estimator, lambda_name='model__alpha',
-                              lambda_grid=lambda_array).fit(X, y)
+                              lambda_grid=lambda_array, random_state=0).fit(X, y)
 
     # Retrieve all stability scores
     scores = selector.stability_scores_ # shape = [n_features, n_alphas]
