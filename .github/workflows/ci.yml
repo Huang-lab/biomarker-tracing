@@ -16,7 +16,11 @@ jobs:
           python-version: "3.11"
 
       - name: Install test dependencies
-        run: python -m pip install --upgrade pip pandas numpy scipy pytest
+        run: |
+          python -m pip install --upgrade pip pandas numpy scipy pytest pyyaml \
+            scikit-learn statsmodels matplotlib seaborn kneed
+          # Not on PyPI, and its setup.py imports numpy, so install it after numpy without build isolation
+          python -m pip install --no-build-isolation git+https://github.com/scikit-learn-contrib/stability-selection.git
 
       - name: Run tests
         run: python -m pytest tests/ -v
