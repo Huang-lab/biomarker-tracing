@@ -58,10 +58,7 @@ def run_method(method, save_path):
         "--ztransform_type", "-1",
         *extra_args,
     ]
-    # Fixed hash seed: elastic_kfold_ver2.py orders proteins with list(set(...)), whose order changes
-    # between Python processes, so the seeded k-fold split (and the chosen best model) otherwise varies run to run
-    env = {**os.environ, "PYTHONHASHSEED": "0"}
-    result = subprocess.run(command, cwd=REPO, capture_output=True, text=True, env=env)
+    result = subprocess.run(command, cwd=REPO, capture_output=True, text=True)
     assert result.returncode == 0, f"{script} failed:\n{result.stderr[-3000:]}"
     return save_path
 

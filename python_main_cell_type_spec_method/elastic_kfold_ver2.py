@@ -117,7 +117,9 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
     # Prepare the training data
     col = "HR"
     if col not in prot_spec_final.columns: col = "OR"
-    common_genes = list(
+    # Sorted so the row order, and so the seeded k-fold split below, is the same on every run
+    # (the order of a set of strings changes each time Python starts)
+    common_genes = sorted(
         set(prot_spec_final["gene"].tolist()).intersection(set(X_df.index.tolist()))
     )
     sub_atl = X_df.loc[common_genes, :]
