@@ -11,14 +11,13 @@ def main(in_args):
     lsf_params = ["-J", "atlas", "-P", "acc_DiseaseGeneCell", "-n", "1", "-W", "1:30", "-R", "rusage[mem=2000]", "-M", "20000", "-L", "/bin/bash"]
 
     for disease in sorted(diseases):
-        if len(disease.split(".")) == 2:
-            dis_name = disease.split(".")[0]
-        else:
-            dis_name = ".".join(disease.split(".")[:-1])
+        # Only <disease>.csv files are sumstats; skip anything else (e.g. .DS_Store).
+        # splitext keeps dots inside the disease name ("Foo.bar.csv" -> "Foo.bar").
+        if not disease.endswith(".csv"): continue
+        dis_name = os.path.splitext(disease)[0]
 
-        dis_name = disease.split(".")[0]
         save_full_path = os.path.join(save_path, dis_name)
-        os.makedirs(save_path, exist_ok=True)
+        os.makedirs(save_full_path, exist_ok=True)   # bsub -oo/-eo write here; LSF won't create it
         log_path = save_full_path
 
         args = [
@@ -48,8 +47,6 @@ if __name__ == "__main__":
 
     parser.add_argument("--disease_name", required=False, type=str, default="")    
 
-    parser.add_argument("--samp_method", required=False, type=str, default="subsampling_diff_size")
-    parser.add_argument("--optim_alpha_mode", required=False, type=str, default="kneedle")
     parser.add_argument("--thres", type=float, default=0.8, help="Cutoff to choose values")
     parser.add_argument("--abs_hr", type=int, default=0, help="Whether to take absolute value of output")   
     parser.add_argument("--ztransform_type", type=int, default=1, help="Whether to z transform on each cell type (1) or each gene (2)") 

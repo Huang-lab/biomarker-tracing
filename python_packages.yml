@@ -245,4 +245,6 @@ dependencies:
       - widgetsnbextension==4.0.10
       - wrapt==1.16.0
       - zipp==3.17.0
+      # Not on PyPI, and its setup.py imports numpy: if this line fails, install it on its own after
+      # the rest with `pip install --no-build-isolation git+https://github.com/scikit-learn-contrib/stability-selection.git`
       - git+https://github.com/scikit-learn-contrib/stability-selection.git

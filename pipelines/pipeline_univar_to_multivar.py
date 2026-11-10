@@ -44,6 +44,18 @@ def method_save_path(base_save_path: str, disease_folder_name: str, method: str,
     return f"{base_save_path}/{disease_folder_name}/{METHOD_SUBDIR[method]}/{dis_name}"
 
 
+def run_step(command: list, step: str, dis_name: str) -> bool:
+    """Run one method's command and log an error if it exits non-zero.
+
+    In local mode the exit code is the method's own; in lsf mode it only says whether
+    the bsub submission worked (the job's result is in its .stdout/.stderr logs).
+    """
+    result = subprocess.run(command)
+    if result.returncode != 0:
+        logger.error(f">>> {step} failed for {dis_name} (exit code {result.returncode})")
+    return result.returncode == 0
+
+
 def univar_top_features(config, base_save_path: str, dis_name: str):
     """
     Select top univariate features
@@ -88,7 +100,8 @@ def main(args):
     # Some preprocessing and parsing
     logger.info(f"Preprocessing and parsing paths...")
     base_path = f"{config['inputs']['disease_prot_dir']}/{config['inputs']['disease_folder_name']}"
-    diseases = os.listdir(base_path)
+    # Only <disease>.csv files are sumstats; ignore anything else in the folder (e.g. .DS_Store)
+    diseases = [f for f in os.listdir(base_path) if f.endswith(".csv")]
     if config['inputs']["save_path_suffix"] != "": save_path_suffix = f"_{config['inputs']['save_path_suffix']}"
     else: save_path_suffix = config['inputs']["save_path_suffix"]
     base_save_path = f"{config['inputs']['save_path']}{save_path_suffix}"
@@ -124,11 +137,8 @@ def main(args):
     # Loop through the diseases
     for disease in sorted(diseases):
 
-        # Check if disease is in yml file
-        if len(disease.split(".")) == 2:
-            dis_name = disease.split(".")[0]
-        else:
-            dis_name = ".".join(disease.split(".")[:-1])
+        # Strip only the .csv extension so dots inside the disease name are kept
+        dis_name = os.path.splitext(disease)[0]
 
         # Check if running on correct disease - if keyword "all", then run all diseases
         if config['inputs']["disease_name"][0] == "all": pass
@@ -228,7 +238,7 @@ def main(args):
                     "--pos_coef", str(config['elasticnet_kfold']['pos_coef'])
                 ]
                 command = ["python", "python_main_cell_type_spec_method/elastic_kfold_ver2.py"] + sub_args
-                subprocess.run(command)
+                run_step(command, "elasticnet", dis_name)
             else:
                 sub_args = [
                     "--atlas_smal_path", new_atlas_smal,
@@ -246,7 +256,7 @@ def main(args):
                     "--pos_coef", str(config['elasticnet_kfold']['pos_coef'])
                 ]
                 command = ["python", config['constants']["enet_script_path"]] + sub_args
-                subprocess.run(command)
+                run_step(command, "elasticnet", dis_name)
 
         # Run Lasso stability selection
         if (config["stability_selection"]["run"] == 1):
@@ -267,7 +277,7 @@ def main(args):
                     "--ztransform_type", str(config['stability_selection']['ztransform_type'])
                 ]
                 command = ["python", "python_main_cell_type_spec_method/stability_analyses.py"] + sub_args
-                subprocess.run(command)
+                run_step(command, "stability selection", dis_name)
             else:
                 sub_args = [
                     "--atlas_smal_path", new_atlas_smal,
@@ -282,7 +292,7 @@ def main(args):
                     "--ztransform_type", str(config['stability_selection']['ztransform_type'])
                 ]
                 command = ["python", config['constants']["stab_sele_script_path"]] + sub_args
-                subprocess.run(command)
+                run_step(command, "stability selection", dis_name)
 
         # Run random forests
         if (config["random_forest"]["run"] == 1):
@@ -309,7 +319,7 @@ def main(args):
                     "--ztransform_type", str(config['random_forest']['ztransform_type'])
                 ]
                 command = ["python", "python_main_cell_type_spec_method/tree_based_methods.py"] + sub_args
-                subprocess.run(command)
+                run_step(command, "random forest", dis_name)
             else:
                 sub_args = [
                     "--atlas_smal_path", new_atlas_smal,
@@ -330,7 +340,7 @@ def main(args):
                     "--ztransform_type", str(config['random_forest']['ztransform_type'])
                 ]
                 command = ["python", config['constants']["rf_script_path"]] + sub_args
-                subprocess.run(command)
+                run_step(command, "random forest", dis_name)
 
     # Cross-disease summary: separate disease-specific cell-type hits from cell types that are
     # significant for most diseases. Only meaningful when many diseases were run.

@@ -80,8 +80,7 @@ def main(args):
     Run this script if you want to populate yml files across diseases
     """
     # Run code to create yml files
-    diseases = os.listdir(args.disease_path)
-    diseases = [i.split(".")[0] for i in diseases]
+    diseases = [os.path.splitext(f)[0] for f in os.listdir(args.disease_path) if f.endswith(".csv")]
     create_yml_files(args.yml_full_path, diseases, f"{args.save_path}/{args.save_name}")
 
 

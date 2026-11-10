@@ -19,7 +19,7 @@ constants:
 inputs:
   atlas_smal_path: "tutorial/human_protein_atlas_seismic_cell_spec_matrix.tsv"
   
-  # The final full save path will be pipeline_results/pipeline_univar_multivar_sample_run
+  # The final full save path will be tutorial/pipeline_univar_multivar_sample_run
   save_path: "tutorial/pipeline_univar_multivar"
   save_path_suffix: "sample_run"
   
@@ -63,9 +63,10 @@ univar_to_multivar:
   thres: 0.05
 
 # Cross-disease summary, run once after all diseases: flags cell types significant for most
-# diseases as "generic" and reports disease-specific hits (see README).
+# diseases as "generic" and reports disease-specific hits (see README). Needs many diseases
+# (min_diseases); off here because the sample folder has a single disease.
 cross_disease:
-  run: 1
+  run: 0
   sig_col: "fdr_one_side_predictor"
   thres: 0.05
   generic_frac: 0.5
@@ -103,8 +104,6 @@ random_forest:
 # Stability selection
 stability_selection:
   run: 1
-  samp_method: "subsampling_diff_size"
-  optim_alpha_mode: "kneedle"
   thres: 0.6
   abs_hr: 0
   output_label: "z_score"
