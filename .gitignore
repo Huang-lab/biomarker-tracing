@@ -10,3 +10,10 @@ pipeline_yml/univar_multivar_seismic_shuffled_diseases.yml
 tutorial/log.err
 
 notes.txt
+
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Downloaded sumstats and large pipeline outputs
+data/

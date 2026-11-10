@@ -19,7 +19,7 @@ constants:
 inputs:
   atlas_smal_path: "tutorial/human_protein_atlas_seismic_cell_spec_matrix.tsv"
   
-  # The final full save path will be pipeline_results/pipeline_univar_multivar_sample_run
+  # The final full save path will be tutorial/pipeline_univar_multivar_sample_run
   save_path: "tutorial/pipeline_univar_multivar"
   save_path_suffix: "sample_run"
   
@@ -106,8 +106,6 @@ random_forest:
 # Stability selection
 stability_selection:
   run: 1
-  samp_method: "subsampling_diff_size"
-  optim_alpha_mode: "kneedle"
   thres: 0.6
   abs_hr: 0
   output_label: "z_score"

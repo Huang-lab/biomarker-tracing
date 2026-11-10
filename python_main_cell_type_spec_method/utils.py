@@ -60,10 +60,8 @@ def _require_gene_id_lookup():
         raise MissingGeneIdLookup(
             "UK Biobank sumstats need the gene-ID lookup tables, and these are missing:\n  "
             + "\n  ".join(missing)
-            + "\n\nThese map protein names to Ensembl gene IDs. They are not in the repo; "
-            "obtain them from the lab (they were previously read from "
-            "/sc/arion/projects/DiseaseGeneCell/.../CSF_proteomics_AD_onset/) and place them "
-            "at the paths above.\n"
+            + "\n\nThese map protein names to Ensembl gene IDs and are committed under "
+            "gene_id_lookup/ in the repo; restore them from git (see gene_id_lookup/README.md).\n"
             "Sumstats that already carry a `gene` column of Ensembl IDs do not need them."
         )
 

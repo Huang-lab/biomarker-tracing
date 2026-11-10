@@ -16,14 +16,13 @@ def main(in_args):
     lsf_params = ["-J", "atlas", "-P", "acc_DiseaseGeneCell", "-n", "1", "-W", "1:30", "-R", "rusage[mem=2000]", "-M", "20000", "-L", "/bin/bash"]
 
     for disease in sorted(diseases):
-        if len(disease.split(".")) == 2:
-            dis_name = disease.split(".")[0]
-        else:
-            dis_name = ".".join(disease.split(".")[:-1])
+        # Only <disease>.csv files are sumstats; skip anything else (e.g. .DS_Store).
+        # splitext keeps dots inside the disease name ("Foo.bar.csv" -> "Foo.bar").
+        if not disease.endswith(".csv"): continue
+        dis_name = os.path.splitext(disease)[0]
 
-        dis_name = disease.split(".")[0]
         save_full_path = os.path.join(save_path, dis_name)
-        os.makedirs(save_path, exist_ok=True)
+        os.makedirs(save_full_path, exist_ok=True)   # bsub -oo/-eo write here; LSF won't create it
         log_path = save_full_path
         # log_path = "/sc/arion/projects/DiseaseGeneCell/Huang_lab_project/BioResNetwork/Phuc"
 

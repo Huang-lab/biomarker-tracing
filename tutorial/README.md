@@ -7,7 +7,7 @@ This is a small, self-contained walkthrough of the full `biomarker-tracing` work
 
 Everything you need is in this `tutorial/` folder, and a complete set of reference outputs is provided under `tutorial/pipeline_univar_multivar_sample_run/` so you can check your results.
 
-> ⚠️ **Platform note.** Part 1 runs anywhere R and its packages are installed. **Part 2 currently runs only on an LSF HPC cluster** (it submits `bsub` jobs). To run Part 2 elsewhere, call the base method scripts directly — see "Running without LSF" in the [root README](../README.md).
+> **Platform note.** Both parts run on a local machine. The tutorial config uses `execution.mode: "local"`; to submit Part 2 to an LSF cluster instead, see "Running on an LSF cluster" in the [root README](../README.md).
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Expected output: a TSV that looks like the provided `human_protein_atlas_seismic
 
 > `../cell_tissue_specificity/hpa_data_preprocessing.R` shows how the tiny `.rds` was derived from the full atlas (downsampling, variable-gene selection). You do not need to run it for this tutorial.
 
-## Part 2 — the association pipeline (Python, LSF)
+## Part 2 — the association pipeline (Python)
 
 Two steps:
 
@@ -40,13 +40,14 @@ Two steps:
 
 > The `univariate` hyperparameters are set so the univariate output matches the original `seismicGWAS` package. The multivariate sections (ElasticNet, stability selection, random forest) are less constrained — feel free to experiment. In our experience the univariate ranking is already biologically meaningful on its own.
 
-**2. Run.** Submit the pipeline with [`run_pipeline_part2.sh`](run_pipeline_part2.sh):
+**2. Run.** From the repository root (paths in the config are relative to it):
 
 ```bash
-bsub < run_pipeline_part2.sh
+conda activate scanpy-env
+python pipelines/pipeline_univar_to_multivar.py --yml_file tutorial/univar_multivar_sample.yml
 ```
 
-> Edit the `module load anaconda3/latest; conda activate scanpy-env` line in that script to match your cluster's module system and environment name.
+> On an LSF cluster you can instead submit the same command as a job with `bsub < tutorial/run_pipeline_part2.sh`, after editing its `#BSUB -P` project and the `module load anaconda3/latest; conda activate scanpy-env` line for your site. Set `execution.mode: "lsf"` in the config if you want each method to run as its own cluster job.
 
 The pipeline runs univariate regression, selects FDR-significant cell types, and then runs the enabled multivariate methods on the reduced set. Results appear under `pipeline_univar_multivar_sample_run/sample_disease/<method>/Alcoholic_liver_disease/`.
 

@@ -58,33 +58,40 @@ The univariate model does this one cell type at a time (like `seismicGWAS`); the
 | Path | Purpose |
 |------|---------|
 | `cell_tissue_specificity/` | **Part 1 (R).** Preprocess a single-cell atlas and compute the `seismic` specificity matrix. |
-| `python_main_cell_type_spec_method/` | **Part 2 (Python).** The four association methods, each in a base script (the statistics) + an `*_auto-script.py` (LSF job launcher). Shared helpers in `utils.py`. `pleiotropy_score.py` computes per-protein pleiotropy scores across diseases (see [Permutation testing](#permutation-testing-pleiotropy-and-disease-specific-hits)). |
-| `bash_scripts/` | LSF worker scripts that activate the conda env and invoke each base method script. |
+| `python_main_cell_type_spec_method/` | **Part 2 (Python).** The four association methods, each in a base script (the statistics) + an `*_auto-script.py` (LSF job launcher, used only in `lsf` mode). Shared helpers in `utils.py`. `pleiotropy_score.py` computes per-protein pleiotropy scores across diseases (see [Permutation testing](#permutation-testing-pleiotropy-and-disease-specific-hits)). |
+| `bash_scripts/` | LSF worker scripts that activate the conda env and invoke each base method script (`lsf` mode only). |
 | `pipelines/` | The end-to-end pipeline (`pipeline_univar_to_multivar.py`), the cross-disease summary (`cross_disease_summary.py`) and helpers. |
+| `gene_id_lookup/` | Protein-name → Ensembl ID lookup tables used when reading UK Biobank-format sumstats. |
+| `tests/` | `pytest` tests for sumstats loading and z-score computation; run by CI on every push to `master` and every PR. |
 | `pipeline_yml/` | Example pipeline configuration (`univar_multivar_sample.yml`). |
 | `tutorial/` | A runnable, self-contained example with a tiny atlas, one disease, and reference outputs. **Start here.** |
 | `sample_data/` | Example atlas and summary-statistics files illustrating the required input formats. |
 | `python_packages.yml` | Exact conda environment for Part 2. |
 | `r_packages.txt` | `sessionInfo()` snapshot of the R environment used for Part 1. |
 
-### The three-layer launcher pattern (Part 2)
+### Execution modes (Part 2)
 
-Each method exists as three files so that a single method can be run standalone, or fanned out across many diseases on the cluster:
+The pipeline picks how to run each method from `execution.mode` in the YAML:
 
 ```
-pipeline_univar_to_multivar.py          # orchestrator: reads YAML, loops over diseases
-   └─ <method>_auto-script.py           # submits one bsub job per disease
-        └─ bash_scripts/<method>.sh     # activates conda env inside the job
-             └─ <method>.py             # the actual statistics
+pipeline_univar_to_multivar.py              # orchestrator: reads YAML, loops over diseases
+   │
+   ├─ mode: "local" (default)
+   │     └─ <method>.py                     # run directly as a local subprocess
+   │
+   └─ mode: "lsf"
+         └─ <method>_auto-script.py         # submits one bsub job per disease
+              └─ bash_scripts/<method>.sh   # activates conda env inside the job
+                   └─ <method>.py           # the actual statistics
 ```
 
-When editing the *science*, edit the base `<method>.py`. When editing *how jobs are launched* (resources, paths), edit the `*_auto-script.py` or the `.sh`.
+When editing the *science*, edit the base `<method>.py`; both modes run it. When editing *how cluster jobs are launched* (resources, paths), edit the `*_auto-script.py` or the `.sh`.
 
 ---
 
 ## Requirements
 
-> ⚠️ **Part 2 currently targets an LSF (IBM Spectrum) HPC cluster.** The `*_auto-script.py` launchers and `bash_scripts/*.sh` call `bsub`, `bjobs`, and `module load`, so they will not run unmodified on a local machine or a Slurm cluster. Part 1 (R) runs anywhere R and its packages are installed. Porting Part 2 to run locally requires replacing the `bsub` launch layer — see [Running without LSF](#running-without-lsf).
+Both parts run on a local machine. Part 2 can optionally submit its jobs to an LSF (IBM Spectrum) HPC cluster instead (`execution.mode: "lsf"`, see [Running on an LSF cluster](#running-on-an-lsf-cluster)).
 
 **Part 1 (R):** install the packages listed in `r_packages.txt` (key ones: `seismicGWAS`, `Seurat`, `qs`, `scRNAseq`, `dplyr`, `data.table`).
 
@@ -113,9 +120,18 @@ Examples: `sample_data/sample_atlas_data/human_protein_atlas_all_tissues.tsv` (t
 
 ### 2. Proteomic summary statistics
 
-One CSV **per disease**, named `<disease_name>.csv`, all stored in the same folder. Two accepted layouts:
+To fetch every disease from the UK Biobank Proteome-Phenome Atlas, use [`data_download/download_ppa_sumstats.py`](data_download/download_ppa_sumstats.py). It reads the site's 466-disease list ([`ppa_disease_list.tsv`](data_download/ppa_disease_list.tsv)), saves one CSV per disease, skips files you already have, and writes a `manifest.tsv`. The site has no data for some disease/type combinations (it answers HTTP 500), and those are recorded as `unavailable` in the manifest.
 
-**a) UK Biobank Proteome-Phenome Atlas format** (see [proteome-phenome-atlas.com](https://proteome-phenome-atlas.com/)) — as in `sample_data/sample_sumstats/Alcoholic_liver_disease.csv`. The loader parses the `Protein`, `HR[95%CI]` (or `OR[95%CI]`), and `P_value` columns and maps protein names to Ensembl IDs.
+```bash
+python data_download/download_ppa_sumstats.py                      # prevalent (OR), the default → data/ppa_prevalent_sumstats/
+python data_download/download_ppa_sumstats.py --disease-type incident --output-dir data/ppa_incident   # incident (HR)
+```
+
+Prevalent files carry `OR[95%CI]` (logistic regression) and incident files `HR[95%CI]` (Cox regression); the loader handles both. `data/` is gitignored. Ready-made configs for running every downloaded prevalent disease against two atlases are in `pipeline_yml/ppa_prevalent_hpa700.yml` (700 cell-tissue columns, all genes) and `pipeline_yml/ppa_prevalent_pp229.yml` (229 columns, HVG + plasma-proteome genes).
+
+The pipeline expects one CSV **per disease**, named `<disease_name>.csv`, all stored in the same folder. Two accepted layouts:
+
+**a) UK Biobank Proteome-Phenome Atlas format** (see [proteome-phenome-atlas.com](https://proteome-phenome-atlas.com/)) — as in `sample_data/sample_sumstats/Alcoholic_liver_disease.csv`. The loader parses the `Protein`, `HR[95%CI]` (or `OR[95%CI]`), and `P_value` columns and maps protein names to Ensembl IDs using the tables in [`gene_id_lookup/`](gene_id_lookup/README.md). Proteins with no usable effect estimate or p-value are dropped with a warning. When a `P_value` has underflowed to 0, its z-score is recovered from the 95% CI.
 
 **b) Custom pre-formatted** — as in `sample_data/sample_sumstats/AD_meta_sumstats_all.csv`. Must contain at least:
 
@@ -126,9 +142,11 @@ One CSV **per disease**, named `<disease_name>.csv`, all stored in the same fold
 | `OR` or `HR` | Odds/hazard ratio |
 | `logOR` or `logHR` | Its natural log |
 
-Extra columns are ignored. The loader tries format (a) first and falls back to (b); with format (b) no protein-name→gene-ID mapping is attempted, so pre-map your genes to match the atlas.
+Extra columns are ignored. The loader picks the format from the file's columns: a file with a `gene` column is read as format (b), anything else as format (a). With format (b) no protein-name→gene-ID mapping is attempted, so pre-map your genes to match the atlas. If a format-(a) file fails to parse, the run stops with that error; it does not fall back to format (b).
 
-> Note: the built-in name→Ensembl mapping for format (a) relies on lookup tables under a lab-specific absolute path. External users should use format (b) with genes already mapped to the atlas identifier space.
+Only files ending in `.csv` are treated as diseases. Other files in the folder are ignored, and dots inside a disease name are kept (`Foo.bar.csv` → `Foo.bar`).
+
+> Note: the format-(a) name→Ensembl mapping (including a few manual mappings in `utils.load_prot_data`) is tailored to the UK Biobank Olink panel. For other proteomic panels, prefer format (b) with genes already mapped to the atlas identifier space.
 
 ---
 
@@ -140,13 +158,13 @@ The fastest way to understand the codebase is the fully worked example in [`tuto
 # Part 1 (R) — compute the specificity matrix (runs anywhere)
 Rscript cell_tissue_specificity/hpa_seismic_cell_type_specificity.R
 
-# Part 2 (Python, LSF) — run the association pipeline for all diseases in the config
+# Part 2 (Python) — run the association pipeline for all diseases in the config
 conda activate scanpy-env
 python pipelines/pipeline_univar_to_multivar.py \
     --yml_file pipeline_yml/univar_multivar_sample.yml
 ```
 
-Launch the pipeline from a lightweight interactive/head job: it submits and manages one cluster job per disease per method.
+Run both from the repository root: script and data paths in the configs are relative to it. With the default `execution.mode: "local"`, every method runs in the current process tree, one disease after another.
 
 ---
 
@@ -200,7 +218,8 @@ python pipelines/pipeline_univar_to_multivar.py --yml_file pipeline_yml/univar_m
 
 The YAML has these sections:
 
-- `constants` — paths to the four `*_auto-script.py` launchers.
+- `execution` — `mode: "local"` (default; run each method script directly) or `"lsf"` (submit `bsub` jobs through the launchers).
+- `constants` — paths to the four `*_auto-script.py` launchers (only used in `lsf` mode).
 - `inputs` — specificity-matrix path, sumstats directory (`disease_prot_dir/disease_folder_name`), output path, and `disease_name` (a list of diseases, or `["all"]`).
 - `univariate` — univariate parameters (covariates, output label, standardization), the permutation test (`n_perm`, `perm_seed`, `perm_n_strata`, `perm_strata_col`) and the `pleiotropy` sub-section (`run`, `save_dir`, `score`, `exclude_same_category`).
 - `univar_to_multivar` — `column_to_choose` and `thres` used for feature selection between the univariate and multivariate stages.
@@ -213,7 +232,9 @@ To fan a configuration out into one YAML per disease, use `pipelines/utils.py` (
 
 ## Outputs
 
-Results are written under `<save_path>[_<suffix>]/<disease_folder_name>/<method>/<disease>/`. The `tutorial/pipeline_univar_multivar_sample_run/` directory contains a complete reference set you can diff against. Each method directory contains its result tables/plots plus `cmd_args.json` and per-job `.stdout`/`.stderr` logs.
+Results are written under `<save_path>[_<suffix>]/<disease_folder_name>/<method>/<disease>/`. The `tutorial/pipeline_univar_multivar_sample_run/` directory contains a complete reference set you can diff against. Each method directory contains its result tables/plots plus `cmd_args.json`; in `lsf` mode it also holds per-job `.stdout`/`.stderr` logs (in `local` mode the output goes to your terminal).
+
+> The pipeline reads the univariate step's `univar_regression_results.tsv` to choose cell types for the multivariate step. If the univariate step fails in a rerun, a results file left over from an earlier run into the same `save_path` will still be picked up, so use a fresh `save_path_suffix` per run.
 
 ---
 
@@ -328,17 +349,29 @@ A few options recur across all methods and change what question you are asking:
 
 ---
 
-## Running without LSF
+## Running on an LSF cluster
 
-To run Part 2 off-cluster, bypass the `bsub` launcher layer and call the **base** scripts directly (as in [Running a single method standalone](#running-a-single-method-standalone)) — they are plain scikit-learn/statsmodels and have no cluster dependency. The `*_auto-script.py` files and `bash_scripts/*.sh` are only the LSF submission wrappers; a Slurm or local port would replace those two layers while leaving the base scripts unchanged.
+Set `execution.mode: "lsf"` in the YAML and launch the pipeline from a lightweight interactive/head job. It then submits one `bsub` job per disease per method through the `*_auto-script.py` launchers. It waits for each univariate job to finish (polling `bjobs`) before choosing cell types; the multivariate jobs are submitted without waiting.
+
+The launchers hard-code the project (`-P acc_DiseaseGeneCell`), wall time and memory, and `bash_scripts/*.sh` run `module load anaconda3/latest` and activate a conda env named `scanpy-env`. Adjust both for your site. A Slurm port would replace only these two layers; the base `<method>.py` scripts have no scheduler dependency.
+
+---
+
+## Tests
+
+```bash
+pip install pandas numpy scipy pytest
+python -m pytest tests/ -v
+```
+
+The tests cover the data layer in `python_main_cell_type_spec_method/utils.py` (format detection, UK Biobank parsing, dropping missing estimates, z-scores from underflowed p-values). They do not cover the models. CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs them on every push to `master` and every pull request.
 
 ---
 
 ## Notes and caveats
 
-- Hardware/scheduler: Part 2 as shipped assumes LSF + a conda env named `scanpy-env` loaded via `module load anaconda3/latest`. Adjust `bash_scripts/*.sh` for your site.
 - The univariate parameters in the tutorial YAML are set so results match the original `seismicGWAS` output; multivariate hyperparameters are exploratory. In practice the univariate ranking is often already the most interpretable.
-- The format-(a) protein-name→gene-ID mapping is tailored to a specific proteomics dataset and lab file paths; prefer the pre-mapped format (b) for new data.
+- The format-(a) protein-name→gene-ID mapping is tailored to the UK Biobank Olink panel; prefer the pre-mapped format (b) for other data.
 
 ---
 
