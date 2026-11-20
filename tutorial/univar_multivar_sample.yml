@@ -109,4 +109,6 @@ stability_selection:
   thres: 0.6
   abs_hr: 0
   output_label: "z_score"
-  ztransform_type: -1
+  # 1, not -1: the LASSO penalty grid in stability_analyses.py (0.1 to 1) is sized for z-scored specificity, and on the
+  # raw values every penalty is above alpha_max, so no cell type can be selected
+  ztransform_type: 1

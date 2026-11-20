@@ -19,6 +19,7 @@ import sys
 
 import pandas as pd
 import pytest
+import yaml
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 METHODS_DIR = os.path.join(REPO, "python_main_cell_type_spec_method")
@@ -30,6 +31,9 @@ UPDATE = os.environ.get("UPDATE_EXPECTED") == "1"
 
 pytestmark = pytest.mark.slow
 
+with open(os.path.join(REPO, "tutorial", "univar_multivar_sample.yml")) as _f:
+    SHIPPED_STABILITY = yaml.safe_load(_f)["stability_selection"]
+
 # The settings each method is run with. Changing them changes the expected outputs.
 METHOD_ARGS = {
     "univariate": ("univar_association_testing.py",
@@ -40,9 +44,11 @@ METHOD_ARGS = {
                       ["--param_search", "0", "--num_trees", "50", "--min_samples_split", "10",
                        "--min_samples_leaf", "2", "--max_samples", "0.7", "--kfold_n", "3",
                        "--n_permute_repeat", "3"]),
-    # Specificity z-scored per cell type (1, the script's default): the fixed penalty grid (alpha 0.1 to 1) is
-    # sized for that and selects nothing on the unscaled values the other methods use here (-1)
-    "stability_selection": ("stability_analyses.py", ["--thres", "0.6", "--ztransform_type", "1"]),
+    # The z-transform is the tutorial config's own (stability_selection.ztransform_type: 1, specificity z-scored per
+    # cell type): the fixed penalty grid (alpha 0.1 to 1) is sized for that, and this test fails if the shipped setting
+    # stops selecting anything
+    "stability_selection": ("stability_analyses.py", ["--thres", "0.6", "--ztransform_type",
+                                                      str(SHIPPED_STABILITY["ztransform_type"])]),
 }
 
 
