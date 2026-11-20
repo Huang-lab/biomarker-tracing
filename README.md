@@ -255,7 +255,7 @@ One row per cell type, sorted by `fdr_one_side_predictor`. Key columns:
 | `fdr_predictor` / `fdr_one_side_predictor` | Benjamini–Hochberg FDR across all cell types. **Rank by `fdr_one_side_predictor`.** |
 | `r2_score` | Variance in disease-effect explained by this one cell type. |
 | `intercept`, `pval_intercept`, `tval_intercept` | Intercept term and its statistics. |
-| `residual_pval` | Shapiro–Wilk normality p of the residuals; a diagnostic. With ~2,000 proteins the slope test is robust to non-normal residuals (the permutation p-values below agree with the parametric ones), so a tiny value is not by itself a problem. |
+| `residual_pval` | Shapiro–Wilk normality p of the residuals; a diagnostic. Do not read a tiny value as harmless: on the tutorial disease, with the outcome shuffled across proteins, the parametric one-sided p-value is too small (see `pval_perm_one_side` below). |
 | `pval_perm_one_side`, `pval_perm_two_side`, `fdr_perm_one_side` | *(only with `n_perm > 0`)* Freedman–Lane permutation p-values for the slope and their BH-FDR across cell types. Resolution is `1/(n_perm+1)`. |
 | `pval_maxT_one_side` | *(only with `n_perm > 0`)* Westfall–Young max-T p-value: the probability that **any** cell type reaches this t under the null. Controls the family-wise error rate across all (correlated) cell types; the strictest column. |
 
@@ -267,15 +267,15 @@ One row per cell type, sorted by `fdr_one_side_predictor`. Key columns:
 - `coef_df.tsv` — per-fold coefficients (inspect for stability across folds).
 
 ### LASSO stability selection
-- `feature_scores.tsv` — each cell type's selection frequency (0–1) at every regularization strength (λ). Robust cell types stay selected across many λ.
-- `selected_features_thres_<thres>.tsv` — cell types whose stability exceeds the threshold; these are the robust hits.
+- `feature_scores.tsv` — each cell type's selection frequency (0–1) at every regularization strength (λ). The score is a fraction of 100 subsamples, and a cell type is kept when it exceeds the threshold at any one λ of the grid (the maximum over λ), not at many.
+- `selected_features_thres_<thres>.tsv` — cell types whose stability exceeds the threshold at some λ. This is a screening list with no stated error rate: on the tutorial's 46 screened cell types an outcome shuffled across proteins gives 3 to 10 selected cell types (12 runs, mean 5.8) against 18 for the real outcome, and on all 229 cell types it gives 17 to 26 (15 runs, mean 21.9) against 34 for the real outcome (`--ztransform_type 1`, `--thres 0.6`).
 - `regularization_path.pdf` — visual of the paths.
 
 ### Random forest
 - `permute_importance_scores.tsv` / `.png` — **preferred.** Held-out permutation importance: how much test-set accuracy drops when a cell type's values are shuffled. Positive = informative; centered near zero = uninformative.
 - `coef_random_forest.tsv` — impurity-based importance. Convenient but biased toward high-variance features, so prefer permutation importance for conclusions.
 
-**Cross-method reading:** a cell type that is top-ranked univariately, retains a positive ElasticNet coefficient, is stably selected by LASSO, and has positive permutation importance is a strongly supported disease-relevant cell type.
+**Cross-method reading:** a cell type that is top-ranked univariately, retains a positive ElasticNet coefficient, is stably selected by LASSO, and has positive permutation importance is supported by all four methods. The four methods are fitted to the same proteins and the same outcome (the multivariate ones also to the same cell types, after the univariate screen), so their agreement is not independent confirmation.
 
 ---
 
@@ -287,7 +287,7 @@ Running the univariate test over a large panel of diseases (e.g. the ~700 UK Bio
 
 For each disease, `univar_association_testing.py --n_perm B` runs a **Freedman–Lane permutation**: the outcome residuals (after the intercept and any covariates) are shuffled across proteins, refit against every cell type at once, and the observed t-statistics are compared with the B permuted ones. It is fully vectorised (one matrix product per batch of permutations), so B = 10,000 takes seconds. Two extra p-value columns matter:
 
-- `pval_perm_one_side` / `fdr_perm_one_side` — the per-cell-type permutation p and its BH-FDR. In practice these agree closely with the parametric `pval_predictor_one_side` (with ~2,000 proteins OLS is well calibrated even though the residuals are heavy-tailed).
+- `pval_perm_one_side` / `fdr_perm_one_side` — the per-cell-type permutation p and its BH-FDR. They do not always agree with the parametric `pval_predictor_one_side`, and the parametric p-value is the one that is too small: on the tutorial disease 46 cell types pass the parametric FDR and 39 the permutation FDR; and when the outcome is shuffled across proteins (so that no cell type is truly associated), the parametric one-sided p-value is below 0.001 for 0.36% of cell-type tests (3.6 times the nominal 0.1%) and 24% to 27% of 2,000 shuffles (three seeds, numbered 1 to 3) give at least one cell type at parametric FDR 5%, against a nominal 5% or less. Report `fdr_perm_one_side`, or `pval_maxT_one_side` for a family-wise statement.
 - `pval_maxT_one_side` — **Westfall–Young max-T**, the probability that the *best* of all cell types reaches the observed t under the null. It controls the family-wise error rate while accounting for the strong correlation among cell types (macrophages from 20 tissues are not 20 independent tests). It is the recommended column for a conservative hit list: in the tutorial 46 cell types pass `fdr_one_side_predictor <= 0.05` but 9 pass `pval_maxT_one_side <= 0.05`. Set `univar_to_multivar.column_to_choose: "pval_maxT_one_side"` to use it as the gate to the multivariate stage.
 
 ### 2. Pleiotropy score as covariate and permutation strata (`univariate.pleiotropy`)
