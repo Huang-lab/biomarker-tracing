@@ -75,6 +75,18 @@ def train(args, atlas_smal_merged: pd.DataFrame, prot_spec_final: pd.DataFrame):
 
     # Retrieve all stability scores
     scores = selector.stability_scores_ # shape = [n_features, n_alphas]
+
+    # Every score is 0 when the whole penalty grid lies above alpha_max, the smallest penalty at which the LASSO on these
+    # data keeps no coefficient: then nothing can be selected, whatever the data say, and the empty result looks like a finding.
+    if not np.any(scores > 0):
+        Xc = X.to_numpy(dtype=float) - X.to_numpy(dtype=float).mean(axis=0)
+        alpha_max = np.max(np.abs(Xc.T @ (y.to_numpy(dtype=float) - y.to_numpy(dtype=float).mean()))) / len(y)
+        raise ValueError(
+            f"Stability selection kept no cell type at any of the {len(lambda_array)} penalties "
+            f"({lambda_array.min():.3g} to {lambda_array.max():.3g}): on these data the LASSO already has no non-zero "
+            f"coefficient above a penalty of about {alpha_max:.3g}. Rescale the inputs (--ztransform_type 1 z-scores each "
+            f"cell type) or move the penalty grid; nothing was written."
+        )
     lambdas = [f"{i:.4f}" for i in lambda_array]
     logging.info(scores)
     score_df = pd.DataFrame(scores, columns=lambdas)
